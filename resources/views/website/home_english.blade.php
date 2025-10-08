@@ -1174,6 +1174,135 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="testimonial-slider-wrapper">
+                        <div class="swiper testimonial-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="commentor">
+                                            <div class="icon">
+                                                <img src="{{ asset('assets/images/icons/author-1.webp') }}"
+                                                    alt="author-1.webp">
+                                            </div>
+                                            <div class="details">
+                                                <div class="name">Tahiya Faiza</div>
+                                                <div class="desig">Teaching Assistant, Brac University</div>
+                                            </div>
+                                        </div>
+                                        <div class="comments">“ Attending EduVibe School of Business was one of the best
+                                            decisions I've ever made. The curriculum was practical and industry-focused, and
+                                            I was able to apply what I learned in the classroom.”
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="commentor">
+                                            <div class="icon">
+                                                <img src="{{ asset('assets/images/icons/author-1.webp') }}"
+                                                    alt="author-1.webp">
+                                            </div>
+                                            <div class="details">
+                                                <div class="name">Tahiya Faiza</div>
+                                                <div class="desig">Teaching Assistant, Brac University</div>
+                                            </div>
+                                        </div>
+                                        <div class="comments">“ Attending EduVibe School of Business was one of the best
+                                            decisions I've ever made. The curriculum was practical and industry-focused, and
+                                            I was able to apply what I learned in the classroom.”
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="commentor">
+                                            <div class="icon">
+                                                <img src="{{ asset('assets/images/icons/author-1.webp') }}"
+                                                    alt="author-1.webp">
+                                            </div>
+                                            <div class="details">
+                                                <div class="name">Tahiya Faiza</div>
+                                                <div class="desig">Teaching Assistant, Brac University</div>
+                                            </div>
+                                        </div>
+                                        <div class="comments">“ Attending EduVibe School of Business was one of the best
+                                            decisions I've ever made. The curriculum was practical and industry-focused, and
+                                            I was able to apply what I learned in the classroom.”
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="commentor">
+                                            <div class="icon">
+                                                <img src="{{ asset('assets/images/icons/author-1.webp') }}"
+                                                    alt="author-1.webp">
+                                            </div>
+                                            <div class="details">
+                                                <div class="name">Tahiya Faiza</div>
+                                                <div class="desig">Teaching Assistant, Brac University</div>
+                                            </div>
+                                        </div>
+                                        <div class="comments">“ Attending EduVibe School of Business was one of the best
+                                            decisions I've ever made. The curriculum was practical and industry-focused, and
+                                            I was able to apply what I learned in the classroom.”
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="commentor">
+                                            <div class="icon">
+                                                <img src="{{ asset('assets/images/icons/author-1.webp') }}"
+                                                    alt="author-1.webp">
+                                            </div>
+                                            <div class="details">
+                                                <div class="name">Tahiya Faiza</div>
+                                                <div class="desig">Teaching Assistant, Brac University</div>
+                                            </div>
+                                        </div>
+                                        <div class="comments">“ Attending EduVibe School of Business was one of the best
+                                            decisions I've ever made. The curriculum was practical and industry-focused, and
+                                            I was able to apply what I learned in the classroom.”
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="commentor">
+                                            <div class="icon">
+                                                <img src="{{ asset('assets/images/icons/author-1.webp') }}"
+                                                    alt="author-1.webp">
+                                            </div>
+                                            <div class="details">
+                                                <div class="name">Tahiya Faiza</div>
+                                                <div class="desig">Teaching Assistant, Brac University</div>
+                                            </div>
+                                        </div>
+                                        <div class="comments">“ Attending EduVibe School of Business was one of the best
+                                            decisions I've ever made. The curriculum was practical and industry-focused, and
+                                            I was able to apply what I learned in the classroom.”
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-prev"><i class="fa fa-arrow-left"></i></div>
+                            <div class="swiper-button-next"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <section class="counter-main" data-background="{{ asset('assets/images/home/C.png') }}" style="height: 600px;">
     </section>
 @endsection

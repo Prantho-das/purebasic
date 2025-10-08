@@ -176,5 +176,47 @@
             },
         });
         // linked-course slider ends
+
+        // testimonial slider start here
+        var swiper = new Swiper(".testimonial-slider", {
+            autoHeight: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            speed: 5000,
+            loop: true,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                640: {
+                    slidesPerView: 1.5,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 2.1,
+                },
+                1200: {
+                    slidesPerView: 2.5,
+                },
+                1366: {
+                    slidesPerView: 3,
+                },
+                1440: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+        // testimonial slider ends
     });
 })(jQuery);
