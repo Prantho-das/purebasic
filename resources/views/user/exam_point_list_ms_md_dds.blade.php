@@ -1,0 +1,48 @@
+@extends('layouts.register')
+@section('content')
+
+<div class="row container">
+
+    <div class="centerText"><h3>{{$modelTestName}}</h3></div>
+    <div class="centerText"><h3>Total marks {{$modelTestMarks / 2}}</h3></div>
+    <div class="centerText"><h3>This merit list follows MS/MD/DDS standard</h3></div>
+    <div class="centerText"><h3>Your Rank : {{$userRank + 1}}</h3></div>   
+
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Serial</th>
+            <th>Name</th>
+            <th>Marks</th>
+            <th>Candidate Type</th>
+            <th>Discipline</th>
+        </tr>
+        </thead>
+        <tbody>
+        @php 
+        
+            $key=($modeltest->perPage() * ($modeltest->currentPage()-1))+1;
+
+        @endphp
+        @foreach($modeltest as $data)
+
+        
+            @if(!empty($data->students))
+            
+                <tr>
+                        <td>{{$key++}}</td>
+                
+                        <td>{{$data->students->name??'-'}}</td>
+                        <td>{{$data->point_1}}</td>
+                        <td>{{$data->candidate_type}}</td>
+                        <td>{{$data->discipline}}</td>
+                </tr>
+            @endif
+    
+        @endforeach
+        </tbody>
+    </table>
+
+</div>
+

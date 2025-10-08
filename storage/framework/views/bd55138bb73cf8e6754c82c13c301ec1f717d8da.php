@@ -1,0 +1,100 @@
+<?php $__env->startSection('content'); ?>
+
+
+
+<div class="row container">
+    
+    <div class="col-3">&nbsp</div>
+    
+    <div class="col-6">
+
+        <div class="centerText">
+            <div>
+                <h3><?php echo e($modelTest->name); ?> </h3>
+            </div>
+            
+        </div>
+                <?php $__currentLoopData = $modelTest->questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="answer">
+                           <label><b><?php echo e($data->is_multi == 1 ? "MCQ" : "SBA"); ?></b></label> 
+                           <label><h3><?php echo e($key+1); ?>. </b><?php echo e($data->question); ?></h3></label>
+
+                            <?php
+                            
+                            
+                            $options = App\QuestionBankOption::where('question_id',$data->id)->get();
+                            
+                            ?>
+                        
+                            <?php $__currentLoopData = $options; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keyOpt => $option): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            
+                            
+                                <?php if($data->is_multi == 1): ?>
+                                    <p><span class="badge <?php echo e($option->correct_or_not == 1 ? 'greenBg' : 'whiteBg'); ?>">T</span>&nbsp&nbsp<span class="badge <?php echo e($option->correct_or_not == 1 ? 'whiteBg' : 'redBg'); ?>">F</span><span><?php echo e($option->option); ?></span></p>
+                                    
+                                <?php else: ?>
+                                    <?php
+                                        $split = explode(".", $option->option);
+                                    ?>
+                                    <p><span class="badge <?php echo e($option->correct_or_not == 1 ? 'greenBg' : ''); ?>"><?php echo e($split[0]); ?>.</span>
+                                    <span>&nbsp<?php echo e($split[1]); ?></span>
+                                    </p>
+
+                                <?php endif; ?>
+                                
+                                
+                                
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            
+                            <button class="detailsButton" onclick="toggleDetails(<?php echo e($key); ?>)">Details</button>
+                            
+                            <?php if($data->solve_link): ?>
+                                <a class="detailsButton" href="/solve_video/<?php echo e($modelTest->id); ?>/<?php echo e($data->id); ?>">Video</a>
+                            <?php endif; ?>
+
+                            <div class="answerDetails" id="<?php echo e($key); ?>">
+                                <?php
+                                    $details = explode('\n', $data->detailss);
+                                ?>
+                                
+                                <?php $__currentLoopData = $details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if(str_starts_with($label, 'src:')): ?>
+                                        <p><img src="/<?php echo e(str_replace('src:', '', $label)); ?>" width="50%"></p>
+                                    
+                                    <?php else: ?>
+                                        <label><?php echo e($label); ?></label><br>
+                                    
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div>
+                            
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                
+    
+        
+        </div>
+        
+    </div>
+    
+    <div class="col-3">&nbsp</div>
+
+</div>
+
+<script>
+
+    
+ function toggleDetails(detailsId) {
+     var detailsElem = document.getElementById(detailsId)
+
+     if (detailsElem.style.display === "block") {
+         detailsElem.style.display = "none";
+     } else {
+         detailsElem.style.display = "block";
+     }
+ }
+</script>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.register', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

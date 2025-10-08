@@ -1,0 +1,47 @@
+
+CREATE TABLE `purebasic`.`batch_duration` ( `bd_id` INT NOT NULL AUTO_INCREMENT , `bd_batch_id` VARCHAR(8) NOT NULL , `bd_duration` VARCHAR(10) NOT NULL , `bd_fee` DECIMAL(10) NOT NULL , PRIMARY KEY (`bd_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `batch_duration` CHANGE `bd_duration` `bd_duration` INT(5) NOT NULL;
+
+UPDATE memberships set ammount = 0;
+
+ALTER TABLE `batch_students` ADD `bd_id` INT NULL AFTER `status`;
+
+UPDATE batch_students SET bd_id = 0;
+
+CREATE TABLE `purebasic`.`faq` ( `id` INT NOT NULL AUTO_INCREMENT , `batch_id` VARCHAR(8) NOT NULL , `serial` INT NOT NULL , `question` VARCHAR(255) NOT NULL , `answer` VARCHAR(500) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `faq` CHANGE `batch_id` `batch_id` VARCHAR(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `serial` `serial` INT(11) NULL;
+
+ALTER TABLE `modeltest_batches` ADD `lecture_id` INT(10) NULL AFTER `membershipe_id`;
+
+ALTER TABLE `paidmembers` ADD `sub_id` INT(11) NULL AFTER `batch_id`;
+
+CREATE TABLE `purebasic`.`admission` ( `id` INT NOT NULL AUTO_INCREMENT , `pb_id` INT(12) NOT NULL , `name` VARCHAR(30) NOT NULL , `phone_number` VARCHAR(20) NOT NULL , `email` VARCHAR(30) NOT NULL , `bmdc` VARCHAR(20) NULL , `session` VARCHAR(20) NOT NULL , `college` VARCHAR(30) NOT NULL , `address` VARCHAR(100) NOT NULL , `enrolled_batch` INT NOT NULL , `payment_method` VARCHAR(20) NOT NULL , `transaction_id` VARCHAR(30) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `lecture_sheets` ADD `isExam` VARCHAR(3) NOT NULL AFTER `member_type`;
+
+ALTER TABLE `lecture_sheets` CHANGE `isExam` `isExam` VARCHAR(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL;
+
+CREATE TABLE `purebasic`.`watch_count` ( `id` INT NOT NULL AUTO_INCREMENT , `lecture_id` VARCHAR(10) NULL , `user_id` VARCHAR(10) NULL , `batch_id` VARCHAR(10) NULL , `count` INT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `admission` ADD `batch_id` INT NULL AFTER `pb_id`, ADD `sub_id` INT NULL AFTER `batch_id`;
+
+--------
+CREATE VIEW result_info as
+select a.student_id, a.modeltest_id, a.point, m.exam_type from modeltest_answers as a
+left JOIN modeltests as m ON a.modeltest_id = m.id;
+--------
+CREATE VIEW sub_summary_info as
+SELECT ri.student_id, ri.modeltest_id, ri.exam_type, ri.point, s.name, s.mobile, mb.membershipe_id, ms.plan FROM `result_info` as ri
+LEFT JOIN students as s on ri.student_id = s.student_id
+LEFT JOIN modeltest_batches as mb ON ri.modeltest_id = mb.modeltest_id
+LEFT JOIN memberships as ms on mb.membershipe_id = ms.id;
+
+
+
+
+--------------------------------Above Deployed on ODC Dev Server------------------------------------------------------------------------------------------------------
+
+
+
