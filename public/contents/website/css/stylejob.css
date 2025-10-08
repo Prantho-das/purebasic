@@ -1,0 +1,401 @@
+
+
+.ads img {
+    box-shadow: 0px 0px 9px 1px #ccc;
+    border: 1px solid #ccc;
+}
+.signup_mid{
+  width: 500px; margin-left: 122px;
+}
+
+
+.all_job h6 {
+    font-weight: 500;
+    color: #fff;
+}
+.all_job {
+    margin-top: 24px;
+}
+
+.header_right a {
+    color: #fff;
+    padding: 10px;
+    font-weight: 500;
+}
+.header_right {
+    margin-top: 19px;
+}
+
+.search {
+    background: #9f1e1e;
+    padding: 15px;
+}
+
+.search button {
+    padding: 8px 31px;
+    border-radius: 4px;
+    background: #b30f0f;
+}
+
+.icon a {
+    color: #fff;
+}
+.information h3{
+  color: #fff;
+}
+.information a{
+  color: #fff;
+}
+.app h3{
+  color: #fff;
+}
+
+.job_text p {
+    color: #000;
+    font-size: 18px;
+}
+.job_text a {
+    font-weight: 700;
+    color: #b30f0f;
+    font-size: 16px;
+}
+.job_text {
+    display: inline-block;
+    padding: 35px;
+    text-align: center;
+}
+.job_text i{
+  background: #000;
+    padding: 6px;
+    border-radius: 50%;
+    color: #fff
+}
+
+.job_header h3 {
+    font-size: 19px;
+    color: #fff;
+}
+.job_header {
+    background: #b30f0f;
+    text-align: center;
+    padding: 8px;
+}
+.job_grp {
+    background: #fff;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+
+.job_body {
+    padding: 10px;
+        border-bottom: 1px solid #ccc;
+
+}
+.job_body a {
+    color: #000;
+        font-size: 18px;
+    padding: 4px;
+  }
+.job_body a:hover {
+    color: #b30f0f;
+}
+
+.job_section {
+    margin-top: 20px;
+}
+
+
+.ads {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.footer {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.search {
+    background: #fbfbfb;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+.postt {
+    background: #f3f3f3;
+    margin-top: 12px;
+    padding: 10px;
+    /*box-shadow: 0px 0px 6px 0px #ccc;*/
+        padding-bottom: 18px;
+}
+.post_section {
+    background: #fff;
+    margin-top: 9px;
+    margin-left: 22px;
+    border-left: 2px solid #a5a2a2;
+}
+.view_post {
+    background: #fff;
+    padding: 18px;
+}
+.view_right img {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.summary_sec ul li span {
+    font-weight: 400;
+}
+.summary_sec ul li {
+    font-weight: 600;
+    font-size: 13px;
+    color: #5c5c5c;
+    /* font-weight: normal; */
+    margin: 0px 0px 8px 0px;
+    padding: 0;
+}
+
+.summary_sec {
+    background-color: #f5f5f5;
+    padding: 12px;
+}
+.summary_header {
+    background: #b30f0f;
+    padding: 4px;
+    margin-bottom: 9px;
+}
+
+.view_main h3 {
+    font-weight: bold;
+    margin: 20px 0px 19px 0px;
+    color: #5C5C5C;
+    font-size: 16px;
+}
+
+.summary {
+    margin-top: 29PX;
+}
+
+.shear_post {
+    margin-top: 45px;
+    margin-bottom: 11px;
+}
+.view_ads img{
+  width: 100%;
+      height: 311px;
+}
+
+.ads_section img {
+    width: 100%;
+    box-shadow: 0px 0px 5px 2px #ccc;
+}
+
+.ads_section{
+  margin-top: 20px;
+}
+.k_main {
+    margin-top: 20px;
+    background: #fff;
+    text-align: center;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
+.k_header h3 {
+    font-size: 22px;
+    color: #fff;
+    padding: 6px;
+    border: 1px solid #ccc;
+}
+.k_header {
+    background: #b30f0f;
+    padding: 0px;
+}
+.k_body h6{
+      border-top: 1px solid #ccc;
+    padding: 5px;
+}
+.k_body img {
+    width: 100%;
+        width: 289px;
+    margin-top: -9px;
+}
+
+.view_ads{
+      box-shadow: 0px 0px 22px 0px #ccc;
+}
+
+.footer_section{
+    background: #000;
+}
+.dot{
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 20px;
+    border: 3px solid #fff;
+    position: relative;
+    top: 5px;
+}
+
+
+.marq marquee {
+    color: #fff;
+    font-size: 20px;
+}
+
+.headLine h6 {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 12px;
+    width: 100px;
+}
+
+.social a{
+    font-size: 20px;
+    padding: 8px 14px;
+    color: #ffff;
+    margin-top: -9px;
+}
+
+.social {
+    width: 201px;
+    margin-left: -44px;
+    margin-top: 9px;
+}
+
+.bN300 img {
+    width: 100%;
+    height: 430px;
+}
+
+.bN300 {
+    border: 1px solid #ccc
+}
+.shear{
+    float: left;
+    font-size: 26px;
+    font-weight: 700;
+}
+.apply{
+    margin-top: 20px;
+}
+.fb-page {
+    margin-top: 39px;
+}
+
+.left-content {
+    background: #fff !important;
+    border: 1px solid #ccc;
+    padding: 0;
+}
+
+
+.slider-active{}
+.slider-active .owl-nav div {
+    background: #fff none repeat scroll 0 0;
+    font-size: 20px;
+    height: 50px;
+    left: -4px;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease 0s;
+    width: 24px;
+    opacity: 0;
+    visibility: hidden;
+}
+.slider-active .owl-nav div.owl-next {
+  left: auto;
+  right: 0px;
+}
+.slider-active:hover .owl-nav div{opacity: 1;visibility: visible}
+.slider-active .owl-dots {
+  bottom: 35px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+.slider-active .owl-dot {
+display: none;
+}
+.slider-active .owl-dot.active {
+  background: #2059d3;
+}
+
+
+.img_padding{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.job_image{
+  margin-top: 12px;
+}
+
+.job_image img {
+     width: 60px;
+    width: 170px;
+        border-left: 1px solid #ccc;
+    height: 139px;
+}
+
+.job_headerr {
+    background: #ccc;
+    padding: 13px 0px 4px 6px;
+    margin-bottom: -13px;
+    border-bottom: 1px solid #fff;
+}
+.job_headerr h3 {
+    font-weight: 600;
+    border-left: 2px solid #1b4fe1;
+    padding-left: 7px;
+}
+
+.gov_job {
+    padding-bottom: 4px;
+    margin-bottom: 22px;
+    margin-top: 2px;
+}
+.gov_job h5 {
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.gov_job img {
+    width: 100%;
+    height: 190px;
+    margin-bottom: 18px;
+}
+.serachh h3 {
+    font-weight: 700;
+        margin-bottom: 17px;
+}
+.serachh {
+    background: #ccc;
+    padding: 10px;
+}
+.serach {
+    background: #ccc;
+    padding: 10px;
+}
+.border{
+    border: 1px solid #ccc;
+}
+
+.title_ {
+    background: #ccc;
+    padding: 6px;
+    margin-bottom: -20px;
+}
+.k_body h6 {
+    font-size: 20px;
+    padding-top: 14px;
+}
+
+
+.ex_css {
+    margin-bottom: -12px;
+    border-bottom: 2px solid #ccc;
+}
