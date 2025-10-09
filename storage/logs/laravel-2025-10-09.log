@@ -1626,3 +1626,1323 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2025-10-09 22:54:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:54:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:55:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:55:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:56:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:56:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:57:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:57:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:58:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:58:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:59:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 22:59:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:00:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:00:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:01:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:01:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:02:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:02:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:03:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:03:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:04:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:04:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:05:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:05:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:06:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:06:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:07:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:07:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:08:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:08:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:09:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:09:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:10:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:10:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:11:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:11:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:12:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:12:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:13:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:13:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:14:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:14:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:15:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:15:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:16:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:16:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:17:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:17:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:18:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:18:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:19:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:19:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:20:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:20:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:21:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:21:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:22:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:22:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:23:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:23:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:24:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:24:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:25:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:25:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:26:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:26:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:27:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:27:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:28:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:28:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:29:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:29:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:30:03] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:30:03] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:31:04] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:31:04] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:32:04] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:32:04] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:33:04] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:33:04] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:34:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:34:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:35:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:35:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:36:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:36:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:37:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:37:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:38:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:38:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:39:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:39:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:40:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:40:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:41:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:41:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:42:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:42:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:43:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:43:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:44:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:44:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:45:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:45:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:46:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:46:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:47:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:47:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:48:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:48:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:49:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:49:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:50:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:50:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:51:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:51:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:52:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:52:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:53:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:53:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:54:05] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:54:05] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:55:06] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:55:06] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:56:07] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:56:07] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:57:06] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:57:06] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:58:07] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:58:07] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:59:06] production.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-09 23:59:06] production.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at D:\\personal office\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 

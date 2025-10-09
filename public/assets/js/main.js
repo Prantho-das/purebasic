@@ -266,5 +266,12 @@
         $(window).on("scroll resize", checkCounterVisibility);
         checkCounterVisibility();
         // counter ends
+
+        // copyright year auto update start
+        window.addEventListener("load", function () {
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+        });
+        // copyright year auto update start
     });
 })(jQuery);
