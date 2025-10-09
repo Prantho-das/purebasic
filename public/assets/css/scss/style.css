@@ -1634,4 +1634,101 @@ header .main-header .header-flex .right-box ul li:hover > a {
   content: "";
   background: #fff;
   z-index: 2;
+}
+
+.counter-main {
+  background: #0e2a47;
+}
+.counter-main .left-box {
+  padding: 100px 0;
+}
+.counter-main .left-box h2 {
+  font-weight: 600;
+  font-size: 50px;
+  color: #fff;
+  line-height: 1.2;
+  font-family: "Poppins", sans-serif;
+  width: 60%;
+}
+.counter-main .left-box .counter-grid-parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-right: 160px;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.2);
+  -o-border-image: initial;
+     border-image: initial;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 60px;
+}
+.counter-main .left-box .counter-grid-parent .single-counter-box {
+  border-right: 1px dashed rgba(255, 255, 255, 0.2);
+  padding: 30px;
+}
+.counter-main .left-box .counter-grid-parent .single-counter-box .icon {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.counter-main .left-box .counter-grid-parent .single-counter-box .icon:after {
+  position: absolute;
+  right: -25px;
+  bottom: -10px;
+  content: "";
+  height: 55px;
+  width: 55px;
+  background: #fff;
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0.08;
+}
+.counter-main .left-box .counter-grid-parent .single-counter-box .icon img {
+  height: 60px;
+}
+.counter-main .left-box .counter-grid-parent .single-counter-box .title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+.counter-main .left-box .counter-grid-parent .single-counter-box .count {
+  font-size: 55px;
+  line-height: 1;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #fff;
+}
+.counter-main .right-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #1cb098;
+  padding: 0px 50px;
+  height: 100%;
+}
+.counter-main .right-box h2 {
+  font-size: 36px;
+  letter-spacing: 0px;
+  font-weight: 600;
+  margin: 0px 0px 15px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+.counter-main .right-box a {
+  font-size: 16px;
+  padding: 13px 45px;
+  display: inline-block;
+  font-weight: 500;
+  text-transform: capitalize;
+  position: relative;
+  z-index: 1;
+  transition: 0.35s ease-in-out;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #fff;
+  color: #000;
 }/*# sourceMappingURL=style.css.map */

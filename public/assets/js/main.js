@@ -218,5 +218,53 @@
             },
         });
         // testimonial slider ends
+
+        // counter start
+
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.top <=
+                    (window.innerHeight ||
+                        document.documentElement.clientHeight)
+            );
+        }
+
+        function animateCounter($element) {
+            $element.each(function () {
+                if (!$(this).hasClass("animated")) {
+                    $(this).addClass("animated");
+                    $(this)
+                        .prop("Counter", 0)
+                        .animate(
+                            {
+                                Counter: $(this).data("count"),
+                            },
+                            {
+                                duration: 2000,
+                                easing: "swing",
+                                step: function (now) {
+                                    $(this).text(Math.ceil(now) + "+");
+                                },
+                                complete: function () {
+                                    $(this).text($(this).data("count") + "+");
+                                },
+                            }
+                        );
+                }
+            });
+        }
+
+        function checkCounterVisibility() {
+            $(".single-counter-box").each(function () {
+                if (isElementInViewport(this)) {
+                    animateCounter($(this).find(".count"));
+                }
+            });
+        }
+        $(window).on("scroll resize", checkCounterVisibility);
+        checkCounterVisibility();
+        // counter ends
     });
 })(jQuery);
