@@ -1,0 +1,124 @@
+[2025-10-10 11:38:54] development.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:38:54] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:39:53] development.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:39:53] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:40:53] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:40:53] development.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:41:53] development.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:41:53] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:12] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:26] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:36] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:48] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:53] development.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Model')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:53] development.ERROR: syntax error, unexpected '}', expecting ';' or ',' {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 4): syntax error, unexpected '}', expecting ';' or ',' at C:\\laragon\\www\\purebasic\\app\\BusinessSetting.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:42:55] development.ERROR: syntax error, unexpected '}', expecting ';' or ',' {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 4): syntax error, unexpected '}', expecting ';' or ',' at C:\\laragon\\www\\purebasic\\app\\BusinessSetting.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-10 11:43:05] development.ERROR: Cannot declare class App\Option, because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot declare class App\\Option, because the name is already in use at C:\\laragon\\www\\purebasic\\app\\Options.php:7)
+[stacktrace]
+#0 {main}
+"} 
