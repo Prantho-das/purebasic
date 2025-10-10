@@ -1155,6 +1155,51 @@
         </div>
     </section>
 
+
+
+    <section class="counter-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                    <div class="left-box">
+                        <h2>Advantages of our program</h2>
+                        <div class="counter-grid-parent">
+                            <div class="single-counter-box">
+                                <div class="icon">
+                                    <img src="<?php echo e(asset('assets/images/icons/31.png')); ?>" alt="">
+                                </div>
+                                <div class="title">Students Enrolled</div>
+                                <div class="count" data-count="1000">1000+</div>
+                            </div>
+                            <div class="single-counter-box">
+                                <div class="icon">
+                                    <img src="<?php echo e(asset('assets/images/icons/32.png')); ?>" alt="">
+                                </div>
+                                <div class="title">Certified Teachers</div>
+                                <div class="count" data-count="300">300+</div>
+                            </div>
+                            <div class="single-counter-box">
+                                <div class="icon">
+                                    <img src="<?php echo e(asset('assets/images/icons/33.png')); ?>" alt="">
+                                </div>
+                                <div class="title">Premium Courses</div>
+                                <div class="count" data-count="100">100+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                    <div class="right-box">
+                        <div class="right-box-inner">
+                            <h2>The worlds best online education institude</h2>
+                            <a class="" href="#">Explore More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="testimonial-main">
         <div class="container ed-container-expand">
             <div class="row align-items-center section-title-space">
@@ -1297,9 +1342,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="counter-main" data-background="<?php echo e(asset('assets/images/home/C.png')); ?>" style="height: 600px;">
     </section>
 <?php $__env->stopSection(); ?>
 
