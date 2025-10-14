@@ -43,7 +43,7 @@ Route::get('/free_lectures/batch/{batch_id}/class/{id}', 'WebsiteController@free
 
 Route::get('/free_exam/batch/{batch_id}/', 'WebsiteController@free_exams');
 
-    
+
 Route::get('/clinical_case/{batch_id}', 'WebsiteController@clinical_cases');
 Route::get('/clinical_case/question/{id}', 'WebsiteController@clinical_case_question');
 Route::post('/clinical_case/answer', 'WebsiteController@clinical_case_answer');
@@ -68,24 +68,24 @@ Route::get('/bkash-callback', 'BkashController@callback')->name('url-callback');
 
 
 Route::group(['middleware' => 'membership_login'], function () {
-    
+
 
     Route::get('/notice/{id}', 'StudentController@notice')->name('notice');
-    Route::get('/lecture/user/{id}', 'StudentController@lecture')->name('lecture');    
+    Route::get('/lecture/user/{id}', 'StudentController@lecture')->name('lecture');
     Route::get('/live_class/user/{id}', 'StudentController@liveClass')->name('lecture');
     Route::get('/discussion/user/{id}', 'StudentController@discussion')->name('lecture');
     Route::get('/exam/user/{id}', 'StudentController@exam')->name('exam');
-    
-    
+
+
 	Route::get('/spacialmodeltest-exam/{type}', 'WebsiteController@spacialmodeltest')->name('spacialmodeltest');
 	Route::get('/exam_by_batch/{batch_id}', 'WebsiteController@examByBatch')->name('exam_by_batch');
 	Route::get('/spacialmodeltest-examm/{id}', 'WebsiteController@question')->name('question');
-	
+
     Route::get('/question_bank', 'WebsiteController@question_bank');
     Route::get('/question_bank_topic/{id}', 'WebsiteController@question_bank_topic');
 
 
-	
+
 	Route::get('/batch/{batch_id}/class/{class_id}/quiz/{quiz_id}', 'WebsiteController@quiz')->name('quiz');
 	Route::get('/solve_class/{id}', 'WebsiteController@solve_class')->name('solve_class');
 	Route::get('/solve_video/{modelTestId}/{questionId}', 'WebsiteController@solve_video')->name('solve_video');
@@ -102,22 +102,22 @@ Route::group(['middleware' => 'membership_login'], function () {
     Route::get('/live/{batch_id}', 'WebsiteController@liveLink')->name('liveLink');
 
     Route::get('/student/batch/{id}/enroll', 'StudentController@batchEnroll')->name('batch_enroll');
-    
+
     Route::get('/updateInfo/{userId}/{type}/{id}', 'StudentController@updateInfo')->name('updateInfo');
     Route::post('/updateInfo/{userId}/{type}/{id}', 'StudentController@postUpdateInfo')->name('postUpdateInfo');
 
     Route::get('/student/batch/{id}/module/{module_id}/subcategory/{subcategory_id}/enroll', 'StudentController@moduleSubcategoryEnroll');
-    
-    
+
+
     // old system
-    
+
     Route::get('/student/batch/{id}/old_enroll', 'StudentController@old_batchEnroll')->name('old_batch_enroll');
     Route::get('/old_payment/{id}', 'StudentController@old_payment')->name('old_payment');
 
-    
+
     Route::get('/payment_history/{id}', 'StudentController@paymentHistory')->name('paymentHistory');
     Route::get('/payment_completed', 'StudentController@paymentCompleted')->name('paymentCompleted');
-   
+
     Route::get('/payment/{id}', 'StudentController@payment')->name('payment');
     Route::get('/payment/batch/{id}/module/{module_id}/subcategory/{subcategory_id}', 'StudentController@module_subcategory_payment');
 
@@ -128,9 +128,9 @@ Route::group(['middleware' => 'membership_login'], function () {
     Route::get('/batch/{batch_id}/modules', 'WebsiteController@modules');
 
     Route::get('/batch/{batch_id}/subject/{subject_id}/chapter', 'WebsiteController@chapters')->name('subject_chapters');
-    
+
         Route::get('/batch/{batch_id}/modules/{module_id}/subcategories', 'WebsiteController@moduleSubcategories');
-    
+
     Route::get('/batch/{batch_id}/subject/{subject_id}/chapter/{chapter_id}/classes', 'WebsiteController@classes')->name('chapter_classes');
     Route::get('/batch/{batch_id}/class/{id}', 'WebsiteController@lecture_video')->name('lecture_video');
     Route::get('/batch/{batch_id}/class/{id}/note1', 'WebsiteController@note1')->name('note1');
@@ -174,17 +174,17 @@ Route::group(['middleware' => 'membership_login'], function () {
     Route::post('/student/admission/form/save', 'WebsiteController@admissionFormSave')->name('admissionform.save'); //bt modification
 
     Route::post('/student/duePay', 'WebsiteController@duePay')->name('duePay');
- 
+
     Route::get('/asked/user/{user_id}', 'StudentController@asked');
-    
+
     Route::get('/ask/user/{user_id}', 'StudentController@ask');
     Route::post('/ask/user/{user_id}', 'StudentController@post_ask');
-    
+
     Route::get('/user/{user_id}/question/{question_id}/edit', 'StudentController@edit_ask');
     Route::post('/user/{user_id}/question/{question_id}/edit', 'StudentController@post_edit_ask');
-    
+
     Route::get('/user/{user_id}/question/{question_id}/delete', 'StudentController@delete_ask');
-    
+
     Route::get('/user/{user_id}/question/{question_id}/answer', 'StudentController@answer_ask');
 
     Route::get('/mentor/{user_id}/question/{question_id}/answer', 'StudentController@answer_question');
@@ -192,7 +192,7 @@ Route::group(['middleware' => 'membership_login'], function () {
 
 
 
-    
+
 });
 
 Route::get('/not_bought_package_or_approved','WebsiteController@not_approved_or_bought');
@@ -282,14 +282,14 @@ Route::get('/admin/payment/user/{id}', 'AdminController@payment_admin');
 Route::post('/admin/updateSubscription/user/{userId}/batch/{batchId}', 'AdminController@update_subscription');
 
 
-Route::get('/admin/lecture/user/{id}', 'AdminController@lecture_admin');    
+Route::get('/admin/lecture/user/{id}', 'AdminController@lecture_admin');
 Route::get('/admin/live_class/user/{id}', 'AdminController@live_class_admin');
 Route::get('/admin/discussion/user/{id}', 'AdminController@discussion_admin');
 Route::get('/admin/exam/user/{id}', 'AdminController@exam_admin');
 Route::get('/admin/modeltest/user/{id}', 'AdminController@modeltest_history_admin');
 
 
-    
+
 
 Route::get('/admin/student-delete/{id}', 'AdminController@student_delete')->name('s.delete');
 Route::get('/admin/exam-wise-result', 'AdminController@point')->name('admin.point');
@@ -559,3 +559,17 @@ Route::get('/app/video/{id}','App\VideoLectureController@playVideo');
 
 //bt modification for report
 
+
+
+// cms
+Route::get('/admin/home-page-edit','Admin\CmsController@index');
+
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('locations', 'Admin\LocationController@index')->name('admin.locations.index');
+    Route::post('locations', 'Admin\LocationController@store')->name('admin.locations.store');
+    Route::put('locations/{id}', 'Admin\LocationController@update')->name('admin.locations.update');
+    Route::delete('locations/{id}', 'Admin\LocationController@destroy')->name('admin.locations.destroy');
+    Route::put('locations/section-title', 'Admin\LocationController@sectionTitleUpdate')->name('admin.locations.section-title-update');
+});

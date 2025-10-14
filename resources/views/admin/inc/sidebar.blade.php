@@ -46,6 +46,19 @@ $menuItems = [
 ['title' => 'Register', 'url' => url('/admin/create/user')],
 ]
 ],
+
+
+
+[
+'title' => 'Batch',
+'url' => '#',
+'route' => null,
+'children' => [
+['title' => 'Admission Batch', 'url' => url('admin/addmition/batch')],
+['title' => 'Batch Duration', 'url' => url('/admin/admission/showbatchduration'),],
+['title' => 'Batch Package', 'url' => url('/admin/batchPackage')],
+]
+],
 [
 'title' => 'Batch Student',
 'url' => '#',
@@ -86,24 +99,6 @@ $menuItems = [
 'children' => null
 ],
 [
-'title' => 'Admission Batch',
-'url' => url('/admin/addmition/batch'), // Note: Typo in original URL ('addmition' -> 'admission'?)
-'route' => 'all.batch',
-'children' => null
-],
-[
-'title' => 'Batch Duration',
-'url' => url('/admin/admission/showbatchduration'),
-'route' => 'show.duration',
-'children' => null
-],
-[
-'title' => 'Batch Package',
-'url' => url('/admin/batchPackage'),
-'route' => null, // No route check in original
-'children' => null
-],
-[
 'title' => 'Add HELP',
 'url' => url('/admin/help'),
 'route' => 'show.help',
@@ -125,24 +120,6 @@ $menuItems = [
 'title' => 'Books',
 'url' => url('/admin/all/books'),
 'route' => 'book.index',
-'children' => null
-],
-[
-'title' => 'Mentors',
-'url' => url('/admin/all/mentors'),
-'route' => 'all.mentors',
-'children' => null
-],
-[
-'title' => 'Review',
-'url' => url('/admin/all/review'),
-'route' => 'all.review',
-'children' => null
-],
-[
-'title' => 'News',
-'url' => url('/admin/all/news'),
-'route' => 'all.news',
 'children' => null
 ],
 [
@@ -170,6 +147,9 @@ $menuItems = [
 'route' => null,
 'children' => [
 ['title' => 'Home Page', 'url' => url('/admin/home-page-edit')],
+['title' => 'Location', 'url' => url('/admin/locations')],
+['title' => 'Mentor', 'url' => url('/admin/all/mentors')],
+['title' => 'Review', 'url' => url('/admin/all/review')],
 ]
 ],
 ];
