@@ -573,3 +573,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::delete('locations/{id}', 'Admin\LocationController@destroy')->name('admin.locations.destroy');
     Route::put('locations/section-title', 'Admin\LocationController@sectionTitleUpdate')->name('admin.locations.section-title-update');
 });
+
+
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'],'as'=>'admin.'], function () {
+    Route::resource('sections', 'Admin\SectionController');
+    
+    Route::get('sections/{section}/data-input','Admin\SectionController@dataInput')->name('sections.data-input');
+    Route::post('sections/{section}/data-input','Admin\SectionController@saveData')->name('sections.save-data');
+    Route::resource('batch-categories', 'Admin\BatchCategoryController');
+});

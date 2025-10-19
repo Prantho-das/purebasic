@@ -47,14 +47,13 @@ $menuItems = [
 ]
 ],
 
-
-
 [
 'title' => 'Batch',
 'url' => '#',
 'route' => null,
 'children' => [
 ['title' => 'Admission Batch', 'url' => url('admin/addmition/batch')],
+['title' => 'Batch Category', 'url' => url('admin/batch-categories')],
 ['title' => 'Batch Duration', 'url' => url('/admin/admission/showbatchduration'),],
 ['title' => 'Batch Package', 'url' => url('/admin/batchPackage')],
 ]
@@ -146,7 +145,7 @@ $menuItems = [
 'url' => '#',
 'route' => null,
 'children' => [
-['title' => 'Home Page', 'url' => url('/admin/home-page-edit')],
+['title' => 'Section', 'url' => url('/admin/sections')],
 ['title' => 'Location', 'url' => url('/admin/locations')],
 ['title' => 'Mentor', 'url' => url('/admin/all/mentors')],
 ['title' => 'Review', 'url' => url('/admin/all/review')],
