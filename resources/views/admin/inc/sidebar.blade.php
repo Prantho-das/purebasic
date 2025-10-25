@@ -7,6 +7,20 @@ $menuItems = [
 'children' => null
 ],
 [
+'title' => 'CMS',
+'url' => '#',
+'route' => null,
+'children' => [
+['title' => 'Section', 'url' => url('/admin/sections')],
+['title' => 'Location', 'url' => url('/admin/locations')],
+['title' => 'Mentor', 'url' => url('/admin/all/mentors')],
+['title' => 'Review', 'url' => url('/admin/all/review')],
+['title' => 'Menu', 'url' => url('/admin/menus')],
+['title' => 'social-media', 'url' => url('/admin/social-media')],
+['title' => 'site-settings', 'url' => url('/admin/site-settings')],
+]
+],
+[
 'title' => 'Notice',
 'url' => url('/admin/all/notice'),
 'route' => 'all.books', // Note: Potential mismatch in original; adjust as needed
@@ -140,18 +154,7 @@ $menuItems = [
 'children' => null,
 'target' => '_blank'
 ],
-[
-'title' => 'CMS',
-'url' => '#',
-'route' => null,
-'children' => [
-['title' => 'Section', 'url' => url('/admin/sections')],
-['title' => 'Location', 'url' => url('/admin/locations')],
-['title' => 'Mentor', 'url' => url('/admin/all/mentors')],
-['title' => 'Review', 'url' => url('/admin/all/review')],
-['title' => 'Menu', 'url' => url('/admin/menus')],
-]
-],
+
 ];
 @endphp
 
