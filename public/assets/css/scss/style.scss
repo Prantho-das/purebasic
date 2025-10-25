@@ -138,6 +138,21 @@ body {
                     line-height: 1;
                     @include transistion-four;
                 }
+                a {
+                    letter-spacing: -0.14px;
+                    color: #263238;
+                    z-index: 2;
+                    border-radius: 52px;
+                    padding: 13px 23px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    transition: all 0.4s;
+                    position: relative;
+                    font-family: $poppins;
+                    border: none;
+                    line-height: 1;
+                    @include transistion-four;
+                }
                 .register-btn {
                     background: $theme-blue;
                     color: $white;

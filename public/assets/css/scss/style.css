@@ -348,6 +348,25 @@ h6 {
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
 }
+.top-header-main .top-header-flex .topbar-info .topbar-buttons a {
+  letter-spacing: -0.14px;
+  color: #263238;
+  z-index: 2;
+  border-radius: 52px;
+  padding: 13px 23px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.4s;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  line-height: 1;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
 .top-header-main .top-header-flex .topbar-info .topbar-buttons .register-btn {
   background: #02b3e4;
   color: #fff;
