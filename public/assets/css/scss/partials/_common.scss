@@ -219,3 +219,12 @@ img {
         transform: translateX(-50px);
     }
 }
+@keyframes sticky {
+    0% {
+        top: -200px;
+    }
+
+    to {
+        top: 0;
+    }
+}

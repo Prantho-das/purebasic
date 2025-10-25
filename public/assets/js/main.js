@@ -273,5 +273,16 @@
                 new Date().getFullYear();
         });
         // copyright year auto update start
+
+        // header sticky jquery start
+        $(window).scroll(function () {
+            var navbar = $("#main-header");
+            if ($(window).scrollTop() >= 110) {
+                navbar.addClass("sticky");
+            } else {
+                navbar.removeClass("sticky");
+            }
+        });
+        // header sticky jquery ends here
     });
 })(jQuery);
