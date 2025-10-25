@@ -19,10 +19,13 @@
             <label>সেকশন টাইপ</label>
             <select name="section_type" class="form-control" required>
                 <option value="testimonial">টেস্টিমোনিয়াল</option>
-                <option value="batch_category">অনলাইন ব্যাচ</option>
+                <option value="batch_category">Batch Category</option>
                 <option value="batch">অনলাইন ব্যাচ</option>
                 <option value="home_slider">Home Slider</option>
+                <option value="hero_slider">Hero Slider</option>
+                <option value="books">Books</option>
                 <option value="mentor">মেন্টর</option>
+                <option value="locations">লোকেশনস</option>
             </select>
         </div>
         <div class="form-group mb-3">

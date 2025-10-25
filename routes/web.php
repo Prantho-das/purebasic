@@ -579,8 +579,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'],'as'=>'admin.'], function () {
     Route::resource('sections', 'Admin\SectionController');
-    
+    Route::resource('menus', 'Admin\MenuController');
     Route::get('sections/{section}/data-input','Admin\SectionController@dataInput')->name('sections.data-input');
     Route::post('sections/{section}/data-input','Admin\SectionController@saveData')->name('sections.save-data');
     Route::resource('batch-categories', 'Admin\BatchCategoryController');
+
+
+    Route::get('/social-media', 'Admin\AdminController@socialMediaView')->name('social-media.index');
+    Route::post('/social-media', 'Admin\AdminController@socialMediaUpdate')->name('social-media.update');
+
+
+
+    Route::get('/site-settings', 'Admin\AdminController@siteSettingShow')->name('site-settings.index');
+    Route::post('/site-settings', 'Admin\AdminController@siteSettingUpdate')->name('site-settings.update');
 });

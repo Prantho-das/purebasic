@@ -15,8 +15,15 @@
         <div class="form-group mb-3">
             <label>সেকশন টাইপ</label>
             <select name="section_type" class="form-control" required>
+
+                <option value="testimonial" {{ $section->section_type == 'testimonial' ? 'selected' : '' }}>টেস্টিমোনিয়াল</option>
+                <option value="batch_category" {{ $section->section_type == 'batch_category' ? 'selected' : '' }}>Batch Category</option>
+                <option value="batch" {{ $section->section_type == 'batch' ? 'selected' : '' }}>ব্যাচ</option>
+                <option value="home_slider" {{ $section->section_type == 'home_slider' ? 'selected' : '' }}>Home Slider</option>
+                <option value="hero_slider" {{ $section->section_type == 'hero_slider' ? 'selected' : '' }}>Hero Slider</option>
                 <option value="mentor" {{ $section->section_type == 'mentor' ? 'selected' : '' }}>মেন্টর</option>
-                {{-- অন্য অপশন যোগ --}}
+                <option value="books" {{ $section->section_type == 'books' ? 'selected' : '' }}>Books</option>
+                <option value="books" {{ $section->section_type == 'locations' ? 'selected' : '' }}>locations</option>
             </select>
         </div>
         <div class="form-group mb-3">

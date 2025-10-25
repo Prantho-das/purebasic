@@ -7,6 +7,7 @@ use App\BatchCategory;
 use App\HomeSection;
 use App\Membership;
 use App\Mentor;
+use App\Problem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -94,7 +95,8 @@ class SectionController extends Controller
         $batches = Membership::all();
         $batch_categories = BatchCategory::all();
         $books = Book::all();
-        return view('admin.sections.data-input', compact('section', 'mentors', 'batches', 'batch_categories','books'));
+        $problems = Problem::all();
+        return view('admin.sections.data-input', compact('section', 'mentors', 'batches', 'batch_categories','books','problems'));
     }
 
     // নতুন: Dynamic Data সেভ করো (mentor-এর জন্য)
@@ -257,6 +259,139 @@ class SectionController extends Controller
             }
             $section->update(['dynamic_data' => $books]);
 
+            }if ($section->section_type === 'hero_slider') {
+
+                $request->validate([
+                    'hero_title' => 'required|array|min:1',
+                    'hero_title.*' => 'required|string|max:255',
+                    'hero_promotion_title' => 'nullable|array',
+                    'hero_promotion_title.*' => 'nullable|string|max:255',
+                    'hero_type' => 'required|array|min:1',
+                    'hero_type.*' => 'required|in:batch,class,book,custom',
+                    'hero_batch_id' => 'nullable|array',
+                    'hero_batch_id.*' => 'nullable|exists:memberships,id',
+                    'hero_class_id' => 'nullable|array',
+                    'hero_class_id.*' => 'nullable|exists:batch_categories,id',
+                    'hero_book_id' => 'nullable|array',
+                    'hero_book_id.*' => 'nullable|exists:books,id',
+                    'hero_custom_link' => 'nullable|array',
+                    'hero_custom_link.*' => 'nullable|url|required_if:hero_type.*,custom',  // Per item
+                    'hero_image.*' => 'nullable|image|max:2048',
+                ]);
+
+                $slides = [];
+                if ($request->has('hero_title')) {
+                    $count = count($request->hero_title);
+                    for ($i = 0; $i < $count; $i++) {
+                        if (!empty($request->hero_title[$i])) {
+                            $slideData = [
+                                'title' => $request->hero_title[$i],
+                                'promotion_title' => $request->hero_promotion_title[$i] ?? '',
+                                'type' => $request->hero_type[$i],
+                                'batch_id' => null,
+                                'class_id' => null,
+                                'book_id' => null,
+                                'custom_link' => null,
+                                'related_data' => null,
+                                'image' => isset($section->dynamic_data[$i]['image']) ? $section->dynamic_data[$i]['image'] : null,  // Preserve old
+                            ];
+
+                            // Handle selection per slide
+                            if ($slideData['type'] === 'batch' && !empty($request->hero_batch_id[$i])) {
+                                $model = Membership::find($request->hero_batch_id[$i]);
+                                $slideData['batch_id'] = $request->hero_batch_id[$i];
+                                $slideData['related_data'] = $model ? $model->toArray() : null;
+                            } elseif ($slideData['type'] === 'class' && !empty($request->hero_class_id[$i])) {
+                                $model = BatchCategory::find($request->hero_class_id[$i]);
+                                $slideData['class_id'] = $request->hero_class_id[$i];
+                                $slideData['related_data'] = $model ? $model->toArray() : null;
+                            } elseif ($slideData['type'] === 'book' && !empty($request->hero_book_id[$i])) {
+                                $model = Book::find($request->hero_book_id[$i]);
+                                $slideData['book_id'] = $request->hero_book_id[$i];
+                                $slideData['related_data'] = $model ? $model->toArray() : null;
+                            } elseif ($slideData['type'] === 'custom') {
+                                $slideData['custom_link'] = $request->hero_custom_link[$i] ?? '';
+                            }
+
+                            // Image per slide
+                            if ($request->hasFile("hero_image.$i")) {
+                                if (isset($section->dynamic_data[$i]['image'])) {
+                                    Storage::disk('public')->delete($section->dynamic_data[$i]['image']);
+                                }
+                                $imagePath = $request->file("hero_image.$i")->store('hero-images', 'public');
+                                $slideData['image'] = $imagePath;
+                            }
+
+                            $slides[] = $slideData;
+                        }
+                    }
+                }
+                $section->update(['dynamic_data' => $slides]);
+
+            } elseif ($section->section_type === 'locations') {
+                $request->validate([
+                    'location_name' => 'required|array|min:1',
+                    'location_name.*' => 'required|string|max:255',
+                    'location_map' => 'required|array|min:1',
+                    'location_map.*' => 'required|string|max:1000',  // For embed code/URL
+                ]);
+
+                $locations = [];
+                if ($request->has('location_name')) {
+                    $nameCount = count($request->location_name);
+                    for ($i = 0; $i < $nameCount; $i++) {
+                        if (!empty($request->location_name[$i])) {
+                            $locationData = [
+                                'name' => $request->location_name[$i],
+                                'map_location' => $request->location_map[$i],
+                            ];
+
+                            // Preserve old data if editing (though no files here)
+                            if (isset($section->dynamic_data[$i])) {
+                                $locationData = array_merge($section->dynamic_data[$i], $locationData);
+                            }
+
+                            $locations[] = $locationData;
+                        }
+                    }
+                }
+                $section->update(['dynamic_data' => $locations]);
+            }elseif ($section->section_type === 'testimonial') {
+                $request->validate([
+                    'problem_id' => 'required|array|min:1',
+                    'problem_id.*' => 'required|exists:problems,id',
+                    'testimonial_image' => 'nullable|array',
+                    'testimonial_image.*' => 'nullable|image|max:2048',
+                ]);
+            
+                $testimonials = [];
+                if ($request->has('problem_id')) {
+                    $problemIds = $request->problem_id;
+                    $images = $request->file('testimonial_image') ?? [];
+            
+                    foreach ($problemIds as $key => $problemId) {
+                        if (!empty($problemId)) {
+                            $problemModel = Problem::find($problemId);
+                            if ($problemModel) {
+                                $testimonialData = [
+                                    'problem_id' => $problemId,
+                                    'review_data' => $problemModel->toArray(),  // Save full review (e.g., text, name, rating)
+                                ];
+            
+                                // Image handling
+                                if (isset($images[$key]) && $images[$key]->isValid()) {
+                                    $imagePath = $images[$key]->store('testimonial-images', 'public');
+                                    $testimonialData['image'] = $imagePath;
+                                } elseif (isset($section->dynamic_data[$key]['image'])) {
+                                    $testimonialData['image'] = $section->dynamic_data[$key]['image'];  // Preserve old
+                                }
+            
+                                $testimonials[] = $testimonialData;
+                            }
+                        }
+                    }
+                }
+                $section->update(['dynamic_data' => $testimonials]);
             }
 
         return redirect()->route('admin.sections.index')->with('success', 'ডেটা সেভ হয়েছে! YouTube ভিডিও অ্যাড হয়েছে।');

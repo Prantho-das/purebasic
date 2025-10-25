@@ -27,7 +27,7 @@
                 <td>{{ $section->is_active ? 'হ্যাঁ' : 'না' }}</td>
                 <td>
                     <a href="{{ route('admin.sections.edit', $section->id) }}" class="btn btn-sm btn-warning">এডিট</a>
-                    @if(in_array($section->section_type,['mentor','home_slider','batch','batch_category','books']))
+                    @if(in_array($section->section_type,['mentor','home_slider','batch','batch_category','books','hero_slider','locations','testimonial']))
                     <a href="{{ route('admin.sections.data-input', $section->id) }}" class="btn btn-sm btn-info">ডেটা
                         ইনপুট</a>
                     @endif

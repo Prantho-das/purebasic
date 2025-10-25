@@ -11,90 +11,77 @@
                         <div class="first-box-wrapper">
                             <div class="logo-box">
                                 <a href="#">
+                                    @php
+                                    $logo=get_business_setting('site_logo');
+                                    @endphp
+                                    @if ($logo)
+                                    <img src="{{ asset('storage/' . $logo) }}" alt="logo">
+                                    @else
                                     <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo">
+                                    @endif
 
                                 </a>
                             </div>
                             <div class="logo-description">
-                                <p>There are many variations of passages of person available, but the majority have
-                                    suffered
-                                    alteration in some form.
-
+                                <p>
+                                    {{ get_business_setting('site_description') }}
                                 </p>
                             </div>
                             <div class="logo-contact">
                                 <ul class="contact-list-two">
+                                    @php
+                                    $phone=get_business_setting('site_phone');
+                                    $email=get_business_setting('site_email');
+                                    @endphp
+
+
+@if($phone)
+
                                     <li>
                                         <div class="icon">
                                             <i class="fa-light fa-phone"></i>
                                         </div>
                                         <div class="info">
-                                            <h5><a href="tel:+4733378901">+(964)-2856-3364</a></h5>
+                                            <h5><a href="tel:{{ $phone }}">{{ $phone }}</a></h5>
                                         </div>
                                     </li>
+                                    @endif
+
+                                    @if($email)
                                     <li>
                                         <div class="icon">
                                             <i class="fa-light fa-envelope"></i>
                                         </div>
                                         <div class="info">
-                                            <h5><a href="mailto:info@crysta.com">Info@validtheme.com</a></h5>
+                                            <h5>
+                                                <a href="mailto:{{ $email }}">{{ $email }}</a>
+                                            </h5>
                                         </div>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
 
                     </div>
+
+                    @foreach(\App\Menu::ofType('footer')->root()->active()->orderBy('sort_order')->with('children')->get() as $headerMenu)
                     <div class="col-lg-2 col-md-6">
                         <div class="f-item link">
-                            <h4 class="widget-title">About</h4>
+                            <h4 class="widget-title">{{ $headerMenu->name }}</h4>
+                            @if(count($headerMenu->children))
                             <ul>
+                                @foreach($headerMenu->children ?? [] as $child)
                                 <li>
-                                    <a href="#">About Us</a>
+                                    <a href="{{ $child->url ?? '#' }}">{{ $child->name ?? 'Sub Item' }}</a>
                                 </li>
-                                <li>
-                                    <a href="#">Courses</a>
-                                </li>
-                                <li>
-                                    <a href="#">News & Blogs</a>
-                                </li>
-                                <li>
-                                    <a href="#">Become a Teacher</a>
-                                </li>
-                                <li>
-                                    <a href="#">Events</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
+                                @endforeach
                             </ul>
+                            @endif
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6">
-                        <div class="f-item link">
-                            <h4 class="widget-title">Quick Link</h4>
-                            <ul>
-                                <li>
-                                    <a href="#">Live Workshop</a>
-                                </li>
-                                <li>
-                                    <a href="#">Free Courses</a>
-                                </li>
-                                <li>
-                                    <a href="#">Addmition</a>
-                                </li>
-                                <li>
-                                    <a href="#">Request A Demo</a>
-                                </li>
-                                <li>
-                                    <a href="#">Media Relations</a>
-                                </li>
-                                <li>
-                                    <a href="#">Students</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                     <div class="col-lg-4 col-md-6">
                         <div class="f-item newsletter">
                             <h4 class="widget-title">Join Our Newsletter</h4>

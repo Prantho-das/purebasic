@@ -149,6 +149,7 @@ $menuItems = [
 ['title' => 'Location', 'url' => url('/admin/locations')],
 ['title' => 'Mentor', 'url' => url('/admin/all/mentors')],
 ['title' => 'Review', 'url' => url('/admin/all/review')],
+['title' => 'Menu', 'url' => url('/admin/menus')],
 ]
 ],
 ];
