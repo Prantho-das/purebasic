@@ -100,7 +100,20 @@ class WebsiteController extends Controller
         return view('website.home_english', compact('new', 'question_count', 'publicNotice'));
     }
 
+public function searchPage(Request $request){
 
+        $batchpackages = Batchpackage::where('showing_status', 1)->latest('updated_at')
+        ->when($request->filled('search'), function ($query) use ($request) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        })
+        ->when($request->filled('batch_category'), function ($query) use ($request) {
+            $query->where('batch_category', '=',  $request->batch_category );
+        })
+        
+        ->get();
+    
+    return view('website.search_course',compact('batchpackages'));
+}
 
 
 

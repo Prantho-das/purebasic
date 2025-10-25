@@ -22,6 +22,7 @@ Route::get('privacy-policy.html',function(){
 });
 
 Route::get('/adminOtp', 'WebsiteController@adminOtp');
+Route::get('/search', 'WebsiteController@searchPage')->name('web.search');
 
 
 Route::get('updateBulkStudentID','StudentController@updateBulkStudentID');

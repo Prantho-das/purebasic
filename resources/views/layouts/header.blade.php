@@ -12,8 +12,9 @@
             @endphp
 
             <div class="topheader-search-box">
+                <form action="{{route('web.search')}}">
                 <div class="category-select-box">
-                    <select class="category-select wide">
+                    <select name="batch_category" class="category-select wide">
                         <option value="0" selected disabled>All Categories</option>
                         @foreach($batchCategory as $bcategory)
                         <option value="{{$bcategory->id}}">{{$bcategory->name}}</option>
@@ -22,11 +23,12 @@
 
                 </div>
                 <div class="topsearch-box">
-                    <form action="">
-                        <input type="text" placeholder="Search your courses">
+                    
+                        <input name="search" type="text" placeholder="Search your courses">
                         <button class="header-search-btn">search <i class="fa-light fa-magnifying-glass"></i></button>
-                    </form>
+                    
                 </div>
+            </form>
             </div>
             <div class="topbar-info">
                 <div class="topbar-social-link">
