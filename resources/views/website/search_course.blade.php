@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.register')
 @section('content')
 <div class="post-section section mt-50 ">
     <div class="container">
