@@ -96,7 +96,9 @@ class SectionController extends Controller
         $batch_categories = BatchCategory::all();
         $books = Book::all();
         $problems = Problem::all();
-        return view('admin.sections.data-input', compact('section', 'mentors', 'batches', 'batch_categories','books','problems'));
+
+        $notices = \DB::table('notices')->get();
+        return view('admin.sections.data-input', compact('section', 'mentors', 'batches', 'batch_categories','books','problems','notices'));
     }
 
     // নতুন: Dynamic Data সেভ করো (mentor-এর জন্য)
@@ -259,7 +261,7 @@ class SectionController extends Controller
             }
             $section->update(['dynamic_data' => $books]);
 
-            }if ($section->section_type === 'hero_slider') {
+            }elseif ($section->section_type === 'hero_slider') {
 
                 $request->validate([
                     'hero_title' => 'required|array|min:1',
@@ -392,6 +394,42 @@ class SectionController extends Controller
                     }
                 }
                 $section->update(['dynamic_data' => $testimonials]);
+            }elseif ($section->section_type === 'notice') {
+            $request->validate([
+                'notice_id' => 'required|array|min:1',
+                'notice_id.*' => 'required|exists:notices,id',
+                'notice_image' => 'nullable|array',
+                'notice_image.*' => 'nullable|image|max:2048',
+            ]);
+        
+            $noticesData = [];
+            if ($request->has('notice_id')) {
+                $noticeIds = $request->notice_id;
+                $images = $request->file('notice_image') ?? [];
+        
+                foreach ($noticeIds as $key => $noticeId) {
+                    if (!empty($noticeId)) {
+                        $noticeModel = \DB::table('notices')->where('id',$noticeId)->first();
+                        if ($noticeModel) {
+                            $noticeItem = [
+                                'notice_id' => $noticeId,
+                                'notice_data' => (array)$noticeModel,  // Save full notice (e.g., title, content, date)
+                            ];
+        
+                            // Image handling
+                            if (isset($images[$key]) && $images[$key]->isValid()) {
+                                $imagePath = $images[$key]->store('notice-images', 'public');
+                                $noticeItem['image'] = $imagePath;
+                            } elseif (isset($section->dynamic_data[$key]['image'])) {
+                                $noticeItem['image'] = $section->dynamic_data[$key]['image'];  // Preserve old
+                            }
+        
+                            $noticesData[] = $noticeItem;
+                        }
+                    }
+                }
+            }
+            $section->update(['dynamic_data' => $noticesData]);
             }
 
         return redirect()->route('admin.sections.index')->with('success', 'ডেটা সেভ হয়েছে! YouTube ভিডিও অ্যাড হয়েছে।');

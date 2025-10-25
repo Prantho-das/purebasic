@@ -26,6 +26,7 @@
                 <option value="books">Books</option>
                 <option value="mentor">মেন্টর</option>
                 <option value="locations">লোকেশনস</option>
+                <option value="notice">Notice</option>
             </select>
         </div>
         <div class="form-group mb-3">

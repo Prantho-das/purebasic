@@ -741,57 +741,19 @@
                     <div class="col-lg-12">
                         <div class="marquee">
                             <div class="marquee-block">
+                                @foreach ($section->dynamic_data as $data)
+                                        @php
+                                            $data = (object) $data;
+                                            $data->notice_data = (object) $data->notice_data;
+                                        @endphp
                                 <h3>
                                     <span>
                                         <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
                                     </span>
-                                    learning innovation
+                                    {{$data->notice_data->notice}}
                                 </h3>
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    worldwide
-                                    learners
-                                </h3>
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    unique knowledge
-                                </h3>
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    dream today
-                                </h3>
-                            </div>
-                            <div class="marquee-block">
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    learning innovation
-                                </h3>
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    worldwide learners
-                                </h3>
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    unique knowledge
-                                </h3>
-                                <h3>
-                                    <span>
-                                        <img src="{{ asset('assets/images/icons/marquee-icon.png') }}" alt="icon">
-                                    </span>
-                                    dream today
-                                </h3>
+                                @endforeach
+                                
                             </div>
                         </div>
                     </div>

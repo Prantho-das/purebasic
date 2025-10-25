@@ -23,7 +23,8 @@
                 <option value="hero_slider" {{ $section->section_type == 'hero_slider' ? 'selected' : '' }}>Hero Slider</option>
                 <option value="mentor" {{ $section->section_type == 'mentor' ? 'selected' : '' }}>মেন্টর</option>
                 <option value="books" {{ $section->section_type == 'books' ? 'selected' : '' }}>Books</option>
-                <option value="books" {{ $section->section_type == 'locations' ? 'selected' : '' }}>locations</option>
+                <option value="locations" {{ $section->section_type == 'locations' ? 'selected' : '' }}>locations</option>
+                <option value="notice" {{ $section->section_type == 'notice' ? 'selected' : '' }}>locations</option>
             </select>
         </div>
         <div class="form-group mb-3">

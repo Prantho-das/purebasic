@@ -623,10 +623,83 @@
         <button type="button" onclick="addTestimonial()" class="btn btn-secondary mb-3">নতুন টেস্টিমোনিয়াল অ্যাড</button>
         <button type="submit" class="btn btn-success">সেভ টেস্টিমোনিয়াল</button>
     </form>
+    @elseif($section->section_type === 'notice')
+    <form action="{{ route('admin.sections.save-data', $section->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <h4>নোটিশ সেকশন (মাল্টিপল: নোটিশ সিলেক্ট + ইমেজ)</h4>
+        <div id="notices-container">
+            @if(isset($section->dynamic_data) && !empty($section->dynamic_data))
+            @foreach($section->dynamic_data as $key => $noticeItem)
+            <div class="notice-item mb-3" style="border:1px solid #ccc; padding:10px;" data-index="{{ $key }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select name="notice_id[]" class="form-control" required>
+                            <option value="">নোটিশ সিলেক্ট করো</option>
+                            @foreach ($notices as $notice)
+                            <option value="{{ $notice->id }}" {{ (isset($noticeItem['notice_id']) &&
+                                $noticeItem['notice_id']==$notice->id ? 'selected' : '') }}>
+                                {{ $notice->name ?? 'Untitled' }}: {{ \Illuminate\Support\Str::limit($notice->notice ??
+                                '', 50) }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="file" name="notice_image[]" class="form-control" accept="image/*">
+                        @if(isset($noticeItem['image']))
+                        <img src="{{ asset('storage/' . $noticeItem['image']) }}" width="50" class="mt-1">
+                        @endif
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" onclick="removeItem(this)" class="btn btn-danger btn-sm">রিমুভ</button>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @else
+            <div class="notice-item mb-3" style="border:1px solid #ccc; padding:10px;" data-index="0">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select name="notice_id[]" class="form-control" required>
+                            <option value="">নোটিশ সিলেক্ট করো</option>
+                            @foreach ($notices as $notice)
+                            <option value="{{ $notice->id }}">
+                                {{ $notice->notice ?? 'Untitled' }}: {{ \Illuminate\Support\Str::limit($notice->notice ??
+                                '', 50) }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="file" name="notice_image[]" class="form-control" accept="image/*">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" onclick="removeItem(this)" class="btn btn-danger btn-sm">রিমুভ</button>
+                    </div>
+                </div>
+            </div>
+            @endif
+        </div>
+        <button type="button" onclick="addNotice()" class="btn btn-secondary mb-3">নতুন নোটিশ অ্যাড</button>
+        <button type="submit" class="btn btn-success">সেভ নোটিশ</button>
+    </form>
     @else
     <p>ডেটা রেডি নয়।</p>
     @endif
 </div>
+
+@php
+    $noticesJson = $notices->map(function ($n) {
+        return [
+            'id' => $n->id,
+            'label' => ($n->name ?? 'Untitled') . ': ' . \Illuminate\Support\Str::limit($n->notice ?? '', 50)
+        ];
+    })->toArray();
+@endphp
+<script>
+    const noticesJson = @json($noticesJson);
+</script>
+
 
 <script>
     // Mentor Add Function
@@ -903,6 +976,38 @@
     `;
     container.appendChild(newItem);
     }
+
+
+
+    // Notices Add Function
+function addNotice() {
+    const container = document.getElementById('notices-container');
+    const index = container.children.length;
+    const newItem = document.createElement('div');
+    newItem.className = 'notice-item mb-3';
+    newItem.style = 'border:1px solid #ccc; padding:10px;';
+    newItem.setAttribute('data-index', index);
+    
+    const optionsHtml = noticesJson.map(n => `<option value="${n.id}">${n.label}</option>`).join('');
+    console.log(optionsHtml)
+    newItem.innerHTML = `
+        <div class="row">
+            <div class="col-md-6">
+                <select name="notice_id[]" class="form-control" required>
+                    <option value="">নোটিশ সিলেক্ট করো</option>
+                    ${optionsHtml}
+                </select>
+            </div>
+            <div class="col-md-5">
+                <input type="file" name="notice_image[]" class="form-control" accept="image/*">
+            </div>
+            <div class="col-md-1">
+                <button type="button" onclick="removeItem(this)" class="btn btn-danger btn-sm">রিমুভ</button>
+            </div>
+        </div>
+    `;
+    container.appendChild(newItem);
+}
     // Generic Remove Function (add if missing)
     function removeItem(button) {
        button.closest('.location-item, .mentor-item, .slide-item, .batch-image-item, .batch-item, .book-item,.hero-slide-item').remove();
