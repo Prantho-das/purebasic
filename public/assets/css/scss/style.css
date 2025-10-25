@@ -126,6 +126,13 @@ img {
   font-weight: 600;
   text-transform: capitalize;
 }
+.section-title-space h2 {
+  font-size: 42px;
+  line-height: 52px;
+  color: #011c1a;
+  font-weight: 600;
+  text-transform: capitalize;
+}
 
 .common-btn-design {
   border-radius: 52px;
@@ -1893,4 +1900,104 @@ footer .copyright-footer p {
 }
 footer .copyright-footer p a {
   color: #fff;
+}
+
+.search-result-main {
+  padding: 100px 0;
+  background: #fff;
+}
+.search-result-main .col-lg-3 {
+  margin-bottom: 20px;
+}
+.search-result-main .single-result-card {
+  border-radius: 20px;
+  transition: 0.5s;
+  padding: 20px;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  background: #f0fbf8;
+}
+.search-result-main .single-result-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.search-result-main .single-result-card .image-box {
+  margin-bottom: 15px;
+}
+.search-result-main .single-result-card .image-box img {
+  width: 100%;
+  border-radius: 20px;
+}
+.search-result-main .single-result-card .title {
+  font-size: 18px;
+  line-height: 25px;
+  color: #011c1a;
+  font-weight: 500;
+  transition: 0.5s;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  margin-bottom: 10px;
+  height: 50px;
+}
+.search-result-main .single-result-card p {
+  font-size: 14px;
+  line-height: 20px;
+  color: #616161;
+  font-weight: 400;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  margin-bottom: 10px;
+}
+.search-result-main .single-result-card .see-more {
+  color: #011c1a;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  text-transform: capitalize;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+.search-result-main .single-result-card .see-more i {
+  margin-left: 10px;
+}
+
+.common-banner-main {
+  padding: 90px 0;
+}
+.common-banner-main .ed-breadcrumbs__content h3 {
+  font-size: 42px;
+  line-height: 52px;
+  color: #011c1a;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
+.common-banner-main .ed-breadcrumbs__content .ed-breadcrumbs__menu {
+  justify-content: center;
+  gap: 6px;
+  display: flex;
+}
+.common-banner-main .ed-breadcrumbs__content .ed-breadcrumbs__menu li {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+}
+.common-banner-main .ed-breadcrumbs__content .ed-breadcrumbs__menu li a {
+  color: #02b3e4;
 }/*# sourceMappingURL=style.css.map */
