@@ -1847,3 +1847,135 @@ footer {
         }
     }
 }
+
+.log-register-main {
+    padding: 40px 0;
+    position: relative;
+    border-top: 1px solid #f3f3f3;
+    &::before {
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        background: #f3f3f3;
+        top: 74px;
+        content: "";
+        z-index: -1;
+    }
+    .login-reg-tabs {
+        width: 400px;
+        min-height: 400px;
+        margin: 0 auto;
+        .nav-tabs {
+            border-bottom: none;
+            .nav-item {
+                width: 45.4545454545%;
+                text-align: center;
+                margin-left: 2.2727272727%;
+                margin-right: 2.2727272727%;
+                .nav-link {
+                    border-radius: 0;
+                    -webkit-border-radius: 0;
+                    -moz-border-radius: 0;
+                    -ms-border-radius: 0;
+                    -o-border-radius: 0;
+                    padding-top: 4px;
+                    padding-bottom: 6px;
+                    font-size: 16px;
+                    width: 100%;
+                    border: none;
+                    text-transform: uppercase;
+                    letter-spacing: 0.4px;
+                    font-weight: 500;
+                    margin: auto 2px;
+                    color: #000;
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+                .active {
+                    border-bottom: 2px solid $theme-blue;
+                    color: $theme-blue;
+                }
+            }
+        }
+        .tab-content {
+            padding: 34px 0;
+            .form-group {
+                .form-control {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    background: none;
+                    background-color: #fff;
+                    border: 1px solid #bcccdc;
+                    height: 48px;
+                    border-radius: 4px;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    -ms-border-radius: 4px;
+                    -o-border-radius: 4px;
+                    margin-bottom: 20px;
+                    &:focus {
+                        box-shadow: none;
+                        outline: none;
+                    }
+                }
+            }
+            .form-check {
+                .form-check-label {
+                    font-size: 16px;
+                    color: $black;
+                    font-weight: 400;
+                    line-height: 24px;
+                    font-family: $poppins;
+                    cursor: pointer;
+                }
+                .form-check-input {
+                    @include no-radius;
+                    &:focus {
+                        box-shadow: none;
+                        outline: none;
+                    }
+                }
+            }
+            .common-btn-design {
+                border: none;
+                margin: 20px 0;
+                width: 100%;
+            }
+            .otp-container {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+            }
+            .otp-input {
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                font-size: 18px;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                &:focus {
+                    border-color: $theme-blue;
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+            a.forget-pass {
+                border-bottom: 1px solid #adafb2;
+                color: #adafb2;
+                cursor: pointer;
+                font-family: $poppins;
+                font-size: 12px;
+                padding-bottom: 1px;
+                transition: 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+                letter-spacing: 0.3px;
+            }
+        }
+    }
+}
