@@ -12,7 +12,7 @@
             @endphp
 
             <div class="topheader-search-box">
-                <form action="{{route('web.search')}}">
+                {{-- <form action="{{route('web.search')}}"> --}}
                 <div class="category-select-box">
                     <select name="batch_category" class="category-select wide">
                         <option value="0" selected disabled>All Categories</option>
@@ -23,12 +23,12 @@
 
                 </div>
                 <div class="topsearch-box">
-                    
+                    <form action="{{route('web.search')}}">
                         <input name="search" type="text" placeholder="Search your courses">
                         <button class="header-search-btn">search <i class="fa-light fa-magnifying-glass"></i></button>
-                    
+                    </form>
                 </div>
-            </form>
+            {{-- </form> --}}
             </div>
             <div class="topbar-info">
                 <div class="topbar-social-link">
