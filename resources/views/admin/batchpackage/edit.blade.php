@@ -180,22 +180,22 @@
 
 
             <div class="form-group">
-                <label for="batch_category" class=" form-control-label">Batch Category</label>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="batch_category" value="1" {{ $data->batch_category==1?'checked':'' }}>Medicine
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="batch_category" value="2" {{ $data->batch_category==2?'checked':'' }}>Dentistry
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="batch_category" value="3" {{ $data->batch_category==3?'checked':'' }}>BCS
-                    </label>
-                </div>
+
+
+                @php
+                $batchCategory=App\BatchCategory::all();
+                @endphp
+                    <label for="batch_category" class=" form-control-label">Batch Category</label>
+                
+                    @foreach($batchCategory as $bcategory)
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="batch_category" {{ $data->batch_category==$bcategory->id?'checked':'' }} value="{{ $bcategory->id }}">{{
+                            $bcategory->name }}
+                        </label>
+                    </div>
+                    @endforeach
+                
                 @if ($errors->has('batch_category'))
                     <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('batch_category') }}</strong>

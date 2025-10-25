@@ -171,7 +171,7 @@
                           </span>
                             @endif
                         </div>
-						
+
 						<div class="form-group">
                             <label for="showing_status" class=" form-control-label">Showing Status</label>
                             <div class="form-check-inline">
@@ -190,24 +190,20 @@
                           </span>
                             @endif
                         </div>
-                        
+                        @php
+                        $batchCategory=App\BatchCategory::all();
+                        @endphp
                         <div class="form-group">
                             <label for="batch_category" class=" form-control-label">Batch Category</label>
+
+                            @foreach($batchCategory as $bcategory)
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="batch_category" value="1">Medicine
+                                    <input type="radio" class="form-check-input" name="batch_category" value="{{ $bcategory->id }}">{{ $bcategory->name }}
                                 </label>
                             </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="batch_category" value="2" checked>Dentistry
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="batch_category" value="3">BCS
-                                </label>
-                            </div>
+                            @endforeach
+                            
                             @if ($errors->has('batch_category'))
                                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('batch_category') }}</strong>
@@ -230,15 +226,15 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    
+
     <script>
 
         let dropdown = document.querySelector('select');
         if (dropdown) dropdown.addEventListener('change', function(event) {
-            
+
             document.getElementById("title").value = dropdown.options[dropdown.selectedIndex].text;
         });
-    
+
     </script>
 @endsection
 

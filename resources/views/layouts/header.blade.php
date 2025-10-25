@@ -109,15 +109,15 @@
                     <ul>
                         @foreach(\App\Menu::ofType('header')->root()->active()->orderBy('sort_order')->with('children')->get() as $headerMenu)
                         <li>
-                            <a href="{{ $headerMenu->url ?? '#' }}">{{ $headerMenu->name ?? 'Menu Item' }} 
-                                @if(count($headerMenu->children))   
+                            <a href="{{ $headerMenu->url ?? '#' }}">{{ $headerMenu->name ?? 'Menu Item' }}
+                                @if(count($headerMenu->children))
                                 <i
                                     class="fa-regular fa-chevron-down"></i>
                                 @endif
-                                
+
                                 </a>
 
-                               @if(count($headerMenu->children))    
+                               @if(count($headerMenu->children))
                             <ul class="sub-menu">
                                 @foreach($headerMenu->children ?? [] as $child)
                                 <li><a href="{{ $child->url ?? '#' }}">{{ $child->name ?? 'Sub Item' }}</a></li>
@@ -126,7 +126,7 @@
                             @endif
                         </li>
                         @endforeach
-                        
+
                     </ul>
                 </div>
                 <div class="right-box">
@@ -137,9 +137,9 @@
                                 @if(count($headerMenu->children))
                                 <i class="fa-regular fa-chevron-down"></i>
                                 @endif
-                        
+
                             </a>
-                        
+
                             @if(count($headerMenu->children))
                             <ul class="sub-menu">
                                 @foreach($headerMenu->children ?? [] as $child)
