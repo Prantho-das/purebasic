@@ -545,7 +545,7 @@
                                     @foreach ($batchData as $batch)
                                         @php
                                             $batch = (object) $batch;
-                                            $batchInfo = App\Membership::find($batch->batch_id);
+                                            $batchInfo = App\Batchpackage::find($batch->batch_id);
                                         @endphp
                                         <div class="swiper-slide">
                                             <div class="single-slide">

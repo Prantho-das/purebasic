@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Book;
 use App\Http\Controllers\Controller;
 use App\BatchCategory;
+use App\Batchpackage;
 use App\HomeSection;
 use App\Membership;
 use App\Mentor;
@@ -92,7 +93,7 @@ class SectionController extends Controller
     public function dataInput(HomeSection $section)
     {
         $mentors = Mentor::all();
-        $batches = Membership::all();
+        $batches = BatchPackage::all();
         $batch_categories = BatchCategory::all();
         $books = Book::all();
         $problems = Problem::all();
@@ -300,7 +301,7 @@ class SectionController extends Controller
 
                             // Handle selection per slide
                             if ($slideData['type'] === 'batch' && !empty($request->hero_batch_id[$i])) {
-                                $model = Membership::find($request->hero_batch_id[$i]);
+                                $model = Batchpackage::find($request->hero_batch_id[$i]);
                                 $slideData['batch_id'] = $request->hero_batch_id[$i];
                                 $slideData['related_data'] = $model ? $model->toArray() : null;
                             } elseif ($slideData['type'] === 'class' && !empty($request->hero_class_id[$i])) {

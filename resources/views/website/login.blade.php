@@ -84,7 +84,6 @@
                                         @endif
                                     </div>
 
-
                                     <div class="form-group">
                                         <input name="mobile" data-parsley-type="number" maxlength="15" minlength="9"
                                             value="{{ old('mobile') }}" type="text" class="form-control"
@@ -122,7 +121,7 @@
                                         <input type="password" class="form-control" name="password_confirmation"
                                             placeholder="Re-Type Password" required>
                                     </div>
-                                    <button type="button" class="btn btn-primary common-btn-design"
+                                    <button type="submit" class="btn btn-primary common-btn-design"
                                         id="register-btn">register Now
                                         <span class="icon"><i class="fa-classic fa-regular fa-arrow-right"></i></span>
                                     </button>

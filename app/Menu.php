@@ -62,17 +62,20 @@ class Menu extends Model
         if ($this->link_type === 'model') {
             // For specific items: Use show route with ID
             if ($this->batch_id) {
-                // return route(strtolower($this->model_name) . '.show', $this->batch_id);
+                 return url('batch_details').'/'. $this->batch_id;
             }
+            if ($this->batch_category_id) {
+                return url('batches/category').'/'. $this->batch_category_id;
+           }
             if ($this->class_id) {
-               // return route(strtolower($this->model_name) . '.show', $this->class_id);
+              // return route(strtolower($this->model_name) . '.show', $this->class_id);
             }
             if ($this->book_id) {
                // return route(strtolower($this->model_name) . '.show', $this->book_id);
             }
             // Fallback to index if no specific ID
             if ($this->model_name && $this->route_name) {
-               // return route($this->route_name);
+               return route($this->route_name);
             }
         }
 
