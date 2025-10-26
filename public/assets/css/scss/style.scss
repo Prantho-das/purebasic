@@ -1868,7 +1868,7 @@ footer {
         min-height: 400px;
         margin: 0 auto;
         h3 {
-            font-size: 25px;
+            font-size: 18px;
             line-height: 1.2;
             font-family: $montserrat;
             color: #011c1a;
@@ -1993,5 +1993,10 @@ footer {
     &::before,
     &::after {
         display: none;
+    }
+    .login-reg-tabs {
+        .tab-content {
+            padding: 20px 0;
+        }
     }
 }

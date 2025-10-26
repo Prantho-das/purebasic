@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="login-reg-tabs">
-                        <h3>Enter your OTP Here </h3>
+                        <h3>We have sent an OTP to {{ $student->mobile }}; Please enter the OTP </h3>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel"
                                 aria-labelledby="login-tab" tabindex="0">
@@ -26,9 +26,13 @@
                                 </button>
 
                                 </form>
-                                <a id="resend" href="{{ '/student/otp/' . $id . '/login' }}"
-                                    style="font-size: 1.3rem; background: #3b93ef; color: white; padding: 0.5rem; border-radius: 0.3rem;">Resend
-                                    OTP</a>
+                                <div class="text-center">Time Remaining <label timer id='timer' class="timer"></label>
+                                </div>
+                                <div class="text-center">
+                                    <a id="resend" href="{{ '/student/otp/' . $id . '/login' }}"
+                                        class="forget-pass">Resend
+                                        OTP</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,7 +70,7 @@
 
                     <h3><label>We have sent an OTP to {{ $student->mobile }}; Please enter the OTP and click Next..</label>
                     </h3>
-                    <h3><span>Time Remaining </span><label timer id='timer' class="timer"></label></h3>
+                    <h3></h3>
 
                     <input name="otp" type="text" placeholder="OTP" required
                         value="{{ $otpRequired == 0 ? $otp : '' }}">
@@ -109,7 +113,7 @@
                     timeoutHandle = setTimeout(tick, 1000);
                 } else if (seconds == 0) {
                     document.getElementById("otpSection").style.display = "none";
-                    document.getElementById("resend").style.display = "inline";
+                    document.getElementById("resend").style.display = "unset";
                 } else {
                     if (minutes >= 1) {
                         setTimeout(function() {
