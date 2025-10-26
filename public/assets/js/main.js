@@ -111,7 +111,7 @@
 
         // linked-course slider start here
         var swiper = new Swiper(".linked-course-slider", {
-            autoHeight: true,
+            // autoHeight: true,
             slidesPerView: 1,
             spaceBetween: 20,
             speed: 800,

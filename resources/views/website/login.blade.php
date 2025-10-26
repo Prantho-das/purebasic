@@ -7,18 +7,18 @@
                     <div class="login-reg-tabs">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab"
+                                <button class="nav-link {{ request()->filled('registration')?'':'active' }}" id="login-tab" data-bs-toggle="tab"
                                     data-bs-target="#login-tab-pane" type="button" role="tab"
-                                    aria-controls="login-tab-pane" aria-selected="true">Login</button>
+                                    aria-controls="login-tab-pane" aria-selected="{{ request()->filled('registration')?'false':'true' }}">Login</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="register-tab" data-bs-toggle="tab"
+                            <li class="nav-item " role="presentation">
+                                <button class="nav-link {{ request()->filled('registration')?'active':'' }}" id="register-tab" data-bs-toggle="tab"
                                     data-bs-target="#register-tab-pane" type="button" role="tab"
-                                    aria-controls="register-tab-pane" aria-selected="false">Registration</button>
+                                    aria-controls="register-tab-pane" aria-selected="{{request()->filled('registration')?'true':'false' }}}}">Registration</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel"
+                            <div class="tab-pane fade {{request()->filled('registration')?'':'active show' }}" id="login-tab-pane" role="tabpanel"
                                 aria-labelledby="login-tab" tabindex="0">
                                 <form id="login-form" action="{{ route('student.login.submit') }}" method="post">
                                     @csrf
@@ -58,7 +58,7 @@
 
                                 </form>
                             </div>
-                            <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab"
+                            <div class="tab-pane fade {{request()->filled('registration')?'active show':'' }}" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab"
                                 tabindex="0">
                                 <form id="registration" action="{{ url('/student/register/submit') }}" method="post"
                                     enctype="multipart/form-data">
