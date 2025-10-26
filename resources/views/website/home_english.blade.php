@@ -547,6 +547,7 @@
                                             $batch = (object) $batch;
                                             $batchInfo = App\Batchpackage::find($batch->batch_id);
                                         @endphp
+                                        @if($batchInfo)
                                         <div class="swiper-slide">
                                             <div class="single-slide">
                                                 <a href="#"></a>
@@ -561,6 +562,7 @@
 
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 </div>
                                 <div class="swiper-pagination"></div>

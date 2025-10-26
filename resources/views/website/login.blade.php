@@ -136,77 +136,11 @@
 
     <script>
         // Login button event listener
-        document.getElementById('login-btn').addEventListener('click', function() {
-            const mobile = document.getElementById('mobile').value;
-            const password = document.getElementById('password').value;
-
-            // Basic validation
-            if (mobile && password) {
-                // Hide login form, show OTP form
-                document.getElementById('login-form').style.display = 'none';
-                document.getElementById('otp-form').style.display = 'block';
-                // Focus on the first OTP input
-                document.querySelector('.otp-input').focus();
-            } else {
-                alert('Please enter both mobile number and password.');
-            }
-        });
+       
 
         // OTP input handling
-        const otpInputs = document.querySelectorAll('.otp-input');
-        otpInputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                // Allow only digits
-                if (e.target.value.length > 0 && !/^\d$/.test(e.target.value)) {
-                    e.target.value = '';
-                    return;
-                }
-                // Move to next input if a digit is entered
-                if (e.target.value.length === 1 && index < otpInputs.length - 1) {
-                    otpInputs[index + 1].focus();
-                }
-            });
+        
 
-            input.addEventListener('keydown', (e) => {
-                // Move to previous input on backspace if empty
-                if (e.key === 'Backspace' && !e.target.value && index > 0) {
-                    otpInputs[index - 1].focus();
-                }
-            });
-
-            // Allow pasting OTP
-            input.addEventListener('paste', (e) => {
-                e.preventDefault();
-                const pasteData = e.clipboardData.getData('text').replace(/\D/g, ''); // Only digits
-                if (pasteData.length <= otpInputs.length) {
-                    for (let i = 0; i < pasteData.length && i < otpInputs.length; i++) {
-                        otpInputs[i].value = pasteData[i];
-                        if (i < otpInputs.length - 1) {
-                            otpInputs[i + 1].focus();
-                        }
-                    }
-                }
-            });
-        });
-
-        // OTP submit button event listener
-        document.getElementById('otp-submit-btn').addEventListener('click', function() {
-            // Collect OTP
-            let otp = '';
-            otpInputs.forEach(input => otp += input.value);
-
-            // Basic OTP validation (6 digits)
-            if (otp.length === 6 && /^\d{6}$/.test(otp)) {
-                // alert('OTP submitted: ' + otp);
-                // Perform further actions (e.g., send OTP to server)
-                // Reset forms
-                document.getElementById('otp-form').style.display = 'none';
-                document.getElementById('login-form').style.display = 'block';
-                document.getElementById('login-form').reset();
-                document.getElementById('otp-form').reset();
-            } else {
-                alert('Please enter a valid 6-digit OTP.');
-            }
-        });
+        
     </script>
 @endsection

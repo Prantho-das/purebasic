@@ -10,16 +10,16 @@
                             <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel"
                                 aria-labelledby="login-tab" tabindex="0">
                                 <form method="post"
+                                id="otp-form"
                                     action="{{ url('student/otp/verify/' . $student->id . '/' . $is_login) }}">
-                                </form>
+                                @csrf
                                 <div class="form-group otp-container">
                                     <input type="text" class="otp-input" maxlength="1" required>
                                     <input type="text" class="otp-input" maxlength="1" required>
                                     <input type="text" class="otp-input" maxlength="1" required>
                                     <input type="text" class="otp-input" maxlength="1" required>
-                                    <input type="text" class="otp-input" maxlength="1" required>
-                                    <input type="text" class="otp-input" maxlength="1" required>
                                 </div>
+                                <input type="hidden" id="otp-value" name="otp" value="">
                                 <button type="button" class="btn btn-primary common-btn-design" id="otp-submit-btn">Submit
                                     OTP
                                     <span class="icon"><i class="fa-classic fa-regular fa-arrow-right"></i></span>
@@ -43,7 +43,7 @@
     </section>
 
 
-    <div class="row container" style="margin-top:0.5rem;">
+    {{-- <div class="row container" style="margin-top:0.5rem;">
 
         <div class="col-3">&nbsp</div>
 
@@ -95,7 +95,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 
     <script>
         var timeoutHandle;
@@ -127,5 +127,58 @@
         }
 
         countdown(2, 00);
+
+
+        const otpInputs = document.querySelectorAll('.otp-input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                // Allow only digits
+                if (e.target.value.length > 0 && !/^\d$/.test(e.target.value)) {
+                    e.target.value = '';
+                    return;
+                }
+                // Move to next input if a digit is entered
+                if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                // Move to previous input on backspace if empty
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+
+            // Allow pasting OTP
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const pasteData = e.clipboardData.getData('text').replace(/\D/g, ''); // Only digits
+                if (pasteData.length <= otpInputs.length) {
+                    for (let i = 0; i < pasteData.length && i < otpInputs.length; i++) {
+                        otpInputs[i].value = pasteData[i];
+                        if (i < otpInputs.length - 1) {
+                            otpInputs[i + 1].focus();
+                        }
+                    }
+                }
+            });
+        });
+
+
+        document.getElementById('otp-submit-btn').addEventListener('click', () => {
+            let otpValue = '';
+            otpInputs.forEach(input => {
+                otpValue += input.value;
+            });
+            document.getElementById('otp-value').value = otpValue;
+
+            // Submit the form
+            const form = document.querySelector('#otp-form');
+            form.submit();
+        });
+
+
+        
     </script>
 @endsection
