@@ -69,7 +69,7 @@
                                         <input type="text" class="form-control" name="name"
                                             value="{{ old('name') }}" placeholder="Name as per NID" required>
                                         @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="d-block invalid-feedback" role="alert">
                                                 <strong class="w3-red">{{ $errors->first('name') }}</strong>
                                             </span>
                                         @endif
@@ -78,7 +78,7 @@
                                         <input type="email" class="form-control" name="email"
                                             value="{{ old('email') }}" placeholder="Valid Email Address" required>
                                         @if ($errors->has('email'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="d-block invalid-feedback" role="alert">
                                                 <strong class="w3-red">{{ $errors->first('email') }}</strong>
                                             </span>
                                         @endif
@@ -89,7 +89,7 @@
                                             value="{{ old('mobile') }}" type="text" class="form-control"
                                             placeholder="Valid Phone Number" minlength="9" maxlength="15" required>
                                         @if ($errors->has('mobile'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="d-block invalid-feedback" role="alert">
                                                 <strong class="w3-red">{{ $errors->first('mobile') }}</strong>
                                             </span>
                                         @endif
@@ -102,7 +102,7 @@
                                             <option value="Other">Other Country</option>
                                         </select>
                                         @if ($errors->has('country'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="d-block invalid-feedback" role="alert">
                                                 <strong class="w3-red">{{ $errors->first('country') }}</strong>
                                             </span>
                                         @endif
@@ -112,7 +112,7 @@
                                         <input type="password" name="password" class="form-control"
                                             value="{{ old('password') }}" placeholder="Password" required>
                                         @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="d-block invalid-feedback" role="alert">
                                                 <strong class="w3-red">{{ $errors->first('password') }}</strong>
                                             </span>
                                         @endif
