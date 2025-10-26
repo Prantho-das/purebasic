@@ -230,6 +230,7 @@ Route::get('/student/logout', 'StudentController@logout')->name('student.logout'
 //student password verification
 Route::get('/student/password/{id}/login/{method}', 'StudentController@password')->name('password');
 Route::post('/student/password/verify/{id}/{method}', 'StudentController@password_verify')->name('password.verify');
+Route::post('/student/login', 'StudentController@studentLogin')->name('student.login.submit');
 
 //student Opt verification//
 Route::get('/student/otp/{id}/{is_login}', 'StudentController@otp')->name('otp');

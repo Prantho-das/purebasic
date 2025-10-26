@@ -20,15 +20,15 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel"
                                 aria-labelledby="login-tab" tabindex="0">
-                                <form id="login-form" action="{{ url('/student/login/submit') }}" method="get">
+                                <form id="login-form" action="{{ route('student.login.submit') }}" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Enter Your Mobile Number"
-                                            id="mobile" required>
+                                          name="email"  id="mobile" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Enter Your Password"
-                                            id="password" required>
+                                          name="password"  id="password" required>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="checkDefault">
@@ -36,7 +36,7 @@
                                             Keep me logged in
                                         </label>
                                     </div>
-                                    <button type="button" class="btn btn-primary common-btn-design" id="login-btn">
+                                    <button type="submit" class="btn btn-primary common-btn-design" id="login-btn">
                                         Send OTP
                                         <span class="icon"><i class="fa-classic fa-regular fa-arrow-right"></i></span>
                                     </button>
