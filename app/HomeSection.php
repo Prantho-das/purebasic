@@ -13,7 +13,7 @@ class HomeSection extends Model
    
 
     protected $fillable = [
-        'title', 'subtitle', 'description', 'section_type', 'main_image', 'dynamic_data', 'order_num', 'is_active'
+        'title', 'subtitle', 'description', 'section_type', 'main_image', 'dynamic_data', 'order_num', 'is_active','primary_link'
     ];
 
     protected $casts = [

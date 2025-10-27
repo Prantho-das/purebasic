@@ -126,10 +126,11 @@
         <option value="">Loading items...</option>
       </select>
       <small class="form-text text-muted">This links to the details page of the selected item.</small>
-      @if($errors->has('batch_id') || $errors->has('class_id') || $errors->has('book_id'))
-      <div class="invalid-feedback d-block">{{ $errors->first('batch_id') ?? $errors->first('class_id') ??
-        $errors->first('book_id') }}</div>
-      @endif
+      @if($errors->has('batch_id') || $errors->has('class_id') || $errors->has('book_id') ||
+    $errors->has('batch_category_id'))
+    <div class="invalid-feedback d-block">{{ $errors->first('batch_id') ?? $errors->first('class_id') ??
+        $errors->first('book_id') ?? $errors->first('batch_category_id') }}</div>
+    @endif
     </div>
   </div>
 
@@ -149,6 +150,7 @@
 <input type="hidden" id="batch_id" name="batch_id" value="{{ old('batch_id', $menu->batch_id) }}">
 <input type="hidden" id="class_id" name="class_id" value="{{ old('class_id', $menu->class_id) }}">
 <input type="hidden" id="book_id" name="book_id" value="{{ old('book_id', $menu->book_id) }}">
+<input type="hidden" id="batch_category_id" name="batch_category_id" value="{{ old('batch_category_id', $menu->batch_category_id) }}">
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -168,7 +170,7 @@
             if (!model) return;
 
             // Clear hidden fields
-            $('#batch_id, #class_id, #book_id').val('');
+            $('#batch_id, #class_id, #book_id, #batch_category_id').val('');
 
             var items = {};
             if (model === 'Batch') {
@@ -186,6 +188,13 @@
                     items[{{ $id }}] = '{{ $name }}';
                 @endforeach
                 $select.attr('name', 'book_id');
+            }else if (model === 'BatchCategory') {
+                @foreach($batchCategories as $id => $name)
+                   items[{{ $id }}] = '{{ $name }}';
+                @endforeach
+                $select.attr('name', 'batch_category_id');
+            } else {
+                return;
             }
 
             // Populate options
@@ -209,6 +218,8 @@
                 selectedId = {{ $menu->class_id }};
             } else if (model === 'Book' && {{ $menu->book_id ? $menu->book_id : 'null' }}) {
                 selectedId = {{ $menu->book_id }};
+            }else if (model === 'BatchCategory' && {{ $menu->batch_category_id ? $menu->batch_category_id : 'null' }}) {
+                selectedId = {{ $menu->batch_category_id }};
             }
             populateSpecificItems(model, selectedId);
         });

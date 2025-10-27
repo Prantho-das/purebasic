@@ -27,6 +27,7 @@ class SectionController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string',
@@ -209,6 +210,8 @@ class SectionController extends Controller
                 foreach ($batchIds as $key => $batchId) {
                     if (!empty($batchId)) {
                         $batchModel = BatchCategory::find($batchId);
+                        $batchPackageCount = Batchpackage::where('batch_category',$batchId)->count();
+                        $batchModel->total_course=$batchPackageCount;
                         if ($batchModel) {
                             $batchItem = [
                                 'batch_category_id' => $batchId,

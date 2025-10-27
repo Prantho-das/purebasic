@@ -18,6 +18,7 @@ $menuItems = [
 ['title' => 'Menu', 'url' => url('/admin/menus')],
 ['title' => 'social-media', 'url' => url('/admin/social-media')],
 ['title' => 'site-settings', 'url' => url('/admin/site-settings')],
+['title' => 'subscribers', 'url' => route('admin.subscribers.index')],
 ]
 ],
 [

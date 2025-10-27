@@ -9,7 +9,7 @@ class Menu extends Model
 {
     protected $fillable = [
         'name', 'slug', 'menu_type', 'parent_id', 'sort_order', 'link_type',
-        'custom_url', 'model_name', 'route_name', 'batch_id', 'class_id', 'book_id', 'is_active'
+        'custom_url', 'model_name', 'route_name', 'batch_id', 'class_id', 'book_id', 'is_active','batch_category_id'
     ];
 
     protected $casts = [

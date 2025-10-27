@@ -81,14 +81,15 @@
                         </div>
                     </div>
                     @endforeach
-                    
+
                     <div class="col-lg-4 col-md-6">
                         <div class="f-item newsletter">
                             <h4 class="widget-title">Join Our Newsletter</h4>
                             <p>
                                 Join our subscribers list to get the latest <br> news and special offers.
                             </p>
-                            <form action="#">
+                            <form action="{{ route('subscribers.store') }}" method="post">
+                                @csrf
                                 <input type="email" placeholder="Your Email" class="form-control" name="email">
                                 <button type="submit">Subscribe</button>
                             </form>
@@ -114,3 +115,4 @@
         </div>
     </footer>
     {{-- footer section Ends here --}}
+    

@@ -586,6 +586,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],'as'=>'admin.'], fun
     Route::post('sections/{section}/data-input','Admin\SectionController@saveData')->name('sections.save-data');
     Route::resource('batch-categories', 'Admin\BatchCategoryController');
 
+    Route::get('/subscribers', 'SubscriberController@index')->name('subscribers.index');
+    Route::delete('/subscribers/{subscriber}', 'SubscriberController@destroy')->name('subscribers.destroy');
 
     Route::get('/social-media', 'Admin\AdminController@socialMediaView')->name('social-media.index');
     Route::post('/social-media', 'Admin\AdminController@socialMediaUpdate')->name('social-media.update');
@@ -595,3 +597,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],'as'=>'admin.'], fun
     Route::get('/site-settings', 'Admin\AdminController@siteSettingShow')->name('site-settings.index');
     Route::post('/site-settings', 'Admin\AdminController@siteSettingUpdate')->name('site-settings.update');
 });
+
+
+Route::post('subscribers','SubscriberController@store')->name('subscribers.store');

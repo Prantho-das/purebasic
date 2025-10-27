@@ -45,7 +45,23 @@
 
     @yield('js')
 
+    <script>
+@if(session()->has('error'))
 
+    swal({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('error') }}',
+    })
+@endif
+@if(session()->has('success'))
+swal({
+    icon: 'success',
+    title: 'Success',
+    text: '{{ session('success') }}',
+})
+@endif
+</script>
 
 </body>
 

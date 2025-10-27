@@ -387,7 +387,7 @@
                             <option value="">সিলেক্ট করো</option>
                             @foreach ($batches as $batch)
                             <option value="{{ $batch->id }}" {{ ($slide['batch_id'] ?? '' )==$batch->id ? 'selected' :
-                                '' }}>{{ $batch->plan }}</option>
+                                '' }}>{{ $batch->title }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -562,7 +562,7 @@
         <button type="button" onclick="addLocation()" class="btn btn-secondary mb-3">নতুন লোকেশন অ্যাড</button>
         <button type="submit" class="btn btn-success">সেভ লোকেশন</button>
     </form>
-   
+
     @elseif($section->section_type === 'testimonial')
     <form action="{{ route('admin.sections.save-data', $section->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -876,7 +876,7 @@
                     <select name="hero_batch_id[]" class="form-control">
                         <option value="">সিলেক্ট করো</option>
                         @foreach ($batches as $batch)
-                            <option value="{{ $batch->id }}">{{ $batch->plan }}</option>
+                            <option value="{{ $batch->id }}">{{ $batch->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -987,7 +987,7 @@ function addNotice() {
     newItem.className = 'notice-item mb-3';
     newItem.style = 'border:1px solid #ccc; padding:10px;';
     newItem.setAttribute('data-index', index);
-    
+
     const optionsHtml = noticesJson.map(n => `<option value="${n.id}">${n.label}</option>`).join('');
     console.log(optionsHtml)
     newItem.innerHTML = `

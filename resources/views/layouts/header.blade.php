@@ -2,9 +2,19 @@
 <section class="top-header-main">
     <div class="container ed-container-expand">
         <div class="top-header-flex">
+
+            
             <div class="logo-box">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo.svg') }}" alt="Logo">
+
+                    @php
+                    $logo=get_business_setting('site_logo');
+                    @endphp
+                    @if ($logo)
+                    <img src="{{ asset('storage/' . $logo) }}" alt="logo">
+                    @else
+                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo">
+                    @endif
                 </a>
             </div>
             @php
@@ -87,8 +97,15 @@
 
                 </div>
                 <div class="topbar-buttons">
+                    @php
+                    $id=Session:: get('id');
+                @endphp
+                @if($id)
                     <button type="button" class="register-btn">Register</button>
                     <a type="button" href={{url('student/login')}} class="btn login-btn">Log In</a>
+                    @else
+                    <a href="/profile/{{$id}}">Dashboard</a>
+                    @endif
                 </div>
 
             </div>

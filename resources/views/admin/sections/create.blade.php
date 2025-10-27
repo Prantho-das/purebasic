@@ -27,6 +27,7 @@
                 <option value="mentor">মেন্টর</option>
                 <option value="locations">লোকেশনস</option>
                 <option value="notice">Notice</option>
+                <option value="static_design">Design</option>
             </select>
         </div>
         <div class="form-group mb-3">
@@ -40,6 +41,10 @@
         <div class="form-group mb-3">
             <label>অ্যাকটিভ?</label>
             <input type="checkbox" name="is_active" value="1" checked>
+        </div>
+        <div class="form-group mb-3">
+            <label>প্রাথমিক লিঙ্ক</label>
+            <input type="text" name="primary_link" class="form-control">
         </div>
         <button type="submit" class="btn btn-success">তৈরি করো (পরে ডেটা অ্যাড করো)</button>
     </form>

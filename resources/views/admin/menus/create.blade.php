@@ -122,9 +122,9 @@
                 <option value="">Loading items...</option>
             </select>
             <small class="form-text text-muted">This links to the details page of the selected item.</small>
-            @if($errors->has('batch_id') || $errors->has('class_id') || $errors->has('book_id'))
+            @if($errors->has('batch_id') || $errors->has('class_id') || $errors->has('book_id') || $errors->has('batch_category_id'))
             <div class="invalid-feedback d-block">{{ $errors->first('batch_id') ?? $errors->first('class_id') ??
-                $errors->first('book_id') }}</div>
+                $errors->first('book_id') ?? $errors->first('batch_category_id') }}</div>
             @endif
         </div>
     </div>
@@ -159,7 +159,7 @@
             if (!model) return;
 
             // Clear hidden fields
-            $('#batch_id, #class_id, #book_id').val('');
+            $('#batch_id, #class_id, #book_id,#batch_category_id').val('');
 
             var items = {};
             if (model === 'Batch') {
@@ -180,6 +180,12 @@
                 @endforeach
                 $select.attr('name', 'book_id');
                 $('#book_id').attr('name', 'book_id');
+            } else if (model === 'BatchCategory') {
+                @foreach($batchCategories as $id => $name)
+                   items[{{ $id }}] = '{{ $name }}';
+                @endforeach
+                $select.attr('name', 'batch_category_id');
+                $('#batch_category_id').attr('name', 'batch_category_id');
             }
 
             // Populate options
@@ -202,8 +208,8 @@
         @if(old('model_name'))
             $(document).ready(function() {
                 $('#model_name').trigger('change');
-                @if(old('batch_id') || old('class_id') || old('book_id'))
-                    populateSpecificItems('{{ old('model_name') }}', {{ old('batch_id', old('class_id', old('book_id'))) }});
+                @if(old('batch_id') || old('class_id') || old('book_id') || old('batch_category_id'))
+                    populateSpecificItems('{{ old('model_name') }}', {{ old('batch_id', old('class_id', old('book_id', old('batch_category_id'))) ) }});
                 @endif
             });
         @endif

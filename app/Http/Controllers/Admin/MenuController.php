@@ -6,6 +6,8 @@ use App\Book;
 use App\Http\Controllers\Controller;
 use App\LectureSheet;
 use App\Membership;
+use App\BatchCategory;
+use App\Batchpackage;
 use App\Menu;
 use Illuminate\Http\Request;
 
@@ -20,19 +22,20 @@ class MenuController extends Controller
     public function create()
     {
         $menus = Menu::active()->orderBy('name')->get();
-        $models = ['Batch', 'Class', 'Book']; // Updated list
+        $models = ['Batch', 'Class', 'Book','BatchCategory']; // Updated list
         $menuTypes = ['header', 'footer', 'sidebar', 'other'];
-        $batches = Membership::pluck('plan as name', 'id')->toArray();
+        $batches = Batchpackage::pluck('title as name', 'id')->toArray();
+        $batchCategories = BatchCategory::pluck('name', 'id')->toArray();
         $classes = LectureSheet::pluck('title as name', 'id')->toArray(); // Adjust model
         $books = Book::pluck('name', 'id')->toArray();
 
-        return view('admin.menus.create', compact('menus', 'models', 'menuTypes', 'batches', 'classes', 'books'));
+        return view('admin.menus.create', compact('menus', 'models', 'menuTypes', 'batches', 'classes', 'books','batchCategories'));
     }
 
     public function store(Request $request)
     {
 
-        
+
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'slug' => 'required|string|unique:menus,slug',
@@ -41,9 +44,10 @@ class MenuController extends Controller
             'sort_order' => 'required|integer|min:0',
             'link_type' => 'required|in:custom,model',
             'custom_url' => 'required_if:link_type,custom|nullable|url',
-            'model_name' => 'required_if:link_type,model|nullable|in:Batch,Class,Book',
-            'batch_id' => 'required_if:model_name,Batch|nullable|exists:memberships,id',
+            'model_name' => 'required_if:link_type,model|nullable|in:Batch,Class,Book,BatchCategory',
+            'batch_id' => 'required_if:model_name,Batch|nullable|exists:batchpackages,id',
             'class_id' => 'required_if:model_name,Class|nullable|exists:lecture_sheets,id',
+            'batch_category_id' => 'required_if:model_name,BatchCategory|nullable|exists:batch_categories,id',
             'book_id' => 'required_if:model_name,Book|nullable|exists:books,id',
         ]);
 
@@ -54,10 +58,11 @@ class MenuController extends Controller
         }else{
             $data['is_active']=0;
         }
-        
+
         $data['batch_id'] = $request->model_name === 'Batch' ? $request->batch_id : null;
         $data['class_id'] = $request->model_name === 'Class' ? $request->class_id : null;
         $data['book_id'] = $request->model_name === 'Book' ? $request->book_id : null;
+        $data['batch_category_id'] = $request->model_name === 'BatchCategory' ? $request->batch_category_id : null;
         unset($data['route_name']); // No longer needed
 
         Menu::create($data);
@@ -73,13 +78,14 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         $menus = Menu::where('id', '!=', $menu->id)->active()->orderBy('name')->get();
-        $models = ['Batch', 'Class', 'Book'];
+        $models = ['Batch', 'Class', 'Book','BatchCategory']; // Updated list
         $menuTypes = ['header', 'footer', 'sidebar', 'other'];
         $batches = Membership::pluck('plan as name', 'id')->toArray();
+        $batchCategories = BatchCategory::pluck('name', 'id')->toArray();
         $classes = LectureSheet::pluck('title as name', 'id')->toArray(); // Adjust model
         $books = Book::pluck('name', 'id')->toArray();
 
-        return view('admin.menus.edit', compact('menu', 'menus', 'models', 'menuTypes', 'batches', 'classes', 'books'));
+        return view('admin.menus.edit', compact('menu', 'menus', 'models', 'menuTypes', 'batches', 'classes', 'books','batchCategories'));
     }
 
     public function update(Request $request, Menu $menu)
@@ -95,7 +101,8 @@ class MenuController extends Controller
             'model_name' => 'required_if:link_type,model|nullable|in:Batch,Class,Book',
             'batch_id' => 'required_if:model_name,Batch|nullable|exists:memberships,id',
             'class_id' => 'required_if:model_name,Class|nullable|exists:lecture_sheets,id',
-            'book_id' => 'required_if:model_name,Book|nullable|exists:books,id',            
+            'batch_category_id' => 'required_if:model_name,BatchCategory|nullable|exists:batch_categories,id',
+            'book_id' => 'required_if:model_name,Book|nullable|exists:books,id',
         ]);
 
         $data = $request->all();
@@ -107,6 +114,7 @@ class MenuController extends Controller
         $data['batch_id'] = $request->model_name === 'Batch' ? $request->batch_id : null;
         $data['class_id'] = $request->model_name === 'Class' ? $request->class_id : null;
         $data['book_id'] = $request->model_name === 'Book' ? $request->book_id : null;
+        $data['batch_category_id'] = $request->model_name === 'BatchCategory' ? $request->batch_category_id : null;
         unset($data['route_name']);
 
         $menu->update($data);

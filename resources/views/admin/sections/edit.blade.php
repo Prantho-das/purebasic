@@ -25,6 +25,7 @@
                 <option value="books" {{ $section->section_type == 'books' ? 'selected' : '' }}>Books</option>
                 <option value="locations" {{ $section->section_type == 'locations' ? 'selected' : '' }}>locations</option>
                 <option value="notice" {{ $section->section_type == 'notice' ? 'selected' : '' }}>locations</option>
+                <option value="static_design" {{ $section->section_type == 'static_design' ? 'selected' : '' }}>Design</option>
             </select>
         </div>
         <div class="form-group mb-3">
@@ -42,6 +43,10 @@
         <div class="form-group mb-3">
             <label>অ্যাকটিভ?</label>
             <input type="checkbox" name="is_active" value="1" {{ $section->is_active ? 'checked' : '' }}>
+        </div>
+        <div class="form-group mb-3">
+            <label>প্রাথমিক লিঙ্ক</label>
+            <input type="text" name="primary_link" value="{{ old('primary_link', $section->primary_link) }}" class="form-control">
         </div>
         <button type="submit" class="btn btn-success">আপডেট</button>
     </form>

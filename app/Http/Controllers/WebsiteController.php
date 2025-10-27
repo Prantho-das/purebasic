@@ -108,9 +108,14 @@ public function searchPage(Request $request){
         })
         ->when($request->filled('batch_category'), function ($query) use ($request) {
             $query->where('batch_category', '=',  $request->batch_category );
-        })
-        
-        ->get();
+        });
+        if($request->filled('limit')){
+            $batchpackages=$batchpackages->limit($request->limit??15);
+        }
+        $batchpackages=$batchpackages->get();
+        if($request->wantsJson()){
+            return view('admin.inc.course-slide',compact('batchpackages'))->render();
+        }
     
     return view('website.search_course',compact('batchpackages'));
 }
