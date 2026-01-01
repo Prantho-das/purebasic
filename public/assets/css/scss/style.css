@@ -1581,10 +1581,10 @@ header .sticky {
   margin-top: 50px;
   text-align: center;
 }
-.offline-branch-main:nth-child(4) {
+.offline-branch-main:nth-child(5) {
   padding-bottom: 0;
 }
-.offline-branch-main:nth-child(5) {
+.offline-branch-main:nth-child(6) {
   padding-top: 0;
 }
 
