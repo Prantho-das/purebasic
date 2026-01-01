@@ -49,7 +49,7 @@
 
         // hsc slider start here
         var swiper = new Swiper(".hsc-slider", {
-            autoHeight: true,
+            // autoHeight: true,
             slidesPerView: 1,
             autoplay: {
                 delay: 5000,
@@ -284,5 +284,61 @@
             }
         });
         // header sticky jquery ends here
+
+        // make top header sticky
+        $(window).scroll(function () {
+            var topheader = $(".top-header-main");
+            if ($(window).scrollTop() >= 110) {
+                topheader.addClass("sticky-top-header");
+            } else {
+                topheader.removeClass("sticky-top-header");
+            }
+        });
+        // make top header sticky ends here
+
+        // toggle .header-bar menu
+
+        $(document).on("click", ".header-bar", function () {
+            $(this).toggleClass("active");
+
+            $("#targetElement").slideToggle(600);
+        });
+        // toggle .header-bar menu ends here
+
+        // Click handler for li with submenu
+        $("#targetElement li")
+            .has("ul")
+            .children("a")
+            .on("click", function (e) {
+                e.preventDefault();
+
+                var $thisLi = $(this).parent();
+                var $submenu = $(this).siblings("ul");
+                var $icon = $(this).find("i.fa-chevron-right");
+
+                $submenu.stop(true, true).slideToggle(300);
+
+                $icon.toggleClass("rotated");
+
+                $thisLi.siblings().children("ul:visible").slideUp(300);
+                $thisLi
+                    .siblings()
+                    .find("i.fa-chevron-right")
+                    .removeClass("rotated");
+
+                $thisLi.addClass("active").siblings().removeClass("active");
+            });
+
+        $("#targetElement li > a").each(function () {
+            var basePadding = parseInt($(this).css("padding-left"));
+
+            var depth = $(this).parents("ul").length - 1;
+            var padding = basePadding + (depth - 1) * increment;
+
+            $(this).css({
+                "padding-left": padding + "px",
+                // 'padding-right': padding + 'px',
+            });
+        });
     });
 })(jQuery);

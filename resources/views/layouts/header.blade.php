@@ -6,15 +6,15 @@
 
             <div class="logo-box">
                 <a href="{{ url('/') }}">
-
-                    @php
+                    <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
+                    {{-- @php
                         $logo = get_business_setting('site_logo');
                     @endphp
                     @if ($logo)
                         <img src="{{ asset('storage/' . $logo) }}" alt="logo">
                     @else
                         <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo">
-                    @endif
+                    @endif --}}
                 </a>
             </div>
             @php
@@ -96,6 +96,7 @@
 
                 </div>
                 <div class="topbar-buttons">
+
                     @php
                         $id = Session::get('id');
                     @endphp
@@ -107,6 +108,11 @@
                     @endif
                 </div>
 
+            </div>
+            <div class="header-bar">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </div>
@@ -167,9 +173,64 @@
                         @endforeach
 
                     </ul>
+
                 </div>
             </div>
         </div>
     </div>
 </header>
 {{-- header section ends here --}}
+
+<!-- Sidebar area start here -->
+<div id="targetElement" class="sidebar-area" style="display: none;">
+    <ul>
+        @foreach (\App\Menu::ofType('header')->root()->active()->orderBy('sort_order')->with('children')->get() as $headerMenu)
+            <li>
+                <a href="{{ $headerMenu->url ?? '#' }}">{{ $headerMenu->name ?? 'Menu Item' }}
+                    @if (count($headerMenu->children))
+                        <i class="fa-regular fa-chevron-down"></i>
+                    @endif
+
+                </a>
+
+                @if (count($headerMenu->children))
+                    <ul class="sub-menu">
+                        @foreach ($headerMenu->children ?? [] as $child)
+                            <li><a href="{{ $child->url ?? '#' }}">{{ $child->name ?? 'Sub Item' }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </li>
+        @endforeach
+        @foreach (\App\Menu::ofType('other')->root()->active()->orderBy('sort_order')->with('children')->get() as $headerMenu)
+            <li>
+                <a href="{{ $headerMenu->url ?? '#' }}">{{ $headerMenu->name ?? 'Menu Item' }}
+                    @if (count($headerMenu->children))
+                        <i class="fa-regular fa-chevron-down"></i>
+                    @endif
+
+                </a>
+
+                @if (count($headerMenu->children))
+                    <ul class="sub-menu">
+                        @foreach ($headerMenu->children ?? [] as $child)
+                            <li><a href="{{ $child->url ?? '#' }}">{{ $child->name ?? 'Sub Item' }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </li>
+        @endforeach
+    </ul>
+    @php
+        $id = Session::get('id');
+    @endphp
+    @if ($id)
+        <button type="button" class="register-btn">Register</button>
+        <a type="button" href={{ url('student/login') }} class="btn login-btn">Log In</a>
+    @else
+        <a href="/profile/{{ $id }}">Dashboard</a>
+    @endif
+</div>
+<!-- Sidebar area end here -->

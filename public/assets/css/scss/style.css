@@ -385,6 +385,37 @@ h6 {
   background: #011c1a;
   color: #fff;
 }
+.top-header-main .top-header-flex .header-bar {
+  cursor: pointer;
+}
+.top-header-main .top-header-flex .header-bar span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  background-color: #011c1a;
+}
+.top-header-main .top-header-flex .header-bar.active span:nth-child(2) {
+  opacity: 0;
+}
+.top-header-main .top-header-flex .header-bar.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.top-header-main .top-header-flex .header-bar.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.sticky-top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 4px 30px 16px rgba(7, 2, 41, 0.04);
+}
 
 header .main-header {
   z-index: 99;
@@ -1550,6 +1581,12 @@ header .sticky {
   margin-top: 50px;
   text-align: center;
 }
+.offline-branch-main:nth-child(4) {
+  padding-bottom: 0;
+}
+.offline-branch-main:nth-child(5) {
+  padding-top: 0;
+}
 
 .testimonial-main {
   padding: 100px 0;
@@ -2187,4 +2224,45 @@ footer .copyright-footer p a {
 }
 .no-before-after .login-reg-tabs .tab-content {
   padding: 20px 0;
+}
+
+.sidebar-area {
+  padding: 20px 20px;
+  background: #fff;
+  position: fixed;
+  z-index: 11;
+  top: 66px;
+  width: 100%;
+}
+.sidebar-area ul li a {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #011c1a;
+  font-size: 13px;
+  line-height: 20px;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-top: 1px solid #424242;
+}
+.sidebar-area ul li a i {
+  transition: transform 0.3s ease;
+}
+.sidebar-area ul li a i.rotated {
+  transform: rotate(90deg);
+}
+.sidebar-area ul li ul {
+  display: none;
+}
+.sidebar-area ul .active > a {
+  font-weight: 600;
+  color: #02b3e4;
 }/*# sourceMappingURL=style.css.map */

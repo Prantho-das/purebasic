@@ -26,6 +26,38 @@
 
 // min width 992px and max width 1024px ends here
 
+@media (min-width: 992px) {
+    .top-header-main {
+        .top-header-flex {
+            .header-bar {
+                display: none;
+            }
+        }
+    }
+    .sticky-top-header {
+        position: unset;
+    }
+}
+
+@media (max-width: 991px) {
+    .top-header-main {
+        padding-left: 20px;
+        padding-right: 20px;
+        .top-header-flex {
+            .topbar-info {
+                display: none;
+            }
+            .topheader-search-box {
+                display: none;
+            }
+        }
+    }
+    header {
+        display: none;
+    }
+}
+// max widht 991px ends here
+
 @media (min-width: 768px) and (max-width: 991px) {
 }
 

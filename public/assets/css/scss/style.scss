@@ -25,6 +25,7 @@ body {
     z-index: 999;
     padding: 16px 0;
     position: relative;
+    // @include transistion-four;
     .top-header-flex {
         @include flex-align-center;
         justify-content: space-between;
@@ -170,7 +171,39 @@ body {
                 }
             }
         }
+        .header-bar {
+            cursor: pointer;
+
+            span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin-bottom: 5px;
+                border-radius: 2px;
+                background-color: $text-color;
+            }
+        }
+        // make active header bar
+        .header-bar.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .header-bar.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .header-bar.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
     }
+}
+.sticky-top-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    background: $white;
+    box-shadow: 0 4px 30px 16px rgba(7, 2, 41, 0.04);
 }
 
 header {
@@ -1345,6 +1378,12 @@ header {
         margin-top: 50px;
         text-align: center;
     }
+    &:nth-child(4) {
+        padding-bottom: 0;
+    }
+    &:nth-child(5) {
+        padding-top: 0;
+    }
 }
 
 .testimonial-main {
@@ -1997,6 +2036,53 @@ footer {
     .login-reg-tabs {
         .tab-content {
             padding: 20px 0;
+        }
+    }
+}
+
+.sidebar-area {
+    padding: 20px 20px;
+    background: #fff;
+    position: fixed;
+    z-index: 11;
+    top: 66px;
+    width: 100%;
+    ul {
+        li {
+            a {
+                text-transform: uppercase;
+                font-family: $montserrat;
+                font-weight: 400;
+                color: $text-color;
+                font-size: 13px;
+                line-height: 20px;
+                transition: $transition-4-einout;
+                -webkit-transition: $transition-4-einout;
+                -moz-transition: $transition-4-einout;
+                -ms-transition: $transition-4-einout;
+                -o-transition: $transition-4-einout;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                padding: 7px 10px;
+                border-top: 1px solid #424242;
+                i {
+                    transition: transform 0.3s ease;
+                }
+                i.rotated {
+                    transform: rotate(90deg);
+                }
+            }
+            ul {
+                display: none;
+            }
+        }
+        .active {
+            > a {
+                font-weight: 600;
+                color: $theme-blue;
+            }
         }
     }
 }
