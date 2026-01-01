@@ -1,1 +1,23 @@
-/*# sourceMappingURL=responsive.css.map */
+@media (min-width: 992px) {
+  .top-header-main .top-header-flex .header-bar {
+    display: none;
+  }
+  .sticky-top-header {
+    position: unset;
+  }
+}
+@media (max-width: 991px) {
+  .top-header-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .top-header-main .top-header-flex .topbar-info {
+    display: none;
+  }
+  .top-header-main .top-header-flex .topheader-search-box {
+    display: none;
+  }
+  header {
+    display: none;
+  }
+}/*# sourceMappingURL=responsive.css.map */

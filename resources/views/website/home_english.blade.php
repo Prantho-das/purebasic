@@ -554,16 +554,16 @@
                                             <div class="swiper-slide">
                                                 <div class="single-slide">
                                                     <a href="{{ url('/batches/category/') . '/' . $batchInfo->id }}">
-                                                        <div class="image-box">
-                                                            <img src="{{ asset('storage') . '/' . (isset($batch->image) ? $batch->image : $batchInfo->image) }}"
-                                                                alt="icon">
-                                                        </div>
-                                                        <div class="title">{{ $batchInfo->plan }}</div>
-                                                        <div class="see-more">
-                                                            see details <i
-                                                                class="fa-classic fa-regular fa-arrow-right"></i>
-                                                        </div>
+
                                                     </a>
+                                                    <div class="image-box">
+                                                        <img src="{{ asset('storage') . '/' . (isset($batch->image) ? $batch->image : $batchInfo->image) }}"
+                                                            alt="icon">
+                                                    </div>
+                                                    <div class="title">{{ $batchInfo->plan }}</div>
+                                                    <div class="see-more">
+                                                        see details <i class="fa-classic fa-regular fa-arrow-right"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endif
