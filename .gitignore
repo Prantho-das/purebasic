@@ -13,3 +13,4 @@ yarn-error.log
 !/storage/app/public
 /storage/framework/*
 /storage/logs/*
+/storage/debugbar/*
