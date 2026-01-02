@@ -2098,6 +2098,7 @@ footer .copyright-footer p a {
   width: 400px;
   min-height: 400px;
   margin: 0 auto;
+  max-width: 100%;
 }
 .log-register-main .login-reg-tabs h3 {
   font-size: 18px;

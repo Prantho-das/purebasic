@@ -91,10 +91,10 @@
                     slidesPerView: 2,
                 },
                 768: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
                 },
-                1024: {
-                    slidesPerView: 4.1,
+                992: {
+                    slidesPerView: 4,
                 },
                 1200: {
                     slidesPerView: 4.3,

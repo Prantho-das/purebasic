@@ -1,8 +1,530 @@
 @media (min-width: 1366px) and (max-width: 1440px) {
+    .home-banner-main {
+        padding: 50px 0;
+        .title-box {
+            h1 {
+                margin-bottom: 25px;
+                font-size: 50px;
+                line-height: 60px;
+            }
+            p {
+                padding-right: 0;
+            }
+            .banner-btn {
+                margin-top: 25px;
+            }
+        }
+        .banner-slider-wrapper {
+            .swiper {
+                .swiper-slide {
+                    .banner-parent-box {
+                        .heading {
+                            letter-spacing: normal;
+                            max-width: 100%;
+                            font-size: 16px;
+                        }
+                        .skill-grid-parent {
+                            grid-template-columns: repeat(5, 1fr);
+                            gap: 10px;
+                        }
+                        .course-grid-parent {
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 10px;
+                            .single-course {
+                                .icon {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                                .text {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .row {
+            align-items: center;
+        }
+    }
+    .offline-branch-main {
+        padding: 50px 0;
+        .shape-1 {
+            top: 105px;
+            left: 20px;
+        }
+        .shape-2 {
+            right: 20px;
+        }
+        .branch-locations {
+            margin-bottom: 30px;
+        }
+    }
+    .section-title-space {
+        margin-bottom: 25px !important;
+        .section-sub-title {
+            h6 {
+                display: block !important;
+                line-height: 1.3 !important;
+                font-size: 16px !important;
+                &::after {
+                    width: 100% !important;
+                }
+                &::before {
+                    top: 6px !important;
+                }
+            }
+        }
+        h1 {
+            font-size: 30px !important;
+            line-height: 42px !important;
+        }
+    }
+    .course-design-offer-area {
+        padding: 50px 0;
+        .col-lg-6 {
+            margin-bottom: 20px;
+        }
+        .section-title-space {
+            .col-lg-6 {
+                margin-bottom: 0px;
+            }
+        }
+        .course-design-thumb {
+            .contents {
+                h4 {
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        .select-course-btn {
+            margin-top: 0px;
+        }
+    }
+    .common-btn-design {
+        height: 40px;
+        border-radius: 40px;
+        padding: 8px 30px 8px 20px;
+        font-size: 12px;
+        line-height: 23px;
+        min-width: 185px;
+        i {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            line-height: 31px;
+        }
+    }
+    .hsc-main {
+        padding: 50px 0;
+        .hsc-slider-parent {
+            .swiper {
+                padding-bottom: 30px;
+                .swiper-slide {
+                    .single-slide {
+                        .title {
+                            font-size: 16px;
+                            line-height: 22px;
+                        }
+                        .see-more {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .shape-2 {
+            left: 50px;
+        }
+        .shape {
+            right: 50px;
+        }
+    }
+    .marquee-section {
+        padding: 20px 0;
+        .marquee-block {
+            h3 {
+                font-size: 20px;
+                margin: 0;
+                span {
+                    margin-right: 15px;
+                    img {
+                        width: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .skill-development-main {
+        padding: 50px 0;
+    }
+
+    .counter-main {
+        .left-box {
+            padding: 50px 0;
+            h2 {
+                font-size: 25px;
+                width: 100%;
+            }
+            .counter-grid-parent {
+                margin-right: 0;
+                margin-top: 30px;
+                .single-counter-box {
+                    padding: 20px;
+
+                    .icon {
+                        margin-bottom: 20px;
+                        img {
+                            height: 35px;
+                        }
+                    }
+                    .title {
+                        font-size: 14px;
+                    }
+                    .count {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        .right-box {
+            padding: 30px 20px;
+            justify-content: center;
+            h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+            a {
+                font-size: 13px;
+                padding: 10px 30px;
+            }
+        }
+    }
+    .testimonial-main {
+        padding: 50px 0;
+        .swiper {
+            padding-left: 0;
+            padding-right: 0;
+            .swiper-slide {
+                .single-slide {
+                    .comments {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .main-footer {
+            padding: 50px 0;
+            .first-box-wrapper {
+                margin-right: 0;
+                padding-right: 0;
+                &::after {
+                    display: none;
+                }
+            }
+            .logo-description {
+                p {
+                    font-size: 14px;
+                }
+            }
+
+            .widget-title {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .newsletter {
+                p {
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                fieldset {
+                    label {
+                        line-height: 22px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .ed-container-expand {
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+        padding-left: calc(var(--bs-gutter-x) * 0.5);
+    }
 }
 // min width 1366px and max width 1440px ends here
 
 @media (min-width: 1300px) and (max-width: 1365px) {
+    .home-banner-main {
+        padding: 50px 0;
+        .title-box {
+            h1 {
+                margin-bottom: 25px;
+                font-size: 50px;
+                line-height: 60px;
+            }
+            p {
+                padding-right: 0;
+            }
+            .banner-btn {
+                margin-top: 25px;
+            }
+        }
+        .banner-slider-wrapper {
+            .swiper {
+                .swiper-slide {
+                    .banner-parent-box {
+                        .heading {
+                            letter-spacing: normal;
+                            max-width: 100%;
+                            font-size: 16px;
+                        }
+                        .skill-grid-parent {
+                            grid-template-columns: repeat(5, 1fr);
+                            gap: 10px;
+                        }
+                        .course-grid-parent {
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 10px;
+                            .single-course {
+                                .icon {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                                .text {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .row {
+            align-items: center;
+        }
+    }
+    .offline-branch-main {
+        padding: 50px 0;
+        .shape-1 {
+            top: 105px;
+            left: 20px;
+        }
+        .shape-2 {
+            right: 20px;
+        }
+        .branch-locations {
+            margin-bottom: 30px;
+        }
+    }
+    .section-title-space {
+        margin-bottom: 25px !important;
+        .section-sub-title {
+            h6 {
+                display: block !important;
+                line-height: 1.3 !important;
+                font-size: 16px !important;
+                &::after {
+                    width: 100% !important;
+                }
+                &::before {
+                    top: 6px !important;
+                }
+            }
+        }
+        h1 {
+            font-size: 30px !important;
+            line-height: 42px !important;
+        }
+    }
+    .course-design-offer-area {
+        padding: 50px 0;
+        .col-lg-6 {
+            margin-bottom: 20px;
+        }
+        .section-title-space {
+            .col-lg-6 {
+                margin-bottom: 0px;
+            }
+        }
+        .course-design-thumb {
+            .contents {
+                h4 {
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        .select-course-btn {
+            margin-top: 0px;
+        }
+    }
+    .common-btn-design {
+        height: 40px;
+        border-radius: 40px;
+        padding: 8px 30px 8px 20px;
+        font-size: 12px;
+        line-height: 23px;
+        min-width: 185px;
+        i {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            line-height: 31px;
+        }
+    }
+    .hsc-main {
+        padding: 50px 0;
+        .hsc-slider-parent {
+            .swiper {
+                padding-bottom: 30px;
+                .swiper-slide {
+                    .single-slide {
+                        .title {
+                            font-size: 16px;
+                            line-height: 22px;
+                        }
+                        .see-more {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .shape-2 {
+            left: 50px;
+        }
+        .shape {
+            right: 50px;
+        }
+    }
+    .marquee-section {
+        padding: 20px 0;
+        .marquee-block {
+            h3 {
+                font-size: 20px;
+                margin: 0;
+                span {
+                    margin-right: 15px;
+                    img {
+                        width: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .skill-development-main {
+        padding: 50px 0;
+    }
+
+    .counter-main {
+        .left-box {
+            padding: 50px 0;
+            h2 {
+                font-size: 25px;
+                width: 100%;
+            }
+            .counter-grid-parent {
+                margin-right: 0;
+                margin-top: 30px;
+                .single-counter-box {
+                    padding: 20px;
+
+                    .icon {
+                        margin-bottom: 20px;
+                        img {
+                            height: 35px;
+                        }
+                    }
+                    .title {
+                        font-size: 14px;
+                    }
+                    .count {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        .right-box {
+            padding: 30px 20px;
+            justify-content: center;
+            h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+            a {
+                font-size: 13px;
+                padding: 10px 30px;
+            }
+        }
+    }
+    .testimonial-main {
+        padding: 50px 0;
+        .swiper {
+            padding-left: 0;
+            padding-right: 0;
+            .swiper-slide {
+                .single-slide {
+                    .comments {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .main-footer {
+            padding: 50px 0;
+            .first-box-wrapper {
+                margin-right: 0;
+                padding-right: 0;
+                &::after {
+                    display: none;
+                }
+            }
+            .logo-description {
+                p {
+                    font-size: 14px;
+                }
+            }
+
+            .widget-title {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .newsletter {
+                p {
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                fieldset {
+                    label {
+                        line-height: 22px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .ed-container-expand {
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+        padding-left: calc(var(--bs-gutter-x) * 0.5);
+    }
 }
 // min width 1300px and max width 1365px ends here
 
@@ -12,16 +534,606 @@
 // min widht 1300px ends here
 
 @media (max-width: 1299px) {
+    .top-header-main {
+        .top-header-flex {
+            .topheader-search-box {
+                .topsearch-box {
+                    width: 300px;
+                }
+                .category-select-box {
+                    .nice-select {
+                        width: 165px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // max widht 1299px ends here
 
 @media (min-width: 1025px) and (max-width: 1299px) {
+    .home-banner-main {
+        padding: 50px 0;
+        .title-box {
+            h1 {
+                letter-spacing: normal;
+                margin-bottom: 25px;
+                font-size: 35px;
+                line-height: 45px;
+            }
+            p {
+                letter-spacing: normal;
+                padding-right: 0;
+                font-size: 16px;
+                line-height: 24px;
+            }
+            .banner-btn {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+            .banner-btn {
+                a {
+                    border-radius: 40px;
+                    height: 40px;
+                    padding: 8px 60px 8px 30px;
+                    font-size: 12px;
+                    line-height: 23px;
+                    i {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 12px;
+                        line-height: 31px;
+                    }
+                }
+            }
+        }
+        .banner-slider-wrapper {
+            .swiper {
+                .swiper-slide {
+                    .banner-parent-box {
+                        .heading {
+                            letter-spacing: normal;
+                            max-width: 100%;
+                            font-size: 16px;
+                        }
+                        .skill-grid-parent {
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            .single-skill {
+                                height: 120px;
+                            }
+                        }
+                        .course-grid-parent {
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            .single-course {
+                                height: 120px;
+                                .icon {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                                .text {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .row {
+            align-items: center;
+        }
+    }
+    .offline-branch-main {
+        padding: 50px 0;
+        .shape-1 {
+            top: 105px;
+            left: 20px;
+        }
+        .shape-2 {
+            right: 20px;
+        }
+        .branch-locations {
+            margin-bottom: 30px;
+        }
+    }
+    .section-title-space {
+        margin-bottom: 25px !important;
+        .section-sub-title {
+            h6 {
+                display: block !important;
+                line-height: 1.3 !important;
+                font-size: 13px !important;
+                &::after {
+                    width: 100% !important;
+                }
+                &::before {
+                    top: 6px !important;
+                }
+            }
+        }
+        h1 {
+            font-size: 20px !important;
+            line-height: 32px !important;
+            margin-top: 20px;
+        }
+    }
+    .course-design-offer-area {
+        padding: 50px 0;
+        .col-lg-6 {
+            margin-bottom: 20px;
+        }
+        .section-title-space {
+            .col-lg-6 {
+                margin-bottom: 0px;
+            }
+        }
+        .course-design-thumb {
+            .contents {
+                h4 {
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        .select-course-btn {
+            margin-top: 0px;
+        }
+    }
+    .common-btn-design {
+        height: 40px;
+        border-radius: 40px;
+        padding: 8px 30px 8px 20px;
+        font-size: 12px;
+        line-height: 23px;
+        min-width: 185px;
+        i {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            line-height: 31px;
+        }
+    }
+    .hsc-main {
+        padding: 50px 0;
+        .hsc-slider-parent {
+            .swiper {
+                padding-bottom: 30px;
+                .swiper-slide {
+                    .single-slide {
+                        .title {
+                            font-size: 16px;
+                            line-height: 22px;
+                        }
+                        .see-more {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .shape-2 {
+            left: 50px;
+        }
+        .shape {
+            right: 50px;
+        }
+    }
+    .marquee-section {
+        padding: 12px 0;
+        .marquee-block {
+            h3 {
+                font-size: 14px;
+                margin: 0;
+                span {
+                    margin-right: 15px;
+                    img {
+                        width: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .skill-development-main {
+        padding: 50px 0;
+    }
+
+    .counter-main {
+        .left-box {
+            padding: 50px 0;
+            h2 {
+                font-size: 25px;
+                width: 100%;
+            }
+            .counter-grid-parent {
+                margin-right: 0;
+                margin-top: 30px;
+                .single-counter-box {
+                    padding: 20px;
+
+                    .icon {
+                        margin-bottom: 20px;
+                        img {
+                            height: 35px;
+                        }
+                    }
+                    .title {
+                        font-size: 14px;
+                    }
+                    .count {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        .right-box {
+            padding: 30px 20px;
+            justify-content: center;
+            h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+            a {
+                font-size: 13px;
+                padding: 10px 30px;
+            }
+        }
+    }
+    .testimonial-main {
+        padding: 50px 0;
+        .swiper {
+            padding-left: 0;
+            padding-right: 0;
+            .swiper-slide {
+                .single-slide {
+                    .comments {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .main-footer {
+            padding: 50px 0;
+            .first-box-wrapper {
+                margin-right: 0;
+                padding-right: 0;
+                &::after {
+                    display: none;
+                }
+            }
+            .logo-description {
+                p {
+                    font-size: 14px;
+                }
+            }
+
+            .widget-title {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .newsletter {
+                p {
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                fieldset {
+                    label {
+                        line-height: 22px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .ed-container-expand {
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+        padding-left: calc(var(--bs-gutter-x) * 0.5);
+    }
 }
 
 // min width 1025px and max width 1299px ends here
 
 @media (min-width: 992px) and (max-width: 1024px) {
+    .home-banner-main {
+        padding: 50px 0;
+        .title-box {
+            h1 {
+                letter-spacing: normal;
+                margin-bottom: 25px;
+                font-size: 35px;
+                line-height: 45px;
+            }
+            p {
+                letter-spacing: normal;
+                padding-right: 0;
+                font-size: 16px;
+                line-height: 24px;
+            }
+            .banner-btn {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+            .banner-btn {
+                a {
+                    border-radius: 40px;
+                    height: 40px;
+                    padding: 8px 60px 8px 30px;
+                    font-size: 12px;
+                    line-height: 23px;
+                    i {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 12px;
+                        line-height: 31px;
+                    }
+                }
+            }
+        }
+        .banner-slider-wrapper {
+            .swiper {
+                .swiper-slide {
+                    .banner-parent-box {
+                        .heading {
+                            letter-spacing: normal;
+                            max-width: 100%;
+                            font-size: 16px;
+                        }
+                        .skill-grid-parent {
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            .single-skill {
+                                height: 120px;
+                            }
+                        }
+                        .course-grid-parent {
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            .single-course {
+                                height: 120px;
+                                .icon {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                                .text {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .row {
+            align-items: center;
+        }
+    }
+    .offline-branch-main {
+        padding: 50px 0;
+        .shape-1 {
+            top: 105px;
+            left: 20px;
+        }
+        .shape-2 {
+            right: 20px;
+        }
+        .branch-locations {
+            margin-bottom: 30px;
+        }
+    }
+    .section-title-space {
+        margin-bottom: 25px !important;
+        .section-sub-title {
+            h6 {
+                display: block !important;
+                line-height: 1.3 !important;
+                font-size: 13px !important;
+                &::after {
+                    width: 100% !important;
+                }
+                &::before {
+                    top: 6px !important;
+                }
+            }
+        }
+        h1 {
+            font-size: 20px !important;
+            line-height: 32px !important;
+            margin-top: 20px;
+        }
+    }
+    .course-design-offer-area {
+        padding: 50px 0;
+        .col-lg-6 {
+            margin-bottom: 20px;
+        }
+        .section-title-space {
+            .col-lg-6 {
+                margin-bottom: 0px;
+            }
+        }
+        .course-design-thumb {
+            .contents {
+                h4 {
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        .select-course-btn {
+            margin-top: 0px;
+        }
+    }
+    .common-btn-design {
+        height: 40px;
+        border-radius: 40px;
+        padding: 8px 30px 8px 20px;
+        font-size: 12px;
+        line-height: 23px;
+        min-width: 185px;
+        i {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            line-height: 31px;
+        }
+    }
+    .hsc-main {
+        padding: 50px 0;
+        .hsc-slider-parent {
+            .swiper {
+                padding-bottom: 30px;
+                .swiper-slide {
+                    .single-slide {
+                        .title {
+                            font-size: 16px;
+                            line-height: 22px;
+                        }
+                        .see-more {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .shape-2 {
+            left: 50px;
+        }
+        .shape {
+            right: 50px;
+        }
+    }
+    .marquee-section {
+        padding: 12px 0;
+        .marquee-block {
+            h3 {
+                font-size: 14px;
+                margin: 0;
+                span {
+                    margin-right: 15px;
+                    img {
+                        width: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .skill-development-main {
+        padding: 50px 0;
+    }
+
+    .counter-main {
+        .left-box {
+            padding: 50px 0;
+            h2 {
+                font-size: 25px;
+                width: 100%;
+            }
+            .counter-grid-parent {
+                margin-right: 0;
+                margin-top: 30px;
+                .single-counter-box {
+                    padding: 20px;
+
+                    .icon {
+                        margin-bottom: 20px;
+                        img {
+                            height: 35px;
+                        }
+                    }
+                    .title {
+                        font-size: 14px;
+                    }
+                    .count {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        .right-box {
+            padding: 30px 20px;
+            justify-content: center;
+            h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+            a {
+                font-size: 13px;
+                padding: 10px 30px;
+            }
+        }
+    }
+    .testimonial-main {
+        padding: 50px 0;
+        .swiper {
+            padding-left: 0;
+            padding-right: 0;
+            .swiper-slide {
+                .single-slide {
+                    .comments {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .main-footer {
+            padding: 50px 0;
+            .first-box-wrapper {
+                margin-right: 0;
+                padding-right: 0;
+                &::after {
+                    display: none;
+                }
+            }
+            .logo-description {
+                p {
+                    font-size: 14px;
+                }
+            }
+            .logo-contact {
+                margin-bottom: 29px;
+            }
+            .widget-title {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .newsletter {
+                p {
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                fieldset {
+                    label {
+                        line-height: 22px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .ed-container-expand {
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+        padding-left: calc(var(--bs-gutter-x) * 0.5);
+    }
 }
 
 // min width 992px and max width 1024px ends here
@@ -64,6 +1176,295 @@
 // max widht 991px ends here
 
 @media (min-width: 768px) and (max-width: 991px) {
+    .home-banner-main {
+        padding: 50px 0;
+        .title-box {
+            h1 {
+                letter-spacing: normal;
+                margin-bottom: 25px;
+                font-size: 25px;
+                line-height: 35px;
+            }
+            p {
+                letter-spacing: normal;
+                padding-right: 0;
+                font-size: 14px;
+                line-height: 23px;
+            }
+            .banner-btn {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+            .banner-btn {
+                a {
+                    border-radius: 40px;
+                    height: 40px;
+                    padding: 8px 60px 8px 30px;
+                    font-size: 12px;
+                    line-height: 23px;
+                    i {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 12px;
+                        line-height: 31px;
+                    }
+                }
+            }
+        }
+        .banner-slider-wrapper {
+            .swiper {
+                .swiper-slide {
+                    .banner-parent-box {
+                        .heading {
+                            letter-spacing: normal;
+                            max-width: 100%;
+                            font-size: 16px;
+                        }
+                        .skill-grid-parent {
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            .single-skill {
+                                height: 100px;
+                            }
+                        }
+                        .course-grid-parent {
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            .single-course {
+                                height: 100px;
+                                .icon {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                                .text {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .row {
+            align-items: center;
+        }
+    }
+    .offline-branch-main {
+        padding: 50px 0;
+        .shape-1 {
+            top: 105px;
+            left: 20px;
+        }
+        .shape-2 {
+            right: 20px;
+        }
+        .branch-locations {
+            margin-bottom: 30px;
+        }
+    }
+    .section-title-space {
+        margin-bottom: 25px !important;
+        .section-sub-title {
+            h6 {
+                display: block !important;
+                line-height: 1.3 !important;
+                font-size: 13px !important;
+                &::after {
+                    width: 100% !important;
+                }
+                &::before {
+                    top: 6px !important;
+                }
+            }
+        }
+        h1 {
+            font-size: 20px !important;
+            line-height: 32px !important;
+            margin-top: 20px;
+        }
+    }
+    .course-design-offer-area {
+        padding: 50px 0;
+        .col-lg-6 {
+            margin-bottom: 20px;
+        }
+        .section-title-space {
+            .col-lg-6 {
+                margin-bottom: 0px;
+            }
+        }
+        .course-design-thumb {
+            .contents {
+                h4 {
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        .select-course-btn {
+            margin-top: 0px;
+        }
+    }
+    .common-btn-design {
+        height: 40px;
+        border-radius: 40px;
+        padding: 8px 30px 8px 20px;
+        font-size: 12px;
+        line-height: 23px;
+        min-width: 185px;
+        i {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            line-height: 31px;
+        }
+    }
+    .hsc-main {
+        padding: 50px 0;
+        .hsc-slider-parent {
+            .swiper {
+                padding-bottom: 30px;
+                .swiper-slide {
+                    .single-slide {
+                        .title {
+                            font-size: 16px;
+                            line-height: 22px;
+                        }
+                        .see-more {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .shape-2 {
+            left: 50px;
+        }
+        .shape {
+            right: 50px;
+        }
+    }
+    .marquee-section {
+        padding: 12px 0;
+        .marquee-block {
+            h3 {
+                font-size: 14px;
+                margin: 0;
+                span {
+                    margin-right: 15px;
+                    img {
+                        width: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .skill-development-main {
+        padding: 50px 0;
+    }
+
+    .counter-main {
+        .left-box {
+            padding: 50px 0;
+            h2 {
+                font-size: 25px;
+                width: 100%;
+            }
+            .counter-grid-parent {
+                grid-template-columns: repeat(2, 1fr);
+                margin-right: 0;
+                margin-top: 30px;
+                .single-counter-box {
+                    padding: 20px;
+                    &:nth-child(1) {
+                        border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+                    }
+                    &:nth-child(2) {
+                        border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+                    }
+                    .icon {
+                        margin-bottom: 20px;
+                        img {
+                            height: 35px;
+                        }
+                    }
+                    .title {
+                        font-size: 14px;
+                    }
+                    .count {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        .right-box {
+            padding: 30px 20px;
+            justify-content: center;
+            h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+            a {
+                font-size: 13px;
+                padding: 10px 30px;
+            }
+        }
+    }
+    .testimonial-main {
+        padding: 50px 0;
+        .swiper {
+            padding-left: 0;
+            padding-right: 0;
+            .swiper-slide {
+                .single-slide {
+                    .comments {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .main-footer {
+            padding: 50px 0;
+            .first-box-wrapper {
+                margin-right: 0;
+                padding-right: 0;
+                &::after {
+                    display: none;
+                }
+            }
+            .logo-description {
+                p {
+                    font-size: 14px;
+                }
+            }
+            .logo-contact {
+                margin-bottom: 29px;
+            }
+            .widget-title {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .newsletter {
+                p {
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                fieldset {
+                    label {
+                        line-height: 22px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // min width 768px and max width 991px ends here
@@ -237,10 +1638,10 @@
             }
         }
         .shape-2 {
-            left: 0;
+            left: 50px;
         }
         .shape {
-            right: 0;
+            right: 50px;
         }
     }
     .marquee-section {
