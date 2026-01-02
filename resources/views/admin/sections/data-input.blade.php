@@ -324,199 +324,236 @@
         <button type="submit" class="btn btn-success">সেভ</button>
     </form>
 
-    @elseif($section->section_type === 'hero_slider')
+   @elseif($section->section_type === 'hero_slider')
     <form action="{{ route('admin.sections.save-data', $section->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <h4>হিরো স্লাইডার (মাল্টিপল স্লাইড: টাইটেল, প্রমোশন, অপশন + ইমেজ)</h4>
+        <h4>হিরো স্লাইডার - কোর্স কার্ড সহ (প্রতি স্লাইডে ৪টা কার্ড)</h4>
+    
         <div id="hero-slides-container">
             @if(isset($section->dynamic_data) && !empty($section->dynamic_data))
             @foreach($section->dynamic_data as $slideIndex => $slide)
-            <div class="hero-slide-item mb-4" style="border:2px solid #ddd; padding:20px; margin-bottom:20px;">
-                <h5>স্লাইড {{ $slideIndex + 1 }}</h5>
-
-                <!-- Title & Promotion -->
+            <div class="hero-slide-item mb-5 p-4 border rounded">
+                <h5 class="mb-3">স্লাইড {{ $slideIndex + 1 }}</h5>
+    
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label>মেইন টাইটেল</label>
-                        <input type="text" name="hero_title[]" value="{{ $slide['title'] ?? '' }}" class="form-control"
+                        <input type="text" name="slide_title[]" value="{{ $slide['title'] ?? '' }}" class="form-control"
                             required>
                     </div>
                     <div class="col-md-6">
-                        <label>প্রমোশন টাইটেল</label>
-                        <input type="text" name="hero_promotion_title[]" value="{{ $slide['promotion_title'] ?? '' }}"
+                        <label>প্রমোশন টাইটেল (উপরে লাল ব্যাজ)</label>
+                        <input type="text" name="slide_promotion_title[]" value="{{ $slide['promotion_title'] ?? '' }}"
                             class="form-control">
                     </div>
                 </div>
-
-                <!-- Type Selection -->
-                <div class="mb-3">
-                    <label>লিঙ্ক টাইপ (একটি মাত্র)</label><br>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="batch" id="type-batch-{{ $slideIndex }}"
-                            class="form-check-input" {{ ($slide['type'] ?? 'batch' )==='batch' ? 'checked' : '' }}
-                            onchange="toggleHeroFields({{ $slideIndex }})">
-                        <label for="type-batch-{{ $slideIndex }}" class="form-check-label">ব্যাচ</label>
+    
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label>এনরোল বাটন টেক্সট</label>
+                        <input type="text" name="enroll_text[]" value="{{ $slide['enroll_text'] ?? '' }}"
+                            class="form-control" placeholder="Click To Enroll In 30+ Free Courses">
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="class" id="type-class-{{ $slideIndex }}"
-                            class="form-check-input" {{ ($slide['type'] ?? 'batch' )==='class' ? 'checked' : '' }}
-                            onchange="toggleHeroFields({{ $slideIndex }})">
-                        <label for="type-class-{{ $slideIndex }}" class="form-check-label">ক্লাস</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="book" id="type-book-{{ $slideIndex }}"
-                            class="form-check-input" {{ ($slide['type'] ?? 'batch' )==='book' ? 'checked' : '' }}
-                            onchange="toggleHeroFields({{ $slideIndex }})">
-                        <label for="type-book-{{ $slideIndex }}" class="form-check-label">বুক</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="custom" id="type-custom-{{ $slideIndex }}"
-                            class="form-check-input" {{ ($slide['type'] ?? 'batch' )==='custom' ? 'checked' : '' }}
-                            onchange="toggleHeroFields({{ $slideIndex }})">
-                        <label for="type-custom-{{ $slideIndex }}" class="form-check-label">কাস্টম লিঙ্ক</label>
+                    <div class="col-md-6">
+                        <label>এনরোল লিঙ্ক</label>
+                        <input type="url" name="enroll_link[]" value="{{ $slide['enroll_link'] ?? '' }}"
+                            class="form-control">
                     </div>
                 </div>
-
-                <!-- Conditional Fields -->
-                @php $type = $slide['type'] ?? 'batch'; @endphp
-                <div id="hero-fields-{{ $slideIndex }}">
-                    <div id="batch-field-{{ $slideIndex }}" style="display: {{ $type === 'batch' ? 'block' : 'none' }};"
-                        class="mb-3">
-                        <label>ব্যাচ সিলেক্ট</label>
-                        <select name="hero_batch_id[]" class="form-control">
-                            <option value="">সিলেক্ট করো</option>
-                            @foreach ($batches as $batch)
-                            <option value="{{ $batch->id }}" {{ ($slide['batch_id'] ?? '' )==$batch->id ? 'selected' :
-                                '' }}>{{ $batch->title }}</option>
-                            @endforeach
-                        </select>
+    
+                <h6>কোর্স কার্ডস (৪টা)</h6>
+                <div class="items-container mb-3">
+                    @foreach($slide['items'] ?? [] as $itemIndex => $item)
+                    <div class="row mb-3 item-row p-3 border">
+                        <div class="col-md-3">
+                            <label>টাইপ</label><br>
+                            <div class="btn-group" role="group">
+                                <input type="radio" name="items[{{ $slideIndex }}][{{ $itemIndex }}][type]" value="course"
+                                    class="btn-check" id="course-{{ $slideIndex }}-{{ $itemIndex }}" {{ ($item['type'] ?? ''
+                                    )==='course' ? 'checked' : '' }}
+                                    onchange="toggleItemType({{ $slideIndex }}, {{ $itemIndex }})">
+                                <label class="btn btn-outline-primary"
+                                    for="course-{{ $slideIndex }}-{{ $itemIndex }}">কোর্স</label>
+    
+                                <input type="radio" name="items[{{ $slideIndex }}][{{ $itemIndex }}][type]" value="custom"
+                                    class="btn-check" id="custom-{{ $slideIndex }}-{{ $itemIndex }}" {{ ($item['type'] ?? ''
+                                    )==='custom' ? 'checked' : '' }}
+                                    onchange="toggleItemType({{ $slideIndex }}, {{ $itemIndex }})">
+                                <label class="btn btn-outline-secondary"
+                                    for="custom-{{ $slideIndex }}-{{ $itemIndex }}">কাস্টম</label>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-4 course-field"
+                            style="display: {{ ($item['type'] ?? '') === 'course' ? 'block' : 'none' }};">
+                            <label>কোর্স সিলেক্ট করুন</label>
+                            <select name="items[{{ $slideIndex }}][{{ $itemIndex }}][course_id]" class="form-control">
+                                <option value="">-- সিলেক্ট করুন --</option>
+                                @foreach($batches as $batch)
+                                <option value="{{ $batch->id }}" {{ isset($item['course_id']) &&
+                                    $item['course_id']==$batch->id ? 'selected' : '' }}>
+                                    {{ $batch->plan ?? $batch->title }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+    
+                        <div class="col-md-4 custom-fields"
+                            style="display: {{ ($item['type'] ?? '') === 'custom' ? 'block' : 'none' }};">
+                            <label>কাস্টম নাম</label>
+                            <input type="text" name="items[{{ $slideIndex }}][{{ $itemIndex }}][custom_name]"
+                                value="{{ $item['custom_name'] ?? '' }}" class="form-control mb-2"
+                                placeholder="যেমন: Complete Grammar">
+    
+                            <label>কাস্টম লিঙ্ক</label>
+                            <input type="url" name="items[{{ $slideIndex }}][{{ $itemIndex }}][custom_link]"
+                                value="{{ $item['custom_link'] ?? '' }}" class="form-control" placeholder="https://...">
+                        </div>
+    
+                        <div class="col-md-4">
+                            <label>ইমেজ</label>
+                            <input type="file" name="item_image[{{ $slideIndex }}][{{ $itemIndex }}]" class="form-control">
+                            @if(isset($item['image']))
+                            <img src="{{ asset('storage/' . $item['image']) }}" width="100" class="mt-2 rounded">
+                            @endif
+                        </div>
+    
+                        <div class="col-md-1 d-flex align-items-end">
+                            <button type="button" onclick="this.closest('.item-row').remove()"
+                                class="btn btn-danger btn-sm">X</button>
+                        </div>
                     </div>
-                    <div id="class-field-{{ $slideIndex }}" style="display: {{ $type === 'class' ? 'block' : 'none' }};"
-                        class="mb-3">
-                        <label>ক্লাস সিলেক্ট</label>
-                        <select name="hero_class_id[]" class="form-control">
-                            <option value="">সিলেক্ট করো</option>
-                            @foreach ($batch_categories as $cat)
-                            <option value="{{ $cat->id }}" {{ ($slide['class_id'] ?? '' )==$cat->id ? 'selected' : ''
-                                }}>{{ $cat->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div id="book-field-{{ $slideIndex }}" style="display: {{ $type === 'book' ? 'block' : 'none' }};"
-                        class="mb-3">
-                        <label>বুক সিলেক্ট</label>
-                        <select name="hero_book_id[]" class="form-control">
-                            <option value="">সিলেক্ট করো</option>
-                            @foreach ($books as $book)
-                            <option value="{{ $book->id }}" {{ ($slide['book_id'] ?? '' )==$book->id ? 'selected' : ''
-                                }}>{{ $book->name }} - {{ $book->author }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div id="custom-field-{{ $slideIndex }}"
-                        style="display: {{ $type === 'custom' ? 'block' : 'none' }};" class="mb-3">
-                        <label>কাস্টম লিঙ্ক</label>
-                        <input type="url" name="hero_custom_link[]" value="{{ $slide['custom_link'] ?? '' }}"
-                            class="form-control" placeholder="https://example.com">
-                    </div>
+                    @endforeach
                 </div>
-
-                <!-- Image -->
-                <div class="mb-3">
-                    <label>হিরো ইমেজ (স্লাইড {{ $slideIndex + 1 }})</label>
-                    <input type="file" name="hero_image[{{ $slideIndex }}]" class="form-control">
-                    @if(isset($slide['image']))
-                    <img src="{{ asset('storage/' . $slide['image']) }}" width="150" class="mt-1">
-                    @endif
-                </div>
+    
+                <button type="button" onclick="addItem({{ $slideIndex }})" class="btn btn-sm btn-secondary mb-3">+ নতুন
+                    কার্ড অ্যাড করুন</button>
+                    <button type="button" onclick="addSlide()" class="btn btn-secondary mb-3">+ নতুন স্লাইড অ্যাড করুন</button>
 
                 <button type="button" onclick="this.closest('.hero-slide-item').remove()"
-                    class="btn btn-sm btn-danger">স্লাইড রিমুভ</button>
+                    class="btn btn-danger float-end">স্লাইড ডিলিট</button>
             </div>
             @endforeach
             @else
             <!-- Default empty slide -->
-            <div class="hero-slide-item mb-4" style="border:2px solid #ddd; padding:20px; margin-bottom:20px;">
+            <div class="hero-slide-item mb-5 p-4 border rounded">
                 <h5>স্লাইড 1</h5>
+                <!-- same structure as above but empty -->
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label>মেইন টাইটেল</label>
-                        <input type="text" name="hero_title[]" class="form-control" required>
+                        <input type="text" name="slide_title[]" placeholder="মেইন টাইটেল" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label>প্রমোশন টাইটেল</label>
-                        <input type="text" name="hero_promotion_title[]" class="form-control">
+                        <input type="text" name="slide_promotion_title[]" placeholder="প্রমোশন টাইটেল" class="form-control">
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>লিঙ্ক টাইপ</label><br>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="batch" id="type-batch-0" class="form-check-input"
-                            checked onchange="toggleHeroFields(0)">
-                        <label for="type-batch-0" class="form-check-label">ব্যাচ</label>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <input type="text" name="enroll_text[]" placeholder="Click To Enroll In 30+ Free Courses"
+                            class="form-control">
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="class" id="type-class-0" class="form-check-input"
-                            onchange="toggleHeroFields(0)">
-                        <label for="type-class-0" class="form-check-label">ক্লাস</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="book" id="type-book-0" class="form-check-input"
-                            onchange="toggleHeroFields(0)">
-                        <label for="type-book-0" class="form-check-label">বুক</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="hero_type[]" value="custom" id="type-custom-0"
-                            class="form-check-input" onchange="toggleHeroFields(0)">
-                        <label for="type-custom-0" class="form-check-label">কাস্টম লিঙ্ক</label>
+                    <div class="col-md-6">
+                        <input type="url" name="enroll_link[]" class="form-control">
                     </div>
                 </div>
-                <div id="hero-fields-0">
-                    <div id="batch-field-0" style="display: block;" class="mb-3">
-                        <label>ব্যাচ সিলেক্ট</label>
-                        <select name="hero_batch_id[]" class="form-control">
-                            <option value="">সিলেক্ট করো</option>
-                            @foreach ($batches as $batch)
-                            <option value="{{ $batch->id }}">{{ $batch->plan }}</option>
-                            @endforeach
-                        </select>
+    
+                <h6>কোর্স কার্ডস</h6>
+                <div class="items-container mb-3">
+                    <!-- 4 empty items by default -->
+                    @for($i = 0; $i < 4; $i++) <div class="row mb-3 item-row p-3 border">
+                        <!-- same fields as above, empty -->
+                        <div class="col-md-3">
+                            <div class="btn-group" role="group">
+                                <input type="radio" name="items[0][{{ $i }}][type]" value="course" class="btn-check"
+                                    id="course-0-{{ $i }}" checked onchange="toggleItemType(0, {{ $i }})">
+                                <label class="btn btn-outline-primary" for="course-0-{{ $i }}">কোর্স</label>
+    
+                                <input type="radio" name="items[0][{{ $i }}][type]" value="custom" class="btn-check"
+                                    id="custom-0-{{ $i }}" onchange="toggleItemType(0, {{ $i }})">
+                                <label class="btn btn-outline-secondary" for="custom-0-{{ $i }}">কাস্টম</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 course-field">
+                            <select name="items[0][{{ $i }}][course_id]" class="form-control">
+                                <option value="">-- সিলেক্ট করুন --</option>
+                                @foreach($batches as $batch)
+                                <option value="{{ $batch->id }}">{{ $batch->plan ?? $batch->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4 custom-fields" style="display:none;">
+                            <input type="text" name="items[0][{{ $i }}][custom_name]" class="form-control mb-2"
+                                placeholder="কাস্টম নাম">
+                            <input type="url" name="items[0][{{ $i }}][custom_link]" class="form-control"
+                                placeholder="https://">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="file" name="item_image[0][{{ $i }}]" class="form-control">
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end">
+                            <button type="button" onclick="this.closest('.item-row').remove()"
+                                class="btn btn-danger btn-sm">X</button>
+                        </div>
+                </div>
+                @endfor
+            </div>
+            <button type="button" onclick="addItem(0)" class="btn btn-sm btn-secondary">+ নতুন কার্ড</button>
+        </div>
+        @endif
+        </div>
+    
+        <button type="button" onclick="addSlide()" class="btn btn-secondary mb-3">+ নতুন স্লাইড অ্যাড করুন</button>
+        <button type="submit" class="btn btn-success">সেভ করুন</button>
+        </form>
+
+
+
+
+
+
+
+@elseif($section->section_type === 'static_design')
+    <form action="{{ route('admin.sections.save-data', $section->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <h4>স্ট্যাটিক ডিজাইন সেকশন (মাল্টিপল: টাইপ + লেবেল)</h4>
+        <div id="static-items-container">
+            @if(isset($section->dynamic_data) && !empty($section->dynamic_data))
+            @foreach($section->dynamic_data as $key => $item)
+            <div class="static-item mb-3" style="border:1px solid #ccc; padding:10px;" data-index="{{ $key }}">
+                <div class="row">
+                    <div class="col-md-5">
+                        <input type="text" name="item_type[]" value="{{ $item['type'] ?? '' }}"
+                            placeholder="টাইপ (যেমন: feature)" class="form-control" required>
                     </div>
-                    <div id="class-field-0" style="display: none;" class="mb-3">
-                        <label>ক্লাস সিলেক্ট</label>
-                        <select name="hero_class_id[]" class="form-control">
-                            <option value="">সিলেক্ট করো</option>
-                            @foreach ($batch_categories as $cat)
-                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="col-md-6">
+                        <input type="text" name="item_label[]" value="{{ $item['label'] ?? '' }}"
+                            placeholder="লেবেল (যেমন: Free Access)" class="form-control" required>
                     </div>
-                    <div id="book-field-0" style="display: none;" class="mb-3">
-                        <label>বুক সিলেক্ট</label>
-                        <select name="hero_book_id[]" class="form-control">
-                            <option value="">সিলেক্ট করো</option>
-                            @foreach ($books as $book)
-                            <option value="{{ $book->id }}">{{ $book->name }} - {{ $book->author }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div id="custom-field-0" style="display: none;" class="mb-3">
-                        <label>কাস্টম লিঙ্ক</label>
-                        <input type="url" name="hero_custom_link[]" class="form-control"
-                            placeholder="https://example.com">
+                    <div class="col-md-1">
+                        <button type="button" onclick="removeItem(this)" class="btn btn-danger btn-sm">রিমুভ</button>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>হিরো ইমেজ</label>
-                    <input type="file" name="hero_image[0]" class="form-control">
+            </div>
+            @endforeach
+            @else
+            <div class="static-item mb-3" style="border:1px solid #ccc; padding:10px;" data-index="0">
+                <div class="row">
+                    <div class="col-md-5">
+                        <input type="text" name="item_type[]" placeholder="টাইপ" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="item_label[]" placeholder="লেবেল" class="form-control" required>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" onclick="removeItem(this)" class="btn btn-danger btn-sm">রিমুভ</button>
+                    </div>
                 </div>
-                <button type="button" onclick="this.closest('.hero-slide-item').remove()"
-                    class="btn btn-sm btn-danger">স্লাইড রিমুভ</button>
             </div>
             @endif
         </div>
-        <button type="button" onclick="addHeroSlide()" class="btn btn-secondary mb-3">নতুন হিরো স্লাইড অ্যাড</button>
-        <button type="submit" class="btn btn-success">সেভ হিরো স্লাইডার</button>
-    </form>
+        <button type="button" onclick="addStaticItem()" class="btn btn-secondary mb-3">নতুন আইটেম অ্যাড</button>
+        <button type="submit" class="btn btn-success">সেভ</button>
+        </form>
     @elseif($section->section_type === 'locations')
     <form action="{{ route('admin.sections.save-data', $section->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -727,29 +764,29 @@
     }
 
     // Home Slider Add Function
-    function addSlide() {
-        const container = document.getElementById('slides-container');
-        const newSlide = document.createElement('div');
-        newSlide.className = 'slide-item mb-3';
-        newSlide.style = 'border:2px solid #ccc; padding:15px;';
-        newSlide.innerHTML = `
-            <h5>নতুন স্লাইড</h5>
-            <div class="row">
-                <div class="col-md-3"><input type="text" name="slide_title[]" placeholder="টাইটেল" class="form-control"></div>
-                <div class="col-md-3"><input type="text" name="slide_subtitle[]" placeholder="সাবটাইটেল" class="form-control"></div>
-                <div class="col-md-3"><input type="text" name="slide_enroll_text[]" placeholder="এনরোল টেক্সট" class="form-control"></div>
-                <div class="col-md-3"><input type="url" name="slide_enroll_link[]" placeholder="এনরোল লিঙ্ক" class="form-control"></div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-md-6">
-                    <label>মেইন ইমেজ</label>
-                    <input type="file" name="slide_main_image[]" class="form-control">
-                </div>
-            </div>
-            <button type="button" onclick="this.closest('.slide-item').remove()" class="btn btn-sm btn-danger">রিমুভ</button>
-        `;
-        container.appendChild(newSlide);
-    }
+    // function addSlide() {
+    //     const container = document.getElementById('slides-container');
+    //     const newSlide = document.createElement('div');
+    //     newSlide.className = 'slide-item mb-3';
+    //     newSlide.style = 'border:2px solid #ccc; padding:15px;';
+    //     newSlide.innerHTML = `
+    //         <h5>নতুন স্লাইড</h5>
+    //         <div class="row">
+    //             <div class="col-md-3"><input type="text" name="slide_title[]" placeholder="টাইটেল" class="form-control"></div>
+    //             <div class="col-md-3"><input type="text" name="slide_subtitle[]" placeholder="সাবটাইটেল" class="form-control"></div>
+    //             <div class="col-md-3"><input type="text" name="slide_enroll_text[]" placeholder="এনরোল টেক্সট" class="form-control"></div>
+    //             <div class="col-md-3"><input type="url" name="slide_enroll_link[]" placeholder="এনরোল লিঙ্ক" class="form-control"></div>
+    //         </div>
+    //         <div class="row mt-2">
+    //             <div class="col-md-6">
+    //                 <label>মেইন ইমেজ</label>
+    //                 <input type="file" name="slide_main_image[]" class="form-control">
+    //             </div>
+    //         </div>
+    //         <button type="button" onclick="this.closest('.slide-item').remove()" class="btn btn-sm btn-danger">রিমুভ</button>
+    //     `;
+    //     container.appendChild(newSlide);
+    // }
 
     // Batch Add Function
     function addBatchImageField() {
@@ -834,83 +871,53 @@
 
     // Hero Slider Add Function
     function addHeroSlide() {
-        const container = document.getElementById('hero-slides-container');
-        const slideCount = container.children.length;
-        const newSlide = document.createElement('div');
-        newSlide.className = 'hero-slide-item mb-4';
-        newSlide.style = 'border:2px solid #ddd; padding:20px; margin-bottom:20px;';
-        newSlide.innerHTML = `
-            <h5>স্লাইড ${slideCount + 1}</h5>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label>মেইন টাইটেল</label>
-                    <input type="text" name="hero_title[]" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label>প্রমোশন টাইটেল</label>
-                    <input type="text" name="hero_promotion_title[]" class="form-control">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label>লিঙ্ক টাইপ</label><br>
-                <div class="form-check form-check-inline">
-                    <input type="radio" name="hero_type[]" value="batch" id="type-batch-${slideCount}" class="form-check-input" checked onchange="toggleHeroFields(${slideCount})">
-                    <label for="type-batch-${slideCount}" class="form-check-label">ব্যাচ</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input type="radio" name="hero_type[]" value="class" id="type-class-${slideCount}" class="form-check-input" onchange="toggleHeroFields(${slideCount})">
-                    <label for="type-class-${slideCount}" class="form-check-label">ক্লাস</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input type="radio" name="hero_type[]" value="book" id="type-book-${slideCount}" class="form-check-input" onchange="toggleHeroFields(${slideCount})">
-                    <label for="type-book-${slideCount}" class="form-check-label">বুক</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input type="radio" name="hero_type[]" value="custom" id="type-custom-${slideCount}" class="form-check-input" onchange="toggleHeroFields(${slideCount})">
-                    <label for="type-custom-${slideCount}" class="form-check-label">কাস্টম লিঙ্ক</label>
-                </div>
-            </div>
-            <div id="hero-fields-${slideCount}">
-                <div id="batch-field-${slideCount}" style="display: block;" class="mb-3">
-                    <label>ব্যাচ সিলেক্ট</label>
-                    <select name="hero_batch_id[]" class="form-control">
-                        <option value="">সিলেক্ট করো</option>
-                        @foreach ($batches as $batch)
-                            <option value="{{ $batch->id }}">{{ $batch->title }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div id="class-field-${slideCount}" style="display: none;" class="mb-3">
-                    <label>ক্লাস সিলেক্ট</label>
-                    <select name="hero_class_id[]" class="form-control">
-                        <option value="">সিলেক্ট করো</option>
-                        @foreach ($batch_categories as $cat)
-                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div id="book-field-${slideCount}" style="display: none;" class="mb-3">
-                    <label>বুক সিলেক্ট</label>
-                    <select name="hero_book_id[]" class="form-control">
-                        <option value="">সিলেক্ট করো</option>
-                        @foreach ($books as $book)
-                            <option value="{{ $book->id }}">{{ $book->name }} - {{ $book->author }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div id="custom-field-${slideCount}" style="display: none;" class="mb-3">
-                    <label>কাস্টম লিঙ্ক</label>
-                    <input type="url" name="hero_custom_link[]" class="form-control" placeholder="https://example.com">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label>হিরো ইমেজ</label>
-                <input type="file" name="hero_image[${slideCount}]" class="form-control">
-            </div>
-            <button type="button" onclick="this.closest('.hero-slide-item').remove()" class="btn btn-sm btn-danger">স্লাইড রিমুভ</button>
-        `;
-        container.appendChild(newSlide);
-        toggleHeroFields(slideCount);
+    const container = document.getElementById('hero-slides-container');
+    const slideCount = container.children.length;
+    const newSlide = document.createElement('div');
+    newSlide.className = 'hero-slide-item mb-4';
+    newSlide.style = 'border:2px solid #ddd; padding:20px; margin-bottom:20px;';
+    newSlide.innerHTML = `
+    <h5>স্লাইড ${slideCount + 1}</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>মেইন টাইটেল</label>
+            <input type="text" name="hero_title[]" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label>প্রমোশন টাইটেল</label>
+            <input type="text" name="hero_promotion_title[]" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>ব্যাচ সিলেক্ট (মাল্টিপল)</label>
+        <select name="hero_batch_ids[${slideCount}][]" multiple class="form-control">
+            @foreach ($batches as $batch)
+            <option value="{{ $batch->id }}">{{ $batch->title }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>বুক সিলেক্ট (মাল্টিপল)</label>
+        <select name="hero_book_ids[${slideCount}][]" multiple class="form-control">
+            @foreach ($books as $book)
+            <option value="{{ $book->id }}">{{ $book->name }} - {{ $book->author }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div id="custom-links-${slideCount}" class="mb-3">
+        <label>কাস্টম লিঙ্কস (মাল্টিপল)</label>
+        <button type="button" onclick="addCustomLink(${slideCount})" class="btn btn-secondary btn-sm">নতুন লিঙ্ক
+            অ্যাড</button>
+    </div>
+    <div id="images-${slideCount}" class="mb-3">
+        <label>হিরো ইমেজস (মাল্টিপল)</label>
+        <button type="button" onclick="addImageField(${slideCount})" class="btn btn-secondary btn-sm">নতুন ইমেজ
+            অ্যাড</button>
+    </div>
+    <button type="button" onclick="this.closest('.hero-slide-item').remove()" class="btn btn-sm btn-danger">স্লাইড
+        রিমুভ</button>
+    `;
+    container.appendChild(newSlide);
     }
 
     // Initialize toggles for existing hero slides
@@ -921,6 +928,44 @@
             @endforeach
         @endif
     });
+    // Static Design Add Function
+    function addStaticItem() {
+    const container = document.getElementById('static-items-container');
+    const index = container.children.length;
+    const newItem = document.createElement('div');
+    newItem.className = 'static-item mb-3';
+    newItem.style = 'border:1px solid #ccc; padding:10px;';
+    newItem.setAttribute('data-index', index);
+    newItem.innerHTML = `
+    <div class="row">
+        <div class="col-md-5">
+            <input type="text" name="item_type[]" placeholder="টাইপ" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="item_label[]" placeholder="লেবেল" class="form-control" required>
+        </div>
+        <div class="col-md-1">
+            <button type="button" onclick="removeItem(this)" class="btn btn-danger btn-sm">রিমুভ</button>
+        </div>
+    </div>
+    `;
+    container.appendChild(newItem);
+    }
+
+    function addImageField(index) {
+    const container = document.getElementById(`images-${index}`);
+    const newImage = document.createElement('div');
+    newImage.className = 'row mb-2 image-item';
+    newImage.innerHTML = `
+    <div class="col-md-8">
+        <input type="file" name="hero_images[${index}][]" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <button type="button" onclick="this.closest('.image-item').remove()" class="btn btn-danger btn-sm">রিমুভ</button>
+    </div>
+    `;
+    container.appendChild(newImage);
+    }
     // Locations Add Function
     function addLocation() {
     const container = document.getElementById('locations-container');
@@ -977,7 +1022,21 @@
     container.appendChild(newItem);
     }
 
-
+function addCustomLink(index) {
+    const container = document.getElementById(`custom-links-${index}`);
+    const newLink = document.createElement('div');
+    newLink.className = 'row mb-2 custom-link-item';
+    newLink.innerHTML = `
+    <div class="col-md-10">
+        <input type="url" name="hero_custom_links[${index}][]" class="form-control" placeholder="https://example.com">
+    </div>
+    <div class="col-md-2">
+        <button type="button" onclick="this.closest('.custom-link-item').remove()"
+            class="btn btn-danger btn-sm">রিমুভ</button>
+    </div>
+    `;
+    container.appendChild(newLink);
+    }
 
     // Notices Add Function
 function addNotice() {
@@ -1012,5 +1071,128 @@ function addNotice() {
     function removeItem(button) {
        button.closest('.location-item, .mentor-item, .slide-item, .batch-image-item, .batch-item, .book-item,.hero-slide-item').remove();
     }
+
+
+
+    let slideCounter = {{ count($section->dynamic_data ?? []) ?: 1 }};
+
+function addSlide() {
+    const container = document.getElementById('hero-slides-container');
+    const newSlide = document.createElement('div');
+    newSlide.className = 'hero-slide-item mb-5 p-4 border rounded';
+    newSlide.innerHTML = `
+        <h5 class="mb-3">স্লাইড ${slideCounter + 1}</h5>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label>মেইন টাইটেল</label>
+                <input type="text" name="slide_title[]" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label>প্রমোশন টাইটেল</label>
+                <input type="text" name="slide_promotion_title[]" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label>এনরোল বাটন টেক্সট</label>
+                <input type="text" name="enroll_text[]" placeholder="Click To Enroll In 30+ Free Courses" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label>এনরোল লিঙ্ক</label>
+                <input type="url" name="enroll_link[]" class="form-control">
+            </div>
+        </div>
+        <h6>কোর্স কার্ডস</h6>
+        <div class="items-container mb-3">
+            <!-- ৪টা ডিফল্ট কার্ড -->
+            ${[0,1,2,3].map(i => getItemHTML(slideCounter, i)).join('')}
+        </div>
+        <button type="button" onclick="addItem(${slideCounter})" class="btn btn-sm btn-secondary mb-3">+ নতুন কার্ড অ্যাড করুন</button>
+        <button type="button" onclick="this.closest('.hero-slide-item').remove()" class="btn btn-danger float-end">স্লাইড ডিলিট</button>
+    `;
+    container.appendChild(newSlide);
+    slideCounter++;
+}
+
+function getItemHTML(slideIndex, itemIndex) {
+    return `
+        <div class="row mb-3 item-row p-3 border">
+            <div class="col-md-3">
+                <label>টাইপ</label><br>
+                <div class="btn-group" role="group">
+                    <input type="radio" name="items[${slideIndex}][${itemIndex}][type]" value="course" class="btn-check" id="course-${slideIndex}-${itemIndex}" checked onchange="toggleItemType(${slideIndex}, ${itemIndex})">
+                    <label class="btn btn-outline-primary" for="course-${slideIndex}-${itemIndex}">কোর্স</label>
+
+                    <input type="radio" name="items[${slideIndex}][${itemIndex}][type]" value="custom" class="btn-check" id="custom-${slideIndex}-${itemIndex}" onchange="toggleItemType(${slideIndex}, ${itemIndex})">
+                    <label class="btn btn-outline-secondary" for="custom-${slideIndex}-${itemIndex}">কাস্টম</label>
+                </div>
+            </div>
+
+            <div class="col-md-4 course-field">
+                <label>কোর্স সিলেক্ট করুন</label>
+                <select name="items[${slideIndex}][${itemIndex}][course_id]" class="form-control">
+                    <option value="">-- সিলেক্ট করুন --</option>
+                    @foreach($batches as $batch)
+                    <option value="{{ $batch->id }}">{{ $batch->plan ?? $batch->title ?? 'Unnamed Course' }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-4 custom-fields" style="display:none;">
+                <label>কাস্টম নাম</label>
+                <input type="text" name="items[${slideIndex}][${itemIndex}][custom_name]" class="form-control mb-2" placeholder="যেমন: Complete Grammar">
+
+                <label>কাস্টম লিঙ্ক</label>
+                <input type="url" name="items[${slideIndex}][${itemIndex}][custom_link]" class="form-control" placeholder="https://example.com">
+            </div>
+
+            <div class="col-md-4">
+                <label>ইমেজ</label>
+                <input type="file" name="item_image[${slideIndex}][${itemIndex}]" class="form-control">
+            </div>
+
+            <div class="col-md-1 d-flex align-items-end">
+                <button type="button" onclick="this.closest('.item-row').remove()" class="btn btn-danger btn-sm">X</button>
+            </div>
+        </div>
+    `;
+}
+
+function addItem(slideIndex) {
+    const slideElement = document.querySelectorAll('.hero-slide-item')[slideIndex];
+    const container = slideElement.querySelector('.items-container');
+    const itemCount = container.querySelectorAll('.item-row').length;
+
+    const newItem = document.createElement('div');
+    newItem.className = 'row mb-3 item-row p-3 border';
+    newItem.innerHTML = getItemHTML(slideIndex, itemCount);
+
+    container.appendChild(newItem);
+}
+
+function toggleItemType(slideIndex, itemIndex) {
+    const itemRow = document.querySelectorAll('.hero-slide-item')[slideIndex]
+        .querySelectorAll('.item-row')[itemIndex];
+
+    const courseField = itemRow.querySelector('.course-field');
+    const customFields = itemRow.querySelector('.custom-fields');
+
+    const selectedType = itemRow.querySelector(`input[name="items[${slideIndex}][${itemIndex}][type]"]:checked`).value;
+
+    courseField.style.display = selectedType === 'course' ? 'block' : 'none';
+    customFields.style.display = selectedType === 'custom' ? 'block' : 'none';
+}
+
+// Existing slides-এর জন্য toggle initialize করুন (যদি edit করা হয়)
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.item-row').forEach(function (row, index) {
+        const matches = row.querySelector('input[type="radio"]:checked')?.name.match(/items\[(\d+)\]\[(\d+)\]\[type\]/);
+        if (matches) {
+            const slideIdx = matches[1];
+            const itemIdx = matches[2];
+            toggleItemType(slideIdx, itemIdx);
+        }
+    });
+});
 </script>
 @endsection

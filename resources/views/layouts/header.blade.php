@@ -6,7 +6,17 @@
 
             <div class="logo-box">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
+
+
+                    @php
+                    $logo = get_business_setting('site_logo');
+                    @endphp
+                    @if ($logo)
+                    <img src="{{ asset('storage/' . $logo) }}" alt="logo">
+                    @else
+                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo">
+                    @endif
+                    {{-- <img src="{{ asset('assets/images/logo.svg') }}" alt="logo"> --}}
                     {{-- @php
                         $logo = get_business_setting('site_logo');
                     @endphp
@@ -105,6 +115,7 @@
                         <a type="button" href={{ url('student/login') }} class="btn login-btn">Log In</a>
                     @else
                         <a href="/profile/{{ $id }}">Dashboard</a>
+                        <a  href="{{ route('logout') }}">Logout</a>
                     @endif
                 </div>
 
