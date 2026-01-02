@@ -1172,6 +1172,32 @@
         padding-right: calc(var(--bs-gutter-x) * 0.5);
         padding-left: calc(var(--bs-gutter-x) * 0.5);
     }
+    .common-banner-main {
+        padding: 40px 0;
+        .ed-breadcrumbs__content {
+            h3 {
+                font-size: 25px;
+                line-height: 35px;
+            }
+            .ed-breadcrumbs__menu {
+                li {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    .search-result-main {
+        padding: 50px 0;
+    }
+
+    .search-result-main {
+        .single-result-card {
+            .title {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+    }
 }
 // max widht 991px ends here
 

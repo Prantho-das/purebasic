@@ -960,6 +960,23 @@
     padding-right: calc(var(--bs-gutter-x) * 0.5);
     padding-left: calc(var(--bs-gutter-x) * 0.5);
   }
+  .common-banner-main {
+    padding: 40px 0;
+  }
+  .common-banner-main .ed-breadcrumbs__content h3 {
+    font-size: 25px;
+    line-height: 35px;
+  }
+  .common-banner-main .ed-breadcrumbs__content .ed-breadcrumbs__menu li {
+    font-size: 13px;
+  }
+  .search-result-main {
+    padding: 50px 0;
+  }
+  .search-result-main .single-result-card .title {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .home-banner-main {
