@@ -1126,7 +1126,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-position: center right;
   padding: 66px 30px;
   overflow: hidden;
-  /*-- Page Breadcrumb --*/
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .page-banner {
@@ -1189,6 +1188,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .page-banner h2 span.category-businsee {
   color: #26d572;
+}
+.page-banner {
+  /*-- Page Breadcrumb --*/
 }
 .page-banner .page-breadcrumb {
   margin: 0;
@@ -1330,27 +1332,27 @@ blockquote.blockquote.blockquote-bg p {
   padding: 5px 0;
   border-bottom: 1px solid #f1f1f1;
   /*-- Header Top Two --*/
-  /*-- Header Top Three --*/
 }
 .header-top.header-top-2 {
   background-color: #00c8fa;
   border-bottom: none;
 }
-/*-- Header Top Links --*/
-.header-top-links {
-  /*-- Header Links --*/
+.header-top {
+  /*-- Header Top Three --*/
 }
+/*-- Header Top Links --*/
 @media only screen and (max-width: 479px) {
   .header-top-links {
     min-width: 100%;
     text-align: center;
   }
 }
+.header-top-links {
+  /*-- Header Links --*/
+}
 .header-top-links .header-links {
   display: block;
   float: left;
-  /*-- Header Links Two --*/
-  /*-- Header Links Three --*/
 }
 @media only screen and (max-width: 479px) {
   .header-top-links .header-links {
@@ -1367,7 +1369,6 @@ blockquote.blockquote.blockquote-bg p {
   margin-top: 5px;
   margin-bottom: 5px;
   position: relative;
-  /*-- Disabled Link --*/
 }
 .header-top-links .header-links li::before {
   position: absolute;
@@ -1415,6 +1416,9 @@ blockquote.blockquote.blockquote-bg p {
   font-size: 12px;
   line-height: 20px;
 }
+.header-top-links .header-links li {
+  /*-- Disabled Link --*/
+}
 .header-top-links .header-links li.disabled::before {
   display: none;
 }
@@ -1430,14 +1434,17 @@ blockquote.blockquote.blockquote-bg p {
 .header-top-links .header-links li.disabled a:hover {
   color: #ffffff;
 }
-.header-top-links .header-links.header-links-2 li {
-  /*-- Disabled Link --*/
+.header-top-links .header-links {
+  /*-- Header Links Two --*/
 }
 .header-top-links .header-links.header-links-2 li a {
   color: #ffffff;
 }
 .header-top-links .header-links.header-links-2 li a:hover {
   color: #444444;
+}
+.header-top-links .header-links.header-links-2 li {
+  /*-- Disabled Link --*/
 }
 .header-top-links .header-links.header-links-2 li.disabled a {
   padding: 0;
@@ -1449,11 +1456,14 @@ blockquote.blockquote.blockquote-bg p {
 .header-top-links .header-links.header-links-2 li.disabled a:hover {
   color: #ffffff;
 }
-.header-top-links .header-links.header-links-3 li {
-  /*-- Disabled Link --*/
+.header-top-links .header-links {
+  /*-- Header Links Three --*/
 }
 .header-top-links .header-links.header-links-3 li a:hover {
   color: #ffc61c;
+}
+.header-top-links .header-links.header-links-3 li {
+  /*-- Disabled Link --*/
 }
 .header-top-links .header-links.header-links-3 li.disabled a {
   padding: 0;
@@ -1467,20 +1477,18 @@ blockquote.blockquote.blockquote-bg p {
 }
 
 /*-- Header Top Social --*/
-.header-top-social {
-  /*-- Header Social --*/
-}
 @media only screen and (max-width: 479px) {
   .header-top-social {
     min-width: 100%;
     text-align: center;
   }
 }
+.header-top-social {
+  /*-- Header Social --*/
+}
 .header-top-social .header-social {
   display: block;
   float: right;
-  /*-- Header Social Two --*/
-  /*-- Header Social Three --*/
 }
 @media only screen and (max-width: 479px) {
   .header-top-social .header-social {
@@ -1506,11 +1514,17 @@ blockquote.blockquote.blockquote-bg p {
   display: block;
   line-height: 30px;
 }
+.header-top-social .header-social {
+  /*-- Header Social Two --*/
+}
 .header-top-social .header-social.header-social-2 a {
   color: #ffffff;
 }
 .header-top-social .header-social.header-social-2 a:hover {
   color: #444444;
+}
+.header-top-social .header-social {
+  /*-- Header Social Three --*/
 }
 .header-top-social .header-social.header-social-3 a:hover {
   color: #ffc61c;
@@ -1584,9 +1598,6 @@ blockquote.blockquote.blockquote-bg p {
 }
 
 /*-- Main Menu --*/
-.main-menu {
-  /*-- Menu Style Two --*/
-}
 .main-menu nav {
   float: left;
 }
@@ -1597,9 +1608,6 @@ blockquote.blockquote.blockquote-bg p {
   display: block;
   float: left;
   margin-right: 30px;
-  /*-- Active & Hover Menu Color --*/
-  /*-- DropDown Arrow --*/
-  /*-- Sub Menu --*/
 }
 .main-menu nav > ul > li:last-child {
   margin-right: 0;
@@ -1615,8 +1623,14 @@ blockquote.blockquote.blockquote-bg p {
   color: #ffffff;
   position: relative;
 }
+.main-menu nav > ul > li {
+  /*-- Active & Hover Menu Color --*/
+}
 .main-menu nav > ul > li.active > a, .main-menu nav > ul > li:hover > a {
   color: #00c8fa;
+}
+.main-menu nav > ul > li {
+  /*-- DropDown Arrow --*/
 }
 .main-menu nav > ul > li.has-dropdown > a::after {
   font-family: "Fontawesome";
@@ -1625,14 +1639,19 @@ blockquote.blockquote.blockquote-bg p {
   display: block;
   float: right;
 }
+.main-menu nav > ul > li {
+  /*-- Sub Menu --*/
+}
 .main-menu nav > ul > li:hover .sub-menu, .main-menu nav > ul > li:hover .mega-menu {
   opacity: 1;
   z-index: 999;
   visibility: visible;
 }
+.main-menu {
+  /*-- Menu Style Two --*/
+}
 .main-menu.main-menu-2 nav > ul > li {
   margin-right: 1px;
-  /*-- Active & Hover Menu Color --*/
 }
 .main-menu.main-menu-2 nav > ul > li:last-child {
   margin-right: 0;
@@ -1640,6 +1659,9 @@ blockquote.blockquote.blockquote-bg p {
 .main-menu.main-menu-2 nav > ul > li > a {
   padding: 10px 15px;
   color: #1f2024;
+}
+.main-menu.main-menu-2 nav > ul > li {
+  /*-- Active & Hover Menu Color --*/
 }
 .main-menu.main-menu-2 nav > ul > li.active > a, .main-menu.main-menu-2 nav > ul > li:hover > a {
   color: #ffffff;
@@ -1912,9 +1934,6 @@ blockquote.blockquote.blockquote-bg p {
 /*-- Header Search --*/
 .header-search {
   position: relative;
-  /*-- Search Toggle --*/
-  /*-- Search Form --*/
-  /*-- Header Search Two --*/
 }
 @media only screen and (max-width: 767px) {
   .header-search {
@@ -1922,6 +1941,9 @@ blockquote.blockquote.blockquote-bg p {
     top: 0;
     right: 0;
   }
+}
+.header-search {
+  /*-- Search Toggle --*/
 }
 .header-search .header-search-toggle {
   display: block;
@@ -1935,6 +1957,9 @@ blockquote.blockquote.blockquote-bg p {
 .header-search .header-search-toggle i {
   display: block;
   line-height: 30px;
+}
+.header-search {
+  /*-- Search Form --*/
 }
 .header-search .header-search-form {
   position: absolute;
@@ -1957,12 +1982,17 @@ blockquote.blockquote.blockquote-bg p {
   font-weight: 500;
   min-height: 50px;
 }
+.header-search {
+  /*-- Header Search Two --*/
+}
 .header-search.header-search-2 {
   /*-- Search Toggle --*/
-  /*-- Search Form --*/
 }
 .header-search.header-search-2 .header-search-toggle {
   background-color: #1f2024;
+}
+.header-search.header-search-2 {
+  /*-- Search Form --*/
 }
 .header-search.header-search-2 .header-search-form {
   background-color: #1f2024;
@@ -1975,11 +2005,13 @@ blockquote.blockquote.blockquote-bg p {
 .breaking-news-section {
   background-color: #00c8fa;
   /*-- Breaking News Section Two --*/
-  /*-- Breaking News Section Three --*/
 }
 .breaking-news-section.breaking-news-section-2 {
   background-color: #ffffff;
   border-bottom: 1px solid #f1f1f1;
+}
+.breaking-news-section {
+  /*-- Breaking News Section Three --*/
 }
 .breaking-news-section.breaking-news-section-3 {
   background-color: #1f2024;
@@ -1991,16 +2023,14 @@ blockquote.blockquote.blockquote-bg p {
   display: block;
   float: left;
   width: 100%;
-  /*-- Breaking News Title --*/
-  /*-- Breaking News Slider --*/
-  /*-- Breaking News Nav --*/
-  /*-- Breaking News Wrapper Two --*/
-  /*-- Breaking News Wrapper Three --*/
 }
 @media only screen and (max-width: 767px) {
   .breaking-news-wrapper {
     text-align: center;
   }
+}
+.breaking-news-wrapper {
+  /*-- Breaking News Title --*/
 }
 .breaking-news-wrapper .breaking-news-title {
   display: block;
@@ -2020,6 +2050,9 @@ blockquote.blockquote.blockquote-bg p {
     float: none !important;
     padding: 0 20px;
   }
+}
+.breaking-news-wrapper {
+  /*-- Breaking News Slider --*/
 }
 .breaking-news-wrapper .breaking-news-ticker {
   margin-left: 20px;
@@ -2042,6 +2075,9 @@ blockquote.blockquote.blockquote-bg p {
 .breaking-news-wrapper .breaking-news-ticker li a:hover {
   text-decoration: underline;
 }
+.breaking-news-wrapper {
+  /*-- Breaking News Nav --*/
+}
 .breaking-news-wrapper .breaking-news-nav {
   float: right;
 }
@@ -2059,7 +2095,6 @@ blockquote.blockquote.blockquote-bg p {
   border: none;
   color: #ffffff;
   margin-left: 1px;
-  /*-- Hover --*/
 }
 .breaking-news-wrapper .breaking-news-nav button:first-child {
   margin-left: 0;
@@ -2070,19 +2105,29 @@ blockquote.blockquote.blockquote-bg p {
   font-size: 24px;
   line-height: 40px;
 }
+.breaking-news-wrapper .breaking-news-nav button {
+  /*-- Hover --*/
+}
 .breaking-news-wrapper .breaking-news-nav button:hover {
   background-color: #f05555;
 }
+.breaking-news-wrapper {
+  /*-- Breaking News Wrapper Two --*/
+}
 .breaking-news-wrapper.breaking-news-wrapper-2 {
   /*-- Breaking News Title --*/
-  /*-- Breaking News Slider --*/
-  /*-- Breaking News Nav --*/
 }
 .breaking-news-wrapper.breaking-news-wrapper-2 .breaking-news-title {
   background-color: #1f2024;
 }
+.breaking-news-wrapper.breaking-news-wrapper-2 {
+  /*-- Breaking News Slider --*/
+}
 .breaking-news-wrapper.breaking-news-wrapper-2 .breaking-news-ticker li a {
   color: #1f2024;
+}
+.breaking-news-wrapper.breaking-news-wrapper-2 {
+  /*-- Breaking News Nav --*/
 }
 .breaking-news-wrapper.breaking-news-wrapper-2 .breaking-news-nav button {
   background-color: transparent;
@@ -2091,26 +2136,35 @@ blockquote.blockquote.blockquote-bg p {
   border-style: solid;
   color: #444444;
   margin-left: 0;
-  /*-- Hover --*/
 }
 .breaking-news-wrapper.breaking-news-wrapper-2 .breaking-news-nav button:first-child {
   border-left: 1px solid #f1f1f1;
+}
+.breaking-news-wrapper.breaking-news-wrapper-2 .breaking-news-nav button {
+  /*-- Hover --*/
 }
 .breaking-news-wrapper.breaking-news-wrapper-2 .breaking-news-nav button:hover {
   background-color: transparent;
   color: #00c8fa;
 }
+.breaking-news-wrapper {
+  /*-- Breaking News Wrapper Three --*/
+}
 .breaking-news-wrapper.breaking-news-wrapper-3 {
   /*-- Breaking News Title --*/
-  /*-- Breaking News Slider --*/
-  /*-- Breaking News Nav --*/
 }
 .breaking-news-wrapper.breaking-news-wrapper-3 .breaking-news-title {
   background-color: #ffc61c;
   color: #1f2024;
 }
+.breaking-news-wrapper.breaking-news-wrapper-3 {
+  /*-- Breaking News Slider --*/
+}
 .breaking-news-wrapper.breaking-news-wrapper-3 .breaking-news-ticker li a {
   color: #d8d8d8;
+}
+.breaking-news-wrapper.breaking-news-wrapper-3 {
+  /*-- Breaking News Nav --*/
 }
 .breaking-news-wrapper.breaking-news-wrapper-3 .breaking-news-nav button {
   background-color: transparent;
@@ -2146,14 +2200,15 @@ blockquote.blockquote.blockquote-bg p {
   border: 1px solid #f1f1f1;
   float: left;
   width: 100%;
-  /*-- Post Block Head --*/
-  /*-- Post Block Body --*/
 }
 .post-block-wrapper.dark {
   border-color: #343434;
 }
 .post-block-wrapper.dark .head {
   border-color: #343434;
+}
+.post-block-wrapper {
+  /*-- Post Block Head --*/
 }
 .post-block-wrapper .head {
   float: left;
@@ -2162,20 +2217,6 @@ blockquote.blockquote.blockquote-bg p {
   position: relative;
   border-bottom: 1px solid #f1f1f1;
   border-top: 1px solid #f1f1f1;
-  /*-- Title --*/
-  /*-- Feature Post Head --*/
-  /*-- Life Style Post Head --*/
-  /*-- Travel Post Head --*/
-  /*-- Fashion Post Head --*/
-  /*-- Sports Post Head --*/
-  /*-- Gadgets Post Head --*/
-  /*-- Politic Post Head --*/
-  /*-- Education Post Head --*/
-  /*-- Health Post Head --*/
-  /*-- Madical Post Head --*/
-  /*-- Video Post Head --*/
-  /*-- Businsee Post Head --*/
-  /*-- Post Block Tab List --*/
 }
 .post-block-wrapper .head:first-child {
   border-top: 0px solid transparent;
@@ -2195,6 +2236,9 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head::after {
   right: -1px;
 }
+.post-block-wrapper .head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head .title {
   float: left;
   margin: 0;
@@ -2208,128 +2252,155 @@ blockquote.blockquote.blockquote-bg p {
     font-size: 14px;
   }
 }
-.post-block-wrapper .head.feature-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Feature Post Head --*/
 }
 .post-block-wrapper .head.feature-head::before, .post-block-wrapper .head.feature-head::after {
   background-color: #00c8fa;
 }
+.post-block-wrapper .head.feature-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.feature-head .title {
   color: #00c8fa;
 }
-.post-block-wrapper .head.life-style-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Life Style Post Head --*/
 }
 .post-block-wrapper .head.life-style-head::before, .post-block-wrapper .head.life-style-head::after {
   background-color: #ffc61c;
 }
+.post-block-wrapper .head.life-style-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.life-style-head .title {
   color: #ffc61c;
 }
-.post-block-wrapper .head.travel-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Travel Post Head --*/
 }
 .post-block-wrapper .head.travel-head::before, .post-block-wrapper .head.travel-head::after {
   background-color: #ffc61c;
 }
+.post-block-wrapper .head.travel-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.travel-head .title {
   color: #ffc61c;
 }
-.post-block-wrapper .head.fashion-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Fashion Post Head --*/
 }
 .post-block-wrapper .head.fashion-head::before, .post-block-wrapper .head.fashion-head::after {
   background-color: #ff58c8;
 }
+.post-block-wrapper .head.fashion-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.fashion-head .title {
   color: #ff58c8;
 }
-.post-block-wrapper .head.sports-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Sports Post Head --*/
 }
 .post-block-wrapper .head.sports-head::before, .post-block-wrapper .head.sports-head::after {
   background-color: #67bf35;
 }
+.post-block-wrapper .head.sports-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.sports-head .title {
   color: #67bf35;
 }
-.post-block-wrapper .head.gadgets-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Gadgets Post Head --*/
 }
 .post-block-wrapper .head.gadgets-head::before, .post-block-wrapper .head.gadgets-head::after {
   background-color: #1f2024;
 }
+.post-block-wrapper .head.gadgets-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.gadgets-head .title {
   color: #1f2024;
 }
-.post-block-wrapper .head.politic-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Politic Post Head --*/
 }
 .post-block-wrapper .head.politic-head::before, .post-block-wrapper .head.politic-head::after {
   background-color: #f05555;
 }
+.post-block-wrapper .head.politic-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.politic-head .title {
   color: #f05555;
 }
-.post-block-wrapper .head.education-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Education Post Head --*/
 }
 .post-block-wrapper .head.education-head::before, .post-block-wrapper .head.education-head::after {
   background-color: #008bff;
 }
+.post-block-wrapper .head.education-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.education-head .title {
   color: #008bff;
 }
-.post-block-wrapper .head.health-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Health Post Head --*/
 }
 .post-block-wrapper .head.health-head::before, .post-block-wrapper .head.health-head::after {
   background-color: #008bff;
 }
+.post-block-wrapper .head.health-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.health-head .title {
   color: #008bff;
 }
-.post-block-wrapper .head.madical-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Madical Post Head --*/
 }
 .post-block-wrapper .head.madical-head::before, .post-block-wrapper .head.madical-head::after {
   background-color: #008bff;
 }
+.post-block-wrapper .head.madical-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.madical-head .title {
   color: #008bff;
 }
-.post-block-wrapper .head.video-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Video Post Head --*/
 }
 .post-block-wrapper .head.video-head::before, .post-block-wrapper .head.video-head::after {
   background-color: #ec0000;
 }
+.post-block-wrapper .head.video-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.video-head .title {
   color: #ec0000;
 }
-.post-block-wrapper .head.businsee-head {
-  /*-- Title --*/
+.post-block-wrapper .head {
+  /*-- Businsee Post Head --*/
 }
 .post-block-wrapper .head.businsee-head::before, .post-block-wrapper .head.businsee-head::after {
   background-color: #26d572;
 }
+.post-block-wrapper .head.businsee-head {
+  /*-- Title --*/
+}
 .post-block-wrapper .head.businsee-head .title {
   color: #26d572;
 }
+.post-block-wrapper .head {
+  /*-- Post Block Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list {
   float: right;
-  /*-- Feature Post Tab List --*/
-  /*-- Life Style Post Tab List --*/
-  /*-- Travel Post Tab List --*/
-  /*-- Fashion Post Tab List --*/
-  /*-- Sports Post Tab List --*/
-  /*-- Gadgets Post Tab List --*/
-  /*-- Politic Post Tab List --*/
-  /*-- Education Post Tab List --*/
-  /*-- Health Post Tab List --*/
-  /*-- Madical Post Tab List --*/
-  /*-- Video Post Tab List --*/
-  /*-- Businsee Post Tab List --*/
 }
 .post-block-wrapper .head .post-block-tab-list > li {
   margin-right: 30px;
@@ -2370,11 +2441,17 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head .post-block-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list > li .dropdown-menu li a.active {
   color: #00c8fa;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Feature Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.feature-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.feature-post-tab-list > li > a.active {
   color: #00c8fa;
 }
 .post-block-wrapper .head .post-block-tab-list.feature-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.feature-post-tab-list > li .dropdown-menu li a.active {
   color: #00c8fa;
+}
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Life Style Post Tab List --*/
 }
 .post-block-wrapper .head .post-block-tab-list.life-style-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.life-style-post-tab-list > li > a.active {
   color: #ffc61c;
@@ -2382,11 +2459,17 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head .post-block-tab-list.life-style-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.life-style-post-tab-list > li .dropdown-menu li a.active {
   color: #ffc61c;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Travel Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.travel-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.travel-post-tab-list > li > a.active {
   color: #ffc61c;
 }
 .post-block-wrapper .head .post-block-tab-list.travel-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.travel-post-tab-list > li .dropdown-menu li a.active {
   color: #ffc61c;
+}
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Fashion Post Tab List --*/
 }
 .post-block-wrapper .head .post-block-tab-list.fashion-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.fashion-post-tab-list > li > a.active {
   color: #ff58c8;
@@ -2394,11 +2477,17 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head .post-block-tab-list.fashion-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.fashion-post-tab-list > li .dropdown-menu li a.active {
   color: #ff58c8;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Sports Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.sports-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.sports-post-tab-list > li > a.active {
   color: #67bf35;
 }
 .post-block-wrapper .head .post-block-tab-list.sports-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.sports-post-tab-list > li .dropdown-menu li a.active {
   color: #67bf35;
+}
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Gadgets Post Tab List --*/
 }
 .post-block-wrapper .head .post-block-tab-list.gadgets-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.gadgets-post-tab-list > li > a.active {
   color: #00c8fa;
@@ -2406,11 +2495,17 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head .post-block-tab-list.gadgets-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.gadgets-post-tab-list > li .dropdown-menu li a.active {
   color: #00c8fa;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Politic Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.politic-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.politic-post-tab-list > li > a.active {
   color: #f05555;
 }
 .post-block-wrapper .head .post-block-tab-list.politic-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.politic-post-tab-list > li .dropdown-menu li a.active {
   color: #f05555;
+}
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Education Post Tab List --*/
 }
 .post-block-wrapper .head .post-block-tab-list.education-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.education-post-tab-list > li > a.active {
   color: #008bff;
@@ -2418,11 +2513,17 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head .post-block-tab-list.education-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.education-post-tab-list > li .dropdown-menu li a.active {
   color: #008bff;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Health Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.health-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.health-post-tab-list > li > a.active {
   color: #008bff;
 }
 .post-block-wrapper .head .post-block-tab-list.health-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.health-post-tab-list > li .dropdown-menu li a.active {
   color: #008bff;
+}
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Madical Post Tab List --*/
 }
 .post-block-wrapper .head .post-block-tab-list.madical-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.madical-post-tab-list > li > a.active {
   color: #008bff;
@@ -2430,17 +2531,26 @@ blockquote.blockquote.blockquote-bg p {
 .post-block-wrapper .head .post-block-tab-list.madical-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.madical-post-tab-list > li .dropdown-menu li a.active {
   color: #008bff;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Video Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.video-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.video-post-tab-list > li > a.active {
   color: #ec0000;
 }
 .post-block-wrapper .head .post-block-tab-list.video-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.video-post-tab-list > li .dropdown-menu li a.active {
   color: #ec0000;
 }
+.post-block-wrapper .head .post-block-tab-list {
+  /*-- Businsee Post Tab List --*/
+}
 .post-block-wrapper .head .post-block-tab-list.businsee-post-tab-list > li > a:hover, .post-block-wrapper .head .post-block-tab-list.businsee-post-tab-list > li > a.active {
   color: #26d572;
 }
 .post-block-wrapper .head .post-block-tab-list.businsee-post-tab-list > li .dropdown-menu li a:hover, .post-block-wrapper .head .post-block-tab-list.businsee-post-tab-list > li .dropdown-menu li a.active {
   color: #26d572;
+}
+.post-block-wrapper {
+  /*-- Post Block Body --*/
 }
 .post-block-wrapper .body {
   padding: 20px;
@@ -2449,21 +2559,6 @@ blockquote.blockquote.blockquote-bg p {
 }
 
 /*-- Post Block Carousel --*/
-.post-block-carousel {
-  /*-- Post Block Carousel Dark --*/
-  /*-- Life Style --*/
-  /*-- Travel --*/
-  /*-- Fashion --*/
-  /*-- Sports --*/
-  /*-- Gadgets --*/
-  /*-- Feature --*/
-  /*-- Politic --*/
-  /*-- Education --*/
-  /*-- Health --*/
-  /*-- Madical --*/
-  /*-- Video --*/
-  /*-- Businsee --*/
-}
 .post-block-carousel .slick-arrow {
   position: absolute;
   width: 28px;
@@ -2491,53 +2586,92 @@ blockquote.blockquote.blockquote-bg p {
   color: #00c8fa;
   border-color: #00c8fa;
 }
+.post-block-carousel {
+  /*-- Post Block Carousel Dark --*/
+}
 .post-block-carousel.dark .slick-arrow {
   border-color: #343434;
   color: #ffffff;
+}
+.post-block-carousel {
+  /*-- Life Style --*/
 }
 .post-block-carousel.life-style-post-carousel .slick-arrow:hover {
   color: #ffc61c;
   border-color: #ffc61c;
 }
+.post-block-carousel {
+  /*-- Travel --*/
+}
 .post-block-carousel.travel-post-carousel .slick-arrow:hover {
   color: #ffc61c;
   border-color: #ffc61c;
+}
+.post-block-carousel {
+  /*-- Fashion --*/
 }
 .post-block-carousel.fashion-post-carousel .slick-arrow:hover {
   color: #ff58c8;
   border-color: #ff58c8;
 }
+.post-block-carousel {
+  /*-- Sports --*/
+}
 .post-block-carousel.sports-post-carousel .slick-arrow:hover {
   color: #67bf35;
   border-color: #67bf35;
+}
+.post-block-carousel {
+  /*-- Gadgets --*/
 }
 .post-block-carousel.gadgets-post-carousel .slick-arrow:hover {
   color: #1f2024;
   border-color: #1f2024;
 }
+.post-block-carousel {
+  /*-- Feature --*/
+}
 .post-block-carousel.feature-post-carousel .slick-arrow:hover {
   color: #00c8fa;
   border-color: #00c8fa;
+}
+.post-block-carousel {
+  /*-- Politic --*/
 }
 .post-block-carousel.politic-post-carousel .slick-arrow:hover {
   color: #f05555;
   border-color: #f05555;
 }
+.post-block-carousel {
+  /*-- Education --*/
+}
 .post-block-carousel.education-post-carousel .slick-arrow:hover {
   color: #008bff;
   border-color: #008bff;
+}
+.post-block-carousel {
+  /*-- Health --*/
 }
 .post-block-carousel.health-post-carousel .slick-arrow:hover {
   color: #008bff;
   border-color: #008bff;
 }
+.post-block-carousel {
+  /*-- Madical --*/
+}
 .post-block-carousel.madical-post-carousel .slick-arrow:hover {
   color: #008bff;
   border-color: #008bff;
 }
+.post-block-carousel {
+  /*-- Video --*/
+}
 .post-block-carousel.video-post-carousel .slick-arrow:hover {
   color: #ec0000;
   border-color: #ec0000;
+}
+.post-block-carousel {
+  /*-- Businsee --*/
 }
 .post-block-carousel.businsee-post-carousel .slick-arrow:hover {
   color: #26d572;
@@ -2639,44 +2773,24 @@ blockquote.blockquote.blockquote-bg p {
 /*----------------------------------------*/
 .post {
   /*-- Post Wrap --*/
-  /*-- List Style Post --*/
-  /*-- Dark Post --*/
-  /*-- Post Separator --*/
-  /*-- Large Post --*/
-  /*-- Small Post --*/
-  /*-- Hero Post --*/
-  /*-- Overlay Post --*/
-  /*-- Hover Color For Post Category --*/
-  /*-- Travel --*/
-  /*-- Life Style --*/
-  /*-- Fashion --*/
-  /*-- Sports --*/
-  /*-- Gadgets --*/
-  /*-- Feature --*/
-  /*-- Politic --*/
-  /*-- Education --*/
-  /*-- Health --*/
-  /*-- Madical --*/
-  /*-- Video --*/
-  /*-- Businsee --*/
 }
 .post .post-wrap {
   position: relative;
   display: flex;
   flex-flow: column;
   /*-- Image --*/
-  /*-- Category --*/
-  /*-- Content --*/
 }
 .post .post-wrap .image {
   position: relative;
   flex: 0 0 auto;
   float: left;
   margin-bottom: 17px;
-  /*-- Video Popup Button --*/
 }
 .post .post-wrap .image img {
   width: 100%;
+}
+.post .post-wrap .image {
+  /*-- Video Popup Button --*/
 }
 .post .post-wrap .image .video-btn {
   width: 60px;
@@ -2708,6 +2822,9 @@ blockquote.blockquote.blockquote-bg p {
     line-height: 40px;
     font-size: 18px;
   }
+}
+.post .post-wrap {
+  /*-- Category --*/
 }
 .post .post-wrap .category {
   z-index: 5;
@@ -2759,14 +2876,14 @@ blockquote.blockquote.blockquote-bg p {
 .post .post-wrap .category.businsee {
   background-color: #26d572;
 }
+.post .post-wrap {
+  /*-- Content --*/
+}
 .post .post-wrap .content {
   z-index: 9;
   overflow: hidden;
   width: 100%;
   /*-- Title --*/
-  /*-- Meta Tags --*/
-  /*-- Description --*/
-  /*-- Read More Button --*/
 }
 .post .post-wrap .content .title {
   font-weight: 600;
@@ -2788,10 +2905,12 @@ blockquote.blockquote.blockquote-bg p {
 .post .post-wrap .content .title a:hover {
   color: #00c8fa;
 }
+.post .post-wrap .content {
+  /*-- Meta Tags --*/
+}
 .post .post-wrap .content .meta {
   margin-top: 10px;
   /*-- Meta List --*/
-  /*-- Meta Hover --*/
 }
 .post .post-wrap .content .meta .meta-item {
   margin-top: 5px;
@@ -2801,7 +2920,6 @@ blockquote.blockquote.blockquote-bg p {
   display: block;
   float: left;
   margin-right: 15px;
-  /*-- Icon --*/
 }
 @media only screen and (max-width: 479px) {
   .post .post-wrap .content .meta .meta-item {
@@ -2812,6 +2930,9 @@ blockquote.blockquote.blockquote-bg p {
 .post .post-wrap .content .meta .meta-item:last-child {
   margin-right: 0;
 }
+.post .post-wrap .content .meta .meta-item {
+  /*-- Icon --*/
+}
 .post .post-wrap .content .meta .meta-item i {
   display: block;
   float: left;
@@ -2820,12 +2941,21 @@ blockquote.blockquote.blockquote-bg p {
   line-height: 16px;
   padding-left: 1px;
 }
+.post .post-wrap .content .meta {
+  /*-- Meta Hover --*/
+}
 .post .post-wrap .content .meta a:hover {
   color: #00c8fa;
+}
+.post .post-wrap .content {
+  /*-- Description --*/
 }
 .post .post-wrap .content p {
   margin-bottom: 0;
   margin-top: 7px;
+}
+.post .post-wrap .content {
+  /*-- Read More Button --*/
 }
 .post .post-wrap .content .read-more {
   margin-top: 16px;
@@ -2834,6 +2964,9 @@ blockquote.blockquote.blockquote-bg p {
   color: #666666;
   text-decoration: underline;
   font-size: 13px;
+}
+.post {
+  /*-- List Style Post --*/
 }
 .post.post-default-list .post-wrap {
   flex-flow: row;
@@ -2873,6 +3006,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.post-default-list .post-wrap .content .meta {
   margin-top: 8px;
 }
+.post {
+  /*-- Dark Post --*/
+}
 .post.post-dark .post-wrap .content .title a {
   color: #ffffff;
 }
@@ -2897,6 +3033,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.post-dark.post-separator-border .post-wrap {
   border-color: #343434;
 }
+.post {
+  /*-- Post Separator --*/
+}
 .post.post-separator .post-wrap {
   margin-bottom: 20px;
 }
@@ -2914,6 +3053,9 @@ blockquote.blockquote.blockquote-bg p {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
+}
+.post {
+  /*-- Large Post --*/
 }
 .post.post-large .post-wrap .title {
   font-size: 30px;
@@ -2937,19 +3079,20 @@ blockquote.blockquote.blockquote-bg p {
     line-height: 18px;
   }
 }
-.post.post-small {
-  /*-- List Style Post --*/
+.post {
+  /*-- Small Post --*/
 }
 .post.post-small .post-wrap {
   /*-- Image --*/
-  /*-- Content --*/
 }
 .post.post-small .post-wrap .image {
   margin-bottom: 10px;
 }
+.post.post-small .post-wrap {
+  /*-- Content --*/
+}
 .post.post-small .post-wrap .content {
   /*-- Title --*/
-  /*-- Meta Tags --*/
 }
 .post.post-small .post-wrap .content .title {
   font-size: 14px;
@@ -2961,13 +3104,18 @@ blockquote.blockquote.blockquote-bg p {
     line-height: 16px;
   }
 }
+.post.post-small .post-wrap .content {
+  /*-- Meta Tags --*/
+}
 .post.post-small .post-wrap .content .meta {
   margin-top: 10px;
+}
+.post.post-small {
+  /*-- List Style Post --*/
 }
 .post.post-small.post-list .post-wrap {
   flex-flow: row;
   /*-- Image --*/
-  /*-- Content --*/
 }
 .post.post-small.post-list .post-wrap .image {
   flex: 0 0 124px;
@@ -2985,6 +3133,9 @@ blockquote.blockquote.blockquote-bg p {
     margin-right: 15px;
   }
 }
+.post.post-small.post-list .post-wrap {
+  /*-- Content --*/
+}
 .post.post-small.post-list .post-wrap .content {
   width: auto;
 }
@@ -2998,17 +3149,22 @@ blockquote.blockquote.blockquote-bg p {
   display: flex;
   margin: 0;
   /*-- Image --*/
-  /*-- Content --*/
 }
 .post.post-small.post-list.popular-post .post-wrap .image {
   border-radius: 5px;
   overflow: hidden;
+}
+.post.post-small.post-list.popular-post .post-wrap {
+  /*-- Content --*/
 }
 .post.post-small.post-list.popular-post .post-wrap .content {
   align-self: center;
 }
 .post.post-small.post-list.popular-post .post-wrap .content .read-more {
   margin-top: 8px;
+}
+.post {
+  /*-- Hero Post --*/
 }
 .post.hero-post {
   padding-bottom: 1px;
@@ -3019,23 +3175,11 @@ blockquote.blockquote.blockquote-bg p {
   border: none;
   margin: 0;
 }
-.post.post-overlay {
-  /*-- Large Post --*/
-  /*-- Small Post --*/
-  /*-- Overlay Post Separator --*/
-  /*-- Overlay Gradient --*/
-  /*-- One --*/
-  /*-- Two --*/
-  /*-- Three --*/
-  /*-- Four --*/
-  /*-- Five --*/
-  /*-- Six --*/
+.post {
+  /*-- Overlay Post --*/
 }
 .post.post-overlay .post-wrap {
   /*-- Image --*/
-  /*-- Video Popup --*/
-  /*-- Category --*/
-  /*-- Content --*/
 }
 .post.post-overlay .post-wrap .image {
   margin-bottom: 0;
@@ -3050,6 +3194,9 @@ blockquote.blockquote.blockquote-bg p {
   content: "";
   z-index: 2;
   opacity: 0.3;
+}
+.post.post-overlay .post-wrap {
+  /*-- Video Popup --*/
 }
 .post.post-overlay .post-wrap .video-btn {
   width: 50px;
@@ -3070,10 +3217,16 @@ blockquote.blockquote.blockquote-bg p {
   line-height: 48px;
   font-size: 20px;
 }
+.post.post-overlay .post-wrap {
+  /*-- Category --*/
+}
 .post.post-overlay .post-wrap .category {
   position: absolute;
   left: 0;
   top: 0;
+}
+.post.post-overlay .post-wrap {
+  /*-- Content --*/
 }
 .post.post-overlay .post-wrap .content {
   position: absolute;
@@ -3082,7 +3235,6 @@ blockquote.blockquote.blockquote-bg p {
   right: 20px;
   width: auto;
   /*-- Title --*/
-  /*-- Meta Tags --*/
 }
 .post.post-overlay .post-wrap .content .title a {
   color: #ffffff;
@@ -3091,12 +3243,18 @@ blockquote.blockquote.blockquote-bg p {
   text-decoration: underline;
   color: #ffffff;
 }
+.post.post-overlay .post-wrap .content {
+  /*-- Meta Tags --*/
+}
 .post.post-overlay .post-wrap .content .meta .meta-item {
   color: #ffffff;
 }
 .post.post-overlay .post-wrap .content .meta a:hover {
   text-decoration: underline;
   color: #ffffff;
+}
+.post.post-overlay {
+  /*-- Large Post --*/
 }
 .post.post-overlay.post-large .content {
   bottom: 30px;
@@ -3110,10 +3268,16 @@ blockquote.blockquote.blockquote-bg p {
     right: 20px;
   }
 }
+.post.post-overlay {
+  /*-- Small Post --*/
+}
 .post.post-overlay.post-small .content {
   bottom: 10px;
   left: 10px;
   right: 10px;
+}
+.post.post-overlay {
+  /*-- Overlay Post Separator --*/
 }
 .post.post-overlay.post-separator-border .content {
   bottom: 40px;
@@ -3138,35 +3302,58 @@ blockquote.blockquote.blockquote-bg p {
 .post.post-overlay.post-separator-border.post-small .content:last-child .content {
   bottom: 10px;
 }
+.post.post-overlay {
+  /*-- Overlay Gradient --*/
+  /*-- One --*/
+}
 .post.post-overlay.gradient-overlay-1 .image::before {
   background: rgba(133, 188, 66, 0);
   background: linear-gradient(to bottom, rgba(133, 188, 66, 0) 0%, rgba(133, 188, 66, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%);
   opacity: 1;
+}
+.post.post-overlay {
+  /*-- Two --*/
 }
 .post.post-overlay.gradient-overlay-2 .image::before {
   background: #00dbde;
   background: linear-gradient(to bottom, #00dbde 0%, #fc00ff 100%);
   opacity: 0.8;
 }
+.post.post-overlay {
+  /*-- Three --*/
+}
 .post.post-overlay.gradient-overlay-3 .image::before {
   background: #ff4e50;
   background: linear-gradient(to bottom, #ff4e50 0%, #f9d423 100%);
   opacity: 0.8;
+}
+.post.post-overlay {
+  /*-- Four --*/
 }
 .post.post-overlay.gradient-overlay-4 .image::before {
   background: #0abfbc;
   background: linear-gradient(to bottom, #0abfbc 0%, #fc354c 100%);
   opacity: 0.8;
 }
+.post.post-overlay {
+  /*-- Five --*/
+}
 .post.post-overlay.gradient-overlay-5 .image::before {
   background: #1d2671;
   background: linear-gradient(to bottom, #1d2671 0%, #c33764 100%);
   opacity: 0.8;
 }
+.post.post-overlay {
+  /*-- Six --*/
+}
 .post.post-overlay.gradient-overlay-6 .image::before {
   background: #a43931;
   background: linear-gradient(to bottom, #a43931 0%, #67bf35 100%);
   opacity: 0.8;
+}
+.post {
+  /*-- Hover Color For Post Category --*/
+  /*-- Travel --*/
 }
 .post.travel-post .image .video-popup {
   color: #ffc61c;
@@ -3180,6 +3367,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.travel-post .content .read-more:hover {
   color: #ffc61c;
 }
+.post {
+  /*-- Life Style --*/
+}
 .post.life-style-post .image .video-popup {
   color: #ffc61c;
 }
@@ -3191,6 +3381,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .post.life-style-post .content .read-more:hover {
   color: #ffc61c;
+}
+.post {
+  /*-- Fashion --*/
 }
 .post.fashion-post .image .video-popup {
   color: #ff58c8;
@@ -3204,6 +3397,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.fashion-post .content .read-more:hover {
   color: #ff58c8;
 }
+.post {
+  /*-- Sports --*/
+}
 .post.sports-post .image .video-popup {
   color: #67bf35;
 }
@@ -3215,6 +3411,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .post.sports-post .content .read-more:hover {
   color: #67bf35;
+}
+.post {
+  /*-- Gadgets --*/
 }
 .post.gadgets-post .image .video-popup {
   color: #1f2024;
@@ -3228,6 +3427,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.gadgets-post .content .read-more:hover {
   color: #1f2024;
 }
+.post {
+  /*-- Feature --*/
+}
 .post.feature-post .image .video-popup {
   color: #00c8fa;
 }
@@ -3239,6 +3441,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .post.feature-post .content .read-more:hover {
   color: #00c8fa;
+}
+.post {
+  /*-- Politic --*/
 }
 .post.politic-post .image .video-popup {
   color: #f05555;
@@ -3252,6 +3457,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.politic-post .content .read-more:hover {
   color: #f05555;
 }
+.post {
+  /*-- Education --*/
+}
 .post.education-post .image .video-popup {
   color: #008bff;
 }
@@ -3263,6 +3471,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .post.education-post .content .read-more:hover {
   color: #008bff;
+}
+.post {
+  /*-- Health --*/
 }
 .post.health-post .image .video-popup {
   color: #008bff;
@@ -3276,6 +3487,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.health-post .content .read-more:hover {
   color: #008bff;
 }
+.post {
+  /*-- Madical --*/
+}
 .post.madical-post .image .video-popup {
   color: #008bff;
 }
@@ -3288,6 +3502,9 @@ blockquote.blockquote.blockquote-bg p {
 .post.madical-post .content .read-more:hover {
   color: #008bff;
 }
+.post {
+  /*-- Video --*/
+}
 .post.video-post .image .video-popup {
   color: #ec0000;
 }
@@ -3299,6 +3516,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .post.video-post .content .read-more:hover {
   color: #ec0000;
+}
+.post {
+  /*-- Businsee --*/
 }
 .post.businsee-post .image .video-popup {
   color: #26d572;
@@ -3322,13 +3542,14 @@ blockquote.blockquote.blockquote-bg p {
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
-  /*-- Meta --*/
-  /*-- Title --*/
 }
 @media only screen and (max-width: 767px) {
   .post-header {
     padding-bottom: 40px;
   }
+}
+.post-header {
+  /*-- Meta --*/
 }
 .post-header .meta {
   display: block;
@@ -3344,7 +3565,6 @@ blockquote.blockquote.blockquote-bg p {
   line-height: 30px;
   font-family: "Open Sans", sans-serif;
   margin-left: 20px;
-  /*-- Category --*/
 }
 @media only screen and (max-width: 767px) {
   .post-header .meta .meta-item {
@@ -3369,6 +3589,9 @@ blockquote.blockquote.blockquote-bg p {
   border: 1px solid #e4e4e4;
   border-radius: 50%;
   margin-right: 10px;
+}
+.post-header .meta .meta-item {
+  /*-- Category --*/
 }
 .post-header .meta .meta-item.category {
   font-size: 12px;
@@ -3439,6 +3662,9 @@ blockquote.blockquote.blockquote-bg p {
 .post-header .meta a:hover {
   color: #00c8fa;
 }
+.post-header {
+  /*-- Title --*/
+}
 .post-header .title {
   color: #ffffff;
   font-size: 26px;
@@ -3456,10 +3682,6 @@ blockquote.blockquote.blockquote-bg p {
 /*-- Single Post --*/
 .single-post .post-wrap {
   /*-- Content --*/
-  /*-- Tags & Social --*/
-}
-.single-post .post-wrap .content {
-  /*-- Blockquote --*/
 }
 .single-post .post-wrap .content p {
   margin-bottom: 30px;
@@ -3506,6 +3728,9 @@ blockquote.blockquote.blockquote-bg p {
   margin-bottom: 30px;
   max-width: 100%;
 }
+.single-post .post-wrap .content {
+  /*-- Blockquote --*/
+}
 .single-post .post-wrap .content .blockquote {
   margin-bottom: 30px;
 }
@@ -3517,13 +3742,15 @@ blockquote.blockquote.blockquote-bg p {
 .single-post .post-wrap .content .blockquote p {
   margin: 0;
 }
+.single-post .post-wrap {
+  /*-- Tags & Social --*/
+}
 .single-post .post-wrap .tags-social {
   width: 100%;
   padding-top: 20px;
   border-top: 1px solid #f1f1f1;
   margin-top: 20px;
   /*-- Tags --*/
-  /*-- Post Social --*/
 }
 .single-post .post-wrap .tags-social .tags i {
   width: 36px;
@@ -3539,6 +3766,9 @@ blockquote.blockquote.blockquote-bg p {
 .single-post .post-wrap .tags-social .tags a {
   line-height: 24px;
   margin: 6px 0;
+}
+.single-post .post-wrap .tags-social {
+  /*-- Post Social --*/
 }
 @media only screen and (max-width: 767px) {
   .single-post .post-wrap .tags-social .post-social {
@@ -3718,20 +3948,18 @@ blockquote.blockquote.blockquote-bg p {
 }
 .single-blog .blog-wrap {
   /*-- Meta --*/
-  /*-- Title --*/
-  /*-- Image --*/
-  /*-- Content --*/
-  /*-- Tags & Social --*/
 }
 .single-blog .blog-wrap .meta {
   display: block;
   margin-bottom: 8px;
-  /*-- Meta Item --*/
 }
 @media only screen and (max-width: 767px) {
   .single-blog .blog-wrap .meta {
     margin-bottom: 0;
   }
+}
+.single-blog .blog-wrap .meta {
+  /*-- Meta Item --*/
 }
 .single-blog .blog-wrap .meta .meta-item {
   display: block;
@@ -3741,7 +3969,6 @@ blockquote.blockquote.blockquote-bg p {
   line-height: 30px;
   font-family: "Open Sans", sans-serif;
   margin-left: 20px;
-  /*-- Category --*/
 }
 @media only screen and (max-width: 767px) {
   .single-blog .blog-wrap .meta .meta-item {
@@ -3766,6 +3993,9 @@ blockquote.blockquote.blockquote-bg p {
   border: 1px solid #e4e4e4;
   border-radius: 50%;
   margin-right: 10px;
+}
+.single-blog .blog-wrap .meta .meta-item {
+  /*-- Category --*/
 }
 .single-blog .blog-wrap .meta .meta-item.category {
   font-size: 12px;
@@ -3836,6 +4066,9 @@ blockquote.blockquote.blockquote-bg p {
 .single-blog .blog-wrap .meta a:hover {
   color: #00c8fa;
 }
+.single-blog .blog-wrap {
+  /*-- Title --*/
+}
 .single-blog .blog-wrap .title {
   font-size: 26px;
   font-weight: 600;
@@ -3854,15 +4087,17 @@ blockquote.blockquote.blockquote-bg p {
 .single-blog .blog-wrap .title a:hover {
   color: #00c8fa;
 }
+.single-blog .blog-wrap {
+  /*-- Image --*/
+}
 .single-blog .blog-wrap .image {
   margin-bottom: 15px;
 }
 .single-blog .blog-wrap .image img {
   width: 100%;
 }
-.single-blog .blog-wrap .content {
-  /*-- Blockquote --*/
-  /*-- Read More Button --*/
+.single-blog .blog-wrap {
+  /*-- Content --*/
 }
 .single-blog .blog-wrap .content p {
   margin-bottom: 30px;
@@ -3908,6 +4143,9 @@ blockquote.blockquote.blockquote-bg p {
   margin-bottom: 30px;
   max-width: 100%;
 }
+.single-blog .blog-wrap .content {
+  /*-- Blockquote --*/
+}
 .single-blog .blog-wrap .content .blockquote {
   margin-bottom: 30px;
 }
@@ -3919,6 +4157,9 @@ blockquote.blockquote.blockquote-bg p {
 .single-blog .blog-wrap .content .blockquote p {
   margin: 0;
 }
+.single-blog .blog-wrap .content {
+  /*-- Read More Button --*/
+}
 .single-blog .blog-wrap .content .read-more {
   text-transform: capitalize;
   font-weight: 600;
@@ -3929,13 +4170,15 @@ blockquote.blockquote.blockquote-bg p {
 .single-blog .blog-wrap .content .read-more:hover {
   color: #00c8fa;
 }
+.single-blog .blog-wrap {
+  /*-- Tags & Social --*/
+}
 .single-blog .blog-wrap .tags-social {
   width: 100%;
   padding-top: 20px;
   border-top: 1px solid #f1f1f1;
   margin-top: 20px;
   /*-- Tags --*/
-  /*-- Post Social --*/
 }
 .single-blog .blog-wrap .tags-social .tags i {
   width: 36px;
@@ -3951,6 +4194,9 @@ blockquote.blockquote.blockquote-bg p {
 .single-blog .blog-wrap .tags-social .tags a {
   line-height: 24px;
   margin: 6px 0;
+}
+.single-blog .blog-wrap .tags-social {
+  /*-- Post Social --*/
 }
 @media only screen and (max-width: 767px) {
   .single-blog .blog-wrap .tags-social .blog-social {
@@ -4137,7 +4383,6 @@ blockquote.blockquote.blockquote-bg p {
   float: left;
   width: 100%;
   /*-- Head --*/
-  /*-- Body --*/
 }
 .sidebar-block-wrapper .head {
   float: left;
@@ -4145,19 +4390,6 @@ blockquote.blockquote.blockquote-bg p {
   padding: 15px 20px;
   position: relative;
   border-bottom: 1px solid #f1f1f1;
-  /*-- Title --*/
-  /*-- Feature --*/
-  /*-- Gadgets --*/
-  /*-- Life Style --*/
-  /*-- Travel --*/
-  /*-- Fashion --*/
-  /*-- Sports --*/
-  /*-- Politic --*/
-  /*-- Education --*/
-  /*-- Health --*/
-  /*-- Madical --*/
-  /*-- Video --*/
-  /*-- Businsee --*/
 }
 .sidebar-block-wrapper .head::before, .sidebar-block-wrapper .head::after {
   position: absolute;
@@ -4174,6 +4406,9 @@ blockquote.blockquote.blockquote-bg p {
 .sidebar-block-wrapper .head::after {
   right: -1px;
 }
+.sidebar-block-wrapper .head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head .title {
   margin: 0;
   line-height: 24px;
@@ -4186,113 +4421,152 @@ blockquote.blockquote.blockquote-bg p {
     font-size: 14px;
   }
 }
-.sidebar-block-wrapper .head.feature-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Feature --*/
 }
 .sidebar-block-wrapper .head.feature-head::before, .sidebar-block-wrapper .head.feature-head::after {
   background-color: #00c8fa;
 }
+.sidebar-block-wrapper .head.feature-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.feature-head .title {
   color: #00c8fa;
 }
-.sidebar-block-wrapper .head.gadgets-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Gadgets --*/
 }
 .sidebar-block-wrapper .head.gadgets-head::before, .sidebar-block-wrapper .head.gadgets-head::after {
   background-color: #00c8fa;
 }
+.sidebar-block-wrapper .head.gadgets-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.gadgets-head .title {
   color: #00c8fa;
 }
-.sidebar-block-wrapper .head.life-style-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Life Style --*/
 }
 .sidebar-block-wrapper .head.life-style-head::before, .sidebar-block-wrapper .head.life-style-head::after {
   background-color: #ffc61c;
 }
+.sidebar-block-wrapper .head.life-style-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.life-style-head .title {
   color: #ffc61c;
 }
-.sidebar-block-wrapper .head.travel-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Travel --*/
 }
 .sidebar-block-wrapper .head.travel-head::before, .sidebar-block-wrapper .head.travel-head::after {
   background-color: #ffc61c;
 }
+.sidebar-block-wrapper .head.travel-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.travel-head .title {
   color: #ffc61c;
 }
-.sidebar-block-wrapper .head.fashion-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Fashion --*/
 }
 .sidebar-block-wrapper .head.fashion-head::before, .sidebar-block-wrapper .head.fashion-head::after {
   background-color: #ff58c8;
 }
+.sidebar-block-wrapper .head.fashion-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.fashion-head .title {
   color: #ff58c8;
 }
-.sidebar-block-wrapper .head.sports-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Sports --*/
 }
 .sidebar-block-wrapper .head.sports-head::before, .sidebar-block-wrapper .head.sports-head::after {
   background-color: #67bf35;
 }
+.sidebar-block-wrapper .head.sports-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.sports-head .title {
   color: #67bf35;
 }
-.sidebar-block-wrapper .head.politic-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Politic --*/
 }
 .sidebar-block-wrapper .head.politic-head::before, .sidebar-block-wrapper .head.politic-head::after {
   background-color: #f05555;
 }
+.sidebar-block-wrapper .head.politic-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.politic-head .title {
   color: #f05555;
 }
-.sidebar-block-wrapper .head.education-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Education --*/
 }
 .sidebar-block-wrapper .head.education-head::before, .sidebar-block-wrapper .head.education-head::after {
   background-color: #008bff;
 }
+.sidebar-block-wrapper .head.education-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.education-head .title {
   color: #008bff;
 }
-.sidebar-block-wrapper .head.health-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Health --*/
 }
 .sidebar-block-wrapper .head.health-head::before, .sidebar-block-wrapper .head.health-head::after {
   background-color: #008bff;
 }
+.sidebar-block-wrapper .head.health-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.health-head .title {
   color: #008bff;
 }
-.sidebar-block-wrapper .head.madical-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Madical --*/
 }
 .sidebar-block-wrapper .head.madical-head::before, .sidebar-block-wrapper .head.madical-head::after {
   background-color: #008bff;
 }
+.sidebar-block-wrapper .head.madical-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.madical-head .title {
   color: #008bff;
 }
-.sidebar-block-wrapper .head.video-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Video --*/
 }
 .sidebar-block-wrapper .head.video-head::before, .sidebar-block-wrapper .head.video-head::after {
   background-color: #ec0000;
 }
+.sidebar-block-wrapper .head.video-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.video-head .title {
   color: #ec0000;
 }
-.sidebar-block-wrapper .head.politic-head {
-  /*-- Title --*/
+.sidebar-block-wrapper .head {
+  /*-- Businsee --*/
 }
 .sidebar-block-wrapper .head.politic-head::before, .sidebar-block-wrapper .head.politic-head::after {
   background-color: #26d572;
 }
+.sidebar-block-wrapper .head.politic-head {
+  /*-- Title --*/
+}
 .sidebar-block-wrapper .head.politic-head .title {
   color: #26d572;
+}
+.sidebar-block-wrapper {
+  /*-- Body --*/
 }
 .sidebar-block-wrapper .body {
   padding: 20px;
@@ -4384,7 +4658,6 @@ blockquote.blockquote.blockquote-bg p {
   margin: -15px -20px;
   z-index: 2;
   position: relative;
-  /*-- Active Color For Category --*/
 }
 .sidebar-tab-list a {
   width: 50%;
@@ -4443,6 +4716,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .sidebar-tab-list a.active::before, .sidebar-tab-list a.active::after {
   background-color: #ffffff !important;
+}
+.sidebar-tab-list {
+  /*-- Active Color For Category --*/
 }
 .sidebar-tab-list.travel-sidebar-tab-list a::before, .sidebar-tab-list.travel-sidebar-tab-list a::after {
   background-color: #ffc61c;
@@ -4518,9 +4794,6 @@ blockquote.blockquote.blockquote-bg p {
 }
 
 /*-- Sidebar Category --*/
-.sidebar-category {
-  /*-- Active Color For Category --*/
-}
 .sidebar-category li {
   margin-bottom: 10px;
   display: block;
@@ -4546,6 +4819,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .sidebar-category li:last-child {
   margin-bottom: 0;
+}
+.sidebar-category {
+  /*-- Active Color For Category --*/
 }
 .sidebar-category.travel-category li a:hover {
   color: #ffc61c;
@@ -4591,7 +4867,6 @@ blockquote.blockquote.blockquote-bg p {
   text-align: center;
   background-color: #f6f6f6;
   padding: 47px 30px;
-  /*-- Sidebar Subscribe Form --*/
 }
 .sidebar-subscribe::before {
   content: url("img/shape/mail-1.png");
@@ -4614,6 +4889,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .sidebar-subscribe h4 span {
   color: #f05555;
+}
+.sidebar-subscribe {
+  /*-- Sidebar Subscribe Form --*/
 }
 .sidebar-subscribe .subscribe-form input[type=email] {
   width: 265px;
@@ -4757,10 +5035,6 @@ blockquote.blockquote.blockquote-bg p {
 /*-- Footer Widget --*/
 .footer-widget {
   padding: 0 35px;
-  /*-- Title --*/
-  /*-- Content --*/
-  /*-- Footer Widget Post --*/
-  /*-- Footer Tweet --*/
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .footer-widget {
@@ -4774,6 +5048,9 @@ blockquote.blockquote.blockquote-bg p {
     padding-right: 10px;
   }
 }
+.footer-widget {
+  /*-- Title --*/
+}
 .footer-widget .widget-title {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
@@ -4784,14 +5061,16 @@ blockquote.blockquote.blockquote-bg p {
   border-left: 4px solid #00c8fa;
   margin-bottom: 30px;
 }
-.footer-widget .content {
-  /*-- Footer Contact --*/
-  /*-- Footer Social --*/
+.footer-widget {
+  /*-- Content --*/
 }
 .footer-widget .content p {
   font-size: 13px;
   line-height: 20px;
   color: #cccccc;
+}
+.footer-widget .content {
+  /*-- Footer Contact --*/
 }
 .footer-widget .content .footer-contact {
   padding-left: 0;
@@ -4812,6 +5091,9 @@ blockquote.blockquote.blockquote-bg p {
   text-align: left;
   margin-right: 10px;
   font-size: 16px;
+}
+.footer-widget .content {
+  /*-- Footer Social --*/
 }
 .footer-widget .content .footer-social a {
   width: 36px;
@@ -4837,22 +5119,26 @@ blockquote.blockquote.blockquote-bg p {
 .footer-widget .content .footer-social a.google-plus {
   background-color: #eb5e4c;
 }
+.footer-widget {
+  /*-- Footer Widget Post --*/
+}
 .footer-widget .footer-widget-post {
   overflow: hidden;
   border-bottom: 1px solid #282828;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  /*-- Post Wrap --*/
 }
 .footer-widget .footer-widget-post:last-child {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
 }
+.footer-widget .footer-widget-post {
+  /*-- Post Wrap --*/
+}
 .footer-widget .footer-widget-post .post-wrap {
   overflow: hidden;
   /*-- Image --*/
-  /*-- Content --*/
 }
 .footer-widget .footer-widget-post .post-wrap .image {
   width: 104px;
@@ -4867,6 +5153,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .footer-widget .footer-widget-post .post-wrap .image img {
   width: 100%;
+}
+.footer-widget .footer-widget-post .post-wrap {
+  /*-- Content --*/
 }
 .footer-widget .footer-widget-post .post-wrap .content {
   overflow: hidden;
@@ -4890,10 +5179,12 @@ blockquote.blockquote.blockquote-bg p {
   display: block;
   float: left;
   margin-right: 15px;
-  /*-- Icon --*/
 }
 .footer-widget .footer-widget-post .post-wrap .content .meta .meta-item:last-child {
   margin-right: 0;
+}
+.footer-widget .footer-widget-post .post-wrap .content .meta .meta-item {
+  /*-- Icon --*/
 }
 .footer-widget .footer-widget-post .post-wrap .content .meta .meta-item i {
   display: block;
@@ -4903,13 +5194,14 @@ blockquote.blockquote.blockquote-bg p {
   line-height: 16px;
   padding-left: 1px;
 }
+.footer-widget {
+  /*-- Footer Tweet --*/
+}
 .footer-widget .single-tweet {
   border-bottom: 1px solid #282828;
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  /*-- Image --*/
-  /*-- Content --*/
 }
 .footer-widget .single-tweet:last-child {
   margin-bottom: 0;
@@ -4926,6 +5218,9 @@ blockquote.blockquote.blockquote-bg p {
   font-size: 70px;
   line-height: 50px;
 }
+.footer-widget .single-tweet {
+  /*-- Image --*/
+}
 .footer-widget .single-tweet .image {
   width: 40px;
   margin-right: 10px;
@@ -4934,11 +5229,11 @@ blockquote.blockquote.blockquote-bg p {
 .footer-widget .single-tweet .image img {
   width: 100%;
 }
+.footer-widget .single-tweet {
+  /*-- Content --*/
+}
 .footer-widget .single-tweet .content {
   /*-- Head --*/
-  /*-- Tags --*/
-  /*-- LInks --*/
-  /*-- Meta --*/
 }
 .footer-widget .single-tweet .content .head {
   overflow: hidden;
@@ -4963,6 +5258,9 @@ blockquote.blockquote.blockquote-bg p {
   line-height: 14px;
   color: #cccccc;
 }
+.footer-widget .single-tweet .content {
+  /*-- Tags --*/
+}
 .footer-widget .single-tweet .content .tags a {
   font-size: 13px;
   line-height: 20px;
@@ -4971,6 +5269,9 @@ blockquote.blockquote.blockquote-bg p {
 .footer-widget .single-tweet .content .tags a:hover {
   color: #00c8fa;
 }
+.footer-widget .single-tweet .content {
+  /*-- LInks --*/
+}
 .footer-widget .single-tweet .content .links a {
   font-size: 13px;
   line-height: 20px;
@@ -4978,6 +5279,9 @@ blockquote.blockquote.blockquote-bg p {
 }
 .footer-widget .single-tweet .content .links a:hover {
   text-decoration: underline;
+}
+.footer-widget .single-tweet .content {
+  /*-- Meta --*/
 }
 .footer-widget .single-tweet .content .meta {
   margin-top: 10px;

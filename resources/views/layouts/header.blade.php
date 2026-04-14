@@ -108,14 +108,43 @@
                 <div class="topbar-buttons">
 
                     @php
-                        $id = Session::get('id');
+                        $sessionId = Session::get('id');
+                        $headerStudent = $sessionId ? App\Student::where('id', $sessionId)->first() : null;
                     @endphp
-                    @if ($id)
-                        <button type="button" class="register-btn">Register</button>
-                        <a type="button" href={{ url('student/login') }} class="btn login-btn">Log In</a>
+
+                    @if ($headerStudent)
+                        {{-- Logged-in: avatar dropdown --}}
+                        <div class="header-user-dropdown">
+                            <button class="header-user-btn" id="headerUserBtn" type="button">
+                                <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}" class="header-user-avatar">
+                                <span class="header-user-name">{{ \Illuminate\Support\Str::words($headerStudent->name, 1, '') }}</span>
+                                <i class="fa-regular fa-chevron-down header-user-chevron"></i>
+                            </button>
+                            <div class="header-user-menu" id="headerUserMenu">
+                                <div class="header-user-info">
+                                    <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}" class="header-user-menu-avatar">
+                                    <div>
+                                        <p class="header-user-menu-name">{{ $headerStudent->name }}</p>
+                                        <p class="header-user-menu-email">{{ $headerStudent->email }}</p>
+                                    </div>
+                                </div>
+                                <div class="header-user-menu-divider"></div>
+                                <a href="{{ url('/student/profile/' . $headerStudent->id) }}" class="header-user-menu-item">
+                                    <i class="fa-regular fa-gauge-high"></i> Dashboard
+                                </a>
+                                <a href="{{ url('/student/profile/' . $headerStudent->id) }}#editPanel" class="header-user-menu-item">
+                                    <i class="fa-regular fa-user-pen"></i> Edit Profile
+                                </a>
+                                <div class="header-user-menu-divider"></div>
+                                <a href="{{ url('/student/logout') }}" class="header-user-menu-item header-user-logout">
+                                    <i class="fa-regular fa-arrow-right-from-bracket"></i> Logout
+                                </a>
+                            </div>
+                        </div>
                     @else
-                        <a href="/profile/{{ $id }}">Dashboard</a>
-                        <a  href="{{ route('logout') }}">Logout</a>
+                        {{-- Guest: register + login --}}
+                        <a href="{{ route('student.register') }}" class="register-btn">Register</a>
+                        <a href="{{ url('student/login') }}" class="btn login-btn">Log In</a>
                     @endif
                 </div>
 
@@ -234,14 +263,52 @@
             </li>
         @endforeach
     </ul>
-    @php
-        $id = Session::get('id');
-    @endphp
-    @if ($id)
-        <button type="button" class="register-btn">Register</button>
-        <a type="button" href={{ url('student/login') }} class="btn login-btn">Log In</a>
-    @else
-        <a href="/profile/{{ $id }}">Dashboard</a>
-    @endif
+    {{-- Mobile auth area --}}
+    <div class="sidebar-auth">
+        @if ($headerStudent ?? null)
+            <div class="sidebar-user-info">
+                <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}" class="sidebar-user-avatar">
+                <div>
+                    <p class="sidebar-user-name">{{ $headerStudent->name }}</p>
+                    <p class="sidebar-user-email">{{ $headerStudent->email }}</p>
+                </div>
+            </div>
+            <a href="{{ url('/student/profile/' . $headerStudent->id) }}" class="sidebar-auth-btn sidebar-dashboard-btn">
+                <i class="fa-regular fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="{{ url('/student/logout') }}" class="sidebar-auth-btn sidebar-logout-btn">
+                <i class="fa-regular fa-arrow-right-from-bracket"></i> Logout
+            </a>
+        @else
+            <a href="{{ route('student.register') }}" class="sidebar-auth-btn sidebar-register-btn">Register</a>
+            <a href="{{ url('student/login') }}" class="sidebar-auth-btn sidebar-login-btn">Log In</a>
+        @endif
+    </div>
 </div>
 <!-- Sidebar area end here -->
+
+<script>
+(function () {
+    // ── Header user dropdown toggle
+    var dropBtn  = document.getElementById('headerUserBtn');
+    var dropWrap = dropBtn ? dropBtn.closest('.header-user-dropdown') : null;
+
+    if (dropBtn && dropWrap) {
+        dropBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            dropWrap.classList.toggle('open');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', function () {
+            dropWrap.classList.remove('open');
+        });
+
+        // Prevent menu click from closing dropdown
+        var menu = document.getElementById('headerUserMenu');
+        if (menu) {
+            menu.addEventListener('click', function (e) { e.stopPropagation(); });
+        }
+    }
+})();
+</script>

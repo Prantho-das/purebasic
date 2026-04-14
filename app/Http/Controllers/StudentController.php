@@ -367,8 +367,7 @@ if ($validator->fails()) {
 
         $courses = BatchStudent::where('student_id', $id)->with('course')->latest('updated_at')->get()->chunk(3);
 
-        //        return view('website.profile', compact('profile', 'courses'));
-        return view('user.dashboard', compact('profile', 'courses'));
+        return view('user.student_profile', compact('profile', 'courses'));
     }
 
     public function profileUp(Request $request)
@@ -381,6 +380,7 @@ if ($validator->fails()) {
         $data['gender'] = $request->gender;
         $data['birth'] = $request->birth;
         $data['position'] = $request->position;
+        $data['qualification'] = $request->qualification;
         $data['BMDC'] = $request->BMDC;
         $data['batch_id'] = $request->group;
         $data['medical'] = $request->medical;
@@ -389,8 +389,10 @@ if ($validator->fails()) {
         $data['levell'] = $request->levell;
         $data['fb'] = $request->fb;
         $data['address'] = $request->address;
+        $data['country'] = $request->country;
+        $data['whatsapp_number'] = $request->whatsapp_number;
 
-        if ($request->has('photo')) {
+        if ($request->hasFile('photo')) {
             $image = $request->file('photo');
 
             $imageName = 'lc_image' . str_random() . '.' . $image->getClientOriginalExtension();
