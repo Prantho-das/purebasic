@@ -626,6 +626,20 @@ h6 {
 }
 .sidebar-dashboard-btn:hover { background: linear-gradient(135deg, #0196c0, #011c1a); color: #fff; text-decoration: none; }
 
+.sidebar-lecture-btn {
+  background: rgba(2, 179, 228, 0.08);
+  color: #0196c0;
+  border: 1px solid rgba(2, 179, 228, 0.25);
+}
+.sidebar-lecture-btn:hover { background: #02b3e4; color: #fff; text-decoration: none; }
+
+.sidebar-exam-btn {
+  background: rgba(26, 171, 97, 0.08);
+  color: #1aab61;
+  border: 1px solid rgba(26, 171, 97, 0.25);
+}
+.sidebar-exam-btn:hover { background: #1aab61; color: #fff; text-decoration: none; }
+
 .sidebar-logout-btn {
   background: rgba(211,47,47,0.08);
   color: #d32f2f;

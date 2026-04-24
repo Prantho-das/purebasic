@@ -9,12 +9,12 @@
 
 
                     @php
-                    $logo = get_business_setting('site_logo');
+                        $logo = get_business_setting('site_logo');
                     @endphp
                     @if ($logo)
-                    <img src="{{ asset('storage/' . $logo) }}" alt="logo">
+                        <img src="{{ asset('storage/' . $logo) }}" alt="logo">
                     @else
-                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo">
+                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo">
                     @endif
                     {{-- <img src="{{ asset('assets/images/logo.svg') }}" alt="logo"> --}}
                     {{-- @php
@@ -116,27 +116,41 @@
                         {{-- Logged-in: avatar dropdown --}}
                         <div class="header-user-dropdown">
                             <button class="header-user-btn" id="headerUserBtn" type="button">
-                                <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}" class="header-user-avatar">
-                                <span class="header-user-name">{{ \Illuminate\Support\Str::words($headerStudent->name, 1, '') }}</span>
+                                <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}"
+                                    class="header-user-avatar">
+                                <span
+                                    class="header-user-name">{{ \Illuminate\Support\Str::words($headerStudent->name, 1, '') }}</span>
                                 <i class="fa-regular fa-chevron-down header-user-chevron"></i>
                             </button>
                             <div class="header-user-menu" id="headerUserMenu">
                                 <div class="header-user-info">
-                                    <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}" class="header-user-menu-avatar">
+                                    <img src="{{ $headerStudent->photo }}" alt="{{ $headerStudent->name }}"
+                                        class="header-user-menu-avatar">
                                     <div>
                                         <p class="header-user-menu-name">{{ $headerStudent->name }}</p>
                                         <p class="header-user-menu-email">{{ $headerStudent->email }}</p>
                                     </div>
                                 </div>
                                 <div class="header-user-menu-divider"></div>
-                                <a href="{{ url('/student/profile/' . $headerStudent->id) }}" class="header-user-menu-item">
+                                <a href="{{ url('/student/profile/' . $headerStudent->id) }}"
+                                    class="header-user-menu-item">
                                     <i class="fa-regular fa-gauge-high"></i> Dashboard
                                 </a>
-                                <a href="{{ url('/student/profile/' . $headerStudent->id) }}#editPanel" class="header-user-menu-item">
+                                <a href="{{ url('/student/profile/' . $headerStudent->id) }}#editPanel"
+                                    class="header-user-menu-item">
                                     <i class="fa-regular fa-user-pen"></i> Edit Profile
                                 </a>
                                 <div class="header-user-menu-divider"></div>
-                                <a href="{{ url('/student/logout') }}" class="header-user-menu-item header-user-logout">
+                                <a href="{{ url('/lecture/user/' . $headerStudent->id) }}"
+                                    class="header-user-menu-item">
+                                    <i class="fa-regular fa-circle-play"></i> Watch Lectures
+                                </a>
+                                <a href="{{ url('/exam/user/' . $headerStudent->id) }}" class="header-user-menu-item">
+                                    <i class="fa-regular fa-file-pen"></i> Take Exam
+                                </a>
+                                <div class="header-user-menu-divider"></div>
+                                <a href="{{ url('/student/logout') }}"
+                                    class="header-user-menu-item header-user-logout">
                                     <i class="fa-regular fa-arrow-right-from-bracket"></i> Logout
                                 </a>
                             </div>
@@ -273,8 +287,15 @@
                     <p class="sidebar-user-email">{{ $headerStudent->email }}</p>
                 </div>
             </div>
-            <a href="{{ url('/student/profile/' . $headerStudent->id) }}" class="sidebar-auth-btn sidebar-dashboard-btn">
+            <a href="{{ url('/student/profile/' . $headerStudent->id) }}"
+                class="sidebar-auth-btn sidebar-dashboard-btn">
                 <i class="fa-regular fa-gauge-high"></i> Dashboard
+            </a>
+            <a href="{{ url('/lecture/user/' . $headerStudent->id) }}" class="sidebar-auth-btn sidebar-lecture-btn">
+                <i class="fa-regular fa-circle-play"></i> Watch Lectures
+            </a>
+            <a href="{{ url('/exam/user/' . $headerStudent->id) }}" class="sidebar-auth-btn sidebar-exam-btn">
+                <i class="fa-regular fa-file-pen"></i> Take Exam
             </a>
             <a href="{{ url('/student/logout') }}" class="sidebar-auth-btn sidebar-logout-btn">
                 <i class="fa-regular fa-arrow-right-from-bracket"></i> Logout
@@ -288,27 +309,29 @@
 <!-- Sidebar area end here -->
 
 <script>
-(function () {
-    // ── Header user dropdown toggle
-    var dropBtn  = document.getElementById('headerUserBtn');
-    var dropWrap = dropBtn ? dropBtn.closest('.header-user-dropdown') : null;
+    (function() {
+        // ── Header user dropdown toggle
+        var dropBtn = document.getElementById('headerUserBtn');
+        var dropWrap = dropBtn ? dropBtn.closest('.header-user-dropdown') : null;
 
-    if (dropBtn && dropWrap) {
-        dropBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            dropWrap.classList.toggle('open');
-        });
+        if (dropBtn && dropWrap) {
+            dropBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropWrap.classList.toggle('open');
+            });
 
-        // Close when clicking outside
-        document.addEventListener('click', function () {
-            dropWrap.classList.remove('open');
-        });
+            // Close when clicking outside
+            document.addEventListener('click', function() {
+                dropWrap.classList.remove('open');
+            });
 
-        // Prevent menu click from closing dropdown
-        var menu = document.getElementById('headerUserMenu');
-        if (menu) {
-            menu.addEventListener('click', function (e) { e.stopPropagation(); });
+            // Prevent menu click from closing dropdown
+            var menu = document.getElementById('headerUserMenu');
+            if (menu) {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
         }
-    }
-})();
+    })();
 </script>

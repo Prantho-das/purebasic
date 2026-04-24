@@ -19,6 +19,7 @@ use Image;
 use Mail;
 use Session;
 use Illuminate\Support\Facades\Validator;
+
 class StudentController extends Controller
 {
     public function register()
@@ -29,39 +30,39 @@ class StudentController extends Controller
 
     public function register_form(Request $request)
     {
-        
-        // Replace the $this->validate() call with manual validation
-$validator = Validator::make($request->all(), [
-    'name' => 'required',
-    'email' => 'required|email|unique:students,email',
-    'mobile' => 'required|unique:students,mobile',
-    'password' => 'required|min:6|confirmed',
-    'country' => 'required'
-], [
-    'name.required' => 'plase enter your name',
-    'email.required' => 'plase enter your email',
-    'email.unique' => 'This email already exist',
-    'mobile.required' => 'plase enter your mobile',
-    'mobile.unique' => 'This mobile already exist',
-    'password.required' => 'plase enter password',
-    'password.confirmed' => 'password did not match',
-]);
 
-if ($validator->fails()) {
-    
-    // Redirect to a new URL with a new parameter (e.g., 'error=1') and flash old input/errors
-    return redirect('/student/login?registration=fail')
-        ->withErrors($validator)
-        ->withInput($request->except('password')); // Exclude password from old input for security
-}
+        // Replace the $this->validate() call with manual validation
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:students,email',
+            'mobile' => 'required|unique:students,mobile',
+            'password' => 'required|min:6|confirmed',
+            'country' => 'required'
+        ], [
+            'name.required' => 'plase enter your name',
+            'email.required' => 'plase enter your email',
+            'email.unique' => 'This email already exist',
+            'mobile.required' => 'plase enter your mobile',
+            'mobile.unique' => 'This mobile already exist',
+            'password.required' => 'plase enter password',
+            'password.confirmed' => 'password did not match',
+        ]);
+
+        if ($validator->fails()) {
+
+            // Redirect to a new URL with a new parameter (e.g., 'error=1') and flash old input/errors
+            return redirect('/student/login?registration=fail')
+                ->withErrors($validator)
+                ->withInput($request->except('password')); // Exclude password from old input for security
+        }
         $data = $request->only(['name', 'email', 'mobile', 'country']);
 
         $data['otp'] = rand(1000, 9999);
         $data['password'] = md5($request->password);
 
-       //dd($data);
+        //dd($data);
         $student = Student::create($data);
-        
+
         // SMS OTP only for BD User
         if ($request->country == 'Bangladesh') {
             $otp = new Otp;
@@ -76,7 +77,7 @@ if ($validator->fails()) {
 
         if ($student) {
             session()->flash('success', 'Registration request successful, Please verify your account');
-            
+
             return redirect('/student/otp/' . $student->id . '/reg');
         } else {
             return back();
@@ -258,7 +259,8 @@ if ($validator->fails()) {
         $student = Student::where('id', $id)->first() ?? abort(404);
         if ($student->otp == $request->otp) {
             $student_verify = Student::where('id', $id)->where('otp', $request->otp)->update([
-                'otp' => NULL, 'password' => md5($request->password)
+                'otp' => NULL,
+                'password' => md5($request->password)
             ]);
 
             session()->flash('success', 'Password reset successfully please login');
@@ -909,6 +911,9 @@ if ($validator->fails()) {
         //            return redirect('/student/profile/'.session()->get('id'));
         //        }
 
+        $userId = session::get('id');
+        $batchId = $id;
+
         return view('website.membership_old', compact('batch_info', 'student', 'selectBatchDuration', 'userId', 'batchId'));
     }
 
@@ -1248,10 +1253,10 @@ if ($validator->fails()) {
                 $update = Student::where('id', $login->id)->update([
                     'otp' => $loginOTP,
                 ]);
-                if(!$is_email){
+                if (!$is_email) {
                     $otp = new Otp;
                     $otp->otp($login->id);
-                }else{
+                } else {
                     Mail::send('website.mail.otp', ['otp' => $loginOTP], function ($mail) use ($login) {
                         $mail->from('contact@purebasic.com.bd');
                         $mail->to($login->email)->subject('Purebasic Login OTP!');

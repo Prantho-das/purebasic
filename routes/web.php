@@ -72,10 +72,10 @@ Route::group(['middleware' => 'membership_login'], function () {
 
 
     Route::get('/notice/{id}', 'StudentController@notice')->name('notice');
-    Route::get('/lecture/user/{id}', 'StudentController@lecture')->name('lecture');
-    Route::get('/live_class/user/{id}', 'StudentController@liveClass')->name('lecture');
-    Route::get('/discussion/user/{id}', 'StudentController@discussion')->name('lecture');
-    Route::get('/exam/user/{id}', 'StudentController@exam')->name('exam');
+    Route::get('/lecture/user/{id}', 'StudentController@lecture')->name('student.lecture');
+    Route::get('/live_class/user/{id}', 'StudentController@liveClass')->name('student.live_class');
+    Route::get('/discussion/user/{id}', 'StudentController@discussion')->name('student.discussion');
+    Route::get('/exam/user/{id}', 'StudentController@exam')->name('student.exam');
 
 
 	Route::get('/spacialmodeltest-exam/{type}', 'WebsiteController@spacialmodeltest')->name('spacialmodeltest');
