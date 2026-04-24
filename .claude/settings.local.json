@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:/laragon/bin/php/php-7.4.26/php.exe artisan:*)"
+    ]
+  }
+}

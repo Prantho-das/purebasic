@@ -333,13 +333,13 @@ public function searchPage(Request $request){
         $color_array = ['bg-light-white', 'bg-light-primary', 'bg-light-info', 'bg-light-success', 'bg-light-secondary', 'bg-light-o-20'];
 
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
-        if ($hasRoot != "null") {
+
+        if ($hasRoot !== null && $hasRoot != "null") {
             $batch_lecture = LectureBatch::where('membershipe_id', (int) $hasRoot)->get();
         } else {
 
             $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
-            
+
         }
         if (empty($batch_lecture)) {
             Session::flash('error', 'No subject for this Batch');
@@ -376,15 +376,14 @@ public function searchPage(Request $request){
 
     public function chapters($batch_id, $subject_id)
     {
-        
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
-        if ($hasRoot != "null") {
+
+        if ($hasRoot !== null && $hasRoot != "null") {
             $batch_lecture = LectureBatch::where('membershipe_id', (int) $hasRoot)->get();
         } else {
 
             $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
-            
+
         }
 
         if (empty($batch_lecture)) {
@@ -395,7 +394,7 @@ public function searchPage(Request $request){
 
         $subject_info = Category::find($subject_id);
         
-        $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8");
+        $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8") ?? "null";
 
         if (empty($subject_info)) {
             Session::flash('error', 'No subject for this Batch');
@@ -451,15 +450,15 @@ public function searchPage(Request $request){
 
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
         $isReverse = Chapter::where('id', $chapter_id)->value('is_reverse');
-        
-        if ($hasRoot != "null") {
+
+        if ($hasRoot !== null && $hasRoot != "null") {
             $batch_lecture_ids = LectureBatch::where('membershipe_id', (int) $hasRoot)->pluck('lecture_id');
         } else {
 
             $batch_lecture_ids = LectureBatch::where('membershipe_id', $batch_id)->pluck('lecture_id');
-            
+
         }
-        $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8");
+        $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8") ?? "null";
         #get batch Lecture ids
 
         if (empty($batch_lecture_ids)) {
@@ -721,16 +720,14 @@ public function searchPage(Request $request){
 
     public function lecture_video($batch_id, $id)
     {
-
-
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
-        if ($hasRoot != "null") {
+
+        if ($hasRoot !== null && $hasRoot != "null") {
             $batch_lecture_ids = LectureBatch::where('membershipe_id', (int) $hasRoot)->where('lecture_id', $id)->first();
         } else {
 
             $batch_lecture_ids = LectureBatch::where('membershipe_id', $batch_id)->where('lecture_id', $id)->first();
-            
+
         }
         #get batch Lecture ids
 ;
@@ -861,8 +858,8 @@ public function searchPage(Request $request){
 
     public function lecture_exam(Request $request)
     {
-        $lectureId = $request->id;
-        $examId = ModeltestBatch::all()->where('lecture_id', $lectureId)->pluck('modeltest_id');
+        $lectureId = $request->route('id');
+        $examId = ModeltestBatch::where('lecture_id', $lectureId)->pluck('modeltest_id');
         $eid = null;
         foreach ($examId as $eid) {
             $eid = $eid;
@@ -953,6 +950,7 @@ public function searchPage(Request $request){
     public function examByBatch($batch_id)
     {
         $id = Session:: get('id');
+        $free = ($batch_id <= 3);
 
         $batch_info = Membership::find($batch_id);
         if (empty($batch_info)) {
@@ -961,7 +959,6 @@ public function searchPage(Request $request){
         }
 
         if ($batch_id > 3) {
-            $free = false;
             $batch_ids = BatchStudent::where('student_id', $id)->where('batch_id', $batch_id)->where('enroll_status', 1)->select('batch_id')->first();
             if (empty($batch_ids)) {
                 Session::flash('error', 'You have no enroll course');

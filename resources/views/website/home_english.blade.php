@@ -762,7 +762,7 @@
                                             <div class="single-slide">
                                                 <div class="commentor">
                                                     <div class="icon">
-                                                        <img src="{{ asset('storage/') . '/' . $data->image }}"
+                                                        <img src="{{ asset('storage/') . '/' . ($data->image ?? '') }}"
                                                             alt="author-1.webp">
                                                     </div>
                                                     <div class="details">
