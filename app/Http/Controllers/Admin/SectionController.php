@@ -70,6 +70,7 @@ class SectionController extends Controller
         ]);
 
         $data = $request->all();
+        $data['is_active'] = $request->has('is_active') ? 1 : 0;
 
         if ($request->hasFile('main_image')) {
             if ($section->main_image) {
@@ -94,13 +95,32 @@ class SectionController extends Controller
     // নতুন: Data Input পেজ শো করো
     public function dataInput(HomeSection $section)
     {
-        $mentors = Mentor::all();
-        $batches = MemberShip::all();
-        $batch_categories = BatchCategory::all();
-        $books = Book::all();
-        $problems = Problem::all();
+        $type = $section->section_type;
 
-        $notices = \DB::table('notices')->get();
+        $mentors         = ($type === 'mentor')
+                            ? Mentor::select('id', 'name')->orderBy('name')->get()
+                            : collect();
+
+        $batches         = in_array($type, ['batch', 'hero_slider'])
+                            ? Membership::select('id', 'plan')->orderBy('id')->get()
+                            : collect();
+
+        $batch_categories = ($type === 'batch_category')
+                            ? BatchCategory::select('id', 'name')->orderBy('name')->get()
+                            : collect();
+
+        $books           = ($type === 'books')
+                            ? Book::select('id', 'name', 'author')->orderBy('name')->get()
+                            : collect();
+
+        $problems        = ($type === 'testimonial')
+                            ? Problem::select('id', 'name', 'review', 'status')->orderBy('id', 'desc')->get()
+                            : collect();
+
+        $notices         = ($type === 'notice')
+                            ? \DB::table('notices')->select('id', 'notice', 'batch_name')->orderBy('id', 'desc')->get()
+                            : collect();
+
         return view('admin.sections.data-input', compact('section', 'mentors', 'batches', 'batch_categories', 'books', 'problems', 'notices'));
     }
 
