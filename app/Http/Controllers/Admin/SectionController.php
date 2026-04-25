@@ -261,84 +261,84 @@ class SectionController extends Controller
                 }
             }
             $section->update(['dynamic_data' => $books]);
-   } elseif ($section->section_type === 'hero_slider') {
-    $request->validate([
-        // 'slide_title' => 'required|array|min:1',
-        // 'slide_title.*' => 'required|string|max:255',
-        // 'slide_promotion_title' => 'nullable|array',
-        // 'slide_promotion_title.*' => 'nullable|string|max:255',
-        // 'enroll_text' => 'nullable|array',
-        // 'enroll_text.*' => 'nullable|string',
-        // 'enroll_link' => 'nullable|array',
-        // 'enroll_link.*' => 'nullable|url',
+        } elseif ($section->section_type === 'hero_slider') {
+            $request->validate([
+                // 'slide_title' => 'required|array|min:1',
+                // 'slide_title.*' => 'required|string|max:255',
+                // 'slide_promotion_title' => 'nullable|array',
+                // 'slide_promotion_title.*' => 'nullable|string|max:255',
+                // 'enroll_text' => 'nullable|array',
+                // 'enroll_text.*' => 'nullable|string',
+                // 'enroll_link' => 'nullable|array',
+                // 'enroll_link.*' => 'nullable|url',
 
-        // // Items validation
-        // 'items' => 'required|array',
-        // 'items.*' => 'array',
-        // 'items.*.*.type' => 'required|in:course,custom',
-        // 'items.*.*.course_id' => 'nullable|exists:memberships,id|required_if:items.*.*.type,course',
-        // 'items.*.*.custom_name' => 'nullable|string|required_if:items.*.*.type,custom',
-        // 'items.*.*.custom_link' => 'nullable|url|required_if:items.*.*.type,custom',
-        // 'item_image' => 'nullable|array',
-        // 'item_image.*.*' => 'nullable|image|max:2048',
-    ]);
+                // // Items validation
+                // 'items' => 'required|array',
+                // 'items.*' => 'array',
+                // 'items.*.*.type' => 'required|in:course,custom',
+                // 'items.*.*.course_id' => 'nullable|exists:memberships,id|required_if:items.*.*.type,course',
+                // 'items.*.*.custom_name' => 'nullable|string|required_if:items.*.*.type,custom',
+                // 'items.*.*.custom_link' => 'nullable|url|required_if:items.*.*.type,custom',
+                // 'item_image' => 'nullable|array',
+                // 'item_image.*.*' => 'nullable|image|max:2048',
+            ]);
 
-    $slides = [];
-    $slideCount = count($request->slide_title);
+            $slides = [];
+            $slideCount = count($request->slide_title);
 
-    for ($s = 0; $s < $slideCount; $s++) {
-        if (empty($request->slide_title[$s])) continue;
+            for ($s = 0; $s < $slideCount; $s++) {
+                if (empty($request->slide_title[$s])) continue;
 
-        $slideData = [
-            'title' => $request->slide_title[$s],
-            'promotion_title' => $request->slide_promotion_title[$s] ?? '',
-            'enroll_text' => $request->enroll_text[$s] ?? 'Click To Enroll',
-            'enroll_link' => $request->enroll_link[$s] ?? '#',
-            'items' => [],
-        ];
-
-        // Handle items for this slide
-        if (isset($request->items[$s]) && is_array($request->items[$s])) {
-            foreach ($request->items[$s] as $i => $item) {
-                $itemData = [
-                    'type' => $item['type'],
+                $slideData = [
+                    'title' => $request->slide_title[$s],
+                    'promotion_title' => $request->slide_promotion_title[$s] ?? '',
+                    'enroll_text' => $request->enroll_text[$s] ?? 'Click To Enroll',
+                    'enroll_link' => $request->enroll_link[$s] ?? '#',
+                    'items' => [],
                 ];
 
-                if ($item['type'] === 'course' && !empty($item['course_id'])) {
-                    $course = Membership::find($item['course_id']);
-                    if ($course) {
-                        $itemData['course_id'] = $course->id;
-                        $itemData['course_name'] = $course->plan ?? $course->title ?? 'Course';
-                        $itemData['course_link'] = route('batch_content', $course->id); // আপনার রাউট অনুযায়ী চেঞ্জ করুন
+                // Handle items for this slide
+                if (isset($request->items[$s]) && is_array($request->items[$s])) {
+                    foreach ($request->items[$s] as $i => $item) {
+                        $itemData = [
+                            'type' => $item['type'],
+                        ];
+
+                        if ($item['type'] === 'course' && !empty($item['course_id'])) {
+                            $course = Membership::find($item['course_id']);
+                            if ($course) {
+                                $itemData['course_id'] = $course->id;
+                                $itemData['course_name'] = $course->plan ?? $course->title ?? 'Course';
+                                $itemData['course_link'] = route('batch_content', $course->id); // আপনার রাউট অনুযায়ী চেঞ্জ করুন
+                            }
+                        } elseif ($item['type'] === 'custom') {
+                            $itemData['custom_name'] = $item['custom_name'] ?? '';
+                            $itemData['custom_link'] = $item['custom_link'] ?? '#';
+                        }
+
+                        // Image handling
+                        $oldImage = $section->dynamic_data[$s]['items'][$i]['image'] ?? null;
+
+                        if ($request->hasFile("item_image.$s.$i") && $request->file("item_image.$s.$i")->isValid()) {
+                            // Delete old if exists
+                            if ($oldImage) {
+                                Storage::disk('public')->delete($oldImage);
+                            }
+                            $path = $request->file("item_image.$s.$i")->store('hero-items', 'public');
+                            $itemData['image'] = $path;
+                        } elseif ($oldImage) {
+                            $itemData['image'] = $oldImage;
+                        }
+
+                        $slideData['items'][] = $itemData;
                     }
-                } elseif ($item['type'] === 'custom') {
-                    $itemData['custom_name'] = $item['custom_name'] ?? '';
-                    $itemData['custom_link'] = $item['custom_link'] ?? '#';
                 }
 
-                // Image handling
-                $oldImage = $section->dynamic_data[$s]['items'][$i]['image'] ?? null;
-
-                if ($request->hasFile("item_image.$s.$i") && $request->file("item_image.$s.$i")->isValid()) {
-                    // Delete old if exists
-                    if ($oldImage) {
-                        Storage::disk('public')->delete($oldImage);
-                    }
-                    $path = $request->file("item_image.$s.$i")->store('hero-items', 'public');
-                    $itemData['image'] = $path;
-                } elseif ($oldImage) {
-                    $itemData['image'] = $oldImage;
-                }
-
-                $slideData['items'][] = $itemData;
+                $slides[] = $slideData;
             }
-        }
 
-        $slides[] = $slideData;
-    }
-
-    $section->update(['dynamic_data' => $slides]);
-} elseif ($section->section_type === 'locations') {
+            $section->update(['dynamic_data' => $slides]);
+        } elseif ($section->section_type === 'locations') {
             $request->validate([
                 'location_name' => 'required|array|min:1',
                 'location_name.*' => 'required|string|max:255',
@@ -367,7 +367,7 @@ class SectionController extends Controller
             }
             $section->update(['dynamic_data' => $locations]);
         } elseif ($section->section_type === 'testimonial') {
-           // dd($request->all());
+            // dd($request->all());
             $request->validate([
                 'problem_id' => 'required|array|min:1',
                 // 'problem_id.*' => 'required|exists:problems,id',
