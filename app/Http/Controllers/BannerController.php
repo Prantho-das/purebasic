@@ -75,9 +75,18 @@ class BannerController extends Controller
 
 
 
-    public function cp_create()
+    public function cp_create(Request $request)
     {
-        return view('admin.chapter.add');
+        $categories = Category::where('status', 1)->orderBy('name')->get(['id', 'name']);
+        $chapters = Chapter::where('status', 1)
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('subject', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('serial')
+            ->paginate(20)
+            ->appends(request()->query());
+        return view('admin.chapter.add', compact('categories', 'chapters'));
     }
 
 

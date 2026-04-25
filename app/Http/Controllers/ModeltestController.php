@@ -22,9 +22,15 @@ class ModeltestController extends Controller
     }
 
 // all model test
-    public function allmodel()
+    public function allmodel(Request $request)
     {
-        $model = Modeltest:: where('status', 1)->where('subject', NULL)->orderBy('id', 'desc')->get();
+        $model = Modeltest::where('status', 1)->where('subject', null)
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(20)
+            ->appends(request()->query());
         return view('admin.modeltest.all', compact('model'));
     }
 

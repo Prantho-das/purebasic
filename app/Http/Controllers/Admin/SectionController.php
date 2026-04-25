@@ -98,28 +98,28 @@ class SectionController extends Controller
         $type = $section->section_type;
 
         $mentors         = ($type === 'mentor')
-                            ? Mentor::select('id', 'name')->orderBy('name')->get()
-                            : collect();
+            ? Mentor::select('id', 'name')->orderBy('name')->get()
+            : collect();
 
         $batches         = in_array($type, ['batch', 'hero_slider'])
-                            ? Membership::select('id', 'plan')->orderBy('id')->get()
-                            : collect();
+            ? Membership::select('id', 'plan')->orderBy('id')->get()
+            : collect();
 
         $batch_categories = ($type === 'batch_category')
-                            ? BatchCategory::select('id', 'name')->orderBy('name')->get()
-                            : collect();
+            ? BatchCategory::select('id', 'name')->orderBy('name')->get()
+            : collect();
 
         $books           = ($type === 'books')
-                            ? Book::select('id', 'name', 'author')->orderBy('name')->get()
-                            : collect();
+            ? Book::select('id', 'name', 'author')->orderBy('name')->get()
+            : collect();
 
         $problems        = ($type === 'testimonial')
-                            ? Problem::select('id', 'name', 'review', 'status')->orderBy('id', 'desc')->get()
-                            : collect();
+            ? Problem::select('id', 'name', 'review', 'status')->orderBy('id', 'desc')->get()
+            : collect();
 
         $notices         = ($type === 'notice')
-                            ? \DB::table('notices')->select('id', 'notice', 'batch_name')->orderBy('id', 'desc')->get()
-                            : collect();
+            ? \DB::table('notices')->select('id', 'notice', 'batch_name')->orderBy('id', 'desc')->get()
+            : collect();
 
         return view('admin.sections.data-input', compact('section', 'mentors', 'batches', 'batch_categories', 'books', 'problems', 'notices'));
     }

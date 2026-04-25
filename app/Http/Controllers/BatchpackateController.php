@@ -13,10 +13,16 @@ class BatchpackateController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-    	$datas = Batchpackage::where('status', 1)->orderBy('id', 'desc')->get();
-        return view('admin.batchpackage.all',compact('datas'));
+        $datas = Batchpackage::where('status', 1)
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(20)
+            ->appends(request()->query());
+        return view('admin.batchpackage.all', compact('datas'));
     }
 
 	public function batch_delete($id)

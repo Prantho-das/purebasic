@@ -17,6 +17,21 @@
             </div>
           </div>
           <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <form method="GET" action="{{ url('/admin/batchPackage') }}">
+                  <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search by title..." value="{{ request('search') }}">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="submit">Search</button>
+                      @if(request('search'))
+                        <a href="{{ url('/admin/batchPackage') }}" class="btn btn-secondary">Clear</a>
+                      @endif
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-12">
                   @if(session()->has('success'))
@@ -28,9 +43,9 @@
                       button: "Aww yiss!",
                     });
                   </script>
-                 @endif             
+                 @endif
               <div class="table-responsive">
-                <table class="table table-bordered dataTable"  width="100%">
+                <table class="table table-bordered" width="100%">
                     <thead>
                         <tr role="row">
                             <th>Title</th>
@@ -57,8 +72,11 @@
               </div>
             </div>
 
+            <div class="mt-3">{{ $datas->links() }}</div>
           </div>
-          <div class="card-footer small text-muted"></div>
+          <div class="card-footer small text-muted">
+            Showing {{ $datas->firstItem() }}–{{ $datas->lastItem() }} of {{ $datas->total() }} packages
+          </div>
         </div>
 
       </div>

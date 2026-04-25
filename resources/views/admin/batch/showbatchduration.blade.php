@@ -41,8 +41,23 @@
                         </script>
                     @endif
 
+                    <div class="row mb-3">
+                      <div class="col-md-4">
+                        <form method="GET" action="{{ route('show.duration') }}">
+                          <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search by batch name..." value="{{ request('search') }}">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="submit">Search</button>
+                              @if(request('search'))
+                                <a href="{{ route('show.duration') }}" class="btn btn-secondary">Clear</a>
+                              @endif
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
                     <div class="table-responsive">
-                        <table class="table table-bordered durationTable yajra-datatable" style="width: 98%">
+                        <table class="table table-bordered" style="width: 98%">
                             <thead>
                             <tr role="row">
                                 <th>ID</th>
@@ -71,29 +86,19 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="mt-3">
+                        {{ $allBatchDuration->links() }}
+                    </div>
 
+                </div>
+                <div class="card-footer small text-muted">
+                    Showing {{ $allBatchDuration->firstItem() }}–{{ $allBatchDuration->lastItem() }} of {{ $allBatchDuration->total() }} records
                 </div>
             </div>
         </div>
     </div>
     </div>
 
-
-@endsection
-
-@section('admin_js')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.yajra-datatable').dataTable(
-                {
-                    ordering: false,
-                    pageLength: 100,
-                }
-            );
-        });
-
-
-    </script>
 @endsection
 
 

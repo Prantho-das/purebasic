@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class MembershipController extends Controller
 {
-    public function all()
+    public function all(Request $request)
     {
-        $allbatch = Membership:: where('status', 1)->orderBy('id', 'desc')->get();
+        $allbatch = Membership::where('status', 1)
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('plan', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(20)
+            ->appends(request()->query());
         return view('admin.batch.all', compact('allbatch'));
     }
 
@@ -104,14 +110,19 @@ class MembershipController extends Controller
     }
 
     //bt modification add batch duration
-    public function showDuration()
+    public function showDuration(Request $request)
     {
         $allBatchDuration = DB::table('batch_duration as d')
             ->leftJoin('memberships as m', function ($joinOne) {
                 $joinOne->on('d.bd_batch_id', '=', 'm.id');
             })
             ->select('bd_id', 'd.bd_batch_id', 'm.plan', 'm.id', 'd.bd_duration', 'd.bd_fee', 'd.information')
-            ->orderBy('bd_id', 'desc')->get();
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('m.plan', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('bd_id', 'desc')
+            ->paginate(20)
+            ->appends(request()->query());
         return view('admin.batch.showbatchduration', compact('allBatchDuration'));
     }
 
