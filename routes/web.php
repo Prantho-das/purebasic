@@ -5,7 +5,7 @@
 
 Auth::routes(['register' => false]);
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
@@ -17,7 +17,7 @@ Route::get('/clear-cache', function() {
 // 	$newUrl = str_replace("http","https",$url);
 // 	header("Location:".$newUrl);
 // }
-Route::get('privacy-policy.html',function(){
+Route::get('privacy-policy.html', function () {
     return view('privacy_policy');
 });
 
@@ -25,7 +25,7 @@ Route::get('/adminOtp', 'WebsiteController@adminOtp');
 Route::get('/search', 'WebsiteController@searchPage')->name('web.search');
 
 
-Route::get('updateBulkStudentID','StudentController@updateBulkStudentID');
+Route::get('updateBulkStudentID', 'StudentController@updateBulkStudentID');
 
 Route::get('/student/free_lecture', 'WebsiteController@free_lecture')->name('free_lecture');
 Route::get('/student/free_exam', 'WebsiteController@free_exam')->name('free_exam');
@@ -78,21 +78,21 @@ Route::group(['middleware' => 'membership_login'], function () {
     Route::get('/exam/user/{id}', 'StudentController@exam')->name('student.exam');
 
 
-	Route::get('/spacialmodeltest-exam/{type}', 'WebsiteController@spacialmodeltest')->name('spacialmodeltest');
-	Route::get('/exam_by_batch/{batch_id}', 'WebsiteController@examByBatch')->name('exam_by_batch');
-	Route::get('/spacialmodeltest-examm/{id}', 'WebsiteController@question')->name('question');
+    Route::get('/spacialmodeltest-exam/{type}', 'WebsiteController@spacialmodeltest')->name('spacialmodeltest');
+    Route::get('/exam_by_batch/{batch_id}', 'WebsiteController@examByBatch')->name('exam_by_batch');
+    Route::get('/spacialmodeltest-examm/{id}', 'WebsiteController@question')->name('question');
 
     Route::get('/question_bank', 'WebsiteController@question_bank');
     Route::get('/question_bank_topic/{id}', 'WebsiteController@question_bank_topic');
 
 
 
-	Route::get('/batch/{batch_id}/class/{class_id}/quiz/{quiz_id}', 'WebsiteController@quiz')->name('quiz');
-	Route::get('/solve_class/{id}', 'WebsiteController@solve_class')->name('solve_class');
-	Route::get('/solve_video/{modelTestId}/{questionId}', 'WebsiteController@solve_video')->name('solve_video');
-	Route::get('/seeAnswerResult/{answer_id}','WebsiteController@seeAnswerResult');
-	Route::get('/seeQuizResult/{quiz_id}','WebsiteController@seeQuizResult');
-	Route::get('/lecture-sheeet-view', 'WebsiteController@lecture_sheeet')->name('lecture.sheeet');
+    Route::get('/batch/{batch_id}/class/{class_id}/quiz/{quiz_id}', 'WebsiteController@quiz')->name('quiz');
+    Route::get('/solve_class/{id}', 'WebsiteController@solve_class')->name('solve_class');
+    Route::get('/solve_video/{modelTestId}/{questionId}', 'WebsiteController@solve_video')->name('solve_video');
+    Route::get('/seeAnswerResult/{answer_id}', 'WebsiteController@seeAnswerResult');
+    Route::get('/seeQuizResult/{quiz_id}', 'WebsiteController@seeQuizResult');
+    Route::get('/lecture-sheeet-view', 'WebsiteController@lecture_sheeet')->name('lecture.sheeet');
 
 
     Route::post('/student/profile/update', 'StudentController@profileUp')->name('profileUp');
@@ -130,7 +130,7 @@ Route::group(['middleware' => 'membership_login'], function () {
 
     Route::get('/batch/{batch_id}/subject/{subject_id}/chapter', 'WebsiteController@chapters')->name('subject_chapters');
 
-        Route::get('/batch/{batch_id}/modules/{module_id}/subcategories', 'WebsiteController@moduleSubcategories');
+    Route::get('/batch/{batch_id}/modules/{module_id}/subcategories', 'WebsiteController@moduleSubcategories');
 
     Route::get('/batch/{batch_id}/subject/{subject_id}/chapter/{chapter_id}/classes', 'WebsiteController@classes')->name('chapter_classes');
     Route::get('/batch/{batch_id}/class/{id}', 'WebsiteController@lecture_video')->name('lecture_video');
@@ -156,14 +156,14 @@ Route::group(['middleware' => 'membership_login'], function () {
     Route::get('/exam/point/list/discipline/{id}/{discipline}', 'WebsiteController@point_list_by_discipline');
 
     Route::get('/exam/result', 'WebsiteController@result')->name('result');
-    Route::get('/my_exam_history/{id}','WebsiteController@my_exam_history')->name('my_exam_history');
-    Route::get('/my_quiz_history/{id}','WebsiteController@my_quiz_history')->name('my_quiz_history');
-    Route::get('/bookmarks/{id}','WebsiteController@bookmarks')->name('bookmarks');
-    Route::get('/watchlist/{id}','WebsiteController@watch_history')->name('watch_history');
+    Route::get('/my_exam_history/{id}', 'WebsiteController@my_exam_history')->name('my_exam_history');
+    Route::get('/my_quiz_history/{id}', 'WebsiteController@my_quiz_history')->name('my_quiz_history');
+    Route::get('/bookmarks/{id}', 'WebsiteController@bookmarks')->name('bookmarks');
+    Route::get('/watchlist/{id}', 'WebsiteController@watch_history')->name('watch_history');
 
     //Route::get('/profile/{id}','WebsiteController@resultProfile')->name('result.profile'); //bt modification
 
-    Route::get('/profile/{id}','WebsiteController@studentProfile'); //bt modification
+    Route::get('student/profile/{id}', 'WebsiteController@studentProfile'); //bt modification
 
 
     Route::get('/view-videos/{id}', 'WebsiteController@view_video')->name('view_video');
@@ -190,13 +190,9 @@ Route::group(['middleware' => 'membership_login'], function () {
 
     Route::get('/mentor/{user_id}/question/{question_id}/answer', 'StudentController@answer_question');
     Route::post('/mentor/{user_id}/question/{question_id}/answer', 'StudentController@post_answer_question');
-
-
-
-
 });
 
-Route::get('/not_bought_package_or_approved','WebsiteController@not_approved_or_bought');
+Route::get('/not_bought_package_or_approved', 'WebsiteController@not_approved_or_bought');
 
 
 Route::get('/help', 'WebsiteController@help')->name('help');
@@ -205,12 +201,12 @@ Route::get('/notices', 'WebsiteController@notices')->name('notices');
 
 Route::get('/main_page', 'WebsiteController@main_page')->name('main_page');
 Route::get('/', 'WebsiteController@home')->name('home');
-Route::get('/home','WebsiteController@home')->name('home');
+Route::get('/home', 'WebsiteController@home')->name('home');
 Route::get('/batches', 'WebsiteController@active_batches')->name('batches');
 Route::get('/batches/category/{id}', 'WebsiteController@active_batches_by_category');
 
 
-Route::get('batch_details/{batch_id}','WebsiteController@batch_details')->name('batch_content');
+Route::get('batch_details/{batch_id}', 'WebsiteController@batch_details')->name('batch_content');
 
 
 Route::get('/lecture-view/{id}', 'WebsiteController@lecture')->name('lecture');
@@ -240,8 +236,8 @@ Route::post('/student/otp/verify/{id}/{is_login}', 'StudentController@otp_verify
 Route::get('/student/checkEmail/{id}', 'WebsiteController@checkMailView')->name('check_email');
 
 
-Route::get('student/reset_password','StudentController@resetPassword')->name('reset_password');
-Route::post('student/reset_otp','StudentController@resetOtp')->name('password_opt');
+Route::get('student/reset_password', 'StudentController@resetPassword')->name('reset_password');
+Route::post('student/reset_otp', 'StudentController@resetOtp')->name('password_opt');
 Route::get('/student/reset_otp/{id}/reset_password', 'StudentController@showResetPassword')->name('set_opt_password');
 Route::post('/student/{id}/reset_pass_submit', 'StudentController@submitResetPass')->name('reset_pass_submit');
 
@@ -258,21 +254,21 @@ Route::post('/student/register/submit', 'StudentController@register_form')->name
 //admin route//
 Route::get('/admin', 'AdminController@index')->name('index');
 
-Route::get('/admin/student_info/','AdminController@studentsList');
-Route::get('/admin/mobile_info/','AdminController@mobileList');
-Route::get('/admin/whatsapp_info/','AdminController@whatsappList');
+Route::get('/admin/student_info/', 'AdminController@studentsList');
+Route::get('/admin/mobile_info/', 'AdminController@mobileList');
+Route::get('/admin/whatsapp_info/', 'AdminController@whatsappList');
 
 
-Route::get('/admin/student_info_by_id/','AdminController@studentById');
-Route::post('/admin/findUserById/','AdminController@findUserById');
+Route::get('/admin/student_info_by_id/', 'AdminController@studentById');
+Route::post('/admin/findUserById/', 'AdminController@findUserById');
 
-Route::get('/admin/student_info_by_mobile/','AdminController@studentByMobile');
-Route::post('/admin/findUserByMobile/','AdminController@findUserByMobile');
+Route::get('/admin/student_info_by_mobile/', 'AdminController@studentByMobile');
+Route::post('/admin/findUserByMobile/', 'AdminController@findUserByMobile');
 
-Route::get('/admin/student_info_by_name/','AdminController@studentByName');
-Route::post('/admin/findUserByName/','AdminController@findUserByName');
+Route::get('/admin/student_info_by_name/', 'AdminController@studentByName');
+Route::post('/admin/findUserByName/', 'AdminController@findUserByName');
 
-Route::get('/admin/student_info/{studentId}','AdminController@details');
+Route::get('/admin/student_info/{studentId}', 'AdminController@details');
 Route::get('/admin/enable/otpRequired/{id}', 'AdminController@enableOtp');
 Route::get('/admin/disable/otpRequired/{id}', 'AdminController@disableOtp');
 Route::get('/admin/profile/user/{id}', 'AdminController@profile_admin');
@@ -301,7 +297,7 @@ Route::get('/admin/student/result', 'AdminController@student_result')->name('res
 Route::get('/admin/student/ex/result', 'AdminController@student_ex_result')->name('exam.wish.result');
 Route::get('/admin/student/vie/result/{id}', 'AdminController@m_view')->name('exam.wish.view');
 Route::get('/admin/student/view/result', 'AdminController@res_view')->name('exam.res_view.view');
-Route::match(['get','post'],'/admin/lecture-sheet', 'LectureSheetController@allsheet')->name('student.result');
+Route::match(['get', 'post'], '/admin/lecture-sheet', 'LectureSheetController@allsheet')->name('student.result');
 Route::get('/admin/add/lecture-sheet', 'LectureSheetController@addSheet')->name('add.sheet');
 Route::post('/admin/upload/lecture-sheet', 'LectureSheetController@sheetUploads')->name('sheet.Uploads');
 Route::post('/admin/update/lecture-sheet', 'LectureSheetController@sheetUpdate')->name('sheet.Updated');
@@ -420,7 +416,7 @@ Route::post('/admin/edit/option/{id}', 'ModeltestController@update_option')->nam
 Route::get('/admin/add/option/{id}', 'ModeltestController@add_option')->name('add.option');
 Route::post('/admin/add/option/{id}', 'ModeltestController@add_submit_option')->name('add.option.submit');
 
-Route::post('/admin/addQuestionsToTest','ModeltestController@addQuestionsToTest')->name('add.questions.to.test');
+Route::post('/admin/addQuestionsToTest', 'ModeltestController@addQuestionsToTest')->name('add.questions.to.test');
 Route::post('/admin/upload/model', 'ModeltestController@modelUploads')->name('model.Uploads');
 Route::get('/admin/view/modeltest/{id}', 'ModeltestController@viewtest')->name('model.view');
 Route::get('/admin/edit/modeltest/{id}', 'ModeltestController@edittest')->name('model.edit');
@@ -453,32 +449,32 @@ Route::post('/admin/paid/member/update', 'PaidmemberController@student_update')-
 
 
 
-Route::resource('/admin/batch_student','Admin\BatchStudentController');
-Route::get('/admin/get_batch_student_ajax','Admin\BatchStudentController@getBatchStudent')->name('batch_student_ajax');
+Route::resource('/admin/batch_student', 'Admin\BatchStudentController');
+Route::get('/admin/get_batch_student_ajax', 'Admin\BatchStudentController@getBatchStudent')->name('batch_student_ajax');
 //bt modificaiton
 Route::post('/admin/batch_student/enroll', 'Admin\BatchStudentController@loadData')->name('data-enroll');
 Route::get('/admin/batch_student/{batchId}/enrolled', 'Admin\BatchStudentController@enrolledData');
 Route::get('/admin/batch_student/{batchId}/mobile', 'Admin\BatchStudentController@enrolledMobile');
 Route::get('/admin/batch_student/{batchId}/whatsapp', 'Admin\BatchStudentController@enrolledWhatsapp');
-Route::get('/admin/updateInformation/user/{studentId}/batch/{batchId}/batchSubscription/{enrollId}','AdminController@viewInformation');
-Route::post('/admin/updateInformation/user/{studentId}/batch/{batchId}/batchSubscription/{enrollId}','AdminController@updateInformation');
+Route::get('/admin/updateInformation/user/{studentId}/batch/{batchId}/batchSubscription/{enrollId}', 'AdminController@viewInformation');
+Route::post('/admin/updateInformation/user/{studentId}/batch/{batchId}/batchSubscription/{enrollId}', 'AdminController@updateInformation');
 
 
-Route::resource('/admin/payment_history','Admin\BatchSubscriptionHistoryController');
+Route::resource('/admin/payment_history', 'Admin\BatchSubscriptionHistoryController');
 Route::post('/admin/payment_history/loadData', 'Admin\BatchSubscriptionHistoryController@loadData')->name('data-payment');
 
 
 
-Route::get('/admin/enroll/approve/{id}','Admin\BatchStudentController@approve')->name('batch_student_approve');
-Route::get('/admin/enroll/reject/{id}','Admin\BatchStudentController@reject')->name('batch_student_reject');
-Route::get('/admin/enroll/deactivate/{id}','Admin\BatchStudentController@deactivate')->name('batch_student_deactivate');
-Route::get('/admin/enroll/activate/{id}','Admin\BatchStudentController@activate')->name('batch_student_activate');
+Route::get('/admin/enroll/approve/{id}', 'Admin\BatchStudentController@approve')->name('batch_student_approve');
+Route::get('/admin/enroll/reject/{id}', 'Admin\BatchStudentController@reject')->name('batch_student_reject');
+Route::get('/admin/enroll/deactivate/{id}', 'Admin\BatchStudentController@deactivate')->name('batch_student_deactivate');
+Route::get('/admin/enroll/activate/{id}', 'Admin\BatchStudentController@activate')->name('batch_student_activate');
 
 ##Admin Payment Controller
-Route::resource('/admin/payment','Admin\PaymentController');
+Route::resource('/admin/payment', 'Admin\PaymentController');
 Route::post('/admin/payment/report', 'Admin\PaymentController@PaymentDataLoad')->name('payment_data_load');
-Route::get('/admin/payment/approval/{id}','Admin\PaymentController@approval')->name('payment_approval');
-Route::get('/admin/payment/reject/{id}','Admin\PaymentController@reject')->name('payment_reject');
+Route::get('/admin/payment/approval/{id}', 'Admin\PaymentController@approval')->name('payment_approval');
+Route::get('/admin/payment/reject/{id}', 'Admin\PaymentController@reject')->name('payment_reject');
 
 //Paidmember route//
 Route::get('/admin/due/member', 'PaidmemberController@all_due')->name('duemember');
@@ -557,14 +553,14 @@ Route::post('/admin/chapter/edit/{id}', 'BannerController@cp_update');
 /**
  * Video lecture load for
  */
-Route::get('/app/video/{id}','App\VideoLectureController@playVideo');
+Route::get('/app/video/{id}', 'App\VideoLectureController@playVideo');
 
 //bt modification for report
 
 
 
 // cms
-Route::get('/admin/home-page-edit','Admin\CmsController@index');
+Route::get('/admin/home-page-edit', 'Admin\CmsController@index');
 
 
 
@@ -579,11 +575,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'],'as'=>'admin.'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::resource('sections', 'Admin\SectionController');
     Route::resource('menus', 'Admin\MenuController');
-    Route::get('sections/{section}/data-input','Admin\SectionController@dataInput')->name('sections.data-input');
-    Route::post('sections/{section}/data-input','Admin\SectionController@saveData')->name('sections.save-data');
+    Route::get('sections/{section}/data-input', 'Admin\SectionController@dataInput')->name('sections.data-input');
+    Route::post('sections/{section}/data-input', 'Admin\SectionController@saveData')->name('sections.save-data');
     Route::resource('batch-categories', 'Admin\BatchCategoryController');
 
     Route::get('/subscribers', 'SubscriberController@index')->name('subscribers.index');
@@ -599,4 +595,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],'as'=>'admin.'], fun
 });
 
 
-Route::post('subscribers','SubscriberController@store')->name('subscribers.store');
+Route::post('subscribers', 'SubscriberController@store')->name('subscribers.store');

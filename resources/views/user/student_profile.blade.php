@@ -78,6 +78,9 @@
                     <a href="#" class="profile-tab-item" data-tab="courses">
                         <i class="fa-regular fa-book-open"></i> My Courses
                     </a>
+                    <a href="#" class="profile-tab-item" data-tab="analytics">
+                        <i class="fa-regular fa-chart-mixed"></i> Analytics
+                    </a>
                     <a href="#" class="profile-tab-item" data-tab="settings" id="tabSettings">
                         <i class="fa-regular fa-gear"></i> Settings
                     </a>
@@ -543,6 +546,110 @@
 
 
                 {{-- ─────────────────────────────
+                     PANEL: Analytics
+                ───────────────────────────── --}}
+                <div class="tab-panel" id="panel-analytics" style="display:none">
+
+                    {{-- ── Lecture Progress ───────────────────────── --}}
+                    @if(!empty($lectureAnalytics))
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <div class="card-header-icon"><i class="fa-regular fa-play-circle"></i></div>
+                            <h5>Lecture Progress</h5>
+                        </div>
+                        <div class="profile-card-body">
+
+                            {{-- Progress bars per course --}}
+                            <div class="an-lecture-grid">
+                                @foreach($lectureAnalytics as $stat)
+                                <div class="an-lecture-card">
+                                    <div class="an-lc-header">
+                                        <span class="an-lc-title">{{ $stat['title'] }}</span>
+                                        <span class="an-badge {{ $stat['pct'] >= 80 ? 'an-badge-green' : ($stat['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
+                                            {{ $stat['pct'] }}%
+                                        </span>
+                                    </div>
+                                    <div class="an-prog-track">
+                                        <div class="an-prog-fill {{ $stat['pct'] >= 80 ? 'an-fill-green' : ($stat['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
+                                             style="width:{{ $stat['pct'] }}%"></div>
+                                    </div>
+                                    <div class="an-lc-meta">
+                                        <span><i class="fa-regular fa-check-circle"></i> Watched: <b>{{ $stat['watched'] }}</b></span>
+                                        <span><i class="fa-regular fa-film"></i> Total: <b>{{ $stat['total'] }}</b></span>
+                                        <span><i class="fa-regular fa-hourglass-half"></i> Remaining: <b>{{ $stat['total'] - $stat['watched'] }}</b></span>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+
+                            {{-- Lecture bar chart --}}
+                            @if(count($lectureAnalytics) > 0)
+                            <div class="an-chart-box" style="margin-top:20px">
+                                <p class="an-chart-label">Watched vs Total Lectures (per Course)</p>
+                                <canvas id="profileLectureChart" height="110"></canvas>
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+                    @endif
+
+                    {{-- ── Exam Performance ────────────────────────── --}}
+                    <div class="profile-card" style="margin-top:20px">
+                        <div class="profile-card-header">
+                            <div class="card-header-icon"><i class="fa-regular fa-file-pen"></i></div>
+                            <h5>Exam Performance</h5>
+                        </div>
+                        <div class="profile-card-body">
+
+                            {{-- Stat cards --}}
+                            <div class="an-stat-row">
+                                <div class="an-stat-card">
+                                    <div class="an-stat-icon an-blue"><i class="fa-regular fa-list-check"></i></div>
+                                    <div><div class="an-stat-val">{{ $examAnalytics['attempted'] }}</div><div class="an-stat-lbl">Exams Taken</div></div>
+                                </div>
+                                <div class="an-stat-card">
+                                    <div class="an-stat-icon an-green"><i class="fa-regular fa-circle-check"></i></div>
+                                    <div><div class="an-stat-val">{{ $examAnalytics['totalCorrect'] }}</div><div class="an-stat-lbl">Correct</div></div>
+                                </div>
+                                <div class="an-stat-card">
+                                    <div class="an-stat-icon an-red"><i class="fa-regular fa-circle-xmark"></i></div>
+                                    <div><div class="an-stat-val">{{ $examAnalytics['totalWrong'] }}</div><div class="an-stat-lbl">Wrong</div></div>
+                                </div>
+                                <div class="an-stat-card">
+                                    <div class="an-stat-icon an-gray"><i class="fa-regular fa-minus-circle"></i></div>
+                                    <div><div class="an-stat-val">{{ $examAnalytics['totalUnanswered'] }}</div><div class="an-stat-lbl">Unanswered</div></div>
+                                </div>
+                                <div class="an-stat-card">
+                                    <div class="an-stat-icon an-yellow"><i class="fa-regular fa-gauge-high"></i></div>
+                                    <div><div class="an-stat-val">{{ $examAnalytics['avgScore'] }}%</div><div class="an-stat-lbl">Avg Score</div></div>
+                                </div>
+                            </div>
+
+                            @if($examAnalytics['attempted'] > 0)
+                            <div class="an-charts-row">
+                                <div class="an-chart-box an-chart-sm">
+                                    <p class="an-chart-label">Answer Breakdown</p>
+                                    <canvas id="profileExamPie"></canvas>
+                                </div>
+                                <div class="an-chart-box an-chart-lg">
+                                    <p class="an-chart-label">Score % — Last 10 Exams</p>
+                                    <canvas id="profileExamBar" height="120"></canvas>
+                                </div>
+                            </div>
+                            @else
+                                <p style="text-align:center;color:#94a3b8;padding:24px 0;font-size:14px">
+                                    No submitted exams yet. Complete an exam to see your analytics.
+                                </p>
+                            @endif
+
+                        </div>
+                    </div>
+
+                </div>{{-- /panel-analytics --}}
+
+
+                {{-- ─────────────────────────────
                      PANEL: Settings / Edit Profile
                 ───────────────────────────── --}}
                 <div class="tab-panel" id="panel-settings" style="display:none">
@@ -697,6 +804,83 @@
 @endsection
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ── Analytics panel styles ───────────────────── */
+.an-lecture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 4px;
+}
+.an-lecture-card {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 10px; padding: 14px 16px;
+}
+.an-lc-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 9px;
+}
+.an-lc-title {
+    font-size: 13px; font-weight: 600; color: #1e293b;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px;
+}
+.an-badge {
+    font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; flex-shrink: 0;
+}
+.an-badge-green  { background:#dcfce7; color:#15803d; }
+.an-badge-yellow { background:#fef9c3; color:#a16207; }
+.an-badge-gray   { background:#f1f5f9; color:#64748b; }
+.an-prog-track {
+    height: 8px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-bottom: 8px;
+}
+.an-prog-fill { height: 100%; border-radius: 99px; transition: width .6s ease; }
+.an-fill-green  { background: #22c55e; }
+.an-fill-yellow { background: #eab308; }
+.an-fill-blue   { background: #6366f1; }
+.an-lc-meta {
+    display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; color: #64748b;
+}
+.an-lc-meta i { color: #94a3b8; margin-right: 2px; }
+
+/* Stat row */
+.an-stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px; margin-bottom: 20px;
+}
+.an-stat-card {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 10px; padding: 12px 14px;
+    display: flex; align-items: center; gap: 10px;
+}
+.an-stat-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+}
+.an-blue   { background:#eff6ff; color:#3b82f6; }
+.an-green  { background:#f0fdf4; color:#22c55e; }
+.an-red    { background:#fef2f2; color:#ef4444; }
+.an-gray   { background:#f1f5f9; color:#64748b; }
+.an-yellow { background:#fffbeb; color:#f59e0b; }
+.an-stat-val { font-size: 20px; font-weight: 800; color: #1e293b; line-height: 1.1; }
+.an-stat-lbl { font-size: 10px; color: #64748b; font-weight: 500; margin-top: 1px; }
+
+/* Charts */
+.an-charts-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.an-chart-box {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 10px; padding: 14px 16px;
+    flex: 1; min-width: 200px;
+}
+.an-chart-sm { max-width: 240px; }
+.an-chart-lg { flex: 2; }
+.an-chart-label {
+    font-size: 11px; font-weight: 700; color: #475569;
+    text-transform: uppercase; letter-spacing: 0.4px; margin: 0 0 10px;
+}
+</style>
     <script>
         (function () {
 
@@ -818,6 +1002,110 @@
                     saveBtn.innerHTML = '<i class="fa-regular fa-spinner fa-spin"></i> Saving…';
                 });
             }
+
+            // ──────────────────────────────────────────────
+            // ANALYTICS CHARTS
+            // Initialise charts lazily when the Analytics tab is first opened
+            // ──────────────────────────────────────────────
+            var chartsReady = false;
+
+            function initCharts() {
+                if (chartsReady) return;
+                chartsReady = true;
+
+                @if(!empty($lectureAnalytics))
+                var lectureCtx = document.getElementById('profileLectureChart');
+                if (lectureCtx) {
+                    new Chart(lectureCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: {!! json_encode(array_column($lectureAnalytics, 'title')) !!},
+                            datasets: [
+                                {
+                                    label: 'Watched',
+                                    data: {!! json_encode(array_column($lectureAnalytics, 'watched')) !!},
+                                    backgroundColor: '#6366f1',
+                                    borderRadius: 5,
+                                },
+                                {
+                                    label: 'Total',
+                                    data: {!! json_encode(array_column($lectureAnalytics, 'total')) !!},
+                                    backgroundColor: '#e2e8f0',
+                                    borderRadius: 5,
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' } },
+                            scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+                        }
+                    });
+                }
+                @endif
+
+                @if($examAnalytics['attempted'] > 0)
+                var pieCtx = document.getElementById('profileExamPie');
+                if (pieCtx) {
+                    new Chart(pieCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Correct', 'Wrong', 'Unanswered'],
+                            datasets: [{
+                                data: [
+                                    {{ $examAnalytics['totalCorrect'] }},
+                                    {{ $examAnalytics['totalWrong'] }},
+                                    {{ $examAnalytics['totalUnanswered'] }},
+                                ],
+                                backgroundColor: ['#22c55e', '#ef4444', '#94a3b8'],
+                                borderWidth: 0,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            cutout: '65%',
+                            plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } }
+                        }
+                    });
+                }
+
+                var barCtx = document.getElementById('profileExamBar');
+                if (barCtx) {
+                    var perExam = {!! json_encode($examAnalytics['perExam']) !!};
+                    new Chart(barCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: perExam.map(function(e) {
+                                return e.name.length > 22 ? e.name.slice(0, 22) + '…' : e.name;
+                            }),
+                            datasets: [{
+                                label: 'Score %',
+                                data: perExam.map(function(e) { return e.score; }),
+                                backgroundColor: perExam.map(function(e) {
+                                    return e.score >= 70 ? '#22c55e' : e.score >= 40 ? '#f59e0b' : '#ef4444';
+                                }),
+                                borderRadius: 5,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                y: { min: 0, max: 100, ticks: { callback: function(v) { return v + '%'; } } },
+                                x: { ticks: { font: { size: 10 } } }
+                            }
+                        }
+                    });
+                }
+                @endif
+            }
+
+            // Trigger chart init when analytics tab is clicked
+            document.querySelectorAll('[data-tab="analytics"]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    setTimeout(initCharts, 50);
+                });
+            });
 
         })();
     </script>

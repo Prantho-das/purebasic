@@ -306,26 +306,75 @@ public function searchPage(Request $request){
     
     public function index($id)
     {
+        $studentId = session()->get('id');
 
-        $paidmember = Paidmember::where('student_id', Session::get('id'))->where('is_approve', 1)->first();
-        if ($paidmember) {
-            $notic = Notic:: where('status', 1)->orderBy('id', 'desc')->get();
-            $problem = Problem:: where('status', 1)->orderBy('id', 'desc')->limit(3)->get();
-            $reaply = Reaply:: where('status', 1)->orderBy('id', 'desc')->get();
-            $alljob = Job:: where('status', 1)->where('manage', 1)->orderBy('id', 'desc')->get();
-            $memberships = Membership:: where('status', 1)->get();
+        // Enrolled courses (3-per-row chunks for the template loop)
+        $courses = BatchStudent::where('student_id', $id)
+            ->with('course')
+            ->latest('updated_at')
+            ->get()
+            ->chunk(3);
 
-            return view('website.index', compact('notic', 'problem', 'alljob', 'reaply', 'memberships', 'paidmember'));
-        } else {
-            $notic = Notic:: where('status', 1)->orderBy('id', 'desc')->get();
-            $problem = Problem:: where('status', 1)->orderBy('id', 'desc')->limit(3)->get();
-            $reaply = Reaply:: where('status', 1)->orderBy('id', 'desc')->get();
-            $alljob = Job:: where('status', 1)->where('manage', 1)->orderBy('id', 'desc')->get();
-            $memberships = Membership:: where('status', 1)->get();
+        // ── Lecture progress (per enrolled batch) ────────────────────────────
+        $lectureAnalytics = [];
+        $activeBatches = BatchStudent::where('student_id', $id)
+            ->where('enroll_status', 1)
+            ->pluck('batch_id');
 
-            return view('website.index', compact('notic', 'problem', 'alljob', 'reaply', 'memberships', 'paidmember'));
+        foreach ($activeBatches as $bId) {
+            $rootBatch = Batchpackage::where('batch_id', $bId)->value('fild_7');
+            $lookupId  = ($rootBatch && $rootBatch !== 'null') ? (int)$rootBatch : $bId;
+
+            $totalLectures   = LectureBatch::where('membershipe_id', $lookupId)->count();
+            $watchedLectures = DB::table('watch_count')
+                ->where('user_id', $studentId)
+                ->where('batch_id', $bId)
+                ->count();
+
+            $lectureAnalytics[] = [
+                'title'    => Batchpackage::where('batch_id', $bId)->value('title') ?? 'Course',
+                'total'    => $totalLectures,
+                'watched'  => min($watchedLectures, $totalLectures),
+                'pct'      => $totalLectures > 0 ? round(min($watchedLectures, $totalLectures) / $totalLectures * 100) : 0,
+            ];
         }
 
+        // ── Exam analytics ────────────────────────────────────────────────────
+        $examResults = Modeltest_answer::where('student_id', $studentId)
+            ->where('action_status', 1)
+            ->with('modeltest')
+            ->latest('id')
+            ->get();
+
+        $totalCorrect    = (int) $examResults->sum('right_answers');
+        $totalWrong      = (int) $examResults->sum('wrong_answers');
+        $totalUnanswered = (int) $examResults->sum('unanswered_questions');
+        $attempted       = $examResults->count();
+        $avgScore        = 0;
+
+        if ($attempted > 0) {
+            $scores = $examResults->map(function ($r) {
+                return $r->total_questions > 0
+                    ? round($r->right_answers / $r->total_questions * 100, 1)
+                    : 0;
+            });
+            $avgScore = round($scores->avg(), 1);
+        }
+
+        $perExam = $examResults->take(10)->map(function ($r) {
+            return [
+                'name'  => optional($r->modeltest)->name ?? 'Exam #' . $r->modeltest_id,
+                'score' => $r->total_questions > 0
+                    ? round($r->right_answers / $r->total_questions * 100, 1)
+                    : 0,
+            ];
+        })->values()->toArray();
+
+        $examAnalytics = compact(
+            'attempted', 'totalCorrect', 'totalWrong', 'totalUnanswered', 'avgScore', 'perExam'
+        );
+
+        return view('user.dashboard', compact('courses', 'lectureAnalytics', 'examAnalytics'));
     }
 
     public function subjects($batch_id)
@@ -1903,14 +1952,83 @@ public function searchPage(Request $request){
             return redirect('/');
         }
 
-
-        $profile = Student:: where('status', 1)->where('id', $id)->first();
+        $profile = Student::where('status', 1)->where('id', $id)->first();
         if (empty($profile)) {
-            Session:: flush('error', 'No user found');
+            Session::flush('error', 'No user found');
             return redirect('/');
         }
 
-        return view('user.student_profile', compact('profile'));
+        // Enrolled courses (chunks of 3 for the template loop)
+        $courses = BatchStudent::where('student_id', $id)
+            ->with('course')
+            ->latest('updated_at')
+            ->get()
+            ->chunk(3);
+
+        // ── Lecture progress per active batch ─────────────────────────────
+        $lectureAnalytics = [];
+        $activeBatches = BatchStudent::where('student_id', $id)
+            ->where('enroll_status', 1)
+            ->pluck('batch_id');
+
+        foreach ($activeBatches as $bId) {
+            $rootBatch = Batchpackage::where('batch_id', $bId)->value('fild_7');
+            $lookupId  = ($rootBatch && $rootBatch !== 'null') ? (int) $rootBatch : $bId;
+
+            $totalLectures   = LectureBatch::where('membershipe_id', $lookupId)->count();
+            $watchedLectures = DB::table('watch_count')
+                ->where('user_id', $id)
+                ->where('batch_id', $bId)
+                ->count();
+
+            $lectureAnalytics[] = [
+                'title'   => Batchpackage::where('batch_id', $bId)->value('title') ?? 'Course',
+                'total'   => $totalLectures,
+                'watched' => min($watchedLectures, $totalLectures),
+                'pct'     => $totalLectures > 0
+                    ? round(min($watchedLectures, $totalLectures) / $totalLectures * 100)
+                    : 0,
+            ];
+        }
+
+        // ── Exam analytics ────────────────────────────────────────────────
+        $examResults = Modeltest_answer::where('student_id', $id)
+            ->where('action_status', 1)
+            ->with('modeltest')
+            ->latest('id')
+            ->get();
+
+        $attempted       = $examResults->count();
+        $totalCorrect    = (int) $examResults->sum('right_answers');
+        $totalWrong      = (int) $examResults->sum('wrong_answers');
+        $totalUnanswered = (int) $examResults->sum('unanswered_questions');
+        $avgScore        = 0;
+
+        if ($attempted > 0) {
+            $avgScore = round(
+                $examResults->map(function ($r) {
+                    return $r->total_questions > 0
+                        ? ($r->right_answers / $r->total_questions * 100)
+                        : 0;
+                })->avg(),
+                1
+            );
+        }
+
+        $perExam = $examResults->take(10)->map(function ($r) {
+            return [
+                'name'  => optional($r->modeltest)->name ?? 'Exam #' . $r->modeltest_id,
+                'score' => $r->total_questions > 0
+                    ? round($r->right_answers / $r->total_questions * 100, 1)
+                    : 0,
+            ];
+        })->values()->toArray();
+
+        $examAnalytics = compact(
+            'attempted', 'totalCorrect', 'totalWrong', 'totalUnanswered', 'avgScore', 'perExam'
+        );
+
+        return view('user.student_profile', compact('profile', 'courses', 'lectureAnalytics', 'examAnalytics'));
     }
 
 
