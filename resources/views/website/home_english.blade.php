@@ -557,7 +557,12 @@
                                         <div class="singlecard-parent">
                                             <a href="#">
                                                 <div class="image-box">
-                                                    <img src="{{ asset('storage') . '/' . $book->image }}" alt="skill">
+                                                    @if (isset($book->image))
+                                                        <img src="{{ asset('storage') . '/' . $book->image }}"
+                                                            alt="skill">
+                                                    @else
+                                                        <img src="" alt="skill">
+                                                    @endif
                                                 </div>
                                                 <div class="content-box">
                                                     <div class="tags">{{ $book->book_name }}</div>
