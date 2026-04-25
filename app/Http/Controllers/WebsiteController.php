@@ -47,78 +47,73 @@ class WebsiteController extends Controller
 
     public function start()
     {
-        
+
         $publicNotice = DB::table('notices')->where('batch_id', 'public')->value('notice');
-        
+
         if ($publicNotice) {
             return view('website.public_notice', compact('publicNotice'));
         }
-        
-        return redirect('/home');
 
+        return redirect('/home');
     }
 
 
     public function home()
     {
-        
+
         $userId = Session::get('id');
-        
-        $profile = Student:: where('status', 1)->where('id', $userId)->first();
-        
+
+        $profile = Student::where('status', 1)->where('id', $userId)->first();
+
         $publicNotice = DB::table('notices')->where('batch_id', 'public')->value('notice');
 
-        
-        if(!empty($profile))
-        {
+
+        if (!empty($profile)) {
             $all = DB::table('batch_students as a')
-            ->join('notices as b', function ($joinOne) {
-            $joinOne->on('a.batch_id', '=', 'b.batch_id');
-            })->where('a.student_id', Session::get('id'))->where('a.enroll_status', 1)->where('a.subscription_end', '>=', NOW())->count();
-            
+                ->join('notices as b', function ($joinOne) {
+                    $joinOne->on('a.batch_id', '=', 'b.batch_id');
+                })->where('a.student_id', Session::get('id'))->where('a.enroll_status', 1)->where('a.subscription_end', '>=', NOW())->count();
+
             $read = DB::table('notification_history')
-            ->where('user_id', Session::get('id'))->count();
-            
+                ->where('user_id', Session::get('id'))->count();
+
             $new = $all - $read;
-            
-            if($profile->user_type = "mentor") {
+
+            if ($profile->user_type = "mentor") {
                 $question_count = DB::table('posts')->where('answer_count', 0)->count();
             } else {
                 $question_count = DB::table('posts')->where('user_id', $userId)->where('new_count', 1)->count();
-
             }
-            
-            
-            
         } else {
-            
-           $new = 0;
-           $question_count = 0;
+
+            $new = 0;
+            $question_count = 0;
         }
-        
+
 
         return view('website.home_english', compact('new', 'question_count', 'publicNotice'));
     }
 
-public function searchPage(Request $request){
+    public function searchPage(Request $request)
+    {
 
         $batchpackages = Batchpackage::where('showing_status', 1)->latest('updated_at')
-        ->when($request->filled('search'), function ($query) use ($request) {
-            $query->where('title', 'like', '%' . $request->search . '%');
-        })
-        ->when($request->filled('batch_category'), function ($query) use ($request) {
-            $query->where('batch_category', '=',  $request->batch_category );
-        });
-        if($request->filled('limit')){
-            $batchpackages=$batchpackages->limit($request->limit??15);
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $query->where('title', 'like', '%' . $request->search . '%');
+            })
+            ->when($request->filled('batch_category'), function ($query) use ($request) {
+                $query->where('batch_category', '=',  $request->batch_category);
+            });
+        if ($request->filled('limit')) {
+            $batchpackages = $batchpackages->limit($request->limit ?? 15);
         }
-        $batchpackages=$batchpackages->get();
-        if($request->wantsJson()){
-            return view('admin.inc.course-slide',compact('batchpackages'))->render();
+        $batchpackages = $batchpackages->get();
+        if ($request->wantsJson()) {
+            return view('admin.inc.course-slide', compact('batchpackages'))->render();
         }
-    
-    return view('website.search_course',compact('batchpackages'));
-}
+
+        return view('website.search_course', compact('batchpackages'));
+    }
 
 
 
@@ -127,42 +122,36 @@ public function searchPage(Request $request){
 
 
         $userId = Session::get('id');
-        
-        $profile = Student:: where('status', 1)->where('id', $userId)->first();
-        
+
+        $profile = Student::where('status', 1)->where('id', $userId)->first();
+
         $publicNotice = DB::table('notices')->where('batch_id', 'public')->value('notice');
 
-        
-        if(!empty($profile))
-        {
+
+        if (!empty($profile)) {
             $all = DB::table('batch_students as a')
-            ->join('notices as b', function ($joinOne) {
-            $joinOne->on('a.batch_id', '=', 'b.batch_id');
-            })->where('a.student_id', Session::get('id'))->where('a.enroll_status', 1)->where('a.subscription_end', '>=', NOW())->count();
-            
+                ->join('notices as b', function ($joinOne) {
+                    $joinOne->on('a.batch_id', '=', 'b.batch_id');
+                })->where('a.student_id', Session::get('id'))->where('a.enroll_status', 1)->where('a.subscription_end', '>=', NOW())->count();
+
             $read = DB::table('notification_history')
-            ->where('user_id', Session::get('id'))->count();
-            
+                ->where('user_id', Session::get('id'))->count();
+
             $new = $all - $read;
-            
-            if($profile->user_type = "mentor") {
+
+            if ($profile->user_type = "mentor") {
                 $question_count = DB::table('posts')->where('answer_count', 0)->count();
             } else {
                 $question_count = DB::table('posts')->where('user_id', $userId)->where('new_count', 1)->count();
-
             }
-            
-            
-            
         } else {
-            
-           $new = 0;
-           $question_count = 0;
+
+            $new = 0;
+            $question_count = 0;
         }
-        
+
 
         return view('website.main_page', compact('new', 'question_count', 'publicNotice',));
-
     }
 
 
@@ -187,7 +176,7 @@ public function searchPage(Request $request){
             ->get();
 
 
-//        $lecture_group= $lecture_with_chapter->groupBy('chapter_name');
+        //        $lecture_group= $lecture_with_chapter->groupBy('chapter_name');
         $lecture_group = $lecture_with_chapter->groupBy(['category', function ($item) {
             return $item->chapter_name;
             return $item->member_type; //bt modification
@@ -220,18 +209,16 @@ public function searchPage(Request $request){
         $enrolled = false;
 
         if (session::get('id')) {
-            
+
             $enrolledBatches = DB::table('batch_students')->where('student_id', '=', session::get('id'))->where('batch_id', $batch_id)->where('enroll_status', 1)->where('subscription_end', '>=', NOW())->first();
-            
+
             if ($enrolledBatches) {
                 $enrolled = true;
             }
-
         }
-        
+
 
         return view('website.batch_details', compact('batchpackage', 'lecture_group', 'totalEnrolled', 'totalLectures', 'helpData', 'getLectureStatus', 'enrolled',));
-
     }
 
     public function active_batches()
@@ -240,19 +227,18 @@ public function searchPage(Request $request){
 
         return view('website.active_batch_by_category', compact('batchpackages'));
     }
-    
-    
-    
+
+
+
     public function active_batches_by_category($id)
     {
 
         $batchpackages = Batchpackage::where('showing_status', 1)->where('batch_category', $id)->latest('updated_at')->get();
 
-        if(session::get('id')) {        
-             $enrolledBatches = DB::table('batch_students')->where('student_id', '=', session::get('id'))->where('enroll_status', 1)->where('subscription_end', '>=', NOW())->pluck('batch_id')->toArray();
-        
+        if (session::get('id')) {
+            $enrolledBatches = DB::table('batch_students')->where('student_id', '=', session::get('id'))->where('enroll_status', 1)->where('subscription_end', '>=', NOW())->pluck('batch_id')->toArray();
         } else {
-           $enrolledBatches = array(); 
+            $enrolledBatches = array();
         }
 
         return view('website.active_batch_by_category', compact('batchpackages', 'enrolledBatches'));
@@ -274,8 +260,8 @@ public function searchPage(Request $request){
 
         return redirect($scheduleLink);
     }
-    
-    
+
+
     public function discussionLink($batch_id)
     {
 
@@ -283,27 +269,25 @@ public function searchPage(Request $request){
 
         return redirect($discussionLink);
     }
-  
+
     public function liveLink($batch_id)
     {
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
+
         if ($hasRoot != "null") {
             $liveLink = Batchpackage::where('batch_id', (int) $hasRoot)->value("fild_9");
         } else {
 
             $liveLink = Batchpackage::where('batch_id', $batch_id)->value("fild_9");
-
-            
         }
 
 
         return redirect($liveLink);
-    }  
-    
-    
-    
-    
+    }
+
+
+
+
     public function index($id)
     {
         $studentId = session()->get('id');
@@ -371,7 +355,12 @@ public function searchPage(Request $request){
         })->values()->toArray();
 
         $examAnalytics = compact(
-            'attempted', 'totalCorrect', 'totalWrong', 'totalUnanswered', 'avgScore', 'perExam'
+            'attempted',
+            'totalCorrect',
+            'totalWrong',
+            'totalUnanswered',
+            'avgScore',
+            'perExam'
         );
 
         return view('user.dashboard', compact('courses', 'lectureAnalytics', 'examAnalytics'));
@@ -388,7 +377,6 @@ public function searchPage(Request $request){
         } else {
 
             $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
-
         }
         if (empty($batch_lecture)) {
             Session::flash('error', 'No subject for this Batch');
@@ -404,8 +392,8 @@ public function searchPage(Request $request){
         $categories = Category::whereIn('name', $subject_list)->where('status', 1)->get()->chunk(4);
         return view('user.subject', compact('batch_id', 'categories', 'color_array'));
     }
-    
-    
+
+
 
     public function modules($batch_id)
     {
@@ -432,7 +420,6 @@ public function searchPage(Request $request){
         } else {
 
             $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
-
         }
 
         if (empty($batch_lecture)) {
@@ -442,7 +429,7 @@ public function searchPage(Request $request){
         $batch_lecture_ids = $batch_lecture->pluck('lecture_id');
 
         $subject_info = Category::find($subject_id);
-        
+
         $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8") ?? "null";
 
         if (empty($subject_info)) {
@@ -454,15 +441,15 @@ public function searchPage(Request $request){
         // $items = Chapter::whereIn('id',$chapter_list)->get();
 
         $chapters = Chapter::whereIn('id', $chapter_list)->where('status', 1)->orderBy('serial', 'asc')->get()->chunk(100);
-//        return view('website.chapter',compact('chapter','subject_id','batch_id'));
+        //        return view('website.chapter',compact('chapter','subject_id','batch_id'));
         return view('user.chapter', compact('chapters', 'subject_id', 'subject_info', 'batch_id', 'startsFrom'));
     }
-    
-    
-    
+
+
+
     public function moduleSubcategories($batch_id, $module_id)
     {
-        
+
 
         $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
 
@@ -471,7 +458,7 @@ public function searchPage(Request $request){
         $batch_lecture_ids = $batch_lecture->pluck('lecture_id');
 
         $subject_info = Category::find($module_id);
-        
+
 
         if (empty($subject_info)) {
             Session::flash('error', 'No module for this Batch');
@@ -484,10 +471,10 @@ public function searchPage(Request $request){
 
         return view('website.module_subcategories', compact('chapters', 'module_id', 'subject_info', 'batch_id'));
     }
-    
-    
-    
-    
+
+
+
+
 
     public function not_approved_or_bought()
     {
@@ -505,7 +492,6 @@ public function searchPage(Request $request){
         } else {
 
             $batch_lecture_ids = LectureBatch::where('membershipe_id', $batch_id)->pluck('lecture_id');
-
         }
         $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8") ?? "null";
         #get batch Lecture ids
@@ -530,25 +516,23 @@ public function searchPage(Request $request){
         if (empty($has_enrolled)) {
             $info = LectureSheet::with('chapter')->whereIn('id', $batch_lecture_ids)->where('category', $subject->name)->where('cp_id', $chapter_id)->where('member_type', 'free')->where('status', 1)->orderBy('video_id', 'asc')->get();
         } else {
-            
+
             if ($isReverse) {
 
                 $info = LectureSheet::with('chapter')->whereIn('id', $batch_lecture_ids)->where('category', $subject->name)->where('cp_id', $chapter_id)->where('status', 1)->orderBy('video_id', 'desc')->get();
-                
             } else {
-            
+
                 $info = LectureSheet::with('chapter')->whereIn('id', $batch_lecture_ids)->where('category', $subject->name)->where('cp_id', $chapter_id)->where('status', 1)->orderBy('video_id', 'asc')->get();
-            
-                }
+            }
         }
 
         // return view('website.class_info',compact('info','batch_id'));
         return view('user.lecture', compact('info', 'batch_id', 'subject_id', 'chapter_id', 'startsFrom'));
     }
-    
-    
-    
-    
+
+
+
+
 
     public function clinical_cases_list()
     {
@@ -558,37 +542,36 @@ public function searchPage(Request $request){
 
         return view('user.clinical_cases_list', compact('info'));
     }
-    
 
-    
-    
+
+
+
     public function free_lecture()
     {
         /*if (!session()->has('id')) {
             return redirect('/');
         }*/
-        
+
         $batch_1 = LectureSheet::where('levell', 'MBBS')->where('member_type', 'free')->where('status', 1)->count();
         $batch_2 = LectureSheet::where('levell', 'BDS')->where('member_type', 'free')->where('status', 1)->count();
         $batch_3 = LectureSheet::where('levell', 'BCS')->where('member_type', 'free')->where('status', 1)->count();
 
         return view('website.free_lecture', compact('batch_1', 'batch_2', 'batch_3'));
-
     }
-    
-    
-    public function free_lectures_subjects($batch_id) {
+
+
+    public function free_lectures_subjects($batch_id)
+    {
 
         $color_array = ['bg-light-white', 'bg-light-primary', 'bg-light-info', 'bg-light-success', 'bg-light-secondary', 'bg-light-o-20'];
 
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
+
         if ($hasRoot != "null") {
             $batch_lecture = LectureBatch::where('membershipe_id', (int) $hasRoot)->get();
         } else {
 
             $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
-            
         }
         if (empty($batch_lecture)) {
             Session::flash('error', 'No subject for this Batch');
@@ -603,61 +586,58 @@ public function searchPage(Request $request){
 
         $categories = Category::whereIn('name', $subject_list)->where('status', 1)->get()->chunk(4);
         return view('user.free_lectures_subjects', compact('batch_id', 'categories', 'color_array'));
-        
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     public function free_lectures_chapters($batch_id, $subject_id)
-        {
-            
-            $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-            
-            if ($hasRoot != "null") {
-                $batch_lecture = LectureBatch::where('membershipe_id', (int) $hasRoot)->get();
-            } else {
-    
-                $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
-                
-            }
-    
-            if (empty($batch_lecture)) {
-                Session::flash('error', 'No Lecture for this Batch');
-                return redirect()->back();
-            }
-            $batch_lecture_ids = $batch_lecture->pluck('lecture_id');
-    
-            $subject_info = Category::find($subject_id);
-            
-            $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8");
-    
-            if (empty($subject_info)) {
-                Session::flash('error', 'No subject for this Batch');
-                return redirect()->back();
-            }
-            $chapter_list = LectureSheet::whereIn('id', $batch_lecture_ids)->where('category', $subject_info->name)->distinct('cp_id')->pluck('cp_id');
-    
-            // $items = Chapter::whereIn('id',$chapter_list)->get();
-    
-            $chapters = Chapter::whereIn('id', $chapter_list)->where('status', 1)->orderBy('serial', 'asc')->get()->chunk(100);
-    //        return view('website.chapter',compact('chapter','subject_id','batch_id'));
-            return view('user.free_lectures_chapters', compact('chapters', 'subject_id', 'subject_info', 'batch_id', 'startsFrom'));
+    {
+
+        $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
+
+        if ($hasRoot != "null") {
+            $batch_lecture = LectureBatch::where('membershipe_id', (int) $hasRoot)->get();
+        } else {
+
+            $batch_lecture = LectureBatch::where('membershipe_id', $batch_id)->get();
         }
-    
-    
+
+        if (empty($batch_lecture)) {
+            Session::flash('error', 'No Lecture for this Batch');
+            return redirect()->back();
+        }
+        $batch_lecture_ids = $batch_lecture->pluck('lecture_id');
+
+        $subject_info = Category::find($subject_id);
+
+        $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8");
+
+        if (empty($subject_info)) {
+            Session::flash('error', 'No subject for this Batch');
+            return redirect()->back();
+        }
+        $chapter_list = LectureSheet::whereIn('id', $batch_lecture_ids)->where('category', $subject_info->name)->distinct('cp_id')->pluck('cp_id');
+
+        // $items = Chapter::whereIn('id',$chapter_list)->get();
+
+        $chapters = Chapter::whereIn('id', $chapter_list)->where('status', 1)->orderBy('serial', 'asc')->get()->chunk(100);
+        //        return view('website.chapter',compact('chapter','subject_id','batch_id'));
+        return view('user.free_lectures_chapters', compact('chapters', 'subject_id', 'subject_info', 'batch_id', 'startsFrom'));
+    }
+
+
     public function free_lectures_classes($batch_id, $subject_id, $chapter_id)
     {
 
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
+
         if ($hasRoot != "null") {
             $batch_lecture_ids = LectureBatch::where('membershipe_id', (int) $hasRoot)->pluck('lecture_id');
         } else {
 
             $batch_lecture_ids = LectureBatch::where('membershipe_id', $batch_id)->pluck('lecture_id');
-            
         }
         $startsFrom = Batchpackage::where('batch_id', $batch_id)->value("fild_8");
         #get batch Lecture ids
@@ -688,8 +668,8 @@ public function searchPage(Request $request){
         // return view('website.class_info',compact('info','batch_id'));
         return view('user.free_lectures_classes', compact('info', 'batch_id', 'subject_id', 'chapter_id', 'startsFrom'));
     }
-    
-    
+
+
 
 
 
@@ -699,19 +679,18 @@ public function searchPage(Request $request){
 
 
         $hasRoot = Batchpackage::where('batch_id', $batch_id)->value("fild_7");
-        
+
         if ($hasRoot != "null") {
             $batch_lecture_ids = LectureBatch::where('membershipe_id', (int) $hasRoot)->where('lecture_id', $id)->first();
         } else {
 
             $batch_lecture_ids = LectureBatch::where('membershipe_id', $batch_id)->where('lecture_id', $id)->first();
-            
         }
-        #get batch Lecture ids
-;
+            #get batch Lecture ids
+        ;
         if (empty($batch_lecture_ids)) {
-//            Session::flash('error','Unauthorized access');
-//            redirect()->back();
+            //            Session::flash('error','Unauthorized access');
+            //            redirect()->back();
             abort(404);
         }
 
@@ -719,8 +698,8 @@ public function searchPage(Request $request){
 
         $subject_id = Category::where('name', $sheet->category)->first()->id;
         return view('user.free_lectures_video', compact('sheet', 'batch_id', 'subject_id'));
-    }    
-    
+    }
+
 
 
 
@@ -729,29 +708,28 @@ public function searchPage(Request $request){
         /*if (!session()->has('id')) {
             return redirect('/');
         }*/
-        
-        $modeltestBatch_1 = ModeltestBatch::where('membershipe_id', 1)->pluck('modeltest_id');
-    
-        $batch_1 = Modeltest::with('batch')->whereIn('id', $modeltestBatch_1)->count();
-        
-        $modeltestBatch_2 = ModeltestBatch::where('membershipe_id', 2)->pluck('modeltest_id');
-    
-        $batch_2 = Modeltest::with('batch')->whereIn('id', $modeltestBatch_2)->count();        
-        
-        $modeltestBatch_3 = ModeltestBatch::where('membershipe_id', 3)->pluck('modeltest_id');
-    
-        $batch_3 = Modeltest::with('batch')->whereIn('id', $modeltestBatch_3)->count();
-        
-        return view('website.free_exam', compact('batch_1', 'batch_2', 'batch_3'));
 
+        $modeltestBatch_1 = ModeltestBatch::where('membershipe_id', 1)->pluck('modeltest_id');
+
+        $batch_1 = Modeltest::with('batch')->whereIn('id', $modeltestBatch_1)->count();
+
+        $modeltestBatch_2 = ModeltestBatch::where('membershipe_id', 2)->pluck('modeltest_id');
+
+        $batch_2 = Modeltest::with('batch')->whereIn('id', $modeltestBatch_2)->count();
+
+        $modeltestBatch_3 = ModeltestBatch::where('membershipe_id', 3)->pluck('modeltest_id');
+
+        $batch_3 = Modeltest::with('batch')->whereIn('id', $modeltestBatch_3)->count();
+
+        return view('website.free_exam', compact('batch_1', 'batch_2', 'batch_3'));
     }
 
     public function free_classes($batch_id)
     {
 
-        if($batch_id == 1) {
+        if ($batch_id == 1) {
             $level = 'MBBS';
-        } elseif($batch_id == 2) {
+        } elseif ($batch_id == 2) {
             $level = 'BDS';
         } else {
             $level = 'BCS';
@@ -759,10 +737,9 @@ public function searchPage(Request $request){
 
         $info = LectureSheet::where('levell', $level)->where('member_type', 'free')->where('status', 1)->orderBy('video_id', 'asc')->get();
         return view('website.free_class', compact('info', 'batch_id'));
-
     }
-    
-    
+
+
 
 
 
@@ -776,13 +753,12 @@ public function searchPage(Request $request){
         } else {
 
             $batch_lecture_ids = LectureBatch::where('membershipe_id', $batch_id)->where('lecture_id', $id)->first();
-
         }
-        #get batch Lecture ids
-;
+            #get batch Lecture ids
+        ;
         if (empty($batch_lecture_ids)) {
-//            Session::flash('error','Unauthorized access');
-//            redirect()->back();
+            //            Session::flash('error','Unauthorized access');
+            //            redirect()->back();
             abort(404);
         }
 
@@ -829,29 +805,28 @@ public function searchPage(Request $request){
         $subject_id = Category::where('name', $sheet->category)->first()->id;
         return view('user.lecture_video', compact('sheet', 'batch_id', 'subject_id'));
     }
-    
 
-    public function watch_clinical_case($userId, $caseId) {
-        
+
+    public function watch_clinical_case($userId, $caseId)
+    {
+
         $has_enrolled = DB::table('videos')
             ->where('user_id', $userId)
             ->where('clinical_case_id', $caseId)
             ->first();
 
-        $student = Student:: where('status', 1)->where('id', $userId)->first();
+        $student = Student::where('status', 1)->where('id', $userId)->first();
 
-            
+
         $clinical_case = LectureSheet::where('id', $caseId)->where('status', 1)->first() ?? abort(404);
-  
+
 
         if ($has_enrolled) {
             return view('user.watch_clinical_case', compact('clinical_case'));
-
         }
-        
-        return redirect('/updateInfo/' . $userId . '/case/' . $caseId);
 
-    }    
+        return redirect('/updateInfo/' . $userId . '/case/' . $caseId);
+    }
 
 
 
@@ -866,11 +841,11 @@ public function searchPage(Request $request){
         $sheet = LectureSheet::where('id', $id)->where('status', 1)->first() ?? abort(404);
         if (empty($has_enrolled) && $sheet->member_type == 'premium')
             abort(404);
-            
+
         return redirect($sheet->links);
     }
-    
-    
+
+
     public function note2($batch_id, $id)
     {
 
@@ -882,11 +857,11 @@ public function searchPage(Request $request){
         $sheet = LectureSheet::where('id', $id)->where('status', 1)->first() ?? abort(404);
         if (empty($has_enrolled) && $sheet->member_type == 'premium')
             abort(404);
-            
+
         return redirect($sheet->pdf);
     }
-  
-  
+
+
     public function pdf($batch_id, $id)
     {
 
@@ -898,11 +873,11 @@ public function searchPage(Request $request){
         $sheet = LectureSheet::where('id', $id)->where('status', 1)->first() ?? abort(404);
         if (empty($has_enrolled) && $sheet->member_type == 'premium')
             abort(404);
-            
+
         return redirect($sheet->v_link);
     }
-    
-    
+
+
 
 
     public function lecture_exam(Request $request)
@@ -915,14 +890,13 @@ public function searchPage(Request $request){
         }
         $modelTest = $eid;
         return redirect()->route('question', $eid);
-
     }
 
     public function dailyExam()
     {
-        $allsheet = LectureSheet:: where('status', 1)->orderBy('id', 'desc')->get();
+        $allsheet = LectureSheet::where('status', 1)->orderBy('id', 'desc')->get();
 
-        $beststudent = Modeltest_answer:: orderBy('id', 'DESC')->limit(5)->get()->sortByDesc('answered_questions');
+        $beststudent = Modeltest_answer::orderBy('id', 'DESC')->limit(5)->get()->sortByDesc('answered_questions');
         return view('website.exam', compact('allsheet', 'beststudent'));
     }
 
@@ -933,21 +907,21 @@ public function searchPage(Request $request){
 
     public function resultsheet()
     {
-        $allresult = Modeltest_answer:: orderBy('id', 'desc')->get();
-        $beststudent = Modeltest_answer:: orderBy('id', 'DESC')->limit(5)->get()->sortByDesc('answered_questions');
+        $allresult = Modeltest_answer::orderBy('id', 'desc')->get();
+        $beststudent = Modeltest_answer::orderBy('id', 'DESC')->limit(5)->get()->sortByDesc('answered_questions');
         return view('website.result', compact('allresult', 'beststudent'));
     }
 
     public function lecture_sheeet()
     {
-        $subject = Subject:: where('status', 1)->orderBy('id', 'asc')->get();
+        $subject = Subject::where('status', 1)->orderBy('id', 'asc')->get();
         return view('website.lecture_sheeet', compact('subject'));
     }
 
     public function lecture($id)
     {
-        $view = LectureSheet:: where('status', 1)->where('id', $id)->first();
-        $allsheet = LectureSheet:: where('status', 1)->orderBy('id', 'desc')->get();
+        $view = LectureSheet::where('status', 1)->where('id', $id)->first();
+        $allsheet = LectureSheet::where('status', 1)->orderBy('id', 'desc')->get();
         return view('website.lecture', compact('view', 'allsheet'));
     }
 
@@ -959,8 +933,8 @@ public function searchPage(Request $request){
             $type = 'Regular Exam';
         }
 
-        $id = Session:: get('id');
-        $batch_ids = BatchStudent:: where('student_id', $id)->where('enroll_status', 1)->select('batch_id')->get();
+        $id = Session::get('id');
+        $batch_ids = BatchStudent::where('student_id', $id)->where('enroll_status', 1)->select('batch_id')->get();
         if (empty($batch_ids)) {
             Session::flash('error', 'You have no enroll course');
             return redirect('/');
@@ -998,7 +972,7 @@ public function searchPage(Request $request){
 
     public function examByBatch($batch_id)
     {
-        $id = Session:: get('id');
+        $id = Session::get('id');
         $free = ($batch_id <= 3);
 
         $batch_info = Membership::find($batch_id);
@@ -1013,7 +987,6 @@ public function searchPage(Request $request){
                 Session::flash('error', 'You have no enroll course');
                 return redirect('/student/profile/' . $id);
             }
-            
         }
 
         $modeltestBatch = ModeltestBatch::where('membershipe_id', $batch_id)->where('lecture_id', null)->orderBy('membershipe_id', 'desc')->get();
@@ -1043,18 +1016,16 @@ public function searchPage(Request $request){
         if ($batch_id <= 3) {
             $free = true;
             $modeltestBatch = ModeltestBatch::where('membershipe_id', $batch_id)->where('lecture_id', null)->orderBy('membershipe_id', 'desc')->get();
-            
+
             if (empty($modeltestBatch)) {
                 Session::flash('error', 'No Model test available');
             }
-    
+
             $modelTestIds = $modeltestBatch->pluck('modeltest_id');
             $exams_raw = Modeltest::with('batch')->whereIn('id', $modelTestIds)->where('exam_pattern', '!=', 'Clinical Case')->latest('updated_at')->paginate(10);
-   
-            return view('user.exam_by_batch', compact('exams_raw', 'batch_info', 'free'));
-         
-        }
 
+            return view('user.exam_by_batch', compact('exams_raw', 'batch_info', 'free'));
+        }
     }
 
 
@@ -1070,43 +1041,40 @@ public function searchPage(Request $request){
         if ($batch_id <= 3) {
             $free = true;
             $modeltestBatch = ModeltestBatch::where('membershipe_id', $batch_id)->where('lecture_id', null)->orderBy('membershipe_id', 'desc')->get();
-            
+
             if (empty($modeltestBatch)) {
                 Session::flash('error', 'No Model test available');
             }
-    
+
             $modelTestIds = $modeltestBatch->pluck('modeltest_id');
             $exams_raw = Modeltest::with('batch')->whereIn('id', $modelTestIds)->where('exam_pattern', '=', 'Clinical Case')->latest('updated_at')->paginate(100);
-   
-            return view('user.clinical_case_by_batch', compact('exams_raw', 'batch_info', 'free'));
-         
-        }
 
+            return view('user.clinical_case_by_batch', compact('exams_raw', 'batch_info', 'free'));
+        }
     }
 
 
 
     public function question($id)
     {
-        $student_id = Session:: get('id');
-        
+        $student_id = Session::get('id');
+
         $modelTest = Modeltest::find($id) ?? abort(404);
-        
+
         if ($modelTest->exam_type != "Free") {
-        
-            $batch_ids = BatchStudent:: where('student_id', $student_id)->where('enroll_status', 1)->select('batch_id')->get();
+
+            $batch_ids = BatchStudent::where('student_id', $student_id)->where('enroll_status', 1)->select('batch_id')->get();
             if (empty($batch_ids)) {
                 Session::flash('error', 'You have no enroll course');
                 return redirect('/');
             }
-    
+
             $batch_ids_array = $batch_ids->pluck('batch_id');
             $modeltestBatch = ModeltestBatch::whereIn('membershipe_id', $batch_ids_array)->where('modeltest_id', $id)->first();
             if (empty($modeltestBatch)) {
                 Session::flash('error', 'Not a valid request');
-                return redirect('/student/profile/'.$student_id);
+                return redirect('/student/profile/' . $student_id);
             }
-
         }
 
         AttentModeltest::updateOrCreate([
@@ -1115,7 +1083,7 @@ public function searchPage(Request $request){
         ]);
 
 
-        $exam = Modelexam:: where('status', 1)->where('modeltest_id', $id)->get();
+        $exam = Modelexam::where('status', 1)->where('modeltest_id', $id)->get();
 
 
 
@@ -1125,7 +1093,7 @@ public function searchPage(Request $request){
             if ($modeltest_exite && $modeltest_exite->action_status == 1) {
                 return redirect('seeAnswerResult/' . $modeltest_exite->id);
             } else {
-//                    return view('website.question', compact('modelTest'));
+                //                    return view('website.question', compact('modelTest'));
                 return view('user.question', compact('modelTest'));
             }
         } else {
@@ -1135,54 +1103,49 @@ public function searchPage(Request $request){
                 'created_at' => date('Y-m-d H:i:s')
             ];
             Modeltest_answer::updateOrCreate($answer_array);
-//                return view('website.question', compact('modelTest'));
+            //                return view('website.question', compact('modelTest'));
             return view('user.question', compact('modelTest'));
         }
-
-
     }
-    
-    
-    
+
+
+
     public function clinical_case_question($id)
     {
-        $student_id = Session:: get('id');
-        
+        $student_id = Session::get('id');
+
         $modelTest = Modeltest::find($id) ?? abort(404);
-        
+
         if ($modelTest->exam_pattern == "Clinical Case") {
-        
+
             return view('user.clinical_case_question', compact('modelTest'));
         } else {
             return back();
         }
-
-
     }
-    
 
-    
-    
+
+
+
     public function quiz($batch_id, $class_id, $quiz_id)
     {
-        $student_id = Session:: get('id');
-        
+        $student_id = Session::get('id');
+
         $modelTest = Modeltest::find($quiz_id) ?? abort(404);
-        
+
         if ($modelTest->exam_type != "Free") {
-        
-            $batch_ids = BatchStudent:: where('student_id', $student_id)->where('enroll_status', 1)->where('batch_id', $batch_id)->get();
+
+            $batch_ids = BatchStudent::where('student_id', $student_id)->where('enroll_status', 1)->where('batch_id', $batch_id)->get();
             if (empty($batch_ids)) {
                 Session::flash('error', 'You have no enroll course');
                 return redirect('/');
             }
-    
+
             $lectureSheet = LectureSheet::where('id', $class_id)->where('isExam', $quiz_id)->get();
             if (empty($lectureSheet)) {
                 Session::flash('error', 'Not a valid request');
-                return redirect('/student/profile/'.$student_id);
+                return redirect('/student/profile/' . $student_id);
             }
-
         }
 
         AttentModeltest::updateOrCreate([
@@ -1191,7 +1154,7 @@ public function searchPage(Request $request){
         ]);
 
 
-        $exam = Modelexam:: where('status', 1)->where('modeltest_id', $quiz_id)->get();
+        $exam = Modelexam::where('status', 1)->where('modeltest_id', $quiz_id)->get();
 
 
 
@@ -1201,49 +1164,46 @@ public function searchPage(Request $request){
             if ($modeltest_exite && $modeltest_exite->action_status == 1) {
                 return redirect('seeAnswerResult/' . $modeltest_exite->id);
             } else {
-//                    return view('website.question', compact('modelTest'));
+                //                    return view('website.question', compact('modelTest'));
                 return view('user.quiz', compact('modelTest'));
             }
         } else {
-            
+
             $answer_array = [
                 'student_id' => Session::get('id'),
                 'modeltest_id' => $quiz_id,
                 'created_at' => date('Y-m-d H:i:s')
             ];
             Modeltest_answer::updateOrCreate($answer_array);
-//                return view('website.question', compact('modelTest'));            
+            //                return view('website.question', compact('modelTest'));
             return view('user.quiz', compact('modelTest'));
         }
-
-
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     public function solve_class($id)
     {
-        $student_id = Session:: get('id');
-        
+        $student_id = Session::get('id');
+
         $modelTest = Modeltest::find($id) ?? abort(404);
-        
+
         if ($modelTest->exam_type != "Free") {
-        
-            $batch_ids = BatchStudent:: where('student_id', $student_id)->where('enroll_status', 1)->select('batch_id')->get();
+
+            $batch_ids = BatchStudent::where('student_id', $student_id)->where('enroll_status', 1)->select('batch_id')->get();
             if (empty($batch_ids)) {
                 Session::flash('error', 'You have no enroll course');
                 return redirect('/');
             }
-    
+
             $batch_ids_array = $batch_ids->pluck('batch_id');
             $modeltestBatch = ModeltestBatch::whereIn('membershipe_id', $batch_ids_array)->where('modeltest_id', $id)->first();
             if (empty($modeltestBatch)) {
                 Session::flash('error', 'Not a valid request');
-                return redirect('/student/profile/'.$student_id);
+                return redirect('/student/profile/' . $student_id);
             }
-
         }
 
         AttentModeltest::updateOrCreate([
@@ -1252,7 +1212,7 @@ public function searchPage(Request $request){
         ]);
 
 
-        $exam = Modelexam:: where('status', 1)->where('modeltest_id', $id)->get();
+        $exam = Modelexam::where('status', 1)->where('modeltest_id', $id)->get();
 
 
 
@@ -1262,9 +1222,8 @@ public function searchPage(Request $request){
             if ($modeltest_exite && $modeltest_exite->action_status == 1) {
                 $solveClass = $modelTest->solve_shet;
                 return view('user.solve_class', compact('solveClass'));
-                
             } else {
-//                    return view('website.question', compact('modelTest'));
+                //                    return view('website.question', compact('modelTest'));
                 return view('user.question', compact('modelTest'));
             }
         } else {
@@ -1274,38 +1233,33 @@ public function searchPage(Request $request){
                 'created_at' => date('Y-m-d H:i:s')
             ];
             Modeltest_answer::updateOrCreate($answer_array);
-//                return view('website.question', compact('modelTest'));
+            //                return view('website.question', compact('modelTest'));
             return view('user.question', compact('modelTest'));
         }
-
-
     }
-    
-    
 
-    
+
+
+
     public function solve_video($modelTestId, $questionId)
     {
-        $student_id = Session:: get('id');
+        $student_id = Session::get('id');
 
-        
+
         $modeltest_exite = Modeltest_answer::where('modeltest_id', $modelTestId)->where('student_id', $student_id)->first();
 
         if ($modeltest_exite && $modeltest_exite->action_status == 1) {
-            
+
             $solveClass = Question::where('id', $questionId)->value('solve_link');
             return view('user.solve_class', compact('solveClass'));
-            
         } else {
-            
+
             return back();
         }
-                
-        
     }
 
 
-    
+
 
     public function answerQuestionModeltest(Request $request)
     {
@@ -1324,7 +1278,7 @@ public function searchPage(Request $request){
             $totaluncheck_count = 0;
             $totalSba = 0;
             $rightSba = 0;
-        
+
             foreach ($request->questions as $key => $question) {
 
                 if (array_key_exists('option', $question)) {
@@ -1384,7 +1338,6 @@ public function searchPage(Request $request){
                 } else {
                     $wrong++;
                 }
-
             }
             $point = $point + $totaluncheck_count;
             $wrong = $wrong - $unanswered;
@@ -1424,12 +1377,11 @@ public function searchPage(Request $request){
             $candidate_type = null;
             $discipline = null;
             //dd(json_encode($request->modeltest_exam_pattern));
-            
+
             if ($request->modeltest_exam_pattern == "Regular exam") {
 
                 $candidate_type = $request->candidate;
                 $discipline = $request->discipline;
-
             }
 
             foreach ($request->questions as $key => $question) {
@@ -1459,7 +1411,7 @@ public function searchPage(Request $request){
                     $uncheck_count *= .4;
                     $totaluncheck_count = $totaluncheck_count + $uncheck_count;
                 } else {
-                   $totalSba++; 
+                    $totalSba++;
                 }
 
 
@@ -1478,11 +1430,11 @@ public function searchPage(Request $request){
                             }
                             $right++;
                         } else {
-                            
+
                             if ($question_id_check->is_multi != 1) {
                                 $wrongSba++;
                             }
-                            
+
                             $wrong++;
                         }
 
@@ -1499,23 +1451,21 @@ public function searchPage(Request $request){
                 } else {
                     $wrong++;
                 }
-
             }
             $point = $point + $totaluncheck_count;
-            
+
             if ($request->modeltest_exam_pattern == "Regular exam") {
-            
+
                 $percentage = round(100 * $point / $request->modeltest_total_mark, 1);
-                
+
                 if ($percentage >= 70) {
-                    
+
                     $pass_status = "Passed";
                 } else {
                     $pass_status = "Failed";
                 }
-            
             }
-            
+
             // for residency, non residency
             $point_1 = ($rightMcq * 0.2) + ($rightSba * 1) - (5 * $totalMcq - $rightMcq) * 0.05 - ($wrongSba * 0.25);
 
@@ -1549,46 +1499,41 @@ public function searchPage(Request $request){
     {
         $modelTestAnswer = Modeltest_answer::where('id', $answer_id)->get()->first();
         $modelTest = Modeltest::find($modelTestAnswer->modeltest_id) ?? abort(404);
-        $answeredOptions =  Modeltest_answer_detail::where('modeltest_answer_id',$answer_id)->pluck('answered_option_id')->toArray();
+        $answeredOptions =  Modeltest_answer_detail::where('modeltest_answer_id', $answer_id)->pluck('answered_option_id')->toArray();
 
-//        return view('website.question_answer_result', compact('modelTestAnswer', 'modelTest'));
+        //        return view('website.question_answer_result', compact('modelTestAnswer', 'modelTest'));
         return view('user.question_answer', compact('modelTestAnswer', 'modelTest', 'answeredOptions'));
     }
-    
-    
-    
 
-    public function clinical_case_answer
-(Request $request)
+
+
+
+    public function clinical_case_answer(Request $request)
     {
-        
+
         $modelTest = Modeltest::find($request->modeltest_id) ?? abort(404);
-        
-        $studentInfo = Student:: where('mobile', $request->mobile)->first();
 
-        
+        $studentInfo = Student::where('mobile', $request->mobile)->first();
+
+
         if ($request->mobile && empty($studentInfo)) {
-            
-        
-            $data = $request->only(['mobile']);
-            $student = Student:: insertGetId($data);
-            
 
+
+            $data = $request->only(['mobile']);
+            $student = Student::insertGetId($data);
         }
 
-        
-        return view('user.clinical_case_answer', compact('modelTest'));
 
+        return view('user.clinical_case_answer', compact('modelTest'));
     }
 
     public function seeQuizResult($quiz_id)
     {
-        
-        $quizAnswer = Modeltest_answer::where('modeltest_id', $quiz_id)->where('student_id', Session:: get('id'))->first();
-        return redirect('seeAnswerResult/' . $quizAnswer->id);
 
+        $quizAnswer = Modeltest_answer::where('modeltest_id', $quiz_id)->where('student_id', Session::get('id'))->first();
+        return redirect('seeAnswerResult/' . $quizAnswer->id);
     }
-    
+
 
     public function paidmember(Request $request)
     {
@@ -1651,11 +1596,11 @@ public function searchPage(Request $request){
         }
 
 
-//       if(($has_enrolled->paid + $request->taka)>$has_enrolled->payable)
-//       {
-//           session()->flash('error','Amount exceed than payable amount');
-//           return redirect('/payment/'.$request->batch_id);
-//       }
+        //       if(($has_enrolled->paid + $request->taka)>$has_enrolled->payable)
+        //       {
+        //           session()->flash('error','Amount exceed than payable amount');
+        //           return redirect('/payment/'.$request->batch_id);
+        //       }
         $data['student_id'] = $request->id;
         $data['batch_id'] = $request->batch_id;
         $data['module_id'] = $request->module_id;
@@ -1680,10 +1625,10 @@ public function searchPage(Request $request){
         }
 
 
-        $Paidmember = Paidmember:: updateOrInsert([
-                    'student_id' => $request->id,
-                    'batch_id' => $request->batch_id,
-                ],$data);
+        $Paidmember = Paidmember::updateOrInsert([
+            'student_id' => $request->id,
+            'batch_id' => $request->batch_id,
+        ], $data);
 
         $payableAmount = DB::table('batch_duration')
             ->select('bd_fee')
@@ -1733,16 +1678,11 @@ public function searchPage(Request $request){
                 ->where('sub_id', $request->batch_duration_id)
                 ->count('id');
 
-            if ($checkAdmission >= 1)
-            {
+            if ($checkAdmission >= 1) {
                 return redirect('/payment_history/' . session()->get('id'));
-            }
-            else
-            {
+            } else {
                 return view('user.admissionform', compact('student_info'));
             }
-
-
         } else {
             session()->flash('error', 'Payment not done, Please try again');
 
@@ -1758,36 +1698,38 @@ public function searchPage(Request $request){
     public function admissionFormSave(Request $request)
     {
 
-        $admissionData = $request->only(['pb_id','address','enrolled_batch','payment_method','transaction_id','batch_id','sub_id']);
-        
+        $admissionData = $request->only(['pb_id', 'address', 'enrolled_batch', 'payment_method', 'transaction_id', 'batch_id', 'sub_id']);
 
-        if(!is_null($request->name)){
+
+        if (!is_null($request->name)) {
             $admissionData['name'] = $request->name;
             DB::table('students')->where('id', $request->pb_id)->update([
-                'name' => $request->name]);
-
-        }        
-        if(!is_null($request->phone_number)){
+                'name' => $request->name
+            ]);
+        }
+        if (!is_null($request->phone_number)) {
             $admissionData['phone_number'] = $request->phone_number;
             DB::table('students')->where('id', $request->pb_id)->update([
-                'mobile' => $request->phone_number]);
-
+                'mobile' => $request->phone_number
+            ]);
         }
-        
-        if(!is_null($request->email)){
+
+        if (!is_null($request->email)) {
             $admissionData['email'] = $request->email;
             DB::table('students')->where('id', $request->pb_id)->update([
-                'email' => $request->email]);
+                'email' => $request->email
+            ]);
         }
-        
-        if(!is_null($request->password)){
+
+        if (!is_null($request->password)) {
             DB::table('students')->where('id', $request->pb_id)->update([
-                'password' => md5($request->password)]);
+                'password' => md5($request->password)
+            ]);
         }
 
         $admission = DB::table('admission')->insert($admissionData);
-        
-        
+
+
         /*$admissionData = DB::table('admission')
             ->insert([
                 'pb_id' => $request->pb_id,
@@ -1808,7 +1750,6 @@ public function searchPage(Request $request){
         if ($admissionData) {
             return redirect('/student/profile/' . session()->get('id'));
         }
-
     }
 
     public function checkMailView($id)
@@ -1826,8 +1767,8 @@ public function searchPage(Request $request){
 
     public function duePay(Request $request)
     {
-        $id = Session:: get('id');
-        $student = Student:: where('id', $id)->first();
+        $id = Session::get('id');
+        $student = Student::where('id', $id)->first();
         $due = $student->membership->ammount - $student->taka;
 
 
@@ -1848,7 +1789,7 @@ public function searchPage(Request $request){
             $data['transaction'] = $request->transaction;
             $data['created_at'] = Carbon::now()->toDateTimeString();
 
-            $Paidmember = Job:: insertGetId($data);
+            $Paidmember = Job::insertGetId($data);
 
             if ($Paidmember) {
                 session()->flash('success', 'value');
@@ -1868,11 +1809,11 @@ public function searchPage(Request $request){
     {
 
         $data = [];
-        $data['student_id'] = Session:: get('id');
+        $data['student_id'] = Session::get('id');
         $data['problem'] = $request->problem;
-        $data['created_at'] = Carbon:: now()->toDateTimeString();
+        $data['created_at'] = Carbon::now()->toDateTimeString();
 
-        $problem = Problem:: insert($data);
+        $problem = Problem::insert($data);
         if ($problem) {
             session()->flash('success', 'value');
             return redirect('/');
@@ -1887,10 +1828,10 @@ public function searchPage(Request $request){
     {
         $id = $request->id;
         $data = [];
-        $data['student_id'] = Session:: get('id');
+        $data['student_id'] = Session::get('id');
         $data['problem_id'] = $id;
         $data['reaply'] = $request->reply;
-        $reply = Reaply:: insert($data);
+        $reply = Reaply::insert($data);
         if ($reply) {
             return redirect('/');
         } else {
@@ -1901,11 +1842,11 @@ public function searchPage(Request $request){
     public function view_video($id)
     {
 
-        $userid = Session:: get('id');
-        $user = Student:: where('id', $userid)->first();
-        $sheet = LectureSheet:: where('id', $id)->where('status', 1)->first();
-        $batchsheet = LectureBatch:: where('lecture_id', $sheet->id)->where('membershipe_id', $user->batch_id)->first() ?? abort(404);
-        $allsheet = LectureSheet:: where('id', $batchsheet->lecture_id)->where('status', 1)->first();
+        $userid = Session::get('id');
+        $user = Student::where('id', $userid)->first();
+        $sheet = LectureSheet::where('id', $id)->where('status', 1)->first();
+        $batchsheet = LectureBatch::where('lecture_id', $sheet->id)->where('membershipe_id', $user->batch_id)->first() ?? abort(404);
+        $allsheet = LectureSheet::where('id', $batchsheet->lecture_id)->where('status', 1)->first();
         return view('website.view_video', compact('allsheet'));
     }
 
@@ -1918,9 +1859,9 @@ public function searchPage(Request $request){
         }
 
 
-        $profile = Student:: where('status', 1)->where('id', $id)->first();
+        $profile = Student::where('status', 1)->where('id', $id)->first();
         if (empty($profile)) {
-            Session:: flush('error', 'No user found');
+            Session::flush('error', 'No user found');
             return redirect('/');
         }
 
@@ -1932,11 +1873,11 @@ public function searchPage(Request $request){
             ->select('b.membershipe_id', 'm.plan')
             ->get();
 
-//        $quizResult = DB::table('modeltest_answers as a')
-//            ->leftJoin('modeltest_batches as b', 'a.modeltest_id', '=', 'b.modeltest_id')
-//            ->where('a.student_id', $id)
-//            ->where('b.lecture_id', '!=', null)
-//            ->sum('point');
+        //        $quizResult = DB::table('modeltest_answers as a')
+        //            ->leftJoin('modeltest_batches as b', 'a.modeltest_id', '=', 'b.modeltest_id')
+        //            ->where('a.student_id', $id)
+        //            ->where('b.lecture_id', '!=', null)
+        //            ->sum('point');
 
         return view('user.result_profile', compact('batchResult'));
     }
@@ -2025,7 +1966,12 @@ public function searchPage(Request $request){
         })->values()->toArray();
 
         $examAnalytics = compact(
-            'attempted', 'totalCorrect', 'totalWrong', 'totalUnanswered', 'avgScore', 'perExam'
+            'attempted',
+            'totalCorrect',
+            'totalWrong',
+            'totalUnanswered',
+            'avgScore',
+            'perExam'
         );
 
         return view('user.student_profile', compact('profile', 'courses', 'lectureAnalytics', 'examAnalytics'));
@@ -2040,139 +1986,134 @@ public function searchPage(Request $request){
 
     public function point()
     {
-        $modeltest = Modeltest:: where('status', 1)->paginate(10);
+        $modeltest = Modeltest::where('status', 1)->paginate(10);
         return view('user.exam_point', compact('modeltest'));
     }
 
     public function point_list($id)
     {
-        $modelTestName =  Modeltest:: where('id', $id)->value("name");
-        $modelTestMarks =  Modeltest:: where('id', $id)->value("exam_in_minutes");
+        $modelTestName =  Modeltest::where('id', $id)->value("name");
+        $modelTestMarks =  Modeltest::where('id', $id)->value("exam_in_minutes");
         $modeltest = Modeltest_answer::with('students')->where('modeltest_id', $id)->orderBy('point', 'desc')->paginate(1000);
-        
+
         $userPoint = Modeltest_answer::where('modeltest_id', $id)->where('student_id', Session::get('id'))->value('point');
-        
+
         $userRank = Modeltest_answer::where('modeltest_id', $id)->where('point', '>', $userPoint)->count();
-        
-        
+
+
         return view('user.exam_point_list', compact('modeltest', 'modelTestName', 'modelTestMarks', 'userRank'));
     }
 
 
     public function admin_point_list($id)
     {
-        $modelTestName =  Modeltest:: where('id', $id)->value("name");
-        $modelTestMarks =  Modeltest:: where('id', $id)->value("exam_in_minutes");
+        $modelTestName =  Modeltest::where('id', $id)->value("name");
+        $modelTestMarks =  Modeltest::where('id', $id)->value("exam_in_minutes");
         $modeltest = Modeltest_answer::with('students')->where('modeltest_id', $id)->orderBy('point', 'desc')->paginate(1000);
-        
+
         $userPoint = 0;
-        
+
         $userRank = -1;
-        
-        
+
+
         return view('user.exam_point_list', compact('modeltest', 'modelTestName', 'modelTestMarks', 'userRank'));
     }
 
 
     public function point_list_fcps($id)
     {
-        $modelTestName =  Modeltest:: where('id', $id)->value("name");
-        $modelTestMarks =  Modeltest:: where('id', $id)->value("exam_in_minutes");
+        $modelTestName =  Modeltest::where('id', $id)->value("name");
+        $modelTestMarks =  Modeltest::where('id', $id)->value("exam_in_minutes");
         $modeltest = Modeltest_answer::with('students')->where('modeltest_id', $id)->orderBy('point', 'desc')->paginate(1000);
-        
+
         $userPoint = Modeltest_answer::where('modeltest_id', $id)->where('student_id', Session::get('id'))->value('point');
-        
+
         $userRank = Modeltest_answer::where('modeltest_id', $id)->where('point', '>', $userPoint)->count();
-        
+
         return view('user.exam_point_list_fcps', compact('modeltest', 'modelTestName', 'modelTestMarks', 'userRank'));
     }
-    
-    
+
+
     public function point_list_ms_md_dds($id)
     {
-        $modelTestName =  Modeltest:: where('id', $id)->value("name");
-        $modelTestMarks =  Modeltest:: where('id', $id)->value("exam_in_minutes");
+        $modelTestName =  Modeltest::where('id', $id)->value("name");
+        $modelTestMarks =  Modeltest::where('id', $id)->value("exam_in_minutes");
         $modeltest = Modeltest_answer::with('students')->where('modeltest_id', $id)->orderBy('point_1', 'desc')->paginate(1000);
 
         $userPoint = Modeltest_answer::where('modeltest_id', $id)->where('student_id', Session::get('id'))->value('point_1');
-        
+
         $userRank = Modeltest_answer::where('modeltest_id', $id)->where('point_1', '>', $userPoint)->count();
-        
-        
+
+
         return view('user.exam_point_list_ms_md_dds', compact('modeltest', 'modelTestName', 'modelTestMarks', 'userRank'));
     }
 
 
     public function point_list_discipline($id)
     {
-        $modelTestName =  Modeltest:: where('id', $id)->value("name");
-        $modelTestMarks =  Modeltest:: where('id', $id)->value("exam_in_minutes");
-        
-        
+        $modelTestName =  Modeltest::where('id', $id)->value("name");
+        $modelTestMarks =  Modeltest::where('id', $id)->value("exam_in_minutes");
+
+
         return view('user.exam_point_list_discipline', compact('id', 'modelTestName', 'modelTestMarks'));
     }
-    
-    
-    
+
+
+
     public function point_list_by_discipline($id, $discipline)
     {
-        
-        
-        $modelTestName =  Modeltest:: where('id', $id)->value("name");
-        $modelTestMarks =  Modeltest:: where('id', $id)->value("exam_in_minutes");
-        
+
+
+        $modelTestName =  Modeltest::where('id', $id)->value("name");
+        $modelTestMarks =  Modeltest::where('id', $id)->value("exam_in_minutes");
+
         $discipline_modified = str_replace("_", " ", $discipline);
-        
+
         $privateCandidate = Modeltest_answer::with('students')->where('modeltest_id', $id)->where('discipline', $discipline_modified)->where('candidate_type', "Private")->orderBy('point_1', 'desc')->paginate(1000);
-        
-        
+
+
         $governmentCandidate = Modeltest_answer::with('students')->where('modeltest_id', $id)->where('discipline', $discipline_modified)->where('candidate_type', "Government")->orderBy('point_1', 'desc')->paginate(1000);
-        
-        
+
+
         $userPoint = Modeltest_answer::where('modeltest_id', $id)->where('student_id', Session::get('id'))->value('point_1');
-        
+
         $userDiscipline = Modeltest_answer::where('modeltest_id', $id)->where('student_id', Session::get('id'))->value('discipline');
-        
+
         $candidate = Modeltest_answer::where('modeltest_id', $id)->where('student_id', Session::get('id'))->value('candidate_type');
-        
+
         if ($userDiscipline == $discipline_modified) {
-        
+
             if ($candidate == "Private") {
-            
+
                 $userRank = Modeltest_answer::where('modeltest_id', $id)->where('candidate_type', 'Private')->where('discipline', $discipline_modified)->where('point_1', '>', $userPoint)->count();
-                
             } else {
                 $userRank = Modeltest_answer::where('modeltest_id', $id)->where('candidate_type', 'Government')->where('discipline', $discipline_modified)->where('point_1', '>', $userPoint)->count();
-                
             }
-        
         } else {
-            
-           $userRank = null; 
+
+            $userRank = null;
         }
-        
+
         return view('user.exam_point_list_by_discipline', compact('privateCandidate', 'governmentCandidate', 'modelTestName', 'modelTestMarks', 'discipline_modified', 'candidate', 'userDiscipline', 'userRank'));
     }
-    
-    
-    
+
+
+
 
     public function my_exam_history()
     {
 
-        $point = Modeltest_answer:: where('student_id', Session::get('id'))->orderBy('created_at', 'desc')->paginate(100);
+        $point = Modeltest_answer::where('student_id', Session::get('id'))->orderBy('created_at', 'desc')->paginate(100);
         return view('user.my_exam_history', compact('point'));
-
     }
-    
+
     public function my_quiz_history()
     {
 
-        $point = Modeltest_answer:: where('student_id', Session::get('id'))->where('exam_pattern', '=', 'lecture')->orderBy('created_at', 'desc')->paginate(100);
-        
-        
-        return view('user.my_quiz_history', compact('point'));
+        $point = Modeltest_answer::where('student_id', Session::get('id'))->where('exam_pattern', '=', 'lecture')->orderBy('created_at', 'desc')->paginate(100);
 
+
+        return view('user.my_quiz_history', compact('point'));
     }
 
 
@@ -2180,7 +2121,6 @@ public function searchPage(Request $request){
     {
 
         return view('user.bookmarks');
-
     }
 
 
@@ -2188,9 +2128,8 @@ public function searchPage(Request $request){
     {
 
         return view('user.watch_history');
-
     }
-    
+
 
     public function books()
     {
@@ -2202,19 +2141,16 @@ public function searchPage(Request $request){
     {
 
         $all = DB::table('batch_students as a')
-        ->join('notices as b', function ($joinOne) {
-        $joinOne->on('a.batch_id', '=', 'b.batch_id');
-        })->where('a.student_id', Session::get('id'))->where('a.enroll_status', 1)->where('a.subscription_end', '>=', NOW())->select('b.id', 'b.batch_name','b.notice', 'b.link', 'b.updated_at')->latest('b.updated_at')
-        ->get();
-        
+            ->join('notices as b', function ($joinOne) {
+                $joinOne->on('a.batch_id', '=', 'b.batch_id');
+            })->where('a.student_id', Session::get('id'))->where('a.enroll_status', 1)->where('a.subscription_end', '>=', NOW())->select('b.id', 'b.batch_name', 'b.notice', 'b.link', 'b.updated_at')->latest('b.updated_at')
+            ->get();
+
         $read = DB::table('notification_history')
-        ->where('user_id', Session::get('id'))->pluck('notice_id')->toArray();
-        
+            ->where('user_id', Session::get('id'))->pluck('notice_id')->toArray();
+
 
         return view('user.notice_by_user', compact('all', 'read'));
-        
-        
-
     }
 
 
@@ -2238,80 +2174,76 @@ public function searchPage(Request $request){
         $chapter = Chapter::where('cat_id', $id)->where('status', 1)->orderBy('id', 'desc')->get();
         return view('website.chapter', compact('chapter'));
     }
-    
-    public function adminOtp() {
+
+    public function adminOtp()
+    {
 
         $adminOtp = Student::where('id', 3074)->value('otp');
 
-        return view('admin.admin_otp', compact('adminOtp'));        
-        
+        return view('admin.admin_otp', compact('adminOtp'));
     }
-    
 
-    
-    public function contact() {
+
+
+    public function contact()
+    {
 
         return view('website.contact');
-        
     }
-    
-    public function aboutUs() {
 
-        $review = Problem:: where('status', 1)->orderBy('id', 'desc')->get();
+    public function aboutUs()
+    {
+
+        $review = Problem::where('status', 1)->orderBy('id', 'desc')->get();
         $mentors = Mentor::all();
 
         return view('website.about_us', compact('review', 'mentors'));
-        
     }
-    
-    public function news() {
+
+    public function news()
+    {
 
         return view('website.news');
-        
-    }    
-    
-    public function mentors() {
+    }
+
+    public function mentors()
+    {
 
         $mentors = Mentor::orderBy('updated_at', 'desc')->get();
 
         return view('website.mentors', compact('mentors'));
-        
-    } 
+    }
 
 
-    public function question_bank() {
+    public function question_bank()
+    {
 
         $modelTest = QuestionBank::first();
-        
+
         return redirect('/question_bank_topic/' . $modelTest->id);
 
-        //return view('website.question_bank.question_answer', compact('modelTest'));        
+        //return view('website.question_bank.question_answer', compact('modelTest'));
     }
 
     public function question_bank_topic($id)
     {
 
-        
+
         $userId = Session::get('id');
 
-        $has_enrolled =  BatchStudent::where('student_id',Session::get('id'))->where('batch_id', 87)->where('enroll_status', 1)->where('subscription_end', '>=', NOW())->first();
+        $has_enrolled =  BatchStudent::where('student_id', Session::get('id'))->where('batch_id', 87)->where('enroll_status', 1)->where('subscription_end', '>=', NOW())->first();
 
 
-        
+
         $modelTest = QuestionBank::find($id) ?? abort(404);
-        
+
         if ($has_enrolled) {
-            
-        
+
+
             return view('website.question_bank.question_answer', compact('modelTest',));
-           
         }
 
 
-        return view('website.question_bank.free_question_answer', compact('modelTest')); 
-
-
-
+        return view('website.question_bank.free_question_answer', compact('modelTest'));
     }
-    
 }

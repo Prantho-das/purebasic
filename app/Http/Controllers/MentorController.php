@@ -31,7 +31,7 @@ class MentorController extends Controller
 		$data=[];
 		$data['name']=$request->name;
 		$data['designation']=$request->designation;
-		$data['created_at']=Carbon:: now()->toDateTime();
+		$data['created_at']=Carbon::now()->toDateTimeString();
 
 		if ($request->has('image')) {
 			$image = $request->file('image');

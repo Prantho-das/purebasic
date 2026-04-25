@@ -5,6 +5,7 @@
 @section('content')
     @php
         $sections = \App\HomeSection::orderBy('order_num')->get();
+        $firstCategory = null;
     @endphp
 
     @foreach ($sections as $section)
@@ -636,7 +637,7 @@
                                     alt="offer-video.png">
                                 <div class="course-video-icon">
 
-                                    <a class="popup-youtube" href="{{ $mentor->youtube_url }}">
+                                    <a class="popup-youtube" href="{{ $mentor->youtube_url ?? '' }}">
                                         <i class="fa-solid fa-play"></i>
                                     </a>
 
