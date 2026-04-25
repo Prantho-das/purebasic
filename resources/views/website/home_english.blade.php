@@ -360,145 +360,144 @@
 
 
         @if ($section->section_type == 'hero_slider' && $section->is_active == 1)
-        <section class="home-banner-main" data-background="{{ asset('assets/images/home/hero-bg.png') }}">
-            <div class="container ed-container-expand">
-                <div class="row">
-                    <!-- Left Side: Main Title, Subtitle & Primary Button (shown once for all slides) -->
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="title-box">
-                            <h1 id="heroTitle">
-                                {{ $section->title }}
-                            </h1>
-                            <p>
-                                {{ $section->subtitle ?? '' }}
-                            </p>
-                            <div class="banner-btn">
-                                <a href="{{ $section->primary_link ?? '#' }}">
-                                    find courses
-                                    <span class="icon"><i class="fa-classic fa-regular fa-arrow-right"></i></span>
-                                </a>
+            <section class="home-banner-main" data-background="{{ asset('assets/images/home/hero-bg.png') }}">
+                <div class="container ed-container-expand">
+                    <div class="row">
+                        <!-- Left Side: Main Title, Subtitle & Primary Button (shown once for all slides) -->
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="title-box">
+                                <h1 id="heroTitle">
+                                    {{ $section->title }}
+                                </h1>
+                                <p>
+                                    {{ $section->subtitle ?? '' }}
+                                </p>
+                                <div class="banner-btn">
+                                    <a href="{{ $section->primary_link ?? '#' }}">
+                                        find courses
+                                        <span class="icon"><i class="fa-classic fa-regular fa-arrow-right"></i></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-        
-                    <!-- Right Side: Dynamic Swiper Slider -->
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="banner-slider-wrapper">
-                            <div class="swiper home-banner-slider">
-                                <div class="swiper-wrapper">
-        
-                                    @forelse ($section->dynamic_data ?? [] as $slideIndex => $slide)
-        
-                                    <div class="swiper-slide">
-                                        <div class="banner-parent-box bg-1">
-        
-                                            <!-- Top Badge (e.g., "Online Course") -->
-                                            <div class="box-title">
-                                                {{ $slide['promotion_title'] ?? 'Online Course' }}
-                                            </div>
-        
-                                            <!-- Main Heading of the Slide -->
-                                            <div class="heading">
-                                                {{ $slide['title'] ?? 'Admission is open for all courses in Online Batch 2025!'
-                                                }}
-                                            </div>
-        
-                                            <!-- 4 Course/Custom Cards Grid -->
-                                            <div class="course-grid-parent">
-        
-                                                @php
-                                                $items = $slide['items'] ?? [];
-                                                $itemCount = count($items);
-                                                $maxItems = 4; // Always show 4 cards (fill empty with hidden placeholders)
-                                                @endphp
-        
-                                                @foreach ($items as $item)
-                                                <div class="single-course">
-                                                    <a href="{{ $item['type'] === 'course' ? ($item['course_link'] ?? '#') : ($item['custom_link'] ?? '#') }}"
-                                                        target="_blank">
-                                                        <div class="inner-wrapper">
-                                                            <div class="icon">
-                                                                <img src="{{ 
-                                                                    isset($item['image']) 
-                                                                        ? asset('storage/' . $item['image']) 
-                                                                        : asset('assets/images/home/s.jpeg') 
-                                                                }}" alt="{{ $item['course_name'] ?? $item['custom_name'] ?? 'Course' }}"
-                                                                    class="img-fluid">
+
+                        <!-- Right Side: Dynamic Swiper Slider -->
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="banner-slider-wrapper">
+                                <div class="swiper home-banner-slider">
+                                    <div class="swiper-wrapper">
+
+                                        @forelse ($section->dynamic_data ?? [] as $slideIndex => $slide)
+                                            <div class="swiper-slide">
+                                                <div class="banner-parent-box bg-1">
+
+                                                    <!-- Top Badge (e.g., "Online Course") -->
+                                                    <div class="box-title">
+                                                        {{ $slide['promotion_title'] ?? 'Online Course' }}
+                                                    </div>
+
+                                                    <!-- Main Heading of the Slide -->
+                                                    <div class="heading">
+                                                        {{ $slide['title'] ?? 'Admission is open for all courses in Online Batch 2025!' }}
+                                                    </div>
+
+                                                    <!-- 4 Course/Custom Cards Grid -->
+                                                    <div class="course-grid-parent">
+
+                                                        @php
+                                                            $items = $slide['items'] ?? [];
+                                                            $itemCount = count($items);
+                                                            $maxItems = 4; // Always show 4 cards (fill empty with hidden placeholders)
+                                                        @endphp
+
+                                                        @foreach ($items as $item)
+                                                            <div class="single-course">
+                                                                <a href="{{ $item['type'] === 'course' ? $item['course_link'] ?? '#' : $item['custom_link'] ?? '#' }}"
+                                                                    target="_blank">
+                                                                    <div class="inner-wrapper">
+                                                                        <div class="icon">
+                                                                            <img src="{{ isset($item['image']) ? asset('storage/' . $item['image']) : asset('assets/images/home/s.jpeg') }}"
+                                                                                alt="{{ $item['course_name'] ?? ($item['custom_name'] ?? 'Course') }}"
+                                                                                class="img-fluid">
+                                                                        </div>
+                                                                        <div class="text">
+                                                                            @if ($item['type'] === 'course')
+                                                                                {{ $item['course_name'] ?? 'Course Name' }}
+                                                                            @else
+                                                                                {{ $item['custom_name'] ?? 'Custom Course' }}
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                            <div class="text">
-                                                                @if ($item['type'] === 'course')
-                                                                {{ $item['course_name'] ?? 'Course Name' }}
-                                                                @else
-                                                                {{ $item['custom_name'] ?? 'Custom Course' }}
-                                                                @endif
+                                                        @endforeach
+
+                                                        <!-- Fill remaining slots with invisible placeholders to maintain grid layout -->
+                                                        @for ($i = $itemCount; $i < $maxItems; $i++)
+                                                            <div class="single-course opacity-0 pointer-events-none">
+                                                                <div class="inner-wrapper">
+                                                                    <div class="icon">
+                                                                        <img src="{{ asset('assets/images/home/s.jpeg') }}"
+                                                                            alt="">
+                                                                    </div>
+                                                                    <div class="text">Placeholder</div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
+                                                        @endfor
+
+                                                    </div>
+
+                                                    <!-- Bottom Enroll Link -->
+                                                    <div class="enroll-link">
+                                                        <a href="{{ $slide['enroll_link'] ?? '#' }}">
+                                                            {{ $slide['enroll_text'] ?? 'Click to enroll in 30+ free courses' }}
+                                                            <i class="fa-classic fa-regular fa-arrow-right"></i>
+                                                        </a>
+                                                    </div>
+
                                                 </div>
-                                                @endforeach
-        
-                                                <!-- Fill remaining slots with invisible placeholders to maintain grid layout -->
-                                                @for ($i = $itemCount; $i < $maxItems; $i++) <div
-                                                    class="single-course opacity-0 pointer-events-none">
-                                                    <div class="inner-wrapper">
-                                                        <div class="icon">
-                                                            <img src="{{ asset('assets/images/home/s.jpeg') }}" alt="">
-                                                        </div>
-                                                        <div class="text">Placeholder</div>
-                                                    </div>
                                             </div>
-                                            @endfor
-        
-                                        </div>
-        
-                                        <!-- Bottom Enroll Link -->
-                                        <div class="enroll-link">
-                                            <a href="{{ $slide['enroll_link'] ?? '#' }}">
-                                                {{ $slide['enroll_text'] ?? 'Click to enroll in 30+ free courses' }}
-                                                <i class="fa-classic fa-regular fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-        
-                                    </div>
-                                </div>
-        
-                                @empty
-                                <!-- Fallback: If no slides in database, show one default slide -->
-                                <div class="swiper-slide">
-                                    <div class="banner-parent-box bg-1">
-                                        <div class="box-title">Online Course</div>
-                                        <div class="heading">Admission is open for all courses in Online Batch 2025!</div>
-                                        <div class="course-grid-parent">
-                                            @for ($i = 0; $i < 4; $i++) <div class="single-course">
-                                                <a href="#">
-                                                    <div class="inner-wrapper">
-                                                        <div class="icon">
-                                                            <img src="{{ asset('assets/images/home/s.jpeg') }}" alt="course">
-                                                        </div>
-                                                        <div class="text">Class 6,7,8</div>
+
+                                        @empty
+                                            <!-- Fallback: If no slides in database, show one default slide -->
+                                            <div class="swiper-slide">
+                                                <div class="banner-parent-box bg-1">
+                                                    <div class="box-title">Online Course</div>
+                                                    <div class="heading">Admission is open for all courses in Online Batch
+                                                        2025!</div>
+                                                    <div class="course-grid-parent">
+                                                        @for ($i = 0; $i < 4; $i++)
+                                                            <div class="single-course">
+                                                                <a href="#">
+                                                                    <div class="inner-wrapper">
+                                                                        <div class="icon">
+                                                                            <img src="{{ asset('assets/images/home/s.jpeg') }}"
+                                                                                alt="course">
+                                                                        </div>
+                                                                        <div class="text">Class 6,7,8</div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        @endfor
                                                     </div>
-                                                </a>
-                                        </div>
-                                        @endfor
+                                                    <div class="enroll-link">
+                                                        <a href="#">Click to enroll in 30+ free courses <i
+                                                                class="fa-classic fa-regular fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforelse
+
                                     </div>
-                                    <div class="enroll-link">
-                                        <a href="#">Click to enroll in 30+ free courses <i
-                                                class="fa-classic fa-regular fa-arrow-right"></i></a>
-                                    </div>
+
+                                    <!-- Swiper Pagination (dots) -->
+                                    <div class="swiper-pagination"></div>
                                 </div>
                             </div>
-                            @endforelse
-        
                         </div>
-        
-                        <!-- Swiper Pagination (dots) -->
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
-            </div>
-            </div>
-        </section>
+            </section>
         @endif
         @if (($section->section_type == 'locations' || $section->section_type == 'books') && $section->is_active == 1)
             <section class="offline-branch-main">
@@ -558,8 +557,7 @@
                                         <div class="singlecard-parent">
                                             <a href="#">
                                                 <div class="image-box">
-                                                    <img src="{{ asset('storage') . '/' . $book->image }}"
-                                                        alt="skill">
+                                                    <img src="{{ asset('storage') . '/' . $book->image }}" alt="skill">
                                                 </div>
                                                 <div class="content-box">
                                                     <div class="tags">{{ $book->book_name }}</div>
@@ -753,7 +751,6 @@
 
 
                                     @foreach ($testimonialData as $data)
-                                    
                                         @php
                                             $data = (object) $data;
                                             $data->review_data = (object) $data->review_data;
@@ -922,10 +919,9 @@
         </section>
     @endif
     @if ($section->section_type == 'static_design' && $section->is_active == 1)
-
-    @php
-                        $static_design = $section->dynamic_data;
-                    @endphp
+        @php
+            $static_design = $section->dynamic_data;
+        @endphp
         <section class="counter-main">
             <div class="container">
                 <div class="row">
@@ -937,27 +933,30 @@
                                     <div class="icon">
                                         <img src="{{ asset('assets/images/icons/31.png') }}" alt="">
                                     </div>
-                                    @if(isset($static_design) && count($static_design))
-                                    <div class="title">{{$static_design[0]['type']}}</div>
-                                    <div class="count" data-count="{{$static_design[0]['label']}}">{{$static_design[0]['label']}}+</div>
+                                    @if (isset($static_design[0]))
+                                        <div class="title">{{ $static_design[0]['type'] }}</div>
+                                        <div class="count" data-count="{{ $static_design[0]['label'] }}">
+                                            {{ $static_design[0]['label'] }}+</div>
                                     @endif
                                 </div>
                                 <div class="single-counter-box">
                                     <div class="icon">
                                         <img src="{{ asset('assets/images/icons/32.png') }}" alt="">
                                     </div>
-                                    @if(isset($static_design) && count($static_design))
-                                    <div class="title">{{$static_design[1]['type']}}</div>
-                                    <div class="count" data-count="{{$static_design[1]['label']}}">{{$static_design[1]['label']}}+</div>
+                                    @if (isset($static_design[1]))
+                                        <div class="title">{{ $static_design[1]['type'] }}</div>
+                                        <div class="count" data-count="{{ $static_design[1]['label'] }}">
+                                            {{ $static_design[1]['label'] }}+</div>
                                     @endif
                                 </div>
                                 <div class="single-counter-box">
                                     <div class="icon">
                                         <img src="{{ asset('assets/images/icons/33.png') }}" alt="">
                                     </div>
-                                    @if(isset($static_design) && count($static_design))
-                                    <div class="title">{{$static_design[2]['type']}}</div>
-                                    <div class="count" data-count="{{$static_design[2]['label']}}">{{$static_design[2]['label']}}+</div>
+                                    @if (isset($static_design[2]))
+                                        <div class="title">{{ $static_design[2]['type'] }}</div>
+                                        <div class="count" data-count="{{ $static_design[2]['label'] }}">
+                                            {{ $static_design[2]['label'] }}+</div>
                                     @endif
                                 </div>
                             </div>
