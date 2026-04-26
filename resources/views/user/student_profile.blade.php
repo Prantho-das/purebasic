@@ -16,8 +16,7 @@
 
                     {{-- Avatar (clicking camera opens Settings tab) --}}
                     <div class="profile-avatar-wrap">
-                        <img src="{{ $profile->photo }}" alt="{{ $profile->name }}"
-                             class="profile-avatar" id="coverAvatarImg">
+                        <img src="{{ $profile->photo }}" alt="{{ $profile->name }}" class="profile-avatar" id="coverAvatarImg">
                         <div class="avatar-edit-badge" id="avatarEditBadge" title="Change photo">
                             <i class="fa-regular fa-camera"></i>
                         </div>
@@ -135,11 +134,14 @@
                                             <div class="stat-label">Account Status</div>
                                             <div class="stat-value">
                                                 @if ($profile->status == 1)
-                                                    <span class="profile-status-badge badge-active"><span class="dot"></span> Active</span>
+                                                    <span class="profile-status-badge badge-active"><span
+                                                            class="dot"></span> Active</span>
                                                 @elseif($profile->is_approve == 0)
-                                                    <span class="profile-status-badge badge-pending"><span class="dot"></span> Pending</span>
+                                                    <span class="profile-status-badge badge-pending"><span
+                                                            class="dot"></span> Pending</span>
                                                 @else
-                                                    <span class="profile-status-badge badge-inactive"><span class="dot"></span> Inactive</span>
+                                                    <span class="profile-status-badge badge-inactive"><span
+                                                            class="dot"></span> Inactive</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -171,7 +173,8 @@
                                             <div class="overview-stat-text">
                                                 <div class="stat-label">Facebook</div>
                                                 <div class="stat-value">
-                                                    <a href="{{ $profile->fb }}" target="_blank" rel="noopener">View Profile</a>
+                                                    <a href="{{ $profile->fb }}" target="_blank" rel="noopener">View
+                                                        Profile</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -210,39 +213,46 @@
                                 <div class="profile-card-header">
                                     <div class="card-header-icon"><i class="fa-regular fa-user"></i></div>
                                     <h5>Personal Information</h5>
-                                    <a href="#" class="card-header-meta profile-tab-link" data-tab="personal" style="color:#02b3e4;font-weight:600">View all →</a>
+                                    <a href="#" class="card-header-meta profile-tab-link" data-tab="personal"
+                                        style="color:#02b3e4;font-weight:600">View all →</a>
                                 </div>
                                 <div class="profile-card-body">
                                     <div class="profile-info-grid">
 
                                         <div class="profile-info-item">
                                             <span class="info-label">Full Name</span>
-                                            <span class="info-value {{ empty($profile->name) ? 'info-value--empty' : '' }}">{{ $profile->name ?? 'Not provided' }}</span>
+                                            <span
+                                                class="info-value {{ empty($profile->name) ? 'info-value--empty' : '' }}">{{ $profile->name ?? 'Not provided' }}</span>
                                         </div>
 
                                         <div class="profile-info-item">
                                             <span class="info-label">Email Address</span>
-                                            <span class="info-value {{ empty($profile->email) ? 'info-value--empty' : '' }}">{{ $profile->email ?? 'Not provided' }}</span>
+                                            <span
+                                                class="info-value {{ empty($profile->email) ? 'info-value--empty' : '' }}">{{ $profile->email ?? 'Not provided' }}</span>
                                         </div>
 
                                         <div class="profile-info-item">
                                             <span class="info-label">Phone Number</span>
-                                            <span class="info-value {{ empty($profile->mobile) ? 'info-value--empty' : '' }}">{{ $profile->mobile ?? 'Not provided' }}</span>
+                                            <span
+                                                class="info-value {{ empty($profile->mobile) ? 'info-value--empty' : '' }}">{{ $profile->mobile ?? 'Not provided' }}</span>
                                         </div>
 
                                         <div class="profile-info-item">
                                             <span class="info-label">Gender</span>
-                                            <span class="info-value {{ empty($profile->gender) ? 'info-value--empty' : '' }}">{{ $profile->gender ?? 'Not provided' }}</span>
+                                            <span
+                                                class="info-value {{ empty($profile->gender) ? 'info-value--empty' : '' }}">{{ $profile->gender ?? 'Not provided' }}</span>
                                         </div>
 
                                         <div class="profile-info-item">
                                             <span class="info-label">Date of Birth</span>
-                                            <span class="info-value {{ empty($profile->birth) ? 'info-value--empty' : '' }}">{{ $profile->birth ?? 'Not provided' }}</span>
+                                            <span
+                                                class="info-value {{ empty($profile->birth) ? 'info-value--empty' : '' }}">{{ $profile->birth ?? 'Not provided' }}</span>
                                         </div>
 
                                         <div class="profile-info-item">
                                             <span class="info-label">Country</span>
-                                            <span class="info-value {{ empty($profile->country) ? 'info-value--empty' : '' }}">{{ $profile->country ?? 'Not provided' }}</span>
+                                            <span
+                                                class="info-value {{ empty($profile->country) ? 'info-value--empty' : '' }}">{{ $profile->country ?? 'Not provided' }}</span>
                                         </div>
 
                                     </div>
@@ -254,7 +264,9 @@
                                 $totalCourses = 0;
                                 foreach ($courses as $chunk) {
                                     foreach ($chunk as $c) {
-                                        if (!empty($c->course)) $totalCourses++;
+                                        if (!empty($c->course)) {
+                                            $totalCourses++;
+                                        }
                                     }
                                 }
                             @endphp
@@ -263,7 +275,9 @@
                                     <div class="card-header-icon"><i class="fa-regular fa-book-open"></i></div>
                                     <h5>My Courses</h5>
                                     <span class="card-header-meta">{{ $totalCourses }} enrolled</span>
-                                    <a href="#" class="profile-tab-link" data-tab="courses" style="color:#02b3e4;font-weight:600;font-size:12px;margin-left:12px">View all →</a>
+                                    <a href="#" class="profile-tab-link" data-tab="courses"
+                                        style="color:#02b3e4;font-weight:600;font-size:12px;margin-left:12px">View all
+                                        →</a>
                                 </div>
                                 <div class="profile-card-body">
                                     @if ($totalCourses === 0)
@@ -282,11 +296,17 @@
                                                         <div class="d-flex justify-content-between align-items-start">
                                                             <p class="course-title">{{ $course->course->plan }}</p>
                                                             @if ($course->enroll_status == 1)
-                                                                <span class="profile-status-badge badge-active" style="flex-shrink:0;margin-left:8px"><span class="dot"></span> Active</span>
+                                                                <span class="profile-status-badge badge-active"
+                                                                    style="flex-shrink:0;margin-left:8px"><span
+                                                                        class="dot"></span> Active</span>
                                                             @elseif($course->enroll_status == 0)
-                                                                <span class="profile-status-badge badge-pending" style="flex-shrink:0;margin-left:8px"><span class="dot"></span> Pending</span>
+                                                                <span class="profile-status-badge badge-pending"
+                                                                    style="flex-shrink:0;margin-left:8px"><span
+                                                                        class="dot"></span> Pending</span>
                                                             @else
-                                                                <span class="profile-status-badge badge-inactive" style="flex-shrink:0;margin-left:8px"><span class="dot"></span> Inactive</span>
+                                                                <span class="profile-status-badge badge-inactive"
+                                                                    style="flex-shrink:0;margin-left:8px"><span
+                                                                        class="dot"></span> Inactive</span>
                                                             @endif
                                                         </div>
                                                         <p class="course-graduation">{{ $course->course->graduation }}</p>
@@ -297,7 +317,8 @@
                                         @if ($totalCourses > 2)
                                             <p style="text-align:center;font-size:12px;color:#6c757d;margin-top:8px">
                                                 + {{ $totalCourses - 2 }} more &nbsp;
-                                                <a href="#" class="profile-tab-link" data-tab="courses" style="color:#02b3e4;font-weight:600">View all courses →</a>
+                                                <a href="#" class="profile-tab-link" data-tab="courses"
+                                                    style="color:#02b3e4;font-weight:600">View all courses →</a>
                                             </p>
                                         @endif
                                     @endif
@@ -318,7 +339,7 @@
                             <div class="card-header-icon"><i class="fa-regular fa-user"></i></div>
                             <h5>Personal Information</h5>
                             <button class="card-header-meta profile-tab-link btn-link-plain" data-tab="settings"
-                                    style="color:#02b3e4;font-weight:600;cursor:pointer">
+                                style="color:#02b3e4;font-weight:600;cursor:pointer">
                                 <i class="fa-regular fa-pen-to-square"></i> Edit
                             </button>
                         </div>
@@ -327,42 +348,50 @@
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Full Name</span>
-                                    <span class="info-value {{ empty($profile->name) ? 'info-value--empty' : '' }}">{{ $profile->name ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->name) ? 'info-value--empty' : '' }}">{{ $profile->name ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Email Address</span>
-                                    <span class="info-value {{ empty($profile->email) ? 'info-value--empty' : '' }}">{{ $profile->email ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->email) ? 'info-value--empty' : '' }}">{{ $profile->email ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Phone Number</span>
-                                    <span class="info-value {{ empty($profile->mobile) ? 'info-value--empty' : '' }}">{{ $profile->mobile ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->mobile) ? 'info-value--empty' : '' }}">{{ $profile->mobile ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">WhatsApp</span>
-                                    <span class="info-value {{ empty($profile->whatsapp_number) ? 'info-value--empty' : '' }}">{{ $profile->whatsapp_number ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->whatsapp_number) ? 'info-value--empty' : '' }}">{{ $profile->whatsapp_number ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Date of Birth</span>
-                                    <span class="info-value {{ empty($profile->birth) ? 'info-value--empty' : '' }}">{{ $profile->birth ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->birth) ? 'info-value--empty' : '' }}">{{ $profile->birth ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Gender</span>
-                                    <span class="info-value {{ empty($profile->gender) ? 'info-value--empty' : '' }}">{{ $profile->gender ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->gender) ? 'info-value--empty' : '' }}">{{ $profile->gender ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Country</span>
-                                    <span class="info-value {{ empty($profile->country) ? 'info-value--empty' : '' }}">{{ $profile->country ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->country) ? 'info-value--empty' : '' }}">{{ $profile->country ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Address</span>
-                                    <span class="info-value {{ empty($profile->address) ? 'info-value--empty' : '' }}">{{ $profile->address ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->address) ? 'info-value--empty' : '' }}">{{ $profile->address ?? 'Not provided' }}</span>
                                 </div>
 
                                 @if ($profile->fb)
@@ -391,7 +420,7 @@
                             <div class="card-header-icon"><i class="fa-regular fa-graduation-cap"></i></div>
                             <h5>Academic &amp; Professional</h5>
                             <button class="card-header-meta profile-tab-link btn-link-plain" data-tab="settings"
-                                    style="color:#02b3e4;font-weight:600;cursor:pointer">
+                                style="color:#02b3e4;font-weight:600;cursor:pointer">
                                 <i class="fa-regular fa-pen-to-square"></i> Edit
                             </button>
                         </div>
@@ -400,37 +429,44 @@
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Title / Position</span>
-                                    <span class="info-value {{ empty($profile->position) ? 'info-value--empty' : '' }}">{{ $profile->position ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->position) ? 'info-value--empty' : '' }}">{{ $profile->position ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Qualification / Degree</span>
-                                    <span class="info-value {{ empty($profile->qualification) ? 'info-value--empty' : '' }}">{{ $profile->qualification ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->qualification) ? 'info-value--empty' : '' }}">{{ $profile->qualification ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Medical College</span>
-                                    <span class="info-value {{ empty($profile->medical) ? 'info-value--empty' : '' }}">{{ $profile->medical ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->medical) ? 'info-value--empty' : '' }}">{{ $profile->medical ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">BMDC Registration</span>
-                                    <span class="info-value {{ empty($profile->BMDC) ? 'info-value--empty' : '' }}">{{ $profile->BMDC ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->BMDC) ? 'info-value--empty' : '' }}">{{ $profile->BMDC ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Batch Year</span>
-                                    <span class="info-value {{ empty($profile->batch) ? 'info-value--empty' : '' }}">{{ $profile->batch ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->batch) ? 'info-value--empty' : '' }}">{{ $profile->batch ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Session</span>
-                                    <span class="info-value {{ empty($profile->sessionn) ? 'info-value--empty' : '' }}">{{ $profile->sessionn ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->sessionn) ? 'info-value--empty' : '' }}">{{ $profile->sessionn ?? 'Not provided' }}</span>
                                 </div>
 
                                 <div class="profile-info-item">
                                     <span class="info-label">Level / Year</span>
-                                    <span class="info-value {{ empty($profile->levell) ? 'info-value--empty' : '' }}">{{ $profile->levell ?? 'Not provided' }}</span>
+                                    <span
+                                        class="info-value {{ empty($profile->levell) ? 'info-value--empty' : '' }}">{{ $profile->levell ?? 'Not provided' }}</span>
                                 </div>
 
                                 @if ($profile->taka)
@@ -470,68 +506,100 @@
                                     @foreach ($chunk as $course)
                                         @if (!empty($course->course))
                                             @php
-                                                $endStr   = substr($course->subscription_end, 0, 10);
-                                                $endNum   = (int) $endStr;
+                                                $endStr = substr($course->subscription_end, 0, 10);
+                                                $endNum = (int) $endStr;
                                                 $remaining = 0;
                                                 $totalDays = 365;
-                                                $usedPct   = 0;
+                                                $usedPct = 0;
 
                                                 if ($course->enroll_status == 1 && $endNum > 0) {
-                                                    $end     = new DateTime($endStr);
+                                                    $end = new DateTime($endStr);
                                                     $current = new DateTime(date('Y-m-d'));
                                                     $remaining = (int) $end->diff($current)->format('%a');
-                                                    $usedPct   = max(0, min(100, round((($totalDays - $remaining) / $totalDays) * 100)));
+                                                    $usedPct = max(
+                                                        0,
+                                                        min(100, round((($totalDays - $remaining) / $totalDays) * 100)),
+                                                    );
                                                 }
 
-                                                $daysClass = $remaining <= 7 ? 'critical' : ($remaining <= 15 ? 'warning' : 'good');
+                                                $daysClass =
+                                                    $remaining <= 7
+                                                        ? 'critical'
+                                                        : ($remaining <= 15
+                                                            ? 'warning'
+                                                            : 'good');
                                             @endphp
 
                                             <div class="enrolled-course-item">
                                                 <div class="d-flex justify-content-between align-items-start mb-1">
                                                     <p class="course-title">{{ $course->course->plan }}</p>
                                                     @if ($course->enroll_status == 1)
-                                                        <span class="profile-status-badge badge-active" style="margin-left:8px;flex-shrink:0"><span class="dot"></span> Active</span>
+                                                        <span class="profile-status-badge badge-active"
+                                                            style="margin-left:8px;flex-shrink:0"><span
+                                                                class="dot"></span> Active</span>
                                                     @elseif($course->enroll_status == 0)
-                                                        <span class="profile-status-badge badge-pending" style="margin-left:8px;flex-shrink:0"><span class="dot"></span> Pending</span>
+                                                        <span class="profile-status-badge badge-pending"
+                                                            style="margin-left:8px;flex-shrink:0"><span
+                                                                class="dot"></span> Pending</span>
                                                     @else
-                                                        <span class="profile-status-badge badge-inactive" style="margin-left:8px;flex-shrink:0"><span class="dot"></span> Inactive</span>
+                                                        <span class="profile-status-badge badge-inactive"
+                                                            style="margin-left:8px;flex-shrink:0"><span
+                                                                class="dot"></span> Inactive</span>
                                                     @endif
                                                 </div>
 
                                                 <p class="course-graduation">{{ $course->course->graduation }}</p>
 
                                                 <div class="course-meta-row">
-                                                    <span><i class="fa-regular fa-money-bill" style="color:#02b3e4"></i> Fees: {{ number_format($course->fees) }}</span>
-                                                    <span><i class="fa-regular fa-circle-check" style="color:#1aab61"></i> Paid: {{ number_format($course->paid) }}</span>
+                                                    <span><i class="fa-regular fa-money-bill" style="color:#02b3e4"></i>
+                                                        Fees: {{ number_format($course->fees) }}</span>
+                                                    <span><i class="fa-regular fa-circle-check" style="color:#1aab61"></i>
+                                                        Paid: {{ number_format($course->paid) }}</span>
                                                 </div>
 
                                                 @if ($course->enroll_status == 1 && $endNum > 0)
                                                     <div class="course-subscription-bar">
-                                                        <div class="sub-bar-fill" style="width: {{ $usedPct }}%"></div>
+                                                        <div class="sub-bar-fill" style="width: {{ $usedPct }}%">
+                                                        </div>
                                                     </div>
                                                     <div class="course-meta-row">
                                                         <span>Ends: {{ $endStr }}</span>
-                                                        <span class="days-remaining {{ $daysClass }}">{{ $remaining }}d left</span>
+                                                        <span
+                                                            class="days-remaining {{ $daysClass }}">{{ $remaining }}d
+                                                            left</span>
                                                     </div>
                                                     <div class="course-actions">
-                                                        <a href="{{ url('batch/' . $course->batch_id . '/subjects') }}" class="course-action-btn btn-lecture"><i class="fa-regular fa-play"></i> Lecture</a>
-                                                        <a href="{{ url('exam_by_batch', $course->batch_id) }}" class="course-action-btn btn-exam"><i class="fa-regular fa-file-pen"></i> Exam</a>
-                                                        <a href="{{ url('schedule/batch/' . $course->batch_id) }}" class="course-action-btn btn-schedule"><i class="fa-regular fa-calendar"></i> Schedule</a>
-                                                        <a href="{{ url('discussion/batch/' . $course->batch_id) }}" class="course-action-btn btn-discussion"><i class="fa-regular fa-comments"></i> Discussion</a>
-                                                        <a href="{{ url('live/' . $course->batch_id) }}" class="course-action-btn btn-live"><i class="fa-regular fa-signal-stream"></i> Live</a>
+                                                        <a href="{{ url('batch/' . $course->batch_id . '/subjects') }}"
+                                                            class="course-action-btn btn-lecture"><i
+                                                                class="fa-regular fa-play"></i> Lecture</a>
+                                                        <a href="{{ url('exam_by_batch', $course->batch_id) }}"
+                                                            class="course-action-btn btn-exam"><i
+                                                                class="fa-regular fa-file-pen"></i> Exam</a>
+                                                        <a href="{{ url('schedule/batch/' . $course->batch_id) }}"
+                                                            class="course-action-btn btn-schedule"><i
+                                                                class="fa-regular fa-calendar"></i> Schedule</a>
+                                                        <a href="{{ url('discussion/batch/' . $course->batch_id) }}"
+                                                            class="course-action-btn btn-discussion"><i
+                                                                class="fa-regular fa-comments"></i> Discussion</a>
+                                                        <a href="{{ url('live/' . $course->batch_id) }}"
+                                                            class="course-action-btn btn-live"><i
+                                                                class="fa-regular fa-signal-stream"></i> Live</a>
                                                     </div>
                                                 @elseif($course->enroll_status == 0)
                                                     <div class="course-actions">
-                                                        <a href="{{ url('/payment/' . $course->batch_id) }}" class="course-action-btn btn-payment">
+                                                        <a href="{{ url('/payment/' . $course->batch_id) }}"
+                                                            class="course-action-btn btn-payment">
                                                             <i class="fa-regular fa-credit-card"></i> Update Payment
                                                         </a>
                                                     </div>
                                                     <p style="font-size:11px;color:#e68900;margin-top:8px;margin-bottom:0">
-                                                        <i class="fa-regular fa-clock"></i> Awaiting approval (up to 24 hrs)
+                                                        <i class="fa-regular fa-clock"></i> Awaiting approval (up to 24
+                                                        hrs)
                                                     </p>
                                                 @else
                                                     <p style="font-size:11px;color:#d32f2f;margin-top:4px;margin-bottom:0">
-                                                        <i class="fa-regular fa-triangle-exclamation"></i> Contact support via WhatsApp
+                                                        <i class="fa-regular fa-triangle-exclamation"></i> Contact support
+                                                        via WhatsApp
                                                     </p>
                                                 @endif
                                             </div>
@@ -551,95 +619,116 @@
                 <div class="tab-panel" id="panel-analytics" style="display:none">
 
                     {{-- ── Lecture Progress ───────────────────────── --}}
-                    @if(!empty($lectureAnalytics))
-                    <div class="profile-card">
-                        <div class="profile-card-header">
-                            <div class="card-header-icon"><i class="fa-regular fa-play-circle"></i></div>
-                            <h5>Lecture Progress</h5>
-                        </div>
-                        <div class="profile-card-body">
+                    @if (!empty($lectureAnalytics))
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <div class="card-header-icon"><i class="fa-regular fa-play-circle"></i></div>
+                                <h5>Lecture Progress</h5>
+                            </div>
+                            <div class="profile-card-body">
 
-                            {{-- Progress bars per course --}}
-                            <div class="an-lecture-grid">
-                                @foreach($lectureAnalytics as $stat)
-                                @php
-                                    $wt = $stat['watch_time'] ?? 0;
-                                    $wh = floor($wt / 3600);
-                                    $wm = floor(($wt % 3600) / 60);
-                                    $wtLabel = $wh > 0 ? "{$wh}h {$wm}m" : "{$wm}m";
-                                @endphp
-                                <div class="an-lecture-card">
-                                    <div class="an-lc-header">
-                                        <span class="an-lc-title">{{ $stat['title'] }}</span>
-                                        <span class="an-badge {{ $stat['pct'] >= 80 ? 'an-badge-green' : ($stat['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
-                                            {{ $stat['pct'] }}%
-                                        </span>
-                                    </div>
-                                    <div class="an-prog-track">
-                                        <div class="an-prog-fill {{ $stat['pct'] >= 80 ? 'an-fill-green' : ($stat['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
-                                             style="width:{{ $stat['pct'] }}%"></div>
-                                    </div>
-                                    <div class="an-lc-meta">
-                                        <span><i class="fa-regular fa-check-circle"></i> Watched: <b>{{ $stat['watched'] }}</b></span>
-                                        <span><i class="fa-regular fa-film"></i> Total: <b>{{ $stat['total'] }}</b></span>
-                                        <span><i class="fa-regular fa-clock"></i> Watch time: <b>{{ $wtLabel }}</b></span>
-                                    </div>
+                                {{-- Progress bars per course --}}
+                                <div class="an-lecture-grid">
+                                    @foreach ($lectureAnalytics as $stat)
+                                        @php
+                                            $wt = $stat['watch_time'] ?? 0;
+                                            $wh = floor($wt / 3600);
+                                            $wm = floor(($wt % 3600) / 60);
+                                            $wtLabel = $wh > 0 ? "{$wh}h {$wm}m" : "{$wm}m";
+                                        @endphp
+                                        <div class="an-lecture-card">
+                                            <div class="an-lc-header">
+                                                <span class="an-lc-title">{{ $stat['title'] }}</span>
+                                                <span
+                                                    class="an-badge {{ $stat['pct'] >= 80 ? 'an-badge-green' : ($stat['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
+                                                    {{ $stat['pct'] }}%
+                                                </span>
+                                            </div>
+                                            <div class="an-prog-track">
+                                                <div class="an-prog-fill {{ $stat['pct'] >= 80 ? 'an-fill-green' : ($stat['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
+                                                    style="width:{{ $stat['pct'] }}%"></div>
+                                            </div>
+                                            <div class="an-lc-meta">
+                                                <span><i class="fa-regular fa-check-circle"></i> Watched:
+                                                    <b>{{ $stat['watched'] }}</b></span>
+                                                <span><i class="fa-regular fa-film"></i> Total:
+                                                    <b>{{ $stat['total'] }}</b></span>
+                                                <span><i class="fa-regular fa-clock"></i> Watch time:
+                                                    <b>{{ $wtLabel }}</b></span>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
-                            </div>
 
-                            {{-- Lecture bar chart --}}
-                            @if(count($lectureAnalytics) > 0)
-                            <div class="an-chart-box" style="margin-top:20px">
-                                <p class="an-chart-label">Watched vs Total Lectures (per Course)</p>
-                                <canvas id="profileLectureChart" height="110"></canvas>
-                            </div>
-                            @endif
+                                {{-- Lecture bar chart --}}
+                                @if (count($lectureAnalytics) > 0)
+                                    <div class="an-chart-box" style="margin-top:20px">
+                                        <p class="an-chart-label">Watched vs Total Lectures (per Course)</p>
+                                        <canvas id="profileLectureChart" height="110"></canvas>
+                                    </div>
+                                @endif
 
+                            </div>
                         </div>
-                    </div>
                     @endif
 
                     {{-- ── Chapter Watch Time ─────────────────────── --}}
-                    @if(!empty($chapterAnalytics))
-                    <div class="profile-card" style="margin-top:20px">
-                        <div class="profile-card-header">
-                            <div class="card-header-icon"><i class="fa-regular fa-layer-group"></i></div>
-                            <h5>Chapter Watch Time</h5>
-                        </div>
-                        <div class="profile-card-body">
-                            <div class="an-lecture-grid">
-                                @foreach($chapterAnalytics as $ch)
-                                @php
-                                    $td = $ch['total_duration'];
-                                    $tw = $ch['watched_seconds'];
-                                    $tdLabel = $td > 0 ? (floor($td/3600) > 0 ? floor($td/3600).'h '.floor(($td%3600)/60).'m' : floor($td/60).'m') : '—';
-                                    $twLabel = $tw > 0 ? (floor($tw/3600) > 0 ? floor($tw/3600).'h '.floor(($tw%3600)/60).'m' : floor($tw/60).'m') : '0m';
-                                @endphp
-                                <div class="an-lecture-card">
-                                    <div class="an-lc-header">
-                                        <div style="min-width:0">
-                                            <div class="an-lc-title" style="font-size:13px">{{ $ch['chapter'] }}</div>
-                                            <div style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">{{ $ch['course'] }}</div>
+                    @if (!empty($chapterAnalytics))
+                        <div class="profile-card" style="margin-top:20px">
+                            <div class="profile-card-header">
+                                <div class="card-header-icon"><i class="fa-regular fa-layer-group"></i></div>
+                                <h5>Chapter Watch Time</h5>
+                            </div>
+                            <div class="profile-card-body">
+                                <div class="an-lecture-grid">
+                                    @foreach ($chapterAnalytics as $ch)
+                                        @php
+                                            $td = $ch['total_duration'];
+                                            $tw = $ch['watched_seconds'];
+                                            $tdLabel =
+                                                $td > 0
+                                                    ? (floor($td / 3600) > 0
+                                                        ? floor($td / 3600) . 'h ' . floor(($td % 3600) / 60) . 'm'
+                                                        : floor($td / 60) . 'm')
+                                                    : '—';
+                                            $twLabel =
+                                                $tw > 0
+                                                    ? (floor($tw / 3600) > 0
+                                                        ? floor($tw / 3600) . 'h ' . floor(($tw % 3600) / 60) . 'm'
+                                                        : floor($tw / 60) . 'm')
+                                                    : '0m';
+                                        @endphp
+                                        <div class="an-lecture-card">
+                                            <div class="an-lc-header">
+                                                <div style="min-width:0">
+                                                    <div class="an-lc-title" style="font-size:13px">{{ $ch['chapter'] }}
+                                                    </div>
+                                                    <div
+                                                        style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">
+                                                        {{ $ch['course'] }}</div>
+                                                </div>
+                                                <span
+                                                    class="an-badge {{ $ch['pct'] >= 80 ? 'an-badge-green' : ($ch['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
+                                                    {{ $ch['pct'] }}%
+                                                </span>
+                                            </div>
+                                            <div class="an-prog-track">
+                                                <div class="an-prog-fill {{ $ch['pct'] >= 80 ? 'an-fill-green' : ($ch['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
+                                                    style="width:{{ $ch['pct'] }}%"></div>
+                                            </div>
+                                            <div class="an-lc-meta">
+                                                <span><i class="fa-regular fa-clock"></i> Watched:
+                                                    <b>{{ $twLabel }}</b></span>
+                                                <span><i class="fa-regular fa-hourglass-half"></i> Total:
+                                                    <b>{{ $tdLabel }}</b></span>
+                                                <span><i class="fa-regular fa-film"></i> Lectures:
+                                                    <b>{{ $ch['lecture_count'] }}</b></span>
+                                            </div>
                                         </div>
-                                        <span class="an-badge {{ $ch['pct'] >= 80 ? 'an-badge-green' : ($ch['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
-                                            {{ $ch['pct'] }}%
-                                        </span>
-                                    </div>
-                                    <div class="an-prog-track">
-                                        <div class="an-prog-fill {{ $ch['pct'] >= 80 ? 'an-fill-green' : ($ch['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
-                                             style="width:{{ $ch['pct'] }}%"></div>
-                                    </div>
-                                    <div class="an-lc-meta">
-                                        <span><i class="fa-regular fa-clock"></i> Watched: <b>{{ $twLabel }}</b></span>
-                                        <span><i class="fa-regular fa-hourglass-half"></i> Total: <b>{{ $tdLabel }}</b></span>
-                                        <span><i class="fa-regular fa-film"></i> Lectures: <b>{{ $ch['lecture_count'] }}</b></span>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
                         </div>
-                    </div>
                     @endif
 
                     {{-- ── Exam Performance ────────────────────────── --}}
@@ -654,37 +743,52 @@
                             <div class="an-stat-row">
                                 <div class="an-stat-card">
                                     <div class="an-stat-icon an-blue"><i class="fa-regular fa-list-check"></i></div>
-                                    <div><div class="an-stat-val">{{ $examAnalytics['attempted'] }}</div><div class="an-stat-lbl">Exams Taken</div></div>
+                                    <div>
+                                        <div class="an-stat-val">{{ $examAnalytics['attempted'] }}</div>
+                                        <div class="an-stat-lbl">Exams Taken</div>
+                                    </div>
                                 </div>
                                 <div class="an-stat-card">
                                     <div class="an-stat-icon an-green"><i class="fa-regular fa-circle-check"></i></div>
-                                    <div><div class="an-stat-val">{{ $examAnalytics['totalCorrect'] }}</div><div class="an-stat-lbl">Correct</div></div>
+                                    <div>
+                                        <div class="an-stat-val">{{ $examAnalytics['totalCorrect'] }}</div>
+                                        <div class="an-stat-lbl">Correct</div>
+                                    </div>
                                 </div>
                                 <div class="an-stat-card">
                                     <div class="an-stat-icon an-red"><i class="fa-regular fa-circle-xmark"></i></div>
-                                    <div><div class="an-stat-val">{{ $examAnalytics['totalWrong'] }}</div><div class="an-stat-lbl">Wrong</div></div>
+                                    <div>
+                                        <div class="an-stat-val">{{ $examAnalytics['totalWrong'] }}</div>
+                                        <div class="an-stat-lbl">Wrong</div>
+                                    </div>
                                 </div>
                                 <div class="an-stat-card">
                                     <div class="an-stat-icon an-gray"><i class="fa-regular fa-minus-circle"></i></div>
-                                    <div><div class="an-stat-val">{{ $examAnalytics['totalUnanswered'] }}</div><div class="an-stat-lbl">Unanswered</div></div>
+                                    <div>
+                                        <div class="an-stat-val">{{ $examAnalytics['totalUnanswered'] }}</div>
+                                        <div class="an-stat-lbl">Unanswered</div>
+                                    </div>
                                 </div>
                                 <div class="an-stat-card">
                                     <div class="an-stat-icon an-yellow"><i class="fa-regular fa-gauge-high"></i></div>
-                                    <div><div class="an-stat-val">{{ $examAnalytics['avgScore'] }}%</div><div class="an-stat-lbl">Avg Score</div></div>
+                                    <div>
+                                        <div class="an-stat-val">{{ $examAnalytics['avgScore'] }}%</div>
+                                        <div class="an-stat-lbl">Avg Score</div>
+                                    </div>
                                 </div>
                             </div>
 
-                            @if($examAnalytics['attempted'] > 0)
-                            <div class="an-charts-row">
-                                <div class="an-chart-box an-chart-sm">
-                                    <p class="an-chart-label">Answer Breakdown</p>
-                                    <canvas id="profileExamPie"></canvas>
+                            @if ($examAnalytics['attempted'] > 0)
+                                <div class="an-charts-row">
+                                    <div class="an-chart-box an-chart-sm">
+                                        <p class="an-chart-label">Answer Breakdown</p>
+                                        <canvas id="profileExamPie"></canvas>
+                                    </div>
+                                    <div class="an-chart-box an-chart-lg">
+                                        <p class="an-chart-label">Score % — Last 10 Exams</p>
+                                        <canvas id="profileExamBar" height="120"></canvas>
+                                    </div>
                                 </div>
-                                <div class="an-chart-box an-chart-lg">
-                                    <p class="an-chart-label">Score % — Last 10 Exams</p>
-                                    <canvas id="profileExamBar" height="120"></canvas>
-                                </div>
-                            </div>
                             @else
                                 <p style="text-align:center;color:#94a3b8;padding:24px 0;font-size:14px">
                                     No submitted exams yet. Complete an exam to see your analytics.
@@ -708,8 +812,8 @@
                         </div>
                         <div class="profile-card-body edit-panel-body">
 
-                            <form action="{{ route('profileUp') }}" method="POST"
-                                  enctype="multipart/form-data" class="profile-form" id="editProfileForm">
+                            <form action="{{ route('profileUp') }}" method="POST" enctype="multipart/form-data"
+                                class="profile-form" id="editProfileForm">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $profile->id }}">
 
@@ -717,17 +821,17 @@
                                 <p class="form-section-title"><i class="fa-regular fa-image"></i> Profile Photo</p>
 
                                 <div class="avatar-upload-wrap">
-                                    <img src="{{ $profile->photo }}" alt="Preview"
-                                         class="avatar-preview" id="photoPreviewImg">
+                                    <img src="{{ $profile->photo }}" alt="Preview" class="avatar-preview"
+                                        id="photoPreviewImg">
                                     <div class="upload-instructions">
                                         <label for="photoInput" class="upload-label">
                                             <i class="fa-regular fa-arrow-up-from-bracket"></i> Choose Photo
                                         </label>
                                         <input type="file" id="photoInput" name="photo"
-                                               accept="image/jpeg,image/png,image/gif,image/webp"
-                                               style="display:none">
+                                            accept="image/jpeg,image/png,image/gif,image/webp" style="display:none">
                                         <p class="upload-hint">JPG, PNG or WebP. Max 2 MB.</p>
-                                        <p class="upload-hint" id="photoFileName" style="color:#02b3e4;font-weight:600"></p>
+                                        <p class="upload-hint" id="photoFileName" style="color:#02b3e4;font-weight:600">
+                                        </p>
                                     </div>
                                 </div>
 
@@ -738,92 +842,100 @@
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Full Name</label>
                                         <input type="text" name="name" class="form-control"
-                                               value="{{ old('name', $profile->name) }}" placeholder="Your full name">
+                                            value="{{ old('name', $profile->name) }}" placeholder="Your full name">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Email Address</label>
                                         <input type="email" name="email" class="form-control"
-                                               value="{{ old('email', $profile->email) }}" placeholder="you@example.com">
+                                            value="{{ old('email', $profile->email) }}" placeholder="you@example.com">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Phone Number</label>
                                         <input type="text" name="mobile" class="form-control"
-                                               value="{{ old('mobile', $profile->mobile) }}" placeholder="+880...">
+                                            value="{{ old('mobile', $profile->mobile) }}" placeholder="+880...">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">WhatsApp Number</label>
                                         <input type="text" name="whatsapp_number" class="form-control"
-                                               value="{{ old('whatsapp_number', $profile->whatsapp_number) }}" placeholder="+880...">
+                                            value="{{ old('whatsapp_number', $profile->whatsapp_number) }}"
+                                            placeholder="+880...">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Date of Birth</label>
                                         <input type="date" name="birth" class="form-control"
-                                               value="{{ old('birth', $profile->birth) }}">
+                                            value="{{ old('birth', $profile->birth) }}">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Gender</label>
                                         <select name="gender" class="form-control">
                                             <option value="">— Select gender —</option>
-                                            <option value="Male"   {{ $profile->gender == 'Male'   ? 'selected' : '' }}>Male</option>
-                                            <option value="Female" {{ $profile->gender == 'Female' ? 'selected' : '' }}>Female</option>
-                                            <option value="Other"  {{ $profile->gender == 'Other'  ? 'selected' : '' }}>Other</option>
+                                            <option value="Male" {{ $profile->gender == 'Male' ? 'selected' : '' }}>
+                                                Male</option>
+                                            <option value="Female" {{ $profile->gender == 'Female' ? 'selected' : '' }}>
+                                                Female</option>
+                                            <option value="Other" {{ $profile->gender == 'Other' ? 'selected' : '' }}>
+                                                Other</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Country</label>
                                         <input type="text" name="country" class="form-control"
-                                               value="{{ old('country', $profile->country) }}" placeholder="Bangladesh">
+                                            value="{{ old('country', $profile->country) }}" placeholder="Bangladesh">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Facebook Profile URL</label>
                                         <input type="url" name="fb" class="form-control"
-                                               value="{{ old('fb', $profile->fb) }}" placeholder="https://facebook.com/...">
+                                            value="{{ old('fb', $profile->fb) }}"
+                                            placeholder="https://facebook.com/...">
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <label class="form-label">Full Address</label>
-                                        <textarea name="address" class="form-control" rows="2"
-                                                  placeholder="House, Road, City, District">{{ old('address', $profile->address) }}</textarea>
+                                        <textarea name="address" class="form-control" rows="2" placeholder="House, Road, City, District">{{ old('address', $profile->address) }}</textarea>
                                     </div>
                                 </div>
 
                                 {{-- ── Academic & Professional --}}
-                                <p class="form-section-title"><i class="fa-regular fa-graduation-cap"></i> Academic &amp; Professional</p>
+                                <p class="form-section-title"><i class="fa-regular fa-graduation-cap"></i> Academic &amp;
+                                    Professional</p>
 
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Title / Position</label>
                                         <input type="text" name="position" class="form-control"
-                                               value="{{ old('position', $profile->position) }}" placeholder="e.g. Dr., Prof., Student">
+                                            value="{{ old('position', $profile->position) }}"
+                                            placeholder="e.g. Dr., Prof., Student">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Qualification / Degree</label>
                                         <input type="text" name="qualification" class="form-control"
-                                               value="{{ old('qualification', $profile->qualification) }}" placeholder="e.g. MBBS, BDS">
+                                            value="{{ old('qualification', $profile->qualification) }}"
+                                            placeholder="e.g. MBBS, BDS">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">Medical College</label>
                                         <input type="text" name="medical" class="form-control"
-                                               value="{{ old('medical', $profile->medical) }}" placeholder="College name">
+                                            value="{{ old('medical', $profile->medical) }}" placeholder="College name">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label">BMDC Registration No.</label>
                                         <input type="text" name="BMDC" class="form-control"
-                                               value="{{ old('BMDC', $profile->BMDC) }}" placeholder="A-XXXXX">
+                                            value="{{ old('BMDC', $profile->BMDC) }}" placeholder="A-XXXXX">
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <label class="form-label">Batch Year</label>
                                         <input type="text" name="batch" class="form-control"
-                                               value="{{ old('batch', $profile->batch) }}" placeholder="e.g. 2022">
+                                            value="{{ old('batch', $profile->batch) }}" placeholder="e.g. 2022">
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <label class="form-label">Session</label>
                                         <input type="text" name="sessionn" class="form-control"
-                                               value="{{ old('sessionn', $profile->sessionn) }}" placeholder="e.g. 2022–23">
+                                            value="{{ old('sessionn', $profile->sessionn) }}"
+                                            placeholder="e.g. 2022–23">
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <label class="form-label">Level / Year</label>
                                         <input type="text" name="levell" class="form-control"
-                                               value="{{ old('levell', $profile->levell) }}" placeholder="e.g. 3rd Year">
+                                            value="{{ old('levell', $profile->levell) }}" placeholder="e.g. 3rd Year">
                                     </div>
                                 </div>
 
@@ -833,7 +945,7 @@
                                         <i class="fa-regular fa-floppy-disk"></i> Save Changes
                                     </button>
                                     <button type="button" class="btn-cancel-edit profile-tab-link" data-tab="overview"
-                                            style="background:none;border:none;color:#6c757d;font-size:14px;cursor:pointer;padding:0">
+                                        style="background:none;border:none;color:#6c757d;font-size:14px;cursor:pointer;padding:0">
                                         Cancel
                                     </button>
                                 </div>
@@ -852,123 +964,250 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<style>
-/* ── Analytics panel styles ───────────────────── */
-.an-lecture-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-    margin-bottom: 4px;
-}
-.an-lecture-card {
-    background: #f8fafc; border: 1px solid #e2e8f0;
-    border-radius: 10px; padding: 14px 16px;
-}
-.an-lc-header {
-    display: flex; align-items: center;
-    justify-content: space-between; margin-bottom: 9px;
-}
-.an-lc-title {
-    font-size: 13px; font-weight: 600; color: #1e293b;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px;
-}
-.an-badge {
-    font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; flex-shrink: 0;
-}
-.an-badge-green  { background:#dcfce7; color:#15803d; }
-.an-badge-yellow { background:#fef9c3; color:#a16207; }
-.an-badge-gray   { background:#f1f5f9; color:#64748b; }
-.an-prog-track {
-    height: 8px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-bottom: 8px;
-}
-.an-prog-fill { height: 100%; border-radius: 99px; transition: width .6s ease; }
-.an-fill-green  { background: #22c55e; }
-.an-fill-yellow { background: #eab308; }
-.an-fill-blue   { background: #6366f1; }
-.an-lc-meta {
-    display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; color: #64748b;
-}
-.an-lc-meta i { color: #94a3b8; margin-right: 2px; }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        /* ── Analytics panel styles ───────────────────── */
+        .an-lecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin-bottom: 4px;
+        }
 
-/* Stat row */
-.an-stat-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 12px; margin-bottom: 20px;
-}
-.an-stat-card {
-    background: #f8fafc; border: 1px solid #e2e8f0;
-    border-radius: 10px; padding: 12px 14px;
-    display: flex; align-items: center; gap: 10px;
-}
-.an-stat-icon {
-    width: 36px; height: 36px; border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; flex-shrink: 0;
-}
-.an-blue   { background:#eff6ff; color:#3b82f6; }
-.an-green  { background:#f0fdf4; color:#22c55e; }
-.an-red    { background:#fef2f2; color:#ef4444; }
-.an-gray   { background:#f1f5f9; color:#64748b; }
-.an-yellow { background:#fffbeb; color:#f59e0b; }
-.an-stat-val { font-size: 20px; font-weight: 800; color: #1e293b; line-height: 1.1; }
-.an-stat-lbl { font-size: 10px; color: #64748b; font-weight: 500; margin-top: 1px; }
+        .an-lecture-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
 
-/* Charts */
-.an-charts-row { display: flex; gap: 16px; flex-wrap: wrap; }
-.an-chart-box {
-    background: #f8fafc; border: 1px solid #e2e8f0;
-    border-radius: 10px; padding: 14px 16px;
-    flex: 1; min-width: 200px;
-}
-.an-chart-sm { max-width: 240px; }
-.an-chart-lg { flex: 2; }
-.an-chart-label {
-    font-size: 11px; font-weight: 700; color: #475569;
-    text-transform: uppercase; letter-spacing: 0.4px; margin: 0 0 10px;
-}
-</style>
+        .an-lc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 9px;
+        }
+
+        .an-lc-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 170px;
+        }
+
+        .an-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        .an-badge-green {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .an-badge-yellow {
+            background: #fef9c3;
+            color: #a16207;
+        }
+
+        .an-badge-gray {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .an-prog-track {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 99px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .an-prog-fill {
+            height: 100%;
+            border-radius: 99px;
+            transition: width .6s ease;
+        }
+
+        .an-fill-green {
+            background: #22c55e;
+        }
+
+        .an-fill-yellow {
+            background: #eab308;
+        }
+
+        .an-fill-blue {
+            background: #6366f1;
+        }
+
+        .an-lc-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .an-lc-meta i {
+            color: #94a3b8;
+            margin-right: 2px;
+        }
+
+        /* Stat row */
+        .an-stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .an-stat-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .an-stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .an-blue {
+            background: #eff6ff;
+            color: #3b82f6;
+        }
+
+        .an-green {
+            background: #f0fdf4;
+            color: #22c55e;
+        }
+
+        .an-red {
+            background: #fef2f2;
+            color: #ef4444;
+        }
+
+        .an-gray {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .an-yellow {
+            background: #fffbeb;
+            color: #f59e0b;
+        }
+
+        .an-stat-val {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1e293b;
+            line-height: 1.1;
+        }
+
+        .an-stat-lbl {
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 500;
+            margin-top: 1px;
+        }
+
+        /* Charts */
+        .an-charts-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .an-chart-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 16px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .an-chart-sm {
+            max-width: 240px;
+        }
+
+        .an-chart-lg {
+            flex: 2;
+        }
+
+        .an-chart-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin: 0 0 10px;
+        }
+    </style>
     <script>
-        (function () {
+        (function() {
 
             // ──────────────────────────────────────────────
             // TAB SWITCHING
             // ──────────────────────────────────────────────
-            var panels  = document.querySelectorAll('.tab-panel');
+            var panels = document.querySelectorAll('.tab-panel');
             var tabBtns = document.querySelectorAll('.profile-tab-item');
 
             function showTab(tabName) {
                 // hide all panels
-                panels.forEach(function (p) { p.style.display = 'none'; });
+                panels.forEach(function(p) {
+                    p.style.display = 'none';
+                });
 
                 // deactivate all tab buttons
-                tabBtns.forEach(function (b) { b.classList.remove('active'); });
+                tabBtns.forEach(function(b) {
+                    b.classList.remove('active');
+                });
 
                 // show target panel
                 var target = document.getElementById('panel-' + tabName);
                 if (target) target.style.display = 'block';
 
                 // activate matching tab button
-                tabBtns.forEach(function (b) {
+                tabBtns.forEach(function(b) {
                     if (b.getAttribute('data-tab') === tabName) b.classList.add('active');
                 });
 
                 // scroll to top of profile body
                 var body = document.querySelector('.profile-body');
-                if (body) body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (body) body.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
 
             // Tab bar clicks
-            tabBtns.forEach(function (btn) {
-                btn.addEventListener('click', function (e) {
+            tabBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
                     showTab(this.getAttribute('data-tab'));
                 });
             });
 
             // "View all →" and other inline tab links
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 var el = e.target.closest('.profile-tab-link');
                 if (!el) return;
                 e.preventDefault();
@@ -980,10 +1219,10 @@
             // ──────────────────────────────────────────────
             var btnEdit = document.getElementById('btnEditProfile');
             if (btnEdit) {
-                btnEdit.addEventListener('click', function () {
+                btnEdit.addEventListener('click', function() {
                     showTab('settings');
                     // Wait for panel to show, then focus first name field
-                    setTimeout(function () {
+                    setTimeout(function() {
                         var firstInput = document.querySelector('#editProfileForm input[name="name"]');
                         if (firstInput) firstInput.focus();
                     }, 200);
@@ -992,10 +1231,10 @@
 
             var avatarBadge = document.getElementById('avatarEditBadge');
             if (avatarBadge) {
-                avatarBadge.addEventListener('click', function () {
+                avatarBadge.addEventListener('click', function() {
                     showTab('settings');
                     // Trigger the file picker after panel opens
-                    setTimeout(function () {
+                    setTimeout(function() {
                         var photoInput = document.getElementById('photoInput');
                         if (photoInput) photoInput.click();
                     }, 250);
@@ -1007,7 +1246,7 @@
             // ──────────────────────────────────────────────
             var photoInput = document.getElementById('photoInput');
             if (photoInput) {
-                photoInput.addEventListener('change', function () {
+                photoInput.addEventListener('change', function() {
                     var file = this.files[0];
                     if (!file) return;
 
@@ -1017,11 +1256,11 @@
 
                     // Preview in form and cover avatar
                     var reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         var preview = document.getElementById('photoPreviewImg');
-                        var cover   = document.getElementById('coverAvatarImg');
+                        var cover = document.getElementById('coverAvatarImg');
                         if (preview) preview.src = e.target.result;
-                        if (cover)   cover.src   = e.target.result;
+                        if (cover) cover.src = e.target.result;
                     };
                     reader.readAsDataURL(file);
                 });
@@ -1043,9 +1282,9 @@
             // SAVE BUTTON LOADING STATE
             // ──────────────────────────────────────────────
             var editForm = document.getElementById('editProfileForm');
-            var saveBtn  = document.getElementById('btnSaveProfile');
+            var saveBtn = document.getElementById('btnSaveProfile');
             if (editForm && saveBtn) {
-                editForm.addEventListener('submit', function () {
+                editForm.addEventListener('submit', function() {
                     saveBtn.disabled = true;
                     saveBtn.innerHTML = '<i class="fa-regular fa-spinner fa-spin"></i> Saving…';
                 });
@@ -1061,90 +1300,130 @@
                 if (chartsReady) return;
                 chartsReady = true;
 
-                @if(!empty($lectureAnalytics))
-                var lectureCtx = document.getElementById('profileLectureChart');
-                if (lectureCtx) {
-                    new Chart(lectureCtx, {
-                        type: 'bar',
-                        data: {
-                            labels: {!! json_encode(array_column($lectureAnalytics, 'title')) !!},
-                            datasets: [
-                                {
-                                    label: 'Watched',
-                                    data: {!! json_encode(array_column($lectureAnalytics, 'watched')) !!},
-                                    backgroundColor: '#6366f1',
-                                    borderRadius: 5,
+                @if (!empty($lectureAnalytics))
+                    var lectureCtx = document.getElementById('profileLectureChart');
+                    if (lectureCtx) {
+                        new Chart(lectureCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: {!! json_encode(array_column($lectureAnalytics, 'title')) !!},
+                                datasets: [{
+                                        label: 'Watched',
+                                        data: {!! json_encode(array_column($lectureAnalytics, 'watched')) !!},
+                                        backgroundColor: '#6366f1',
+                                        borderRadius: 5,
+                                    },
+                                    {
+                                        label: 'Total',
+                                        data: {!! json_encode(array_column($lectureAnalytics, 'total')) !!},
+                                        backgroundColor: '#e2e8f0',
+                                        borderRadius: 5,
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom'
+                                    }
                                 },
-                                {
-                                    label: 'Total',
-                                    data: {!! json_encode(array_column($lectureAnalytics, 'total')) !!},
-                                    backgroundColor: '#e2e8f0',
-                                    borderRadius: 5,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            precision: 0
+                                        }
+                                    }
                                 }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: { legend: { position: 'bottom' } },
-                            scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
-                        }
-                    });
-                }
+                            }
+                        });
+                    }
                 @endif
 
-                @if($examAnalytics['attempted'] > 0)
-                var pieCtx = document.getElementById('profileExamPie');
-                if (pieCtx) {
-                    new Chart(pieCtx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['Correct', 'Wrong', 'Unanswered'],
-                            datasets: [{
-                                data: [
-                                    {{ $examAnalytics['totalCorrect'] }},
-                                    {{ $examAnalytics['totalWrong'] }},
-                                    {{ $examAnalytics['totalUnanswered'] }},
-                                ],
-                                backgroundColor: ['#22c55e', '#ef4444', '#94a3b8'],
-                                borderWidth: 0,
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            cutout: '65%',
-                            plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } }
-                        }
-                    });
-                }
-
-                var barCtx = document.getElementById('profileExamBar');
-                if (barCtx) {
-                    var perExam = {!! json_encode($examAnalytics['perExam']) !!};
-                    new Chart(barCtx, {
-                        type: 'bar',
-                        data: {
-                            labels: perExam.map(function(e) {
-                                return e.name.length > 22 ? e.name.slice(0, 22) + '…' : e.name;
-                            }),
-                            datasets: [{
-                                label: 'Score %',
-                                data: perExam.map(function(e) { return e.score; }),
-                                backgroundColor: perExam.map(function(e) {
-                                    return e.score >= 70 ? '#22c55e' : e.score >= 40 ? '#f59e0b' : '#ef4444';
-                                }),
-                                borderRadius: 5,
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: { legend: { display: false } },
-                            scales: {
-                                y: { min: 0, max: 100, ticks: { callback: function(v) { return v + '%'; } } },
-                                x: { ticks: { font: { size: 10 } } }
+                @if ($examAnalytics['attempted'] > 0)
+                    var pieCtx = document.getElementById('profileExamPie');
+                    if (pieCtx) {
+                        new Chart(pieCtx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Correct', 'Wrong', 'Unanswered'],
+                                datasets: [{
+                                    data: [
+                                        {{ $examAnalytics['totalCorrect'] }},
+                                        {{ $examAnalytics['totalWrong'] }},
+                                        {{ $examAnalytics['totalUnanswered'] }},
+                                    ],
+                                    backgroundColor: ['#22c55e', '#ef4444', '#94a3b8'],
+                                    borderWidth: 0,
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                cutout: '65%',
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            font: {
+                                                size: 11
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
+
+                    var barCtx = document.getElementById('profileExamBar');
+                    if (barCtx) {
+                        var perExam = {!! json_encode($examAnalytics['perExam']) !!};
+                        new Chart(barCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: perExam.map(function(e) {
+                                    return e.name.length > 22 ? e.name.slice(0, 22) + '…' : e.name;
+                                }),
+                                datasets: [{
+                                    label: 'Score %',
+                                    data: perExam.map(function(e) {
+                                        return e.score;
+                                    }),
+                                    backgroundColor: perExam.map(function(e) {
+                                        return e.score >= 70 ? '#22c55e' : e.score >= 40 ?
+                                            '#f59e0b' : '#ef4444';
+                                    }),
+                                    borderRadius: 5,
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        min: 0,
+                                        max: 100,
+                                        ticks: {
+                                            callback: function(v) {
+                                                return v + '%';
+                                            }
+                                        }
+                                    },
+                                    x: {
+                                        ticks: {
+                                            font: {
+                                                size: 10
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
                 @endif
             }
 

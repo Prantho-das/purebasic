@@ -43,7 +43,7 @@ class MenuController extends Controller
             'parent_id' => 'nullable|exists:menus,id',
             'sort_order' => 'required|integer|min:0',
             'link_type' => 'required|in:custom,model',
-            'custom_url' => 'required_if:link_type,custom|nullable|url',
+            'custom_url' => 'required_if:link_type,custom|nullable|string|max:500',
             'model_name' => 'required_if:link_type,model|nullable|in:Batch,Class,Book,BatchCategory',
             'batch_id' => 'required_if:model_name,Batch|nullable|exists:batchpackages,id',
             'class_id' => 'required_if:model_name,Class|nullable|exists:lecture_sheets,id',
@@ -80,9 +80,9 @@ class MenuController extends Controller
         $menus = Menu::where('id', '!=', $menu->id)->active()->orderBy('name')->get();
         $models = ['Batch', 'Class', 'Book','BatchCategory']; // Updated list
         $menuTypes = ['header', 'footer', 'sidebar', 'other'];
-        $batches = Membership::pluck('plan as name', 'id')->toArray();
+        $batches = Batchpackage::pluck('title as name', 'id')->toArray();
         $batchCategories = BatchCategory::pluck('name', 'id')->toArray();
-        $classes = LectureSheet::pluck('title as name', 'id')->toArray(); // Adjust model
+        $classes = LectureSheet::pluck('title as name', 'id')->toArray();
         $books = Book::pluck('name', 'id')->toArray();
 
         return view('admin.menus.edit', compact('menu', 'menus', 'models', 'menuTypes', 'batches', 'classes', 'books','batchCategories'));
@@ -97,9 +97,9 @@ class MenuController extends Controller
             'parent_id' => 'nullable|exists:menus,id',
             'sort_order' => 'required|integer|min:0',
             'link_type' => 'required|in:custom,model',
-            'custom_url' => 'required_if:link_type,custom|nullable|url',
-            'model_name' => 'required_if:link_type,model|nullable|in:Batch,Class,Book',
-            'batch_id' => 'required_if:model_name,Batch|nullable|exists:memberships,id',
+            'custom_url' => 'required_if:link_type,custom|nullable|string|max:500',
+            'model_name' => 'required_if:link_type,model|nullable|in:Batch,Class,Book,BatchCategory',
+            'batch_id' => 'required_if:model_name,Batch|nullable|exists:batchpackages,id',
             'class_id' => 'required_if:model_name,Class|nullable|exists:lecture_sheets,id',
             'batch_category_id' => 'required_if:model_name,BatchCategory|nullable|exists:batch_categories,id',
             'book_id' => 'required_if:model_name,Book|nullable|exists:books,id',

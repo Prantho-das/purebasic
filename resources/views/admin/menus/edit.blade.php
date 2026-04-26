@@ -96,7 +96,7 @@
   <div class="form-group" id="custom-url-group"
     style="display: {{ old('link_type', $menu->link_type) === 'custom' ? 'block' : 'none' }};">
     <label for="custom_url">Custom URL</label>
-    <input type="url" class="form-control @if($errors->has('custom_url')) is-invalid @endif" id="custom_url"
+    <input type="text" class="form-control @if($errors->has('custom_url')) is-invalid @endif" id="custom_url"
       name="custom_url" value="{{ old('custom_url', $menu->custom_url) }}"
       placeholder="https://example.com or /internal/path">
     @if($errors->has('custom_url'))
@@ -136,8 +136,8 @@
 
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="is_active" name="is_active" {{ old('is_active',
-        $menu->is_active) ? 'checked' : '' }}>
+      <input class="form-check-input" type="checkbox" id="is_active" name="is_active"
+        {{ Session::has('_old_input') ? (old('is_active') ? 'checked' : '') : ($menu->is_active ? 'checked' : '') }}>
       <label class="form-check-label" for="is_active">Active</label>
     </div>
   </div>

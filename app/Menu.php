@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Book;
+use App\LectureSheet;
+use App\Membership;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
