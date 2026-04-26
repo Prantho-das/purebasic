@@ -629,7 +629,7 @@
                     @foreach ($mentorData as $mentor)
                         @php
                             $mentor = (object) $mentor;
-                            $mentorInfo = App\Mentor::find($mentor->name);
+                            $mentorInfo = App\Mentor::find($mentor->mentor_id ?? $mentor->name);
                         @endphp
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="course-design-thumb">
@@ -1010,7 +1010,7 @@
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': csrfToken,
-                    'Accept': 'appliction/json'
+                    'Accept': 'application/json'
                 }
             });
 
@@ -1024,17 +1024,15 @@
 
                     $('.single-skill-tab').removeClass('active');
                     $('.single-skill-tab-' + batch_category).addClass('active');
-                    var swiper = new Swiper('#linked-course-slider', {
-                        // Your swiper config here, e.g.,
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                        // etc.
-                    });
+                     var swiper = new Swiper('.linked-course-slider', {
+                         slidesPerView: 3,
+                         spaceBetween: 30,
+                     });
                 })
                 .fail(function(xhr, status, error) {
                     console.error('Error fetching courses:', error);
                     // Handle error, e.g., show a message
-                    $('#swiper-category-wrapperid').html('<p>Error loading courses. Please try again.</p>');
+                    $('#swiper-category-wrapper').html('<p>Error loading courses. Please try again.</p>');
                 });
         }
 

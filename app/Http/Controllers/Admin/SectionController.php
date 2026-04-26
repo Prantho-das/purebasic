@@ -134,7 +134,7 @@ class SectionController extends Controller
             foreach ($request->mentor_name as $key => $name) {
                 if (!empty($name)) {
                     $mentorData = [
-                        'name' => $name,
+                        'mentor_id' => $name,
                         'bio' => $request->mentor_bio[$key] ?? '',
                     ];
 
@@ -233,14 +233,13 @@ class SectionController extends Controller
                             $batchItem = [
                                 'batch_category_id' => $batchId,
                                 'batch_category_data' => $batchModel->toArray(),
-                                'category' => $categories[$key] ?? 'General',
                             ];
 
                             if (isset($images[$key]) && $images[$key]->isValid()) {
                                 $imagePath = $images[$key]->store('batch-category-images', 'public');
                                 $batchItem['image'] = $imagePath;
-                            } elseif (isset($section->dynamic_data['batches'][$key]['image'])) {
-                                $batchItem['image'] = $section->dynamic_data['batches'][$key]['image'];
+                            } elseif (isset($section->dynamic_data[$key]['image'])) {
+                                $batchItem['image'] = $section->dynamic_data[$key]['image'];
                             }
 
                             $batches[] = $batchItem;
@@ -271,8 +270,8 @@ class SectionController extends Controller
                             if (isset($images[$key]) && $images[$key]->isValid()) {
                                 $imagePath = $images[$key]->store('book-images', 'public');
                                 $bookItem['image'] = $imagePath;
-                            } elseif (isset($section->dynamic_data['books'][$key]['image'])) {
-                                $bookItem['image'] = $section->dynamic_data['books'][$key]['image'];
+                            } elseif (isset($section->dynamic_data[$key]['image'])) {
+                                $bookItem['image'] = $section->dynamic_data[$key]['image'];
                             }
 
                             $books[] = $bookItem;
