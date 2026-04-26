@@ -628,37 +628,43 @@
                             <div class="profile-card-body">
 
                                 {{-- Progress bars per course --}}
-                                <div class="an-lecture-grid">
+                                <div class="an-lecture-grid" id="lect-prog-grid">
                                     @foreach ($lectureAnalytics as $stat)
                                         @php
-                                            $wt = $stat['watch_time'] ?? 0;
-                                            $wh = floor($wt / 3600);
-                                            $wm = floor(($wt % 3600) / 60);
-                                            $wtLabel = $wh > 0 ? "{$wh}h {$wm}m" : "{$wm}m";
+                                            $wt  = $stat['watch_time']    ?? 0;
+                                            $td  = $stat['total_duration'] ?? 0;
+                                            $tp  = $stat['time_pct']       ?? $stat['pct'];
+                                            $fmtS = fn(int $s) => $s <= 0 ? '0m'
+                                                : (floor($s / 3600) > 0
+                                                    ? floor($s / 3600) . 'h ' . floor(($s % 3600) / 60) . 'm'
+                                                    : floor($s / 60) . 'm');
+                                            $barClass   = $tp >= 80 ? 'an-fill-green'   : ($tp >= 40 ? 'an-fill-yellow'   : 'an-fill-blue');
+                                            $badgeClass = $tp >= 80 ? 'an-badge-green'  : ($tp >= 40 ? 'an-badge-yellow'  : 'an-badge-gray');
                                         @endphp
-                                        <div class="an-lecture-card">
+                                        <div class="an-lecture-card {{ $loop->index >= 10 ? 'an-lm-hidden' : '' }}">
                                             <div class="an-lc-header">
                                                 <span class="an-lc-title">{{ $stat['title'] }}</span>
-                                                <span
-                                                    class="an-badge {{ $stat['pct'] >= 80 ? 'an-badge-green' : ($stat['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
-                                                    {{ $stat['pct'] }}%
-                                                </span>
+                                                <span class="an-badge {{ $badgeClass }}">{{ $tp }}%</span>
                                             </div>
                                             <div class="an-prog-track">
-                                                <div class="an-prog-fill {{ $stat['pct'] >= 80 ? 'an-fill-green' : ($stat['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
-                                                    style="width:{{ $stat['pct'] }}%"></div>
+                                                <div class="an-prog-fill {{ $barClass }}" style="width:{{ $tp }}%"></div>
                                             </div>
                                             <div class="an-lc-meta">
-                                                <span><i class="fa-regular fa-check-circle"></i> Watched:
-                                                    <b>{{ $stat['watched'] }}</b></span>
-                                                <span><i class="fa-regular fa-film"></i> Total:
-                                                    <b>{{ $stat['total'] }}</b></span>
-                                                <span><i class="fa-regular fa-clock"></i> Watch time:
-                                                    <b>{{ $wtLabel }}</b></span>
+                                                <span><i class="fa-regular fa-clock"></i> Watched: <b>{{ $fmtS($wt) }}</b></span>
+                                                <span><i class="fa-regular fa-hourglass-half"></i> Total duration: <b>{{ $td > 0 ? $fmtS($td) : '—' }}</b></span>
+                                                <span><i class="fa-regular fa-film"></i> Lectures: <b>{{ $stat['watched'] }} / {{ $stat['total'] }}</b></span>
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
+                                @if (count($lectureAnalytics) > 10)
+                                    <div class="an-load-more-wrap">
+                                        <button class="an-load-more-btn" data-grid="lect-prog-grid" data-shown="10">
+                                            <i class="fa-regular fa-chevron-down"></i>
+                                            Load More <span class="lm-count">({{ count($lectureAnalytics) - 10 }} more)</span>
+                                        </button>
+                                    </div>
+                                @endif
 
                                 {{-- Lecture bar chart --}}
                                 @if (count($lectureAnalytics) > 0)
@@ -672,65 +678,75 @@
                         </div>
                     @endif
 
-                    {{-- ── Chapter Watch Time ─────────────────────── --}}
-                    @if (!empty($chapterAnalytics))
-                        <div class="profile-card" style="margin-top:20px">
-                            <div class="profile-card-header">
-                                <div class="card-header-icon"><i class="fa-regular fa-layer-group"></i></div>
-                                <h5>Chapter Watch Time</h5>
-                            </div>
-                            <div class="profile-card-body">
-                                <div class="an-lecture-grid">
-                                    @foreach ($chapterAnalytics as $ch)
-                                        @php
-                                            $td = $ch['total_duration'];
-                                            $tw = $ch['watched_seconds'];
-                                            $tdLabel =
-                                                $td > 0
-                                                    ? (floor($td / 3600) > 0
-                                                        ? floor($td / 3600) . 'h ' . floor(($td % 3600) / 60) . 'm'
-                                                        : floor($td / 60) . 'm')
-                                                    : '—';
-                                            $twLabel =
-                                                $tw > 0
-                                                    ? (floor($tw / 3600) > 0
-                                                        ? floor($tw / 3600) . 'h ' . floor(($tw % 3600) / 60) . 'm'
-                                                        : floor($tw / 60) . 'm')
-                                                    : '0m';
-                                        @endphp
-                                        <div class="an-lecture-card">
-                                            <div class="an-lc-header">
-                                                <div style="min-width:0">
-                                                    <div class="an-lc-title" style="font-size:13px">{{ $ch['chapter'] }}
-                                                    </div>
-                                                    <div
-                                                        style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">
-                                                        {{ $ch['course'] }}</div>
-                                                </div>
-                                                <span
-                                                    class="an-badge {{ $ch['pct'] >= 80 ? 'an-badge-green' : ($ch['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
-                                                    {{ $ch['pct'] }}%
-                                                </span>
-                                            </div>
-                                            <div class="an-prog-track">
-                                                <div class="an-prog-fill {{ $ch['pct'] >= 80 ? 'an-fill-green' : ($ch['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
-                                                    style="width:{{ $ch['pct'] }}%"></div>
-                                            </div>
-                                            <div class="an-lc-meta">
-                                                <span><i class="fa-regular fa-clock"></i> Watched:
-                                                    <b>{{ $twLabel }}</b></span>
-                                                <span><i class="fa-regular fa-hourglass-half"></i> Total:
-                                                    <b>{{ $tdLabel }}</b></span>
-                                                <span><i class="fa-regular fa-film"></i> Lectures:
-                                                    <b>{{ $ch['lecture_count'] }}</b></span>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+{{-- ── Chapter Watch Time ─────────────────────── --}}
+@if (!empty($chapterAnalytics))
+    <div class="profile-card" style="margin-top:20px">
+        <div class="profile-card-header">
+            <div class="card-header-icon"><i class="fa-regular fa-layer-group"></i></div>
+            <h5>Chapter Watch Time</h5>
+        </div>
+        <div class="profile-card-body">
 
+            @foreach ($chapterAnalytics as $courseIdx => $courseData)
+                <div class="an-course-group">
+                    <div class="an-course-label">
+                        <i class="fa-regular fa-book-open"></i> {{ $courseData['course'] }}
+                    </div>
+
+                    @foreach ($courseData['subjects'] as $subjectIdx => $subjectData)
+                        @php $gridId = 'ch-grid-' . $courseIdx . '-' . $subjectIdx; @endphp
+                        <div class="an-subject-group">
+                            <div class="an-subject-label">
+                                <i class="fa-regular fa-layer-group"></i>
+                                {{ $subjectData['subject'] }}
+                                <span style="color:#94a3b8;font-weight:400">({{ count($subjectData['chapters']) }} chapters)</span>
+                            </div>
+
+                            <div class="an-lecture-grid" id="{{ $gridId }}">
+                                @foreach ($subjectData['chapters'] as $ch)
+                                    @php
+                                        $td  = $ch['total_duration'];
+                                        $tw  = $ch['watched_seconds'];
+                                        $pct = $ch['pct'];
+                                        $fmtS = fn(int $s) => $s <= 0 ? '0m'
+                                            : (floor($s / 3600) > 0
+                                                ? floor($s / 3600) . 'h ' . floor(($s % 3600) / 60) . 'm'
+                                                : floor($s / 60) . 'm');
+                                    @endphp
+                                    <div class="an-lecture-card {{ $loop->index >= 10 ? 'an-lm-hidden' : '' }}">
+                                        <div class="an-lc-header">
+                                            <span class="an-lc-title">{{ $ch['chapter'] }}</span>
+                                            <span class="an-badge {{ $pct >= 80 ? 'an-badge-green' : ($pct >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">{{ $pct }}%</span>
+                                        </div>
+                                        <div class="an-prog-track">
+                                            <div class="an-prog-fill {{ $pct >= 80 ? 'an-fill-green' : ($pct >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
+                                                style="width:{{ $pct }}%"></div>
+                                        </div>
+                                        <div class="an-lc-meta">
+                                            <span><i class="fa-regular fa-clock"></i> Watched: <b>{{ $fmtS($tw) }}</b></span>
+                                            <span><i class="fa-regular fa-hourglass-half"></i> Total: <b>{{ $td > 0 ? $fmtS($td) : '—' }}</b></span>
+                                            <span><i class="fa-regular fa-film"></i> Lectures: <b>{{ $ch['lecture_count'] }}</b></span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @if (count($subjectData['chapters']) > 10)
+                                <div class="an-load-more-wrap">
+                                    <button class="an-load-more-btn" data-grid="{{ $gridId }}" data-shown="10">
+                                        <i class="fa-regular fa-chevron-down"></i>
+                                        Load More <span class="lm-count">({{ count($subjectData['chapters']) - 10 }} more)</span>
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+@endif
                     {{-- ── Exam Performance ────────────────────────── --}}
                     <div class="profile-card" style="margin-top:20px">
                         <div class="profile-card-header">
@@ -1152,6 +1168,64 @@
             flex: 2;
         }
 
+.an-lm-hidden { display: none !important; }
+
+.an-course-group { margin-bottom: 24px; }
+
+.an-course-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+}
+
+.an-course-label i { color: #6366f1; }
+
+.an-subject-group {
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 3px solid #e2e8f0;
+}
+
+.an-subject-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.an-subject-label i { color: #02b3e4; }
+
+.an-load-more-wrap { text-align: center; padding-top: 16px; }
+
+.an-load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.an-load-more-btn:hover { background: #e2e8f0; color: #1e293b; }
+
+.an-load-more-btn .lm-count { color: #94a3b8; font-weight: 500; }
         .an-chart-label {
             font-size: 11px;
             font-weight: 700;
@@ -1290,6 +1364,33 @@
                 });
             }
 
+// ──────────────────────────────────────────────
+// LOAD MORE — analytics grids
+// ──────────────────────────────────────────────
+document.querySelectorAll('.an-load-more-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var grid   = document.getElementById(this.getAttribute('data-grid'));
+        var cards  = Array.from(grid.querySelectorAll('.an-lecture-card'));
+        var total  = cards.length;
+        var hidden = cards.filter(function(c) { return c.classList.contains('an-lm-hidden'); });
+        var shown  = parseInt(this.getAttribute('data-shown') || '10');
+
+        if (hidden.length > 0) {
+            hidden.slice(0, 10).forEach(function(c) { c.classList.remove('an-lm-hidden'); });
+            var stillHidden = grid.querySelectorAll('.an-lecture-card.an-lm-hidden').length;
+            this.setAttribute('data-shown', (shown + Math.min(10, hidden.length)).toString());
+            if (stillHidden === 0) {
+                this.innerHTML = '<i class="fa-regular fa-chevron-up"></i> Show Less';
+            } else {
+                this.innerHTML = '<i class="fa-regular fa-chevron-down"></i> Load More <span class="lm-count">(' + stillHidden + ' more)</span>';
+            }
+        } else {
+            cards.forEach(function(c, i) { if (i >= 10) c.classList.add('an-lm-hidden'); });
+            this.setAttribute('data-shown', '10');
+            this.innerHTML = '<i class="fa-regular fa-chevron-down"></i> Load More <span class="lm-count">(' + (total - 10) + ' more)</span>';
+        }
+    });
+});
             // ──────────────────────────────────────────────
             // ANALYTICS CHARTS
             // Initialise charts lazily when the Analytics tab is first opened
