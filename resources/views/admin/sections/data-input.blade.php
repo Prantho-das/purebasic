@@ -1068,9 +1068,9 @@ function addNotice() {
     container.appendChild(newItem);
 }
     // Generic Remove Function (add if missing)
-    function removeItem(button) {
-       button.closest('.location-item, .mentor-item, .slide-item, .batch-image-item, .batch-item, .book-item,.hero-slide-item').remove();
-    }
+     function removeItem(button) {
+        button.closest('.location-item, .mentor-item, .slide-item, .batch-image-item, .batch-item, .book-item, .hero-slide-item, .static-item, .testimonial-item, .notice-item, .item-row, .image-item, .custom-link-item').remove();
+     }
 
 
 
