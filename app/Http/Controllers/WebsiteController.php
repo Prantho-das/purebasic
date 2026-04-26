@@ -1912,9 +1912,12 @@ class WebsiteController extends Controller
             ->where('enroll_status', 1)
             ->pluck('batch_id');
 
+        $chapterAnalytics = [];
+
         foreach ($activeBatches as $bId) {
             $rootBatch = Batchpackage::where('batch_id', $bId)->value('fild_7');
             $lookupId  = ($rootBatch && $rootBatch !== 'null') ? (int) $rootBatch : $bId;
+            $courseTitle = Batchpackage::where('batch_id', $bId)->value('title') ?? 'Course';
 
             $totalLectures   = LectureBatch::where('membershipe_id', $lookupId)->count();
             $watchedLectures = DB::table('watch_count')
@@ -1922,14 +1925,56 @@ class WebsiteController extends Controller
                 ->where('batch_id', $bId)
                 ->count();
 
+            $totalWatchTime = DB::table('watch_progress')
+                ->where('user_id', $id)
+                ->where('batch_id', $bId)
+                ->sum('watched_seconds');
+
             $lectureAnalytics[] = [
-                'title'   => Batchpackage::where('batch_id', $bId)->value('title') ?? 'Course',
-                'total'   => $totalLectures,
-                'watched' => min($watchedLectures, $totalLectures),
-                'pct'     => $totalLectures > 0
+                'title'          => $courseTitle,
+                'total'          => $totalLectures,
+                'watched'        => min($watchedLectures, $totalLectures),
+                'pct'            => $totalLectures > 0
                     ? round(min($watchedLectures, $totalLectures) / $totalLectures * 100)
                     : 0,
+                'watch_time'     => (int) $totalWatchTime,
             ];
+
+            // ── Chapter-level watch time ──────────────────────────────────
+            $lectureIds = LectureBatch::where('membershipe_id', $lookupId)->pluck('lecture_id');
+
+            $byChapter = LectureSheet::whereIn('id', $lectureIds)
+                ->where('status', 1)
+                ->with('chapter')
+                ->get()
+                ->groupBy('cp_id');
+
+            foreach ($byChapter as $cpId => $lectures) {
+                $lecIds = $lectures->pluck('id')->toArray();
+
+                $progressRows = DB::table('watch_progress')
+                    ->where('user_id', $id)
+                    ->where('batch_id', $bId)
+                    ->whereIn('lecture_id', $lecIds)
+                    ->get();
+
+                $totalDuration  = (int) $progressRows->sum('duration_seconds');
+                $totalWatched   = (int) $progressRows->sum('watched_seconds');
+                if ($totalDuration > 0) {
+                    $totalWatched = min($totalWatched, $totalDuration);
+                }
+
+                $chapterAnalytics[] = [
+                    'course'         => $courseTitle,
+                    'chapter'        => optional($lectures->first()->chapter)->name ?? 'General',
+                    'lecture_count'  => $lectures->count(),
+                    'total_duration' => $totalDuration,
+                    'watched_seconds'=> $totalWatched,
+                    'pct'            => $totalDuration > 0
+                        ? min(100, round($totalWatched / $totalDuration * 100))
+                        : 0,
+                ];
+            }
         }
 
         // ── Exam analytics ────────────────────────────────────────────────
@@ -1974,7 +2019,7 @@ class WebsiteController extends Controller
             'perExam'
         );
 
-        return view('user.student_profile', compact('profile', 'courses', 'lectureAnalytics', 'examAnalytics'));
+        return view('user.student_profile', compact('profile', 'courses', 'lectureAnalytics', 'chapterAnalytics', 'examAnalytics'));
     }
 
 

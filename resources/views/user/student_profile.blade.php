@@ -562,6 +562,12 @@
                             {{-- Progress bars per course --}}
                             <div class="an-lecture-grid">
                                 @foreach($lectureAnalytics as $stat)
+                                @php
+                                    $wt = $stat['watch_time'] ?? 0;
+                                    $wh = floor($wt / 3600);
+                                    $wm = floor(($wt % 3600) / 60);
+                                    $wtLabel = $wh > 0 ? "{$wh}h {$wm}m" : "{$wm}m";
+                                @endphp
                                 <div class="an-lecture-card">
                                     <div class="an-lc-header">
                                         <span class="an-lc-title">{{ $stat['title'] }}</span>
@@ -576,7 +582,7 @@
                                     <div class="an-lc-meta">
                                         <span><i class="fa-regular fa-check-circle"></i> Watched: <b>{{ $stat['watched'] }}</b></span>
                                         <span><i class="fa-regular fa-film"></i> Total: <b>{{ $stat['total'] }}</b></span>
-                                        <span><i class="fa-regular fa-hourglass-half"></i> Remaining: <b>{{ $stat['total'] - $stat['watched'] }}</b></span>
+                                        <span><i class="fa-regular fa-clock"></i> Watch time: <b>{{ $wtLabel }}</b></span>
                                     </div>
                                 </div>
                                 @endforeach
@@ -590,6 +596,48 @@
                             </div>
                             @endif
 
+                        </div>
+                    </div>
+                    @endif
+
+                    {{-- ── Chapter Watch Time ─────────────────────── --}}
+                    @if(!empty($chapterAnalytics))
+                    <div class="profile-card" style="margin-top:20px">
+                        <div class="profile-card-header">
+                            <div class="card-header-icon"><i class="fa-regular fa-layer-group"></i></div>
+                            <h5>Chapter Watch Time</h5>
+                        </div>
+                        <div class="profile-card-body">
+                            <div class="an-lecture-grid">
+                                @foreach($chapterAnalytics as $ch)
+                                @php
+                                    $td = $ch['total_duration'];
+                                    $tw = $ch['watched_seconds'];
+                                    $tdLabel = $td > 0 ? (floor($td/3600) > 0 ? floor($td/3600).'h '.floor(($td%3600)/60).'m' : floor($td/60).'m') : '—';
+                                    $twLabel = $tw > 0 ? (floor($tw/3600) > 0 ? floor($tw/3600).'h '.floor(($tw%3600)/60).'m' : floor($tw/60).'m') : '0m';
+                                @endphp
+                                <div class="an-lecture-card">
+                                    <div class="an-lc-header">
+                                        <div style="min-width:0">
+                                            <div class="an-lc-title" style="font-size:13px">{{ $ch['chapter'] }}</div>
+                                            <div style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">{{ $ch['course'] }}</div>
+                                        </div>
+                                        <span class="an-badge {{ $ch['pct'] >= 80 ? 'an-badge-green' : ($ch['pct'] >= 40 ? 'an-badge-yellow' : 'an-badge-gray') }}">
+                                            {{ $ch['pct'] }}%
+                                        </span>
+                                    </div>
+                                    <div class="an-prog-track">
+                                        <div class="an-prog-fill {{ $ch['pct'] >= 80 ? 'an-fill-green' : ($ch['pct'] >= 40 ? 'an-fill-yellow' : 'an-fill-blue') }}"
+                                             style="width:{{ $ch['pct'] }}%"></div>
+                                    </div>
+                                    <div class="an-lc-meta">
+                                        <span><i class="fa-regular fa-clock"></i> Watched: <b>{{ $twLabel }}</b></span>
+                                        <span><i class="fa-regular fa-hourglass-half"></i> Total: <b>{{ $tdLabel }}</b></span>
+                                        <span><i class="fa-regular fa-film"></i> Lectures: <b>{{ $ch['lecture_count'] }}</b></span>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                     @endif

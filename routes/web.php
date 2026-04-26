@@ -134,6 +134,8 @@ Route::group(['middleware' => 'membership_login'], function () {
 
     Route::get('/batch/{batch_id}/subject/{subject_id}/chapter/{chapter_id}/classes', 'WebsiteController@classes')->name('chapter_classes');
     Route::get('/batch/{batch_id}/class/{id}', 'WebsiteController@lecture_video')->name('lecture_video');
+    Route::get('/watch/progress/{batch_id}/{lecture_id}', 'WatchProgressController@get');
+    Route::post('/watch/progress/save', 'WatchProgressController@save');
     Route::get('/batch/{batch_id}/class/{id}/note1', 'WebsiteController@note1')->name('note1');
     Route::get('/batch/{batch_id}/class/{id}/note2', 'WebsiteController@note2')->name('note2');
     Route::get('/batch/{batch_id}/class/{id}/pdf', 'WebsiteController@pdf')->name('pdf');
