@@ -1925,10 +1925,18 @@ class WebsiteController extends Controller
                 ->where('batch_id', $bId)
                 ->count();
 
-            $totalWatchTime = DB::table('watch_progress')
+            $progressSummary = DB::table('watch_progress')
                 ->where('user_id', $id)
                 ->where('batch_id', $bId)
-                ->sum('watched_seconds');
+                ->selectRaw('SUM(watched_seconds) as watched, SUM(duration_seconds) as total')
+                ->first();
+
+            $totalWatchTime  = (int) ($progressSummary->watched ?? 0);
+            $totalDuration   = (int) ($progressSummary->total  ?? 0);
+
+            $timePct = $totalDuration > 0
+                ? min(100, round($totalWatchTime / $totalDuration * 100))
+                : 0;
 
             $lectureAnalytics[] = [
                 'title'          => $courseTitle,
@@ -1937,44 +1945,54 @@ class WebsiteController extends Controller
                 'pct'            => $totalLectures > 0
                     ? round(min($watchedLectures, $totalLectures) / $totalLectures * 100)
                     : 0,
-                'watch_time'     => (int) $totalWatchTime,
+                'watch_time'     => $totalWatchTime,
+                'total_duration' => $totalDuration,
+                'time_pct'       => $timePct,
             ];
 
-            // ── Chapter-level watch time ──────────────────────────────────
-            $lectureIds = LectureBatch::where('membershipe_id', $lookupId)->pluck('lecture_id');
-
-            $byChapter = LectureSheet::whereIn('id', $lectureIds)
+            // ── Chapter-level watch time grouped by subject → chapter ─────
+            $lectureIds  = LectureBatch::where('membershipe_id', $lookupId)->pluck('lecture_id');
+            $allLectures = LectureSheet::whereIn('id', $lectureIds)
                 ->where('status', 1)
                 ->with('chapter')
-                ->get()
-                ->groupBy('cp_id');
+                ->get();
 
-            foreach ($byChapter as $cpId => $lectures) {
-                $lecIds = $lectures->pluck('id')->toArray();
+            $subjects = [];
+            foreach ($allLectures->groupBy('category') as $subjectName => $subjectLectures) {
+                $chapters = [];
+                foreach ($subjectLectures->groupBy('cp_id') as $chLectures) {
+                    $lecIds = $chLectures->pluck('id')->toArray();
 
-                $progressRows = DB::table('watch_progress')
-                    ->where('user_id', $id)
-                    ->where('batch_id', $bId)
-                    ->whereIn('lecture_id', $lecIds)
-                    ->get();
+                    $rows     = DB::table('watch_progress')
+                        ->where('user_id', $id)
+                        ->where('batch_id', $bId)
+                        ->whereIn('lecture_id', $lecIds)
+                        ->get();
 
-                $totalDuration  = (int) $progressRows->sum('duration_seconds');
-                $totalWatched   = (int) $progressRows->sum('watched_seconds');
-                if ($totalDuration > 0) {
-                    $totalWatched = min($totalWatched, $totalDuration);
+                    $chDur = (int) $rows->sum('duration_seconds');
+                    $chWat = (int) $rows->sum('watched_seconds');
+                    if ($chDur > 0) $chWat = min($chWat, $chDur);
+
+                    $chapters[] = [
+                        'chapter'         => optional($chLectures->first()->chapter)->name ?? 'General',
+                        'lecture_count'   => $chLectures->count(),
+                        'total_duration'  => $chDur,
+                        'watched_seconds' => $chWat,
+                        'pct'             => $chDur > 0
+                            ? min(100, round($chWat / $chDur * 100))
+                            : 0,
+                    ];
                 }
-
-                $chapterAnalytics[] = [
-                    'course'         => $courseTitle,
-                    'chapter'        => optional($lectures->first()->chapter)->name ?? 'General',
-                    'lecture_count'  => $lectures->count(),
-                    'total_duration' => $totalDuration,
-                    'watched_seconds'=> $totalWatched,
-                    'pct'            => $totalDuration > 0
-                        ? min(100, round($totalWatched / $totalDuration * 100))
-                        : 0,
+                $subjects[] = [
+                    'subject'  => $subjectName ?: 'General',
+                    'chapters' => $chapters,
                 ];
             }
+
+            $chapterAnalytics[] = [
+                'course'   => $courseTitle,
+                'subjects' => $subjects,
+            ];
         }
 
         // ── Exam analytics ────────────────────────────────────────────────
