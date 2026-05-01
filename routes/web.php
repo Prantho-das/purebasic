@@ -291,6 +291,9 @@ Route::get('/admin/modeltest/user/{id}', 'AdminController@modeltest_history_admi
 
 
 
+Route::get('/admin/analytics', 'AdminController@adminAnalytics')->name('admin.analytics');
+Route::get('/admin/analytics/subjects', 'AdminController@analyticsSubjects');
+Route::get('/admin/analytics/lectures', 'AdminController@analyticsLectures');
 Route::get('/admin/student-delete/{id}', 'AdminController@student_delete')->name('s.delete');
 Route::get('/admin/exam-wise-result', 'AdminController@point')->name('admin.point');
 Route::get('/admin/exam-wise-result/{id}', 'AdminController@point_lint')->name('admin.point_lint');

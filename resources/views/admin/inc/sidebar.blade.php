@@ -143,6 +143,12 @@ $menuItems = [
 'children' => null
 ],
 [
+'title' => 'Analytics',
+'url' => url('/admin/analytics'),
+'route' => 'admin.analytics',
+'children' => null
+],
+[
 'title' => 'Banner',
 'url' => url('/admin/banner'),
 'route' => null, // No route check in original
