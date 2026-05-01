@@ -12,6 +12,8 @@ use App\Paidmember;
 use App\Membership;
 use App\Batchpackage;
 use App\BatchStudent;
+use App\LectureBatch;
+use App\LectureSheet;
 use Carbon\Carbon;
 use Session;
 
@@ -487,7 +489,190 @@ class AdminController extends Controller
         
         return view('admin.student_info.all', compact('items'));
 
-        
+
+    }
+
+    public function adminAnalytics(Request $request)
+    {
+        $batches  = Batchpackage::orderBy('title')->get(['batch_id', 'title']);
+        $chapters = DB::table('chapters')->where('status', 1)->orderBy('name')->get(['id', 'name']);
+        $exams    = Modeltest::where('status', 1)->orderBy('name')->get(['id', 'name']);
+
+        $batchId   = $request->input('batch_id');
+        $subject   = $request->input('subject');
+        $chapterId = $request->input('chapter_id');
+        $lectureId = $request->input('lecture_id');
+        $examId    = $request->input('exam_id');
+
+        $subjects = collect();
+        $lectures = collect();
+        $rootBatch = null;
+        $scopedLectureIds = null;
+
+        if ($batchId) {
+            $bp = Batchpackage::where('batch_id', $batchId)->first();
+            $rootBatch = ($bp && $bp->fild_7 && $bp->fild_7 !== 'null') ? (int)$bp->fild_7 : (int)$batchId;
+            $batchLectureIds = LectureBatch::where('membershipe_id', $rootBatch)->pluck('lecture_id');
+
+            $subjects = LectureSheet::whereIn('id', $batchLectureIds)->where('status', 1)
+                ->distinct()->orderBy('category')->pluck('category')->filter()->values();
+
+            $filteredQ = LectureSheet::whereIn('id', $batchLectureIds)->where('status', 1);
+            if ($subject)   $filteredQ->where('category', $subject);
+            if ($chapterId) $filteredQ->where('cp_id', $chapterId);
+            $allFiltered = $filteredQ->get(['id', 'title']);
+            $lectures = $allFiltered;
+
+            $scopedLectureIds = $lectureId ? [$lectureId] : $allFiltered->pluck('id')->toArray();
+
+        } elseif ($subject || $chapterId || $lectureId) {
+            $filteredQ = LectureSheet::where('status', 1);
+            if ($subject)   $filteredQ->where('category', $subject);
+            if ($chapterId) $filteredQ->where('cp_id', $chapterId);
+            $allFiltered = $filteredQ->get(['id', 'title']);
+            $lectures = $allFiltered;
+            $scopedLectureIds = $lectureId ? [$lectureId] : $allFiltered->pluck('id')->toArray();
+        }
+
+        // Students scope
+        if ($batchId) {
+            $studentIds = BatchStudent::where('batch_id', $batchId)->where('enroll_status', 1)->pluck('student_id')->toArray();
+        } else {
+            $studentIds = Student::where('status', 1)->pluck('id')->toArray();
+        }
+
+        if (empty($studentIds)) {
+            $top10 = [];
+            $studentAnalytics = [];
+            $overallStats = ['totalStudents' => 0, 'totalWatchTime' => 0, 'avgWatchPct' => 0, 'avgExamScore' => 0, 'totalExamsTaken' => 0];
+            return view('admin.analytics.index', compact('batches', 'chapters', 'exams', 'subjects', 'lectures', 'top10', 'studentAnalytics', 'overallStats', 'batchId', 'chapterId', 'lectureId', 'examId', 'subject'));
+        }
+
+        // Bulk watch progress
+        $wpQuery = DB::table('watch_progress')->whereIn('user_id', $studentIds)
+            ->selectRaw('user_id, SUM(watched_seconds) as watched, SUM(duration_seconds) as total');
+        if ($batchId)                                  $wpQuery->where('batch_id', $batchId);
+        if ($scopedLectureIds !== null && count($scopedLectureIds) > 0) $wpQuery->whereIn('lecture_id', $scopedLectureIds);
+        $watchByUser = $wpQuery->groupBy('user_id')->get()->keyBy('user_id');
+
+        // Bulk exam results
+        $erQuery = DB::table('modeltest_answers')->whereIn('student_id', $studentIds)
+            ->where('action_status', 1)
+            ->selectRaw('student_id,
+                COUNT(*) as exam_count,
+                SUM(right_answers) as total_correct,
+                SUM(wrong_answers) as total_wrong,
+                SUM(unanswered_questions) as total_unanswered,
+                AVG(CASE WHEN total_questions > 0 THEN right_answers * 100.0 / total_questions ELSE 0 END) as avg_score');
+        if ($examId) {
+            $erQuery->where('modeltest_id', $examId);
+        } elseif ($batchId && $rootBatch) {
+            $erQuery->join('modeltest_batches as mb', 'modeltest_answers.modeltest_id', '=', 'mb.modeltest_id')
+                    ->where('mb.membershipe_id', $rootBatch);
+        }
+        $examByUser = $erQuery->groupBy('student_id')->get()->keyBy('student_id');
+
+        // Bulk batch names per student
+        $batchByStudent = DB::table('batch_students as bs')
+            ->join('batchpackages as bp', 'bs.batch_id', '=', 'bp.batch_id')
+            ->whereIn('bs.student_id', $studentIds)
+            ->where('bs.enroll_status', 1)
+            ->select('bs.student_id', 'bp.title as batch_title')
+            ->get()
+            ->groupBy('student_id');
+
+        // Build per-student analytics
+        $students = Student::whereIn('id', $studentIds)->get(['id', 'name', 'mobile', 'email']);
+
+        $studentAnalytics = [];
+        foreach ($students as $student) {
+            $wp = $watchByUser->get($student->id);
+            $er = $examByUser->get($student->id);
+
+            $watchedSec  = (int)($wp->watched ?? 0);
+            $totalSec    = (int)($wp->total   ?? 0);
+            $watchPct    = $totalSec > 0 ? min(100, round($watchedSec / $totalSec * 100)) : 0;
+            $examCount   = (int)($er->exam_count    ?? 0);
+            $totalCorrect= (int)($er->total_correct ?? 0);
+            $totalWrong  = (int)($er->total_wrong   ?? 0);
+            $avgScore    = round((float)($er->avg_score ?? 0), 1);
+            $composite   = round($avgScore * 0.6 + $watchPct * 0.4, 1);
+            $batchNames  = $batchByStudent->has($student->id)
+                ? $batchByStudent->get($student->id)->pluck('batch_title')->implode(', ')
+                : '';
+
+            $studentAnalytics[] = [
+                'id'              => $student->id,
+                'name'            => $student->name,
+                'mobile'          => $student->mobile,
+                'email'           => $student->email,
+                'batches'         => $batchNames,
+                'watched_seconds' => $watchedSec,
+                'total_seconds'   => $totalSec,
+                'watch_pct'       => $watchPct,
+                'exam_count'      => $examCount,
+                'total_correct'   => $totalCorrect,
+                'total_wrong'     => $totalWrong,
+                'avg_score'       => $avgScore,
+                'composite_score' => $composite,
+            ];
+        }
+
+        usort($studentAnalytics, fn($a, $b) => $b['composite_score'] <=> $a['composite_score']);
+
+        $top10 = array_slice($studentAnalytics, 0, 10);
+
+        $totalStudents   = count($studentAnalytics);
+        $totalWatchTime  = array_sum(array_column($studentAnalytics, 'watched_seconds'));
+        $avgWatchPct     = $totalStudents > 0 ? round(array_sum(array_column($studentAnalytics, 'watch_pct')) / $totalStudents, 1) : 0;
+        $totalExamsTaken = array_sum(array_column($studentAnalytics, 'exam_count'));
+        $withExams       = array_filter($studentAnalytics, fn($s) => $s['exam_count'] > 0);
+        $avgExamScore    = count($withExams) > 0 ? round(array_sum(array_column(array_values($withExams), 'avg_score')) / count($withExams), 1) : 0;
+
+        $overallStats = compact('totalStudents', 'totalWatchTime', 'avgWatchPct', 'avgExamScore', 'totalExamsTaken');
+
+        return view('admin.analytics.index', compact(
+            'batches', 'chapters', 'exams', 'subjects', 'lectures',
+            'top10', 'studentAnalytics', 'overallStats',
+            'batchId', 'chapterId', 'lectureId', 'examId', 'subject'
+        ));
+    }
+
+    public function analyticsSubjects(Request $request)
+    {
+        $batchId = $request->input('batch_id');
+        if (!$batchId) return response()->json([]);
+
+        $bp = Batchpackage::where('batch_id', $batchId)->first();
+        $rootBatch = ($bp && $bp->fild_7 && $bp->fild_7 !== 'null') ? (int)$bp->fild_7 : (int)$batchId;
+        $lectureIds = LectureBatch::where('membershipe_id', $rootBatch)->pluck('lecture_id');
+
+        $subjects = LectureSheet::whereIn('id', $lectureIds)->where('status', 1)
+            ->distinct()->orderBy('category')->pluck('category')->filter()->values();
+
+        return response()->json($subjects);
+    }
+
+    public function analyticsLectures(Request $request)
+    {
+        $batchId   = $request->input('batch_id');
+        $subject   = $request->input('subject');
+        $chapterId = $request->input('chapter_id');
+
+        $query = LectureSheet::where('status', 1);
+
+        if ($batchId) {
+            $bp = Batchpackage::where('batch_id', $batchId)->first();
+            $rootBatch = ($bp && $bp->fild_7 && $bp->fild_7 !== 'null') ? (int)$bp->fild_7 : (int)$batchId;
+            $lectureIds = LectureBatch::where('membershipe_id', $rootBatch)->pluck('lecture_id');
+            $query->whereIn('id', $lectureIds);
+        }
+
+        if ($subject)   $query->where('category', $subject);
+        if ($chapterId) $query->where('cp_id', $chapterId);
+
+        $lectures = $query->orderBy('title')->get(['id', 'title']);
+        return response()->json($lectures);
     }
 
 
